@@ -1,3 +1,9 @@
+$mainColor: #67bff9;
+
 .header {
-  background: lightblue;
+  background: $mainColor;
+
+  h1 {
+    color: white;
+  }
 }

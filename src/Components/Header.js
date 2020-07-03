@@ -7,11 +7,11 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import './Style/Header.module.scss';
+import styles from './Style/Header.module.scss';
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className={styles.header}>
       <h1 className="logo">DAY ONE</h1>
       <nav>
         <FontAwesomeIcon icon={faHome} className="icon" />
