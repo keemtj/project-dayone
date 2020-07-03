@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
-import userApi from './Api/userApi';
+import Login from './Page/Login';
+import WrapperPage from './Page/WrapperPage';
 
-const App = () => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    const getUsers = async () => {
-      const users = await userApi.getUsers();
-      setUsers(users);
-    };
-    getUsers();
-
-    console.log('useEffect ends...');
-  }, []);
+function App() {
+  // const isLogin = false;
+  const isLogin = true;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {users.map((user) => (
-          <li key={user.id}>
-            <span>{user.id}</span>
-            <span>{user.userId}</span>
-            <span>{user.userPw}</span>
-          </li>
-        ))}
-      </header>
-    </div>
+    <>
+      {isLogin ? (
+        <>
+          <WrapperPage />
+        </>
+      ) : (
+        <Login />
+      )}
+    </>
   );
-};
+}
 
 export default App;
