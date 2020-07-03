@@ -1,9 +1,36 @@
 $mainColor: #67bff9;
 
 .header {
+  position: fixed;
+  width: 100%;
   background: $mainColor;
 
-  h1 {
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+  }
+
+  .logo,
+  .icon {
     color: white;
+    cursor: pointer;
+  }
+
+  .logo {
+    margin: 15px 0;
+  }
+
+  .icon {
+    font-size: 25px;
   }
 }
