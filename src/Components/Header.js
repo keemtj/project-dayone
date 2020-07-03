@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import {
   faHome,
   faPen,
@@ -18,11 +19,22 @@ const Header = () => {
       <div className={cx('container')}>
         <h1 className={cx('logo')}>DAY ONE</h1>
         <nav className={cx('nav')}>
-          <FontAwesomeIcon icon={faHome} className={cx('icon')} />
-          <FontAwesomeIcon icon={faPen} className={cx('icon')} />
-          <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
-          <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
-          <FontAwesomeIcon icon={faUser} className={cx('icon')} />
+          <Link to="/">
+            <FontAwesomeIcon icon={faHome} className={cx('icon')} />
+          </Link>
+          <Link to="/diary">
+            <FontAwesomeIcon icon={faPen} className={cx('icon')} />
+          </Link>
+          <Link to="/map">
+            <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
+          </Link>
+          <Link to="/calendar">
+            <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
+          </Link>
+
+          <Link to="/mypage">
+            <FontAwesomeIcon icon={faUser} className={cx('icon')} />
+          </Link>
         </nav>
       </div>
     </header>

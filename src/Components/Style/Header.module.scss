@@ -3,6 +3,7 @@ $mainColor: #67bff9;
 .header {
   position: fixed;
   width: 100%;
+  padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
 
   .container {
@@ -28,9 +29,11 @@ $mainColor: #67bff9;
 
   .logo {
     margin: 15px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
   }
 
   .icon {
-    font-size: 25px;
+    font-size: 1.4rem;
   }
 }
