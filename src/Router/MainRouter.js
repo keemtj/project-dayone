@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const MainRouter = () => {
-  return <div></div>;
+  return <div>라우터 만드는중...</div>;
 };
 
 export default MainRouter;
