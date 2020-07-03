@@ -10,12 +10,7 @@ const App = () => {
       setUsers(users);
     };
     getUsers();
-    // fetch('api')
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log('data: ', data);
-    //     setUser(data);
-    //   });
+
     console.log('useEffect ends...');
   }, []);
 

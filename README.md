@@ -1,12 +1,10 @@
-# 타이틀
-
-- 다이어리 앱 DAY ONE 클론 코딩
+# 다이어리 앱 DAY ONE 클론 코딩
 
 <br>
 
 # 주제
 
-- 기존의 저널링 어플리케이션 Day One을 React.js를 통하여 데스크탑 버전으로 새롭게 재설계
+기존의 저널링 어플리케이션 Day One을 React.js를 통하여 데스크탑 버전으로 새롭게 재설계
 
 <br>
 
@@ -122,6 +120,8 @@
 - React
 - SCSS
 - Node Express
+
+<br>
 
 # 코딩 컨벤션
 
