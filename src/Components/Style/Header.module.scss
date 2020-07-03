@@ -1,3 +1,39 @@
+$mainColor: #67bff9;
+
 .header {
-  background: lightblue;
+  position: fixed;
+  width: 100%;
+  padding: 0.4rem 0 0.4rem 0;
+  background: $mainColor;
+
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+  }
+
+  .logo,
+  .icon {
+    color: white;
+    cursor: pointer;
+  }
+
+  .logo {
+    margin: 15px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .icon {
+    font-size: 1.4rem;
+  }
 }
