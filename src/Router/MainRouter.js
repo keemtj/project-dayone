@@ -10,7 +10,7 @@ import MyPage from '../Page/MyPage';
 const MainRouter = () => {
   return (
     <div>
-      <Route path="/" component={TimeLine} exact />
+      <Route path={['/', '/timeline']} component={TimeLine} exact />
       <Route path="/map" component={Map} />
       <Route path="/calendar" component={Calendar} />
       <Route path="/diary" component={Diary} />
