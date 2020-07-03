@@ -3,6 +3,13 @@
   height: 100vh;
   max-width: 1000px;
   margin: 0 auto;
-  background: cornsilk;
+  // background: cornsilk;
   padding-top: 5rem;
 }
+
+@media screen and (max-width: 1120px) { 
+  .main {
+    width: 90%; 
+  } 
+}
+
