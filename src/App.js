@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header.js';
+import WrapperPage from './Page/WrapperPage';
 
 function App() {
-  return <Header />;
+  return <WrapperPage />;
 }
 
 export default App;
