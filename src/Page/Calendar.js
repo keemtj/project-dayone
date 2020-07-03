@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactCalendar from 'react-calendar';
 import classNames from 'classnames/bind';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Style/Calendar.module.scss';
 
 const cx = classNames.bind(styles);
@@ -12,7 +10,6 @@ const Calendar = () => {
     <main className={cx('main')}>
       <ReactCalendar className={cx('calendar')} />
       <ul className={cx('diaryList')}>
-        {/* <FontAwesomeIcon icon={faPlus} className={cx('addBtn')} /> */}
         <div className={cx('addBtn')}>+</div>
         <li className={cx('diary')}>
           <img
