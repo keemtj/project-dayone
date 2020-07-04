@@ -1,3 +1,54 @@
-div {
-  color: black;
+$mainColor: #67bff9;
+
+.loginWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 12rem;
+  color: $mainColor;
+  h1 {
+    padding: 2rem;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    border: 1px solid #dadada;
+    border-radius: 13px;
+    width: 30rem;
+    min-height: 20rem;
+    padding: 3rem;
+
+    input {
+      border: 1px solid #dadada;
+      width: 100%;
+      margin-bottom: 2rem;
+      padding: 1.2rem 1.5rem;
+      &[type='password'] {
+        margin-bottom: 1.5rem;
+      }
+      &::placeholder {
+        color: #a7a7a7;
+        font-size: 1rem;
+      }
+    }
+    .message {
+      position: relative;
+      display: inline-block;
+      height: 1rem;
+    }
+    button {
+      border: none;
+      background-color: $mainColor;
+      width: 100%;
+      margin-top: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
 }
