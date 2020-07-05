@@ -40,4 +40,16 @@ router.get('/', (req, res) => res.json({ username: 'bryan~~~' }));
 router.get('/users', (req, res) => res.json(users));
 router.get('/diaries', (req, res) => res.json(diaries));
 
+// GET
+
+// DELETE
+
+// POST
+
+// PATCH
+
+// 404 Error
+
+// generate id or _id
+
 module.exports = router;
