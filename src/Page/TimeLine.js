@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import {
   faThLarge,
@@ -6,12 +6,24 @@ import {
   faSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
 
 const cx = classNames.bind(styles);
+// import diaryApi from '../Api/diaryApi';
 
 const Timeline = () => {
+  const getData = async () => {
+    const data = await axios.get('api/users');
+    console.log(data.data);
+  };
+
+  useEffect(() => {
+    // getData();
+    // diaryApi.getDiaries();
+  }, []);
+
   return (
     <div>
       <div className={cx('timelineNav')}>
