@@ -8,4 +8,4 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use('/api', route); // app.use('/api', (req, res)=> res.json({username:'bryan'}));
 
-app.listen(port, () => console.log(`express is running on ${port}`));
+app.listen(port, () => console.log(`nodemon is running on ${port}`));
