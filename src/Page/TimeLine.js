@@ -14,10 +14,12 @@ const cx = classNames.bind(styles);
 const Timeline = () => {
   return (
     <div>
-      <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-      <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-      <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
       <div>
+        <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+        <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+        <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
+      </div>
+      <div className={cx('timelineListWrapper')}>
         <ul className={cx('timelineList')}>
           <TimeLineList />
           <TimeLineList />
