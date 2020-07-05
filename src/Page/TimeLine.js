@@ -14,30 +14,23 @@ const cx = classNames.bind(styles);
 const Timeline = () => {
   return (
     <div>
-      <div>
-        <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+      <div className={cx('timelineNav')}>
+        <FontAwesomeIcon icon={faThLarge} className={cx('icon', 'active')} />
         <FontAwesomeIcon icon={faThList} className={cx('icon')} />
         <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
       </div>
-      <div className={cx('timelineListWrapper')}>
-        <ul className={cx('timelineList')}>
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-          <TimeLineList />
-        </ul>
-      </div>
+      <ul className={cx('timelineWrapper')}>
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+        <TimeLineList />
+      </ul>
     </div>
   );
 };
