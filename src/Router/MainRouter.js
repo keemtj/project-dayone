@@ -15,7 +15,7 @@ const MainRouter = () => {
       <Route path="/calendar" component={Calendar} />
       <Route path="/diary" component={Diary} />
       <Route path="/mypage" component={MyPage} />
-      <Route path="/diaryviewer/:id" component={DiaryViewer} />
+      <Route path="/diaryViewer/:id" component={DiaryViewer} />
     </div>
   );
 };
