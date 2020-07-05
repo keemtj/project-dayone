@@ -1,7 +1,11 @@
 /* eslint-disable no-new */
 import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
+import jQuery from 'jquery';
+
 import styles from './Style/ReactMap.module.scss';
+// eslint-disable-next-line no-multi-assign
+window.$ = window.jQuery = jQuery;
 
 const cx = classNames.bind(styles);
 
@@ -62,30 +66,22 @@ const ReactMap = () => {
       imageSize,
       imageOption,
     );
-    // const markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 
-    // 마커를 생성합니다
-    // var marker = new kakao.maps.Marker({
-    //   position: markerPosition,
-    //   image: markerImage, // 마커이미지 설정
-    // });
+    const clusterer = new kakao.maps.MarkerClusterer({
+      map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+      averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+      minLevel: 10, // 클러스터 할 최소 지도 레벨
+    });
 
-    // 마커가 지도 위에 표시되도록 설정합니다
-    // marker.setMap(map);
-    // 마커를 생성
-    markerdata.forEach((el) => {
-      new kakao.maps.Marker({
-        map,
+    const markers = markerdata.map((el) => {
+      return new kakao.maps.Marker({
         position: new kakao.maps.LatLng(el.lat, el.lng),
-        title: el.title,
         image: markerImage,
       });
     });
-    // const marker = new kakao.maps.Marker({
-    //   position: markerPosition,
-    // });
 
-    // marker.setMap(map);
+    // 클러스터러에 마커들을 추가합니다
+    clusterer.addMarkers(markers);
   };
 
   useEffect(() => {
