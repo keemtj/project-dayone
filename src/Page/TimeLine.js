@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-// import diaryApi from '../Api/diaryApi';
+import diaryApi from '../Api/diaryApi';
 
 const Timeline = () => {
   const getData = async () => {
@@ -10,7 +10,7 @@ const Timeline = () => {
 
   useEffect(() => {
     // getData();
-    // diaryApi.getDiaries();
+    diaryApi.getDiaries();
   }, []);
 
   return (
