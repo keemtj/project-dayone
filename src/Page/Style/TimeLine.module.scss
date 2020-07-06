@@ -1,3 +1,26 @@
-div {
-  color: black;
+$mainColor: #67bff9;
+
+.timelineNav {
+  padding: 0.5rem 0 1rem 0;
+  color: #d1d1d1;
+  font-size: 1.8rem;
+  text-align: end;
+  .icon {
+    margin-left: 1rem;
+    &:last-child {
+      font-size: 1.9rem;
+    }
+    &:hover {
+      color: $mainColor;
+    }
+  }
+  .active {
+    color: $mainColor;
+  }
+}
+
+.timelineWrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
 }

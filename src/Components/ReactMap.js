@@ -1,11 +1,9 @@
 /* eslint-disable no-new */
 import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import jQuery from 'jquery';
 
 import styles from './Style/ReactMap.module.scss';
 // eslint-disable-next-line no-multi-assign
-window.$ = window.jQuery = jQuery;
 
 const cx = classNames.bind(styles);
 
@@ -35,7 +33,7 @@ export const markerdata = [
 const { kakao } = window;
 
 const ReactMap = () => {
-  const mapscript = () => {
+  const renderMap = () => {
     const container = document.getElementById('map');
     const options = {
       center: new kakao.maps.LatLng(37.62197524055062, 127.16017523675508),
@@ -44,15 +42,8 @@ const ReactMap = () => {
 
     const map = new kakao.maps.Map(container, options);
 
-    // map control
-    const mapTypeControl = new kakao.maps.MapTypeControl();
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-    //마커가 표시 될 위치
-    // const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
 
     // 마커이미지의 주소입니다
     const imageSrc =
@@ -70,7 +61,7 @@ const ReactMap = () => {
     const clusterer = new kakao.maps.MarkerClusterer({
       map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
       averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-      minLevel: 10, // 클러스터 할 최소 지도 레벨
+      minLevel: 6, // 클러스터 할 최소 지도 레벨
     });
 
     const markers = markerdata.map((el) => {
@@ -86,7 +77,7 @@ const ReactMap = () => {
 
   useEffect(() => {
     kakao.maps.load(() => {
-      mapscript();
+      renderMap();
     });
   }, []);
 
