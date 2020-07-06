@@ -6,21 +6,23 @@
     line-height: 2rem;
     text-align: center;
 
+    & button {
+      // background: none;
+      border: none;
+      outline: none;
+      line-height: 9rem;
+    }
+
     & div[class$='__weekday'] {
       line-height: 2.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
 
       & abbr[title] {
         text-decoration: none !important;
         border: none !important;
         cursor: none !important;
       }
-    }
-
-    & button {
-      background: none;
-      border: none;
-      line-height: 6.5rem;
-      cursor: pointer;
     }
 
     & div[class$='__navigation'] button {
@@ -37,8 +39,27 @@
 
         & abbr {
           display: block;
-          margin: -2rem 0.5rem 0;
+          margin: -3rem 0.5rem 0;
+          font-weight: 520;
         }
+      }
+
+      & [class$='--weekend'],
+      & button:nth-child(1) {
+        color: rgb(207, 40, 40);
+      }
+
+      & :nth-child(7n) {
+        color: rgb(14, 70, 190);
+      }
+
+      & button:enabled:hover {
+        cursor: pointer;
+      }
+
+      & button:disabled {
+        color: #999999;
+        font-weight: 300;
       }
     }
   }
