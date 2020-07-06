@@ -36,7 +36,8 @@
     "start:server": "nodemon ./servers/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +67,8 @@
   "devDependencies": {
     "eslint": "6.8.0",
     "nodemon": "^2.0.4",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "2.0.5"
   }
 }
