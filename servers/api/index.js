@@ -1,8 +1,8 @@
 const Router = require('koa-router');
-const calendar = require('./calendar');
+const posts = require('./posts');
 
 const api = new Router();
 
-api.use('/calendar', calendar.routes());
+api.use('/posts', posts.routes());
 
 module.exports = api;

@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
 
 const api = require('./api');
 
@@ -12,7 +13,10 @@ const port = process.env.PORT || 3001;
 // set api router
 router.use('/api', api.routes());
 
-// app 인스턴스에 라우터 적용
+// apply bodyParser
+app.use(bodyParser());
+
+// apply router in app instance
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(port, () => {
