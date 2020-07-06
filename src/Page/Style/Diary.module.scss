@@ -1,13 +1,16 @@
 $border : 1px solid rgb(204, 204, 204);
 
 .wrapper {
-  padding: 0 15px;
+  // padding: 0 15px;
   color: #181818;
 }
 @media screen and (max-width: 800px) { 
   .wrapper {
     padding: 0;
   }
+}
+.writer {
+  background-color: #fff;
 }
 .title {
   display: block;
@@ -23,4 +26,11 @@ $border : 1px solid rgb(204, 204, 204);
   margin-bottom: 20px;
   border: $border;
   outline: none;
+}
+
+main {
+  background-color: #fff;
+}
+.writer {
+  min-height: 500px;
 }

@@ -5,6 +5,7 @@ $mainColor: #67bff9;
   width: 100%;
   padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
+  z-index: 1000;
 
   .container {
     width: 100%;
