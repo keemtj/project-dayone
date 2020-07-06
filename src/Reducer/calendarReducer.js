@@ -1,13 +1,14 @@
 export const calendarInitState = {
   loading: false,
   error: null,
+  date: '',
   diaries: [
     {
       _id: 1,
       id: 1,
       title: 'asdjfkl',
       content: 'blablablalaalbjaklbjla',
-      date: '2020.07.02',
+      date: 'Sat Jul 04 2020 00:00:00 GMT+0900 (대한민국 표준시)',
       location: '성수',
     },
     {
@@ -35,18 +36,21 @@ export const calendarReducer = (state, action) => {
       return {
         loading: true,
         error: null,
+        date: state.date,
         diaries: state.diaries,
       };
     case 'ERROR':
       return {
         loading: false,
         error: action.error,
+        date: '',
         diaries: null,
       };
     case 'SUCCESS':
       return {
         loading: false,
         error: null,
+        date: action.date,
         diaries: action.diaries,
       };
     default:

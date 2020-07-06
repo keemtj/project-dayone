@@ -18,8 +18,6 @@ const Calendar = () => {
         showFixedNumberOfWeeks={true}
         onChange={() => console.log('change')}
         onViewChange={() => console.log('view change')}
-        onClickMonth={() => console.log('click month')}
-        onClick={() => console.log('clicked!!!!!!!!!!!!!1')}
       />
       <DiarySublist />
     </main>

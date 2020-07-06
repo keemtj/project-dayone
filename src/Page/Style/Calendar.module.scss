@@ -4,19 +4,20 @@
   .calendar {
     width: 70%;
     line-height: 2rem;
-    text-align: center;
+    text-align: left;
 
     & button {
       // background: none;
       border: none;
       outline: none;
-      line-height: 9rem;
+      line-height: 6rem;
     }
 
     & div[class$='__weekday'] {
       line-height: 2.5rem;
       text-transform: uppercase;
       font-weight: 600;
+      padding-left: 1rem;
 
       & abbr[title] {
         text-decoration: none !important;
@@ -25,22 +26,37 @@
       }
     }
 
-    & div[class$='__navigation'] button {
-      line-height: 2.5rem;
-      font-size: 1rem;
+    & div[class$='__navigation'] {
+      & button[class$='-button'] {
+        padding: 0 20px;
+      }
+
+      & button {
+        line-height: 2.5rem;
+        font-size: 1rem;
+
+        &:enabled {
+          cursor: pointer;
+        }
+      }
     }
 
     & div[class$='view__days'] {
-      border: 1px solid #dadada;
+      // border: 1px solid #dadada;
 
       & button {
-        border: 0.3px solid #dadada;
-        text-align: left;
+        // border: 0.3px solid #dadada;
 
         & abbr {
-          display: block;
-          margin: -3rem 0.5rem 0;
-          font-weight: 520;
+          display: inline-block;
+          line-height: 1.7rem;
+          width: 1.7rem;
+          height: 1.7rem;
+          position: relative;
+          top: -1.5rem;
+          left: -1.5rem;
+          font-weight: 500;
+          font-size: 1rem;
         }
       }
 
@@ -50,16 +66,20 @@
       }
 
       & :nth-child(7n) {
-        color: rgb(56, 68, 236);
+        color: rgb(76, 86, 228);
       }
 
       & button:enabled:hover {
         cursor: pointer;
       }
 
-      & button:disabled {
+      & button:disabled abbr {
         color: #999999;
-        font-weight: 300;
+        font-weight: 200;
+      }
+
+      & button:focus {
+        border: 2px solid rgb(255, 94, 76);
       }
     }
   }
