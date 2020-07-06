@@ -3,6 +3,9 @@
    License: none (public domain)
 */
 
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -127,3 +130,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.a11yHidden {
+  position: absolute; 
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip: rect(0,0,0,0);
+}
+
