@@ -37,3 +37,9 @@ $mainColor: #67bff9;
     font-size: 1.4rem;
   }
 }
+
+@media screen and (max-width: 1120px) { 
+  .container {
+    width: 90% !important;
+  } 
+}
