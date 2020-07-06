@@ -1,10 +1,13 @@
 import React from 'react';
+import classNames from 'classnames/bind';
+import styles from './Style/Diary.module.scss';
+
+const cx = classNames.bind(styles);
 
 const Diary = () => {
   return (
-    <div>
-      <h1>다이어리</h1>
-      <p>다이어리, 일기는 여기서 쓰면 된단다</p>
+    <div className={cx('wrapper')}>
+      <h1 className={cx('a11yHidden')}>다이어리</h1>
     </div>
   );
 };
