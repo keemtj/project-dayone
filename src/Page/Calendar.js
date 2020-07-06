@@ -15,6 +15,11 @@ const Calendar = () => {
         calendarType="US"
         maxDate={new Date()}
         onClickDay={(value) => console.log(value)}
+        showFixedNumberOfWeeks={true}
+        onChange={() => console.log('change')}
+        onViewChange={() => console.log('view change')}
+        onClickMonth={() => console.log('click month')}
+        onClick={() => console.log('clicked!!!!!!!!!!!!!1')}
       />
       <DiarySublist />
     </main>
