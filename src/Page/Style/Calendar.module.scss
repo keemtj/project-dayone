@@ -1,3 +1,45 @@
-div {
-  color: black;
+.main {
+  position: relative;
+
+  .calendar {
+    width: 70%;
+    line-height: 2rem;
+    text-align: center;
+
+    & div[class$='__weekday'] {
+      line-height: 2.5rem;
+
+      & abbr[title] {
+        text-decoration: none !important;
+        border: none !important;
+        cursor: none !important;
+      }
+    }
+
+    & button {
+      background: none;
+      border: none;
+      line-height: 6.5rem;
+      cursor: pointer;
+    }
+
+    & div[class$='__navigation'] button {
+      line-height: 2.5rem;
+      font-size: 1rem;
+    }
+
+    & div[class$='view__days'] {
+      border: 1px solid #dadada;
+
+      & button {
+        border: 0.3px solid #dadada;
+        text-align: left;
+
+        & abbr {
+          display: block;
+          margin: -2rem 0.5rem 0;
+        }
+      }
+    }
+  }
 }

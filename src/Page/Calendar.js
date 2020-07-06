@@ -1,11 +1,17 @@
 import React from 'react';
+import ReactCalendar from 'react-calendar';
+import classNames from 'classnames/bind';
+import styles from './Style/Calendar.module.scss';
+import DiarySublist from '../Components/DiarySublist';
+
+const cx = classNames.bind(styles);
 
 const Calendar = () => {
   return (
-    <div>
-      <h1>캘린더</h1>
-      <p>캘린더, 캘린더에서 날짜보고 일기 찾아보자</p>
-    </div>
+    <main className={cx('main')}>
+      <ReactCalendar className={cx('calendar')} />
+      <DiarySublist />
+    </main>
   );
 };
 
