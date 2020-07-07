@@ -1,5 +1,68 @@
+$mainColor: #67bff9;
+
+.dimed {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
 .modal {
-  border: 1px solid #ddd;
+  position: relative;
+  margin: 160px auto 0;
+  width: 80%;
+  max-width: 580px;
+  min-height: 150px;
   padding: 20px;
-  border-radius: 3px;
+  border-radius: 7px;
+  background-color: #fff;
+
+  .modalDeleteBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    border: none;
+    color: rgb(150, 150, 150);
+    background-color: #fff;
+  }
+}
+.modal.small {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  padding: 0;
+  padding-top: 40px;
+  text-align: center;
+  overflow: hidden;
+
+  .message {
+    display: block;
+    margin-bottom: 34px;
+  }
+
+  button {
+    border: none;
+    border-top: 1px solid #ddd;
+    width: 50%;
+    padding: 20px 36px;
+    font-weight: 500;
+    font-size: 16px;
+    outline: none;
+  }
+
+  button.confirm {
+    border: 1px solid $mainColor;
+    background-color: $mainColor;
+    color: #fff;
+  }
 }
