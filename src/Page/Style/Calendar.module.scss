@@ -74,7 +74,8 @@
       }
 
       & button:disabled abbr {
-        color: #999999;
+        // color: #999999;
+        color: red;
         font-weight: 200;
       }
 

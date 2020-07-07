@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 import classNames from 'classnames/bind';
-import styles from './Style/CustomCalendar.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleLeft,
   faAngleRight,
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './Style/CustomCalendar.module.scss';
 
 const cx = classNames.bind(styles);
 
+const initialState = {
+  now: '',
+  calendar: {
+    year: '',
+    month: '',
+    date: '',
+  },
+};
+
 const CustomCalendar = () => {
+  // const [state, dispatch] = useReducer(reducer, initialState);
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
+
+  const getDateArray = (yy, mm, dates) => {
+    let dateArray = [];
+    for (let i = 1; i <= dates; i++) {
+      dateArray = dateArray.concat({ yy, mm, dd: i });
+    }
+    return dateArray;
+  };
 
   const getDates = (yy, mm) => {
     switch (mm) {
@@ -36,7 +54,11 @@ const CustomCalendar = () => {
     }
   };
 
-  console.log(year, month, getDates(year, 2));
+  // console.log(year, month, getDateArray(year, month, getDates(year, month)));
+
+  useEffect(() => {
+    // getDateArray(2020, 7, 31);
+  }, []);
 
   return (
     <div className={cx('calendar')}>
@@ -66,7 +88,17 @@ const CustomCalendar = () => {
         <li>FRI</li>
         <li>SAT</li>
       </ul>
-      <div className={cx('view')}></div>
+      <div className={cx('dateView')}>
+        {getDateArray(year, month, getDates(year, month)).map(
+          ({ yy, mm, dd }) => {
+            return (
+              <button key={dd} type="button" className={cx('dateBtn')}>
+                <span className={cx('date')}>{dd}</span>
+              </button>
+            );
+          },
+        )}
+      </div>
     </div>
   );
 };
