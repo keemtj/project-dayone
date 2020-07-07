@@ -136,6 +136,9 @@ a {
   text-decoration: none;
   color: #181818;
 }
+button {
+  background-color: #fff;
+}
 .a11yHidden {
   position: absolute; 
   width: 1px;
