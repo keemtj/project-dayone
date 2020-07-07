@@ -168,7 +168,7 @@ const Map = () => {
         diaries={diaries}
         filterDiariesByLoc={filterDiariesByLoc}
       />
-      <DiarySublist sublist={sublist} />
+      {/* <DiarySublist sublist={sublist} /> */}
     </main>
   );
 };

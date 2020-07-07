@@ -111,6 +111,7 @@ section {
 }
 body {
   line-height: 1;
+  color: #181818;
 }
 ol,
 ul {
@@ -131,3 +132,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  text-decoration: none;
+  color: #181818;
+}
+.a11yHidden {
+  position: absolute; 
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip: rect(0,0,0,0);
+}
+
