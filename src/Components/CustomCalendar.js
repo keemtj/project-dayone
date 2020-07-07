@@ -12,7 +12,11 @@ import styles from './Style/CustomCalendar.module.scss';
 const cx = classNames.bind(styles);
 
 const initialState = {
-  now: '',
+  now: {
+    year: '',
+    month: '',
+    date: '',
+  },
   calendar: {
     year: '',
     month: '',
@@ -20,11 +24,26 @@ const initialState = {
   },
 };
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'GET_NOW':
+      return {
+        ...state,
+        now: action.now,
+        calendar: {
+          year: action.year,
+          month: action.month,
+        },
+      };
+    default:
+      throw new Error('ERROR');
+  }
+};
+
 const CustomCalendar = () => {
-  // const [state, dispatch] = useReducer(reducer, initialState);
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { now, calendar } = state;
+  const { year, month } = calendar;
 
   const getDateArray = (yy, mm, dates) => {
     let dateArray = [];
@@ -56,7 +75,26 @@ const CustomCalendar = () => {
 
   // console.log(year, month, getDateArray(year, month, getDates(year, month)));
 
+  const getNow = () => {
+    const today = new Date();
+    const yy = today.getFullYear();
+    const mm = today.getMonth() + 1;
+    const dd =
+      new String(today)[11] === '0'
+        ? new String(today).slice(10, 11)
+        : new String(today).slice(9, 11);
+
+    dispatch({
+      type: 'GET_NOW',
+      now: { year: yy, month: mm, date: Number(dd) },
+      year: yy,
+      month: mm,
+    });
+  };
+
   useEffect(() => {
+    getNow();
+    console.log(state.now);
     // getDateArray(2020, 7, 31);
   }, []);
 
@@ -92,7 +130,15 @@ const CustomCalendar = () => {
         {getDateArray(year, month, getDates(year, month)).map(
           ({ yy, mm, dd }) => {
             return (
-              <button key={dd} type="button" className={cx('dateBtn')}>
+              <button
+                key={dd}
+                type="button"
+                className={cx(`${yy}-${mm}-${dd}`, {
+                  today:
+                    `${now.year}-${now.month}-${now.date}` ===
+                    `${yy}-${mm}-${dd}`,
+                })}
+              >
                 <span className={cx('date')}>{dd}</span>
               </button>
             );
