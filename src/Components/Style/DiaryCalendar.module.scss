@@ -1,0 +1,14 @@
+$mainColor: #67bff9;
+
+.calendarButton {
+  width: 52px;
+  height: 52px;
+  margin-left: -1px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.calendarIcon {
+  color: #444;
+  color: $mainColor;
+  font-size: 18px;
+}

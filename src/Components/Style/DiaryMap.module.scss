@@ -1,0 +1,19 @@
+$mainColor: #67bff9;
+
+.mapButton {
+  padding: 10px 10px 10px 0;
+  margin-bottom: 50px;
+  border: none;
+  background-color: #fff;
+}
+.mapIcon {
+  color: $mainColor;
+  font-size: 25px;
+}
+.mapMsg {
+  padding-left: 10px;
+  vertical-align: 4px;
+  font-size: 15px;
+  color: $mainColor;
+  color: rgb(145, 145, 145);
+}

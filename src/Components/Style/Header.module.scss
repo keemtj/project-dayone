@@ -3,8 +3,9 @@ $mainColor: #67bff9;
 .header {
   position: fixed;
   width: 100%;
-  padding: 0.4rem 0 0.4rem 0;
+  // padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
+  z-index: 1000;
 
   .container {
     width: 100%;
@@ -31,6 +32,9 @@ $mainColor: #67bff9;
     margin: 15px 0;
     font-size: 1.6rem;
     font-weight: 600;
+  }
+  a {
+    color: #fff;
   }
 
   .icon {
