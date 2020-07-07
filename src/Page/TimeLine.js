@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 import {
   faThLarge,
@@ -8,14 +8,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
-import diaryApi from '../Api/diaryApi';
+import { testContext } from '../Context/testContext';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  useEffect(() => {
-    diaryApi.getDiaries();
-  }, []);
+  const context = useContext(testContext);
+  const { state } = context;
+  console.log(state.postsData);
 
   return (
     <div>

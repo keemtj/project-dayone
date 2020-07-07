@@ -27,6 +27,47 @@ const diaries = [
   },
 ];
 
+// const users = [
+//   {
+//     id: 1,
+//     userId: 'asdf',
+//     userPw: '1234',
+//     active: false,
+//     diaries: [
+//       {
+//         // _id: 1,
+//         id: 1,
+//         title: 'asdjfkl',
+//         body: 'blablablalaalbjaklbjla',
+//         date: '2020.07.02',
+//         location: { lat: 12312.1341, lng: 12093.123 },
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//         isBookmarked: false,
+//       },
+//       {
+//         // _id: 1,
+//         id: 2,
+//         title: '로롱놀오',
+//         body: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
+//         date: '2020.07.04',
+//         location: '성수',
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//         isBookmarked: false,
+//       },
+//       {
+//         // _id: 1,
+//         id: 3,
+//         title: '캬캬캬캬캬ㅑㅋ',
+//         body: '가나다라마바사',
+//         date: '2020.07.04',
+//         location: '성수',
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//         isBookmarked: false,
+//       },
+//     ],
+//   },
+// ];
+
 /* 전체 diary list 조회
 GET /api/posts
 */

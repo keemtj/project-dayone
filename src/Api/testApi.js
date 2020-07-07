@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const diaries = axios.create();
+const posts = axios.create();
 
-export const testApi = {
-  getDiaries: () => diaries.get('/api/posts').then((r) => console.log(r.data)),
+const testApi = {
+  getDiaries: () => posts.get('/api/posts').then((res) => res.data),
 };
 
 export default testApi;

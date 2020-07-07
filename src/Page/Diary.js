@@ -1,14 +1,13 @@
 import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './Style/Diary.module.scss';
-
-const cx = classNames.bind(styles);
+import DiaryForm from '../Components/Diary/DiaryForm';
+// import Modal from '../Components/Modal';
 
 const Diary = () => {
   return (
-    <div className={cx('wrapper')}>
-      <h1 className={cx('a11yHidden')}>다이어리</h1>
-    </div>
+    <main>
+      <DiaryForm />
+      {/* <Modal /> */}
+    </main>
   );
 };
 
