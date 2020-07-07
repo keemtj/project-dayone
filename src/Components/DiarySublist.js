@@ -8,26 +8,26 @@ const DiarySublist = ({ diaries }) => {
   return (
     <ul className={cx('diaryList')}>
       <div className={cx('addBtn')}>+</div>
-      {diaries.map((diary) => {
+      {diaries.map(({ id, title, content, imagePaths }) => {
         return (
-          <li className={cx('diary')}>
+          <li key={id} className={cx('diary')}>
             <img
               src={
-                diary.imagePaths.length
-                  ? diary.imagePaths[0]
+                imagePaths.length
+                  ? imagePaths[0]
                   : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
               }
               alt="thumbnail"
               className={cx('thumbnail')}
             />
             <div className={cx('info')}>
-              <h2 className={cx('title')}>{diary.title}</h2>
-              <p className={cx('details')}>{diary.data}</p>
+              <h2 className={cx('title')}>{title}</h2>
+              <p className={cx('details')}>{content}</p>
             </div>
           </li>
         );
       })}
-      <li className={cx('diary')}>
+      {/* <li className={cx('diary')}>
         <img
           src="https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg"
           alt="thumbnail"
@@ -70,7 +70,7 @@ const DiarySublist = ({ diaries }) => {
           <h2 className={cx('title')}>diary title</h2>
           <p className={cx('details')}>date and location</p>
         </div>
-      </li>
+      </li> */}
     </ul>
   );
 };

@@ -164,67 +164,21 @@ const ReactMap = () => {
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    const generateMarkerArr = (diaries) => {
-      let markerArr = [];
+    const imageSrc =
+      'https://user-images.githubusercontent.com/67693474/86579099-cdbf2d00-bfb7-11ea-9c6e-177382b49033.png';
+    const imageSize = new kakao.maps.Size(100, 100); // 마커이미지의 크기입니다
+    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    const markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption,
+    );
 
-      diaries.forEach(({ location }) => {
-        const { lat, lng } = location;
-        if (!markerArr.length) {
-          markerArr.push({
-            count: 1,
-            lat,
-            lng,
-          });
-          return;
-        }
-        markerArr.forEach((marker, i) => {
-          if (lat === marker.lat && lng === marker.lng) {
-            marker.count += 1;
-            return;
-          }
-          if (i + 1 === markerArr.length) {
-            markerArr.push({
-              count: 1,
-              lat,
-              lng,
-            });
-          }
-        });
-      });
-
-      return markerArr;
-    };
-
-    const getMarkerSize = (count) => {
-      let size = 0;
-      if (count < 3) size = 80;
-      else if (count >= 3 && count < 5) size = 110;
-      else if (count >= 5 && count < 7) size = 140;
-      else {
-        size = 170;
-      }
-      return new kakao.maps.Size(size, size);
-    };
-
-    // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-    const getMarkerImage = (count) => {
-      const imageSize = getMarkerSize(count);
-      const imageSrc =
-        'https://user-images.githubusercontent.com/67693474/86579099-cdbf2d00-bfb7-11ea-9c6e-177382b49033.png';
-      const imageOption = { offset: new kakao.maps.Point(27, 69) };
-      const markerImage = new kakao.maps.MarkerImage(
-        imageSrc,
-        imageSize,
-        imageOption,
-      );
-
-      return markerImage;
-    };
-
-    const markers = generateMarkerArr(diaries).map((marker) => {
-      const markerImage = getMarkerImage(marker.count);
+    const markers = diaries.map(({ location }) => {
+      const { lat, lng } = location;
       return new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(marker.lat, marker.lng),
+        position: new kakao.maps.LatLng(lat, lng),
         image: markerImage,
       });
     });
