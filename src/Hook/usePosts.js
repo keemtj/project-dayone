@@ -1,7 +1,35 @@
-import React from 'react';
+import { useEffect, useReducer } from 'react';
+import testApi from '../Api/testApi';
+import { initialState, testReducer } from '../Reducer/testReducer';
 
 const usePosts = () => {
-  return <div>test useHooks</div>;
+  const [state, dispatch] = useReducer(testReducer, initialState);
+
+  const fetchData = async () => {
+    const postsData = await testApi.getDiaries();
+    try {
+      dispatch({ type: 'LOADING' });
+
+      if (postsData.status === 200)
+        dispatch({ type: 'SUCCESS', dustData: postsData.data });
+      else
+        dispatch({
+          type: 'ERROR',
+          error: { state: true, message: postsData.statusText },
+        });
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return [state, fetchData];
 };
 
 export default usePosts;
