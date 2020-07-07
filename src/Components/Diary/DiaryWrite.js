@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import classNames from 'classnames/bind';
-import styles from './Style/Diary.module.scss';
+import styles from '../Style/DiaryWrite.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Diary = () => {
+const DiaryWrite = () => {
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -18,7 +18,7 @@ const Diary = () => {
         toolbar: [
           [{ font: [] }, { size: [] }],
           ['image'],
-          ['bold', 'italic', 'underline', 'strike'],
+          ['underline', 'strike'],
           [{ list: 'ordered' }, { list: 'bullet' }],
           ['blockquote', 'link'],
         ],
@@ -38,12 +38,7 @@ const Diary = () => {
       ],
     });
   }, []);
-
-  return (
-    <main className={cx('wrapper')}>
-      <div className={cx('writer')} ref={quillElement} />
-    </main>
-  );
+  return <div className={cx('writer')} ref={quillElement} />;
 };
 
-export default Diary;
+export default DiaryWrite;
