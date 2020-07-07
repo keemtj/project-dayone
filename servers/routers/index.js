@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import classNames from 'classnames/bind';
-import styles from './Style/Map.module.scss';
-import ReactMap from '../Components/ReactMap';
-import DiarySublist from '../Components/DiarySublist';
+const express = require('express');
 
-const cx = classNames.bind(styles);
+const router = express.Router();
+
+const users = [
+  { _id: 1, userId: 'dorodoro', userPw: '123' },
+  { _id: 2, userId: 'jay', userPw: '123' },
+  { _id: 3, userId: 'jimmy', userPw: '123' },
+  { _id: 4, userId: 'haeuni', userPw: '123' },
+];
 
 const diaries = [
   {
@@ -149,28 +152,19 @@ const diaries = [
   },
 ];
 
-const Map = () => {
-  const [sublist, setSublist] = useState([]);
-  // lat, lng => return arr
-  const filterDiariesByLoc = (lat, lng) => {
-    setSublist(
-      diaries.filter(
-        ({ location }) => location.lat === lat && location.lng === lng,
-      ),
-    );
-  };
+// GET
+router.get('/', (req, res) => res.json({ username: 'bryan~~~' }));
+router.get('/users', (req, res) => res.json(users));
+router.get('/diaries', (req, res) => res.json(diaries));
 
-  return (
-    <main className={cx('main')}>
-      {/* <h1>지도</h1> */}
-      <ReactMap
-        className={cx('map')}
-        diaries={diaries}
-        filterDiariesByLoc={filterDiariesByLoc}
-      />
-      {/* <DiarySublist sublist={sublist} /> */}
-    </main>
-  );
-};
+// DELETE
 
-export default Map;
+// POST
+
+// PATCH
+
+// 404 Error
+
+// generate id or _id
+
+module.exports = router;

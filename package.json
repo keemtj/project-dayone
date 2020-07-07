@@ -53,7 +53,8 @@
       "react/prefer-stateless-function": 0,
       "react/jsx-filename-extension": 0,
       "react/jsx-one-expresstion-per-line": 0,
-      "no-console": "off"
+      "react/prop-types": 0,
+      "no-console": 0
     }
   },
   "browserslist": {
