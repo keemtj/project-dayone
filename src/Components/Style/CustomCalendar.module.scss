@@ -1,6 +1,6 @@
 .calendar {
   width: 70%;
-  // background: lightblue;
+  background: lightblue;
 
   & button {
     outline: none;
@@ -10,7 +10,7 @@
   & .navigation {
     display: flex;
     justify-content: space-between;
-    height: 2re.1m;
+    height: 2rem;
     background: lightgoldenrodyellow;
 
     & .state {
@@ -35,7 +35,6 @@
     padding: 0 0.8rem;
 
     & li {
-      // background: lightpink;
       width: 6rem;
       padding: 20px 20px 0;
       font-weight: 600;
@@ -43,9 +42,8 @@
   }
 
   & .dateView {
-    // background: lightseagreen;
+    background: lightseagreen;
     padding: 0.8rem;
-    // display: flex;
 
     & button {
       font-size: 1rem;
@@ -58,7 +56,7 @@
       }
 
       &:focus {
-        border: 2px solid rgb(255, 94, 76);
+        border: 2px solid rgb(255, 114, 98);
         border-radius: 5px;
       }
     }
@@ -71,9 +69,9 @@
 
     & .today .date {
       display: inline-block;
-      background: rgb(255, 94, 76);
+      background: rgb(255, 114, 98);
       color: white;
-      border-radius: 50%;
+      border-radius: 500px;
       width: 2rem;
       height: 2rem;
       line-height: 2rem;

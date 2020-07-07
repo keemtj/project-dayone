@@ -20,7 +20,7 @@ const initialState = {
   calendar: {
     year: '',
     month: '',
-    date: '',
+    datesArray: [],
   },
 };
 
@@ -35,6 +35,14 @@ const reducer = (state, action) => {
           month: action.month,
         },
       };
+    case 'GET_DATESARRAY':
+      return {
+        ...state,
+        calendar: {
+          ...state.calendar,
+          datesArray: action.datesArray,
+        },
+      };
     default:
       throw new Error('ERROR');
   }
@@ -43,37 +51,44 @@ const reducer = (state, action) => {
 const CustomCalendar = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { now, calendar } = state;
-  const { year, month } = calendar;
+  const { year, month, datesArray } = calendar;
 
-  const getDateArray = (yy, mm, dates) => {
-    let dateArray = [];
-    for (let i = 1; i <= dates; i++) {
-      dateArray = dateArray.concat({ yy, mm, dd: i });
-    }
-    return dateArray;
-  };
+  const getDatesArray = (yy, mm) => {
+    let array = [];
+    let dates = 0;
 
-  const getDates = (yy, mm) => {
     switch (mm) {
       case 4:
       case 6:
       case 9:
       case 11:
-        return 30;
-
+        dates = 30;
+        break;
       case 2:
         if (yy % 400 === 0 || (yy % 4 === 0 && yy % 100 !== 0)) {
-          return 29;
+          dates = 29;
         } else {
-          return 28;
+          dates = 28;
         }
-
+        break;
       default:
-        return 31;
+        dates = 31;
     }
+
+    for (let i = 1; i <= dates; i++) {
+      array = array.concat({ yy, mm, dd: i });
+    }
+
+    dispatch({ type: 'GET_DATESARRAY', datesArray: array });
   };
 
-  // console.log(year, month, getDateArray(year, month, getDates(year, month)));
+  const getFirstDay = () => {
+    const startDate = datesArray[0];
+    // const firstDay = new Date(startDate.y, startDate.month - 1, startDate.dd);
+    console.log(datesArray);
+    console.log(startDate);
+    // console.log(firstDay);
+  };
 
   const getNow = () => {
     const today = new Date();
@@ -90,12 +105,13 @@ const CustomCalendar = () => {
       year: yy,
       month: mm,
     });
+
+    getDatesArray(yy, mm);
   };
 
   useEffect(() => {
     getNow();
-    console.log(state.now);
-    // getDateArray(2020, 7, 31);
+    getFirstDay();
   }, []);
 
   return (
@@ -127,23 +143,25 @@ const CustomCalendar = () => {
         <li>SAT</li>
       </ul>
       <div className={cx('dateView')}>
-        {getDateArray(year, month, getDates(year, month)).map(
-          ({ yy, mm, dd }) => {
-            return (
-              <button
-                key={dd}
-                type="button"
-                className={cx(`${yy}-${mm}-${dd}`, {
+        {datesArray.map(({ yy, mm, dd }) => {
+          return (
+            <button
+              key={dd}
+              type="button"
+              className={cx(
+                `${yy}-${mm}-${dd}`,
+                {
                   today:
                     `${now.year}-${now.month}-${now.date}` ===
                     `${yy}-${mm}-${dd}`,
-                })}
-              >
-                <span className={cx('date')}>{dd}</span>
-              </button>
-            );
-          },
-        )}
+                },
+                { firstDay: dd === 1 },
+              )}
+            >
+              <span className={cx('date')}>{dd}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
