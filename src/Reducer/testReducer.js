@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
 };
 
-const testReducer = (state = initialState, action) => {
+const testReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
@@ -17,7 +17,7 @@ const testReducer = (state = initialState, action) => {
     case 'SUCCESS':
       return {
         ...state,
-        dustData: action.postsData,
+        postsData: action.postsData,
         loading: false,
       };
     case 'ERROR':
