@@ -8,7 +8,7 @@ export const calendarInitState = {
       id: 1,
       title: 'asdjfkl',
       content: 'blablablalaalbjaklbjla',
-      date: 'Sat Jul 04 2020 00:00:00 GMT+0900 (대한민국 표준시)',
+      date: 'Sat Jul 14 2020 00:00:00 GMT+0900 (대한민국 표준시)',
       location: '성수',
     },
     {
