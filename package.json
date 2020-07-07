@@ -20,6 +20,9 @@
     "eslint-config-prettier": "^6.11.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.4",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.1.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
     "proxy": "^1.0.2",
@@ -34,10 +37,11 @@
   "scripts": {
     "start": "npm-run-all --parallel start:**",
     "start:client": "react-scripts start",
-    "start:server": "nodemon ./servers/server.js",
+    "start:server": "nodemon ./servers/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +52,8 @@
     "rules": {
       "react/prefer-stateless-function": 0,
       "react/jsx-filename-extension": 0,
-      "react/jsx-one-expresstion-per-line": 0
+      "react/jsx-one-expresstion-per-line": 0,
+      "no-console": "off"
     }
   },
   "browserslist": {
@@ -66,6 +71,8 @@
   "devDependencies": {
     "eslint": "6.8.0",
     "nodemon": "^2.0.4",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "2.0.5"
   }
 }
