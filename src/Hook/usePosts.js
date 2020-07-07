@@ -6,16 +6,11 @@ const usePosts = () => {
   const [state, dispatch] = useReducer(testReducer, initialState);
 
   const fetchData = async () => {
-    const postsData = await testApi.getDiaries();
-    console.dir(postsData);
+    dispatch({ type: 'LOADING' });
     try {
-      dispatch({ type: 'LOADING' });
-
-      if (postsData.status === 200) dispatch({ type: 'SUCCESS', postsData });
-      dispatch({
-        type: 'ERROR',
-        error: { state: true, message: postsData.statusText },
-      });
+      const postsData = await testApi.getDiaries();
+      console.dir(postsData);
+      dispatch({ type: 'SUCCESS', postsData });
     } catch (e) {
       dispatch({
         type: 'ERROR',
