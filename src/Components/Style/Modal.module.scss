@@ -31,7 +31,7 @@ $mainColor: #67bff9;
     background-color: #fff;
   }
 }
-.modal.small {
+.small {
   position: absolute;
   width: 300px;
   height: 150px;
@@ -44,6 +44,7 @@ $mainColor: #67bff9;
   padding-top: 40px;
   text-align: center;
   overflow: hidden;
+  background-color: #fff;
 
   .message {
     display: block;
