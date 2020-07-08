@@ -186,9 +186,9 @@ const CustomCalendar = () => {
         >
           <FontAwesomeIcon icon={faAngleLeft} className={cx('icon')} />
         </button>
-        <span className={cx('state')}>
-          {year}. {month < 10 ? '0' + month : month}.
-        </span>
+        <button type="button" className={cx('state')}>
+          {`${year}. ${month < 10 ? `0${month}` : month}.`}
+        </button>
         <button
           className={cx('nextMonthBtn')}
           type="button"
