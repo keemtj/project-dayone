@@ -193,7 +193,7 @@ const CustomCalendar = () => {
           className={cx('nextMonthBtn')}
           type="button"
           onClick={onClickNextMonth}
-          disabled={month === now.month}
+          disabled={month === now.month && year === now.year}
         >
           <FontAwesomeIcon icon={faAngleRight} className={cx('icon')} />
         </button>
@@ -224,12 +224,11 @@ const CustomCalendar = () => {
               className={cx(
                 `${yy}-${mm}-${dd}`,
                 {
-                  today:
-                    `${now.year}-${now.month}-${now.date}` ===
-                    `${yy}-${mm}-${dd}`,
+                  today: yy === now.year && mm === now.month && dd === now.date,
                 },
                 { firstDay: dd === 1 },
               )}
+              disabled={yy === now.year && mm === now.month && dd > now.date}
               style={{ marginLeft: dd === 1 ? `${startDay * 6}rem` : 0 }}
             >
               <span className={cx('date')}>{dd}</span>
