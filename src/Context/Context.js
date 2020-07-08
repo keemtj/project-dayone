@@ -1,3 +1,7 @@
-import React, { createContext, useContext } from 'react';
+import React from 'react';
 
-const DiaryContext = createContext(null);
+const Context = () => {
+  return <div></div>;
+};
+
+export default Context;
