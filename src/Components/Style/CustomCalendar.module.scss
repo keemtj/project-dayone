@@ -1,6 +1,6 @@
 .calendar {
   width: 70%;
-  background: lightblue;
+  // background: lightblue;
 
   & button {
     outline: none;
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     height: 2rem;
-    background: lightgoldenrodyellow;
+    // background: lightgoldenrodyellow;
 
     & .state {
       width: 80%;
@@ -42,7 +42,7 @@
   }
 
   & .dateView {
-    background: lightseagreen;
+    // background: lightseagreen;
     padding: 0.8rem;
 
     & button {

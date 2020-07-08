@@ -12,14 +12,9 @@ const cx = classNames.bind(styles);
 const Calendar = () => {
   const [state, dispatch] = useReducer(calendarReducer, calendarInitState);
 
-  const getDiarySublist = (pickedDate) => {};
+  // const getDiarySublist = (pickedDate) => {};
 
-  useEffect(() => {
-    const date = state.diaries[0].date;
-    const mm = date.slice(4, 7);
-    const dd = +date[8] === 0 ? date.slice(9, 10) : date.slice(8, 10);
-    const yy = date.slice(11, 15);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <main className={cx('main')}>
