@@ -1,6 +1,6 @@
 .calendar {
   width: 70%;
-  background: lightblue;
+  // background: lightblue;
 
   & button {
     outline: none;
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     height: 2rem;
-    background: lightgoldenrodyellow;
+    // background: lightgoldenrodyellow;
 
     & .state {
       width: 80%;
@@ -22,6 +22,10 @@
 
     & button {
       padding: 0 10px;
+
+      &:enabled {
+        cursor: pointer;
+      }
     }
   }
 
@@ -31,7 +35,6 @@
     padding: 0 0.8rem;
 
     & li {
-      // background: lightpink;
       width: 6rem;
       padding: 20px 20px 0;
       font-weight: 600;
@@ -39,21 +42,39 @@
   }
 
   & .dateView {
-    background: lightseagreen;
+    // background: lightseagreen;
     padding: 0.8rem;
-    // display: flex;
 
-    & .dateBtn {
+    & button {
       font-size: 1rem;
       width: 6rem;
       height: 6rem;
-      border: 1px solid gray;
+      // border: 1px solid gray;
+
+      &:enabled {
+        cursor: pointer;
+      }
+
+      &:focus {
+        border: 2px solid rgb(255, 114, 98);
+        border-radius: 5px;
+      }
     }
 
     & .date {
       position: relative;
       top: -1.5rem;
       left: -1.5rem;
+    }
+
+    & .today .date {
+      display: inline-block;
+      background: rgb(255, 114, 98);
+      color: white;
+      border-radius: 500px;
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
     }
   }
 }
