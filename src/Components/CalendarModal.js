@@ -12,23 +12,33 @@ const CalendarModal = ({
   changeInputs,
   warning,
   inputValues,
+  now,
+  changeCalendarState,
 }) => {
   return (
     <div className={cx('dimmed')} style={{ display: state }}>
       <div className={cx('modal')}>
         <input
-          type="text"
+          type="number"
+          min="1970"
+          max={now.year}
           placeholder="YEAR"
           onChange={changeInputs}
           value={inputValues.year}
         />
         <input
-          type="text"
+          type="number"
+          min="1"
+          max="12"
           placeholder="MONTH"
           onChange={changeInputs}
           value={inputValues.month}
         />
-        <button type="button" className={cx('goBtn')} onClick={closeModal}>
+        <button
+          type="button"
+          className={cx('goBtn')}
+          onClick={changeCalendarState}
+        >
           이동
         </button>
         <button type="button" className={cx('closeBtn')} onClick={closeModal}>

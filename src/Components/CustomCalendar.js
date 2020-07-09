@@ -72,8 +72,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         modal: {
-          ...state.modal,
           state: 'block',
+          inputs: {
+            year: state.now.year,
+            month: state.now.month,
+          },
+          warging: '',
         },
       };
     case 'CLOSE_MODAL':
@@ -115,7 +119,7 @@ const reducer = (state, action) => {
 
 const CustomCalendar = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { now, calendar } = state;
+  const { now, calendar, modal } = state;
   const { year, month, datesArray, startDay } = calendar;
 
   const getFirstDay = (array) => {
@@ -213,20 +217,39 @@ const CustomCalendar = () => {
 
   const openModal = () => dispatch({ type: 'OPEN_MODAL' });
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
-  const changeCalendarState = ({ target }) => {
-    if (target.className !== 'goBtn') return;
+
+  const changeCalendarState = () => {
+    const modalYear = modal.inputs.year;
+    const modalMonth = modal.inputs.month;
+
+    dispatch({ type: 'GET_NEW_CALENDAR', year: modalYear, month: modalMonth });
+    getDatesArray(modalYear, modalMonth);
+    closeModal();
   };
 
   const changeInputs = ({ target }) => {
     const inputType = target.placeholder.toLowerCase();
     const { value } = target;
 
-    if (typeof target !== 'number') {
-      dispatch({ type: 'SHOW_WARNING', msg: '숫자를 입력하세요' });
-      dispatch({ type: 'CHANGE_INPUTS', inputType, value: '' });
+    dispatch({ type: 'CHANGE_INPUTS', inputType, value });
+
+    if (inputType === 'month' && ((value !== '' && value < 1) || value > 12)) {
+      dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
+    } else if (
+      (inputType === 'year' && value > now.year) ||
+      (inputType === 'month' &&
+        modal.inputs.year === now.year &&
+        value > now.month) ||
+      (inputType === 'year' &&
+        value === now.year &&
+        modal.inputs.month > now.month)
+    ) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+      });
     } else {
       dispatch({ type: 'REMOVE_WARNING' });
-      dispatch({ type: 'CHANGE_INPUTS', inputType, value });
     }
   };
 
@@ -310,6 +333,8 @@ const CustomCalendar = () => {
         changeInputs={changeInputs}
         warning={state.modal.warning}
         inputValues={state.modal.inputs}
+        now={now}
+        changeCalendarState={changeCalendarState}
       />
     </>
   );
