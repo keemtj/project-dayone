@@ -1,23 +1,32 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/CalendarModal.module.scss';
+import { CalendarContext } from '../Context/CalendarContext';
 
 const cx = classNames.bind(styles);
 
-const CalendarModal = ({
-  state,
-  closeModal,
-  changeInputs,
-  warning,
-  inputValues,
-  now,
-  changeCalendarState,
-  onClickDimmed,
-}) => {
+const CalendarModal = () => {
+  const context = React.useContext(CalendarContext);
+  const { useCalendar } = context;
+  const {
+    state,
+    closeModal,
+    onClickDimmed,
+    changeCalendarState,
+    changeInputs,
+  } = useCalendar();
+
+  const { now, modal } = state;
+  const { warning, inputs } = modal;
+
+  useEffect(() => {
+    console.log(modal);
+  }, []);
+
   return (
     <div
       className={cx('dimmed')}
@@ -34,7 +43,7 @@ const CalendarModal = ({
               max={now.year}
               placeholder={now.year}
               onChange={changeInputs}
-              value={inputValues.year}
+              value={inputs.year}
             />
             <span>년</span>
           </li>
@@ -46,7 +55,7 @@ const CalendarModal = ({
               max="12"
               placeholder={now.month}
               onChange={changeInputs}
-              value={inputValues.month}
+              value={inputs.month}
             />
             <span>월</span>
           </li>
