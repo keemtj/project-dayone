@@ -338,16 +338,6 @@ const CustomCalendar = () => {
           })}
         </div>
       </div>
-      <CalendarModal
-        state={state.modal.state}
-        closeModal={closeModal}
-        changeInputs={changeInputs}
-        warning={state.modal.warning}
-        inputValues={state.modal.inputs}
-        now={now}
-        changeCalendarState={changeCalendarState}
-        onClickDimmed={onClickDimmed}
-      />
     </>
   );
 };
