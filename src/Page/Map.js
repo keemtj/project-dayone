@@ -8,11 +8,16 @@ import { testContext } from '../Context/testContext';
 const cx = classNames.bind(styles);
 
 const Map = () => {
-  const { state: diaries } = React.useContext(testContext);
+  const context = React.useContext(testContext);
+  const { state } = context;
+  const { postsData } = state;
+  console.log('diaries: ', postsData, typeof postsData);
+
+  const [sublist, setSublist] = useState([]);
 
   const filterDiariesByLoc = (lat, lng) => {
     setSublist(
-      diaries.filter(
+      postsData.filter(
         ({ location }) => location.lat === lat && location.lng === lng,
       ),
     );
@@ -23,10 +28,10 @@ const Map = () => {
       {/* <h1>지도</h1> */}
       <ReactMap
         className={cx('map')}
-        diaries={diaries}
+        diaries={postsData}
         filterDiariesByLoc={filterDiariesByLoc}
       />
-      {/* <DiarySublist sublist={sublist} /> */}
+      <DiarySublist sublist={sublist} />
     </main>
   );
 };
