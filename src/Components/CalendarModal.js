@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,26 +16,42 @@ const CalendarModal = ({
   inputValues,
   now,
   changeCalendarState,
+  onClickDimmed,
 }) => {
   return (
-    <div className={cx('dimmed')} style={{ display: state }}>
+    <div
+      className={cx('dimmed')}
+      style={{ display: state }}
+      onClick={onClickDimmed}
+    >
       <div className={cx('modal')}>
-        <input
-          type="number"
-          min="1970"
-          max={now.year}
-          placeholder="YEAR"
-          onChange={changeInputs}
-          value={inputValues.year}
-        />
-        <input
-          type="number"
-          min="1"
-          max="12"
-          placeholder="MONTH"
-          onChange={changeInputs}
-          value={inputValues.month}
-        />
+        <ul className={cx('inputs')}>
+          <li>
+            <input
+              className="year"
+              type="number"
+              min="1970"
+              max={now.year}
+              placeholder={now.year}
+              onChange={changeInputs}
+              value={inputValues.year}
+            />
+            <span>년</span>
+          </li>
+          <li>
+            <input
+              className="month"
+              type="number"
+              min="1"
+              max="12"
+              placeholder={now.month}
+              onChange={changeInputs}
+              value={inputValues.month}
+            />
+            <span>월</span>
+          </li>
+        </ul>
+
         <button
           type="button"
           className={cx('goBtn')}

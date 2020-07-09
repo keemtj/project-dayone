@@ -77,7 +77,7 @@ const reducer = (state, action) => {
             year: state.now.year,
             month: state.now.month,
           },
-          warging: '',
+          warning: '',
         },
       };
     case 'CLOSE_MODAL':
@@ -218,9 +218,24 @@ const CustomCalendar = () => {
   const openModal = () => dispatch({ type: 'OPEN_MODAL' });
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
+  const onClickDimmed = ({ target }) => {
+    if (!target.className.includes('dimmed')) return;
+    closeModal();
+  };
+
   const changeCalendarState = () => {
-    const modalYear = modal.inputs.year;
-    const modalMonth = modal.inputs.month;
+    let modalYear = modal.inputs.year;
+    let modalMonth = modal.inputs.month;
+    if (modal.warning !== '') return;
+    if (modalYear === '') modalYear = now.year;
+    if (modalMonth === '') modalMonth = now.month;
+    if (modalYear !== '' && modalYear < 1970) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '1970년 이후 달력만 볼 수 있습니다.',
+      });
+      return;
+    }
 
     dispatch({ type: 'GET_NEW_CALENDAR', year: modalYear, month: modalMonth });
     getDatesArray(modalYear, modalMonth);
@@ -228,7 +243,7 @@ const CustomCalendar = () => {
   };
 
   const changeInputs = ({ target }) => {
-    const inputType = target.placeholder.toLowerCase();
+    const inputType = target.className;
     const { value } = target;
 
     dispatch({ type: 'CHANGE_INPUTS', inputType, value });
@@ -237,12 +252,8 @@ const CustomCalendar = () => {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
     } else if (
       (inputType === 'year' && value > now.year) ||
-      (inputType === 'month' &&
-        modal.inputs.year === now.year &&
-        value > now.month) ||
-      (inputType === 'year' &&
-        value === now.year &&
-        modal.inputs.month > now.month)
+      (modal.inputs.year === now.year && value > now.month) ||
+      (value === now.year && modal.inputs.month > now.month)
     ) {
       dispatch({
         type: 'SHOW_WARNING',
@@ -335,6 +346,7 @@ const CustomCalendar = () => {
         inputValues={state.modal.inputs}
         now={now}
         changeCalendarState={changeCalendarState}
+        onClickDimmed={onClickDimmed}
       />
     </>
   );
