@@ -5,12 +5,14 @@ import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
+import { testContext } from '../Context/testContext';
 
 const cx = classNames.bind(styles);
 
 const ModalSmall = () => {
   const history = useHistory();
   const { modalState, setModalState } = React.useContext(DiaryContext);
+  const { submitDiary } = React.useContext(testContext);
 
   const onClick = (e) => {
     if (
@@ -28,6 +30,7 @@ const ModalSmall = () => {
   const confirmSubmit = () => {
     history.push(`/diaryViewer/${1}`);
     setModalState('initial');
+    if (modalState === 'Submit') submitDiary();
   };
 
   const changeModalState = () => {

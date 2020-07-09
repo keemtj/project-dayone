@@ -8,7 +8,7 @@ import { testContext } from '../../Context/testContext';
 const cx = classNames.bind(styles);
 
 const DiaryWrite = () => {
-  const { writePost } = useContext(testContext);
+  const { writePost, pushImg } = useContext(testContext);
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -49,7 +49,23 @@ const DiaryWrite = () => {
     });
   }, []);
 
-  return <div className={cx('writer')} ref={quillElement} />;
+  const onBlur = () => {
+    const children = [...quillInstance.current.root.children];
+    const images = [];
+
+    children.forEach((child) => {
+      if (![...child.children].some((v) => v.nodeName === 'IMG')) return;
+
+      [...child.children].forEach((v) => {
+        if (v.nodeName !== 'IMG') return;
+        images.push(v);
+      });
+    });
+    console.log(images);
+    pushImg(images);
+  };
+
+  return <div className={cx('writer')} ref={quillElement} onBlur={onBlur} />;
 };
 
 export default DiaryWrite;
