@@ -6,8 +6,8 @@ const initialState = {
     //   body: '',
     //   date: '',
     //   location: {},
-    //   imagePaths: [],
     //   isBookmarked: false,
+    //   imagePaths: [],
     // },
   ],
   currentDiary: {
@@ -16,8 +16,8 @@ const initialState = {
     body: '',
     date: '',
     location: {},
-    imagePaths: [],
     isBookmarked: false,
+    imagePaths: [],
   },
   error: {
     state: false,
