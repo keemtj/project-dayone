@@ -1,12 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import classNames from 'classnames/bind';
 import styles from '../Style/DiaryWrite.module.scss';
+import { testContext } from '../../Context/testContext';
 
 const cx = classNames.bind(styles);
 
 const DiaryWrite = () => {
+  const { writePost } = useContext(testContext);
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -37,7 +39,16 @@ const DiaryWrite = () => {
         'link',
       ],
     });
+
+    // Quill - text change event 감지
+    const quill = quillInstance.current;
+    quill.on('text-change', (delta, oldDelta, source) => {
+      if (source === 'user') {
+        writePost(quill.root.innerHTML);
+      }
+    });
   }, []);
+
   return <div className={cx('writer')} ref={quillElement} />;
 };
 

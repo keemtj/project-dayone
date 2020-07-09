@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
@@ -8,7 +9,8 @@ import { DiaryContext } from '../Context/DiaryContext';
 const cx = classNames.bind(styles);
 
 const ModalSmall = () => {
-  const { modalState, setModalState, history } = React.useContext(DiaryContext);
+  const history = useHistory();
+  const { modalState, setModalState } = React.useContext(DiaryContext);
 
   const onClick = (e) => {
     if (
@@ -43,7 +45,6 @@ const ModalSmall = () => {
 
   return (
     <div
-      // style={{ display: `${modalState === 'initial' ? 'none' : 'block'}` }}
       style={{ display: `${changeModalState()}` }}
       className={cx('dimed')}
       onClick={onClick}

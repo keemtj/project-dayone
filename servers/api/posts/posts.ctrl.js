@@ -12,7 +12,7 @@ const diaries = [
   {
     _id: 1,
     id: 2,
-    title: '로롱놀오',
+    title: '로롱놀오test',
     body: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
     date: '2020.07.04',
     location: '성수',

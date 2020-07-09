@@ -19,11 +19,20 @@ const usePosts = () => {
     }
   };
 
+  const writePost = (write) => {
+    dispatch({ type: 'WRITE_POST', write });
+    console.log('diapatch write');
+  };
+
+  const submitDiary = () => {
+    dispatch({ type: 'SUBMIT_POST' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  return [state, fetchData];
+  return [state, fetchData, writePost, submitDiary];
 };
 
 export default usePosts;
