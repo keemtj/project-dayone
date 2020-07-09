@@ -19,11 +19,27 @@ const usePosts = () => {
     }
   };
 
+  const writePost = (write) => {
+    dispatch({ type: 'WRITE_POST', write });
+  };
+
+  const submitDiary = () => {
+    dispatch({ type: 'SUBMIT_POST' });
+  };
+
+  const writeTitle = (write) => {
+    dispatch({ type: 'WRITE_TITLE', write });
+  };
+
+  const pushImg = (images) => {
+    dispatch({ type: 'PUSH_IMG', images });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  return [state, fetchData];
+  return [state, fetchData, writePost, submitDiary, writeTitle, pushImg];
 };
 
 export default usePosts;

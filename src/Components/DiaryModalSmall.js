@@ -1,14 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
+import { testContext } from '../Context/testContext';
 
 const cx = classNames.bind(styles);
 
 const ModalSmall = () => {
-  const { modalState, setModalState, history } = React.useContext(DiaryContext);
+  const history = useHistory();
+  const { modalState, setModalState } = React.useContext(DiaryContext);
+  const { submitDiary } = React.useContext(testContext);
 
   const onClick = (e) => {
     if (
@@ -26,6 +30,7 @@ const ModalSmall = () => {
   const confirmSubmit = () => {
     history.push(`/diaryViewer/${1}`);
     setModalState('initial');
+    if (modalState === 'Submit') submitDiary();
   };
 
   const changeModalState = () => {
@@ -43,7 +48,6 @@ const ModalSmall = () => {
 
   return (
     <div
-      // style={{ display: `${modalState === 'initial' ? 'none' : 'block'}` }}
       style={{ display: `${changeModalState()}` }}
       className={cx('dimed')}
       onClick={onClick}
