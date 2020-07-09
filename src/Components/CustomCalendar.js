@@ -8,6 +8,7 @@ import {
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/CustomCalendar.module.scss';
+import CalendarModal from './CalendarModal';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,11 @@ const initialState = {
     year: '',
     month: '',
     datesArray: [],
+  },
+  modal: {
+    state: 'none',
+    inputs: { year: '', month: '' },
+    warning: '',
   },
 };
 
@@ -62,6 +68,50 @@ const reducer = (state, action) => {
           month: action.month,
         },
       };
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        modal: {
+          state: 'block',
+          inputs: {
+            year: state.now.year,
+            month: state.now.month,
+          },
+          warning: '',
+        },
+      };
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          state: 'none',
+        },
+      };
+    case 'CHANGE_INPUTS':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          inputs: { ...state.modal.inputs, [action.inputType]: action.value },
+        },
+      };
+    case 'SHOW_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: action.msg,
+        },
+      };
+    case 'REMOVE_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: '',
+        },
+      };
     default:
       throw new Error('ERROR');
   }
@@ -69,7 +119,7 @@ const reducer = (state, action) => {
 
 const CustomCalendar = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { now, calendar } = state;
+  const { now, calendar, modal } = state;
   const { year, month, datesArray, startDay } = calendar;
 
   const getFirstDay = (array) => {
@@ -165,78 +215,140 @@ const CustomCalendar = () => {
     }
   };
 
+  const openModal = () => dispatch({ type: 'OPEN_MODAL' });
+  const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
+
+  const onClickDimmed = ({ target }) => {
+    if (!target.className.includes('dimmed')) return;
+    closeModal();
+  };
+
+  const changeCalendarState = () => {
+    let modalYear = modal.inputs.year;
+    let modalMonth = modal.inputs.month;
+    if (modal.warning !== '') return;
+    if (modalYear === '') modalYear = now.year;
+    if (modalMonth === '') modalMonth = now.month;
+    if (modalYear !== '' && modalYear < 1970) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '1970년 이후 달력만 볼 수 있습니다.',
+      });
+      return;
+    }
+
+    dispatch({ type: 'GET_NEW_CALENDAR', year: modalYear, month: modalMonth });
+    getDatesArray(modalYear, modalMonth);
+    closeModal();
+  };
+
+  const changeInputs = ({ target }) => {
+    const inputType = target.className;
+    const { value } = target;
+
+    dispatch({ type: 'CHANGE_INPUTS', inputType, value });
+
+    if (inputType === 'month' && ((value !== '' && value < 1) || value > 12)) {
+      dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
+    } else if (
+      (inputType === 'year' && value > now.year) ||
+      (modal.inputs.year === now.year && value > now.month) ||
+      (value === now.year && modal.inputs.month > now.month)
+    ) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+      });
+    } else {
+      dispatch({ type: 'REMOVE_WARNING' });
+    }
+  };
+
   useEffect(() => {
     getNow();
   }, []);
 
   return (
-    <div className={cx('calendar')}>
-      <div className={cx('navigation')}>
-        <button
-          className={cx('prevYearBtn')}
-          type="button"
-          onClick={onClickPrevYear}
-        >
-          <FontAwesomeIcon icon={faAngleDoubleLeft} className={cx('icon')} />
-        </button>
-        <button
-          className={cx('prevMonthBtn')}
-          type="button"
-          onClick={onClickPrevMonth}
-        >
-          <FontAwesomeIcon icon={faAngleLeft} className={cx('icon')} />
-        </button>
-        <button type="button" className={cx('state')}>
-          {`${year}. ${month < 10 ? `0${month}` : month}.`}
-        </button>
-        <button
-          className={cx('nextMonthBtn')}
-          type="button"
-          onClick={onClickNextMonth}
-          disabled={month === now.month && year === now.year}
-        >
-          <FontAwesomeIcon icon={faAngleRight} className={cx('icon')} />
-        </button>
-        <button
-          className={cx('nextYearBtn')}
-          type="button"
-          onClick={onClickNextYear}
-          disabled={year === now.year}
-        >
-          <FontAwesomeIcon icon={faAngleDoubleRight} className={cx('icon')} />
-        </button>
+    <>
+      <div className={cx('calendar')}>
+        <div className={cx('navigation')}>
+          <button
+            className={cx('prevYearBtn')}
+            type="button"
+            onClick={onClickPrevYear}
+          >
+            <FontAwesomeIcon icon={faAngleDoubleLeft} className={cx('icon')} />
+          </button>
+          <button
+            className={cx('prevMonthBtn')}
+            type="button"
+            onClick={onClickPrevMonth}
+          >
+            <FontAwesomeIcon icon={faAngleLeft} className={cx('icon')} />
+          </button>
+          <button type="button" className={cx('state')} onClick={openModal}>
+            {`${year}. ${month < 10 ? `0${month}` : month}.`}
+          </button>
+          <button
+            className={cx('nextMonthBtn')}
+            type="button"
+            onClick={onClickNextMonth}
+            disabled={month === now.month && year === now.year}
+          >
+            <FontAwesomeIcon icon={faAngleRight} className={cx('icon')} />
+          </button>
+          <button
+            className={cx('nextYearBtn')}
+            type="button"
+            onClick={onClickNextYear}
+            disabled={year === now.year}
+          >
+            <FontAwesomeIcon icon={faAngleDoubleRight} className={cx('icon')} />
+          </button>
+        </div>
+        <ul className={cx('days')}>
+          <li>SUN</li>
+          <li>MON</li>
+          <li>TUE</li>
+          <li>WED</li>
+          <li>THU</li>
+          <li>FRI</li>
+          <li>SAT</li>
+        </ul>
+        <div className={cx('dateView')}>
+          {datesArray.map(({ yy, mm, dd }) => {
+            return (
+              <button
+                key={dd}
+                type="button"
+                className={cx(
+                  `${yy}-${mm}-${dd}`,
+                  {
+                    today:
+                      yy === now.year && mm === now.month && dd === now.date,
+                  },
+                  { firstDay: dd === 1 },
+                )}
+                disabled={yy === now.year && mm === now.month && dd > now.date}
+                style={{ marginLeft: dd === 1 ? `${startDay * 6}rem` : 0 }}
+              >
+                <span className={cx('date')}>{dd}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <ul className={cx('days')}>
-        <li>SUN</li>
-        <li>MON</li>
-        <li>TUE</li>
-        <li>WED</li>
-        <li>THU</li>
-        <li>FRI</li>
-        <li>SAT</li>
-      </ul>
-      <div className={cx('dateView')}>
-        {datesArray.map(({ yy, mm, dd }) => {
-          return (
-            <button
-              key={dd}
-              type="button"
-              className={cx(
-                `${yy}-${mm}-${dd}`,
-                {
-                  today: yy === now.year && mm === now.month && dd === now.date,
-                },
-                { firstDay: dd === 1 },
-              )}
-              disabled={yy === now.year && mm === now.month && dd > now.date}
-              style={{ marginLeft: dd === 1 ? `${startDay * 6}rem` : 0 }}
-            >
-              <span className={cx('date')}>{dd}</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
+      <CalendarModal
+        state={state.modal.state}
+        closeModal={closeModal}
+        changeInputs={changeInputs}
+        warning={state.modal.warning}
+        inputValues={state.modal.inputs}
+        now={now}
+        changeCalendarState={changeCalendarState}
+        onClickDimmed={onClickDimmed}
+      />
+    </>
   );
 };
 

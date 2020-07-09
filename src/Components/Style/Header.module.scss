@@ -5,7 +5,7 @@ $mainColor: #67bff9;
   width: 100%;
   // padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
-  z-index: 1000;
+  z-index: 10;
 
   .container {
     width: 100%;
@@ -42,8 +42,8 @@ $mainColor: #67bff9;
   }
 }
 
-@media screen and (max-width: 1120px) { 
+@media screen and (max-width: 1120px) {
   .container {
     width: 90% !important;
-  } 
+  }
 }
