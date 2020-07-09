@@ -1,6 +1,9 @@
 import React from 'react';
+import { testContext } from '../Context/testContext';
 
 const DiaryViewer = () => {
+  const { state } = React.useContext(testContext);
+  console.log(state);
   return (
     <div>
       <h1>다이어리 뷰어</h1>

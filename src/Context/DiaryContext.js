@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 const DiaryContext = React.createContext('initial');
 
-const DiaryProvider = ({ children, history }) => {
+const DiaryProvider = ({ children }) => {
   const [modalState, setModalState] = useState('initial');
-  const contextValue = { modalState, setModalState, history };
+  const contextValue = { modalState, setModalState };
 
   return (
     <DiaryContext.Provider value={contextValue}>
