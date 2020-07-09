@@ -16,11 +16,12 @@ const initialState = {
     id: '',
     password: '',
   },
+  message: '',
 };
 
 const loginReducer = (state, action) => {
-  console.log('state', state);
   console.log('action', action);
+  console.log('state', state);
 
   switch (action.type) {
     case 'CHANGE_INPUT':
@@ -31,20 +32,27 @@ const loginReducer = (state, action) => {
           [action.name]: action.value,
         },
       };
-    case 'RESET_INPUT':
-      return {
-        inputs: { id: '', password: '' },
-      };
     case 'USER_CHECK':
       return {
         ...state,
-        users: [
-          ...state.users.map((user) =>
-            user.userId === action.userId && user.userPw === action.userPw
-              ? { ...user, active: !user.active }
-              : user,
-          ),
-        ],
+        users: state.users.map((user) => {
+          // eslint-disable-next-line no-unused-expressions
+          return user.userId === action.userId &&
+            user.userPw === action.password
+            ? { ...user, active: !user.active }
+            : user;
+        }),
+        isLoggedIn: !state.isLoggedIn,
+      };
+    case 'RESET_INPUT':
+      return {
+        ...state,
+        inputs: { id: '', password: '' },
+      };
+    case 'ERROR_MESSAGE':
+      return {
+        ...state,
+        message: '가입하지 않은 아이디이거나, 잘못된 비밀번호 입니다.',
       };
     default:
       throw new Error('Unhandled action');
@@ -59,7 +67,7 @@ function App() {
 
   return (
     <loginContext.Provider value={loginData}>
-      {false ? (
+      {state.isLoggedIn ? (
         <TestProvider>
           <WrapperPage />
         </TestProvider>
