@@ -6,19 +6,40 @@ import styles from './Style/CalendarModal.module.scss';
 
 const cx = classNames.bind(styles);
 
-const CalendarModal = () => {
+const CalendarModal = ({
+  state,
+  closeModal,
+  changeInputs,
+  warning,
+  inputValues,
+}) => {
   return (
-    <div className={cx('dimmed')}>
+    <div className={cx('dimmed')} style={{ display: state }}>
       <div className={cx('modal')}>
-        <input type="text" placeholder="YEAR" />
-        <input type="text" placeholder="MONTH" />
-        <input type="text" placeholder="DATE" />
-        <button type="button" className={cx('goBtn')}>
+        <input
+          type="text"
+          placeholder="YEAR"
+          onChange={changeInputs}
+          value={inputValues.year}
+        />
+        <input
+          type="text"
+          placeholder="MONTH"
+          onChange={changeInputs}
+          value={inputValues.month}
+        />
+        <button type="button" className={cx('goBtn')} onClick={closeModal}>
           이동
         </button>
-        <button type="button" className={cx('closeBtn')}>
+        <button type="button" className={cx('closeBtn')} onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
+        <span
+          className={cx('warning')}
+          style={{ display: warning === '' ? 'none' : 'block' }}
+        >
+          {warning}
+        </span>
       </div>
     </div>
   );

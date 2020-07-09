@@ -24,6 +24,11 @@ const initialState = {
     month: '',
     datesArray: [],
   },
+  modal: {
+    state: 'none',
+    inputs: { year: '', month: '' },
+    warning: '',
+  },
 };
 
 const reducer = (state, action) => {
@@ -61,6 +66,46 @@ const reducer = (state, action) => {
           ...state.calendar,
           year: action.year,
           month: action.month,
+        },
+      };
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          state: 'block',
+        },
+      };
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          state: 'none',
+        },
+      };
+    case 'CHANGE_INPUTS':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          inputs: { ...state.modal.inputs, [action.inputType]: action.value },
+        },
+      };
+    case 'SHOW_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: action.msg,
+        },
+      };
+    case 'REMOVE_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: '',
         },
       };
     default:
@@ -166,6 +211,25 @@ const CustomCalendar = () => {
     }
   };
 
+  const openModal = () => dispatch({ type: 'OPEN_MODAL' });
+  const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
+  const changeCalendarState = ({ target }) => {
+    if (target.className !== 'goBtn') return;
+  };
+
+  const changeInputs = ({ target }) => {
+    const inputType = target.placeholder.toLowerCase();
+    const { value } = target;
+
+    if (typeof target !== 'number') {
+      dispatch({ type: 'SHOW_WARNING', msg: '숫자를 입력하세요' });
+      dispatch({ type: 'CHANGE_INPUTS', inputType, value: '' });
+    } else {
+      dispatch({ type: 'REMOVE_WARNING' });
+      dispatch({ type: 'CHANGE_INPUTS', inputType, value });
+    }
+  };
+
   useEffect(() => {
     getNow();
   }, []);
@@ -188,7 +252,7 @@ const CustomCalendar = () => {
           >
             <FontAwesomeIcon icon={faAngleLeft} className={cx('icon')} />
           </button>
-          <button type="button" className={cx('state')}>
+          <button type="button" className={cx('state')} onClick={openModal}>
             {`${year}. ${month < 10 ? `0${month}` : month}.`}
           </button>
           <button
@@ -240,7 +304,13 @@ const CustomCalendar = () => {
           })}
         </div>
       </div>
-      <CalendarModal />
+      <CalendarModal
+        state={state.modal.state}
+        closeModal={closeModal}
+        changeInputs={changeInputs}
+        warning={state.modal.warning}
+        inputValues={state.modal.inputs}
+      />
     </>
   );
 };
