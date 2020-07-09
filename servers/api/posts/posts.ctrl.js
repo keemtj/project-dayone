@@ -8,7 +8,7 @@ const diaries = [
     date: '2020.07.02',
     location: '성수',
     isBookmarked: false,
-    imagePaths: [],
+    images: [],
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const diaries = [
     date: '2020.07.04',
     location: '성수',
     isBookmarked: true,
-    imagePaths: [],
+    images: [],
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const diaries = [
     date: '2020.07.04',
     location: '성수',
     isBookmarked: false,
-    imagePaths: [],
+    images: [],
   },
 ];
 
