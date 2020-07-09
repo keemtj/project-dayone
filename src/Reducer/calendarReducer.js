@@ -1,7 +1,23 @@
 export const calendarInitState = {
   loading: false,
   error: null,
-  date: '',
+  now: {
+    year: '',
+    month: '',
+    date: '',
+  },
+  calendar: {
+    startDay: '',
+    year: '',
+    month: '',
+    datesArray: [],
+  },
+  modal: {
+    state: 'none',
+    inputs: { year: '', month: '' },
+    warning: '',
+  },
+  selectedDate: '',
   diaries: [
     {
       _id: 1,
@@ -52,6 +68,85 @@ export const calendarReducer = (state, action) => {
         error: null,
         date: action.date,
         diaries: action.diaries,
+      };
+    case 'GET_NOW':
+      return {
+        ...state,
+        now: action.now,
+        calendar: {
+          ...state.calendar,
+          year: action.year,
+          month: action.month,
+        },
+      };
+    case 'GET_DATESARRAY':
+      return {
+        ...state,
+        calendar: {
+          ...state.calendar,
+          datesArray: action.datesArray,
+        },
+      };
+    case 'GET_FIRSTDAY':
+      return {
+        ...state,
+        calendar: {
+          ...state.calendar,
+          startDay: action.firstDay,
+        },
+      };
+    case 'GET_NEW_CALENDAR':
+      return {
+        ...state,
+        calendar: {
+          ...state.calendar,
+          year: action.year,
+          month: action.month,
+        },
+      };
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        modal: {
+          state: 'block',
+          inputs: {
+            year: state.now.year,
+            month: state.now.month,
+          },
+          warning: '',
+        },
+      };
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          state: 'none',
+        },
+      };
+    case 'CHANGE_INPUTS':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          inputs: { ...state.modal.inputs, [action.inputType]: action.value },
+        },
+      };
+    case 'SHOW_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: action.msg,
+        },
+      };
+    case 'REMOVE_WARNING':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          warning: '',
+        },
       };
     default:
       throw new Error(`${action.type}: ERROR`);
