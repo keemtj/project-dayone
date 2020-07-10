@@ -1,7 +1,8 @@
 $mainColor: #67bff9;
 
 .timelineNav {
-  padding: 0.6rem 0 0.6rem 0;
+  // background-color: tomato;
+  padding: 0.6rem 0 1rem 0;
   font-size: 1.8rem;
   text-align: end;
 
@@ -12,7 +13,9 @@ $mainColor: #67bff9;
     color: #d1d1d1;
     outline: none;
     cursor: pointer;
-
+    &:last-child {
+      margin-right: -0.4rem;
+    }
     .icon {
       text-align: center;
 
@@ -33,8 +36,12 @@ $mainColor: #67bff9;
 
 .timelineWrapper {
   display: flex;
-  align-items: center;
   flex-flow: row wrap;
+  justify-content: space-between;
   background-color: yellowgreen;
-  // margin-left: -10px;
+
+  &::after {
+    content: '';
+    flex: auto;
+  }
 }

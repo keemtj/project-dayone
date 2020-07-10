@@ -2,13 +2,31 @@ $mainColor: #67bff9;
 
 .timelineList {
   border: 1px solid #fff;
-  // border: 1px solid $mainColor;
-  margin: 0.81rem;
-  width: 14rem;
-  height: 14rem;
+  min-width: 23%;
+  // margin: 0.81rem;
+  // width: 14rem;
+  // height: 14rem;
+
+  &:nth-child(4n + 1) {
+    margin-right: 1.66rem;
+  }
+
+  &:nth-child(4n + 2) {
+    margin-right: 1.67rem;
+  }
+
+  &:nth-child(4n + 3) {
+    margin-right: 1.66rem;
+  }
+
+  &:nth-child(n + 5) {
+    margin-top: 1.66rem;
+  }
 
   figure {
-    .imageWrapper {
+    position: relative;
+
+    .thumbnail {
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -16,12 +34,20 @@ $mainColor: #67bff9;
       height: 11.28rem;
     }
 
+    .bookmark {
+      // Need to fix
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      color: $mainColor;
+      font-size: 1.2rem;
+    }
+
     figcaption {
       background-color: #f0f0f0;
       padding: 0.6rem 1rem 0.7rem 1rem;
       border-top: 2px solid #ffffff;
       color: #181818;
-      // color: #fff;
       font-size: 1.2rem;
       font-weight: 500;
     }

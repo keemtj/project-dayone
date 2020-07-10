@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLineList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -13,8 +15,9 @@ const TimeLineList = ({ diary }) => {
     <li className={cx('timelineList')}>
       <Link to={`/diaryViewer/${id}`}>
         <figure>
+          <FontAwesomeIcon icon={faBookmark} className={cx('bookmark')} />
           <div
-            className={cx('imageWrapper')}
+            className={cx('thumbnail')}
             style={{
               backgroundImage: `url(
                 ${
