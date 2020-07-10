@@ -18,6 +18,7 @@ export const CalendarProvider = ({ children }) => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
+    getSublist,
   } = useCalendar();
 
   const contextValue = {
@@ -34,6 +35,7 @@ export const CalendarProvider = ({ children }) => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
+    getSublist,
   };
 
   return (

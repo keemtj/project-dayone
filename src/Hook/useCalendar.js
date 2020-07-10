@@ -112,12 +112,7 @@ const useCalendar = () => {
     }
   };
 
-  // const openModal = () => dispatch({ type: 'OPEN_MODAL' });
-  const openModal = ({ target }) => {
-    console.log(target);
-    dispatch({ type: 'OPEN_MODAL' });
-    console.log(modal);
-  };
+  const openModal = () => dispatch({ type: 'OPEN_MODAL' });
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
   const onClickDimmed = ({ target }) => {
@@ -166,6 +161,11 @@ const useCalendar = () => {
     }
   };
 
+  const getSublist = ({ target }) => {
+    const date = target.className.split(' ')[0];
+    console.log(date);
+  };
+
   useEffect(() => {
     // fetchData();
     getNow();
@@ -185,6 +185,7 @@ const useCalendar = () => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
+    getSublist,
   };
 };
 

@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 const DiarySublist = ({ mapList }) => {
   const calCtx = React.useContext(CalendarContext);
-  const calendarList = calCtx.calendarState.sublist;
+  const calendarList = calCtx && calCtx.calendarState.sublist;
   const subList = calendarList || mapList;
 
   return (

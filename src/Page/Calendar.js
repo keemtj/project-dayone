@@ -8,7 +8,7 @@ const Calendar = () => {
   useEffect(() => {}, []);
 
   return (
-    <main>
+    <main style={{ position: 'relative' }}>
       <CalendarProvider>
         <CustomCalendar />
         <DiarySublist />

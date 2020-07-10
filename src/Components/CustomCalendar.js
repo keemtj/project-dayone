@@ -24,6 +24,7 @@ const CustomCalendar = () => {
     onClickNextMonth,
     onClickNextYear,
     openModal,
+    getSublist,
   } = calCtx;
 
   const { diaries } = state;
@@ -104,6 +105,7 @@ const CustomCalendar = () => {
                 )}
                 disabled={yy === now.year && mm === now.month && dd > now.date}
                 style={{ marginLeft: dd === 1 ? `${startDay * 6}rem` : 0 }}
+                onClick={getSublist}
               >
                 <span className={cx('date')}>{dd}</span>
               </button>
