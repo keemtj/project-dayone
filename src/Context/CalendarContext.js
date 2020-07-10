@@ -6,6 +6,7 @@ export const CalendarContext = React.createContext(null);
 export const CalendarProvider = ({ children }) => {
   const {
     calendarState,
+    dispatch,
     getFirstDay,
     getDatesArray,
     getNow,
@@ -18,11 +19,11 @@ export const CalendarProvider = ({ children }) => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-    getSublist,
   } = useCalendar();
 
   const contextValue = {
     calendarState,
+    dispatch,
     getFirstDay,
     getDatesArray,
     getNow,
@@ -35,7 +36,6 @@ export const CalendarProvider = ({ children }) => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-    getSublist,
   };
 
   return (

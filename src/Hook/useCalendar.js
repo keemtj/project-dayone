@@ -161,11 +161,6 @@ const useCalendar = () => {
     }
   };
 
-  const getSublist = ({ target }) => {
-    const date = target.className.split(' ')[0];
-    console.log(date);
-  };
-
   useEffect(() => {
     // fetchData();
     getNow();
@@ -173,6 +168,7 @@ const useCalendar = () => {
 
   return {
     calendarState,
+    dispatch,
     getFirstDay,
     getDatesArray,
     getNow,
@@ -185,7 +181,6 @@ const useCalendar = () => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-    getSublist,
   };
 };
 

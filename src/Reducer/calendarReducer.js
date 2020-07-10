@@ -17,7 +17,6 @@ export const calendarInitState = {
     inputs: { year: '', month: '' },
     warning: '',
   },
-  selectedDate: '',
   sublist: [
     // {
     //   _id: 1,
@@ -147,6 +146,11 @@ export const calendarReducer = (state, action) => {
           ...state.modal,
           warning: '',
         },
+      };
+    case 'GET_SUBLIST':
+      return {
+        ...state,
+        sublist: action.sublist,
       };
     default:
       throw new Error(`${action.type}: ERROR`);

@@ -18,19 +18,24 @@ const CustomCalendar = () => {
   const testCtx = React.useContext(testContext);
   const { state } = testCtx;
   const {
+    dispatch,
     calendarState,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
     onClickNextYear,
     openModal,
-    getSublist,
   } = calCtx;
 
   const { diaries } = state;
   const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
-  console.log(diaries.map(({ date }) => date));
+
+  const getSublist = ({ target }) => {
+    const date = target.className.split(' ')[0];
+    const sublist = diaries.filter((diary) => diary.date === date);
+    dispatch({ type: 'GET_SUBLIST', sublist });
+  };
 
   return (
     <>
