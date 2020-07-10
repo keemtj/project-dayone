@@ -4,11 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import './reset.css';
 import './index.css';
 import App from './App';
+import { LoginProvider } from './Context/loginContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <LoginProvider>
+      <App />
+    </LoginProvider>
   </BrowserRouter>,
   document.getElementById('root'),
 );
-
