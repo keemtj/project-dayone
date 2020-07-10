@@ -16,6 +16,7 @@ const cx = classNames.bind(styles);
 const Timeline = () => {
   const [fetchData] = usePosts();
   console.log(fetchData.diaries);
+
   return (
     <div>
       <div className={cx('timelineNav')}>
@@ -25,7 +26,7 @@ const Timeline = () => {
       </div>
       <ul className={cx('timelineWrapper')}>
         {fetchData.diaries.map((diary) => (
-          <TimeLineList key={diary.id} />
+          <TimeLineList key={diary.id} diary={diary} />
         ))}
       </ul>
     </div>
