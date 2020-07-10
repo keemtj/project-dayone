@@ -91,9 +91,21 @@ const CustomCalendar = () => {
         <div className={cx('dateView')}>
           {datesArray.map(({ yy, mm, dd }) => {
             const fullDate = `${yy}-${mm}-${dd}`;
-            const amount = `amount_${
-              diaries.filter((diary) => diary.date === fullDate).length
-            }`;
+            let amount = diaries.filter(({ date }) => date === fullDate).length;
+
+            switch (amount) {
+              case 0:
+                amount = '';
+                break;
+              case 1:
+                amount = 'oneDiary';
+                break;
+              case 2 || 3:
+                amount = 'someDiaries';
+                break;
+              default:
+                amount = 'manyDiaries';
+            }
 
             return (
               <button
