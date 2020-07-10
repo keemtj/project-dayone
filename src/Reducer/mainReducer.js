@@ -75,6 +75,14 @@ const mainReducer = (state, action) => {
         ...state,
         userData: { ...action.data, active: true },
       };
+    case 'TOGGLE_BOOKMARK':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          isBookmarked: !action.isBookmarked,
+        },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
