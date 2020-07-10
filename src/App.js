@@ -67,13 +67,19 @@ function App() {
 
   return (
     <loginContext.Provider value={loginData}>
-      {state.isLoggedIn ? (
-        <TestProvider>
-          <WrapperPage />
-        </TestProvider>
-      ) : (
-        <Login state={state} dispatch={dispatch} />
-      )}
+      <TestProvider>
+        <WrapperPage />
+      </TestProvider>
+
+      {/* <loginContext.Provider value={loginData}>
+          {state.isLoggedIn ? (
+            <TestProvider>
+              <WrapperPage />
+            </TestProvider>
+          ) : (
+            <Login state={state} dispatch={dispatch} />
+          )}
+        </loginContext.Provider> */}
     </loginContext.Provider>
   );
 }
