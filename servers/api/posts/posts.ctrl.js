@@ -3,7 +3,6 @@ let diaryId = 3;
 const diaries = [
   {
     id: 1,
-<<<<<<< HEAD
     title: 'Diary Title 1',
     content: 'This is diary 1',
     date: '2020/03/02',
@@ -13,14 +12,17 @@ const diaries = [
       'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
     ],
     isBookmarked: true,
-=======
     title: 'asdjfkl',
     body: 'blablablalaalbjaklbjla',
     date: '2020.07.02',
     location: '성수',
     isBookmarked: false,
+<<<<<<< HEAD
     images: [],
 >>>>>>> 991839c51dd4b4d761ac624fe7779c79e831def4
+=======
+    imagePaths: [],
+>>>>>>> ae2eb1e03d5a8415ef3a38b10c61519ed15b7e33
   },
   {
     id: 2,
@@ -37,8 +39,12 @@ const diaries = [
     date: '2020.07.04',
     location: '성수',
     isBookmarked: true,
+<<<<<<< HEAD
     images: [],
 >>>>>>> 991839c51dd4b4d761ac624fe7779c79e831def4
+=======
+    imagePaths: [],
+>>>>>>> ae2eb1e03d5a8415ef3a38b10c61519ed15b7e33
   },
   {
     id: 3,
@@ -165,7 +171,7 @@ const diaries = [
     date: '2020.07.04',
     location: '성수',
     isBookmarked: false,
-    images: [],
+    imagePaths: [],
   },
 ];
 
