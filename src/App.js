@@ -11,8 +11,8 @@ function App() {
 
   return (
     <>
-      {console.log(context)}
-      {isLoggedIn ? <WrapperPage /> : <Login />}
+      {/* {isLoggedIn ? <WrapperPage /> : <Login />} */}
+      <WrapperPage />
     </>
   );
 }

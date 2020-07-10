@@ -56,7 +56,7 @@ const diaries = [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
+    isBookmarked: true,
   },
   {
     id: 6,
@@ -92,7 +92,7 @@ const diaries = [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
+    isBookmarked: true,
   },
   {
     id: 9,

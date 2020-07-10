@@ -1,107 +1,88 @@
-aside {
-  width: 30%;
-  height: 80vh;
-  margin: 2rem 1.5rem 0 0;
-  border-right: 1px solid #aaa;
-  position: relative;
-  padding: 0 1rem;
-
-  .greeting,
-  .greeting span {
-    font-size: 1.2rem;
-    text-align: center;
-    // display: block;
-    padding: 10px 0;
-  }
-
-  .statistics {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: 50px auto 0;
-
-    & li {
-      width: 4rem;
-      text-align: center;
-    }
-
-    .numbers {
-      display: inline-block;
-      width: 3.9rem;
-      height: 3.9rem;
-      font-size: 1.4rem;
-      line-height: 3.5rem;
-      border-radius: 500px;
-      border: 3px solid #67bff9;
-    }
-
-    .caption {
-      display: block;
-      font-size: 0.9rem;
-      margin-top: 1rem;
-      line-height: 1rem;
-    }
-  }
-
-  .logoutBtn {
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    position: absolute;
-    bottom: 1rem;
-    left: 30%;
-    background: lightgray;
-    width: 40%;
-    height: 2rem;
-  }
-}
-
 main {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 30px;
+  width: 80%;
+  margin: 0 auto;
 
-  div {
-    width: 70%;
+  .profile {
+    display: flex;
+    // justify-content: space-between;
+    margin: 2rem 0 0;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding: 1rem 3rem 2rem;
 
-    .listTitle {
-      padding: 2.6rem 0;
+    .greeting,
+    .greeting span {
       font-size: 1.2rem;
+      text-align: center;
+      display: block;
+      line-height: 1.7rem;
     }
 
-    .diaryList {
-      .diary a {
-        height: 6rem;
-        display: flex;
-        border-bottom: 1px solid #aaa;
+    .statistics {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      margin: 1rem 7rem 0;
 
-        .thumbnail {
-          width: 20%;
-          height: 6rem;
-          padding: 5px;
+      & li {
+        text-align: center;
+
+        span {
+          font-size: 1rem;
+          padding: 0 3px;
         }
 
-        .info {
-          width: 70%;
-          text-align: center;
-          padding: 15px;
-
-          .title {
-            font-size: 1rem;
-          }
-
-          .details {
-            font-size: 0.7rem;
-            color: #aaa;
-            margin-top: 35px;
-          }
+        .numbers {
+          font-weight: 700;
         }
+      }
+    }
+
+    .logoutBtn {
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      position: absolute;
+      top: 1.6rem;
+      right: 0;
+      background: lightgray;
+      width: 100px;
+      height: 2rem;
+    }
+  }
+
+  .listTitle {
+    font-size: 1.3rem;
+    color: #67bff9;
+    padding: 20px 10px 5px;
+
+    & .icon {
+      margin-right: 7px;
+    }
+  }
+
+  .diaryList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    .diary figure {
+      margin: 20px 10px 0;
+
+      .thumbnail {
+        width: 11rem;
+        height: 9rem;
+      }
+
+      figcaption {
+        height: 2rem;
+        text-align: center;
+        padding-top: 7px;
+        background: rgba(240, 240, 240, 0.884);
       }
     }
   }
 }
-
-// aside::after {
-//   content: '';
-//   display: block;
-//   clear: both;
-// }
