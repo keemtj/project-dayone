@@ -8,12 +8,12 @@ import { CalendarProvider } from '../Context/CalendarContext';
 
 const cx = classNames.bind(styles);
 
-const Calendar = ({ history }) => {
+const Calendar = () => {
   useEffect(() => {}, []);
 
   return (
     <main className={cx('main')}>
-      <CalendarProvider history={history}>
+      <CalendarProvider>
         <CustomCalendar />
         {/* <DiarySublist sublist={sublist} /> */}
         <CalendarModal />

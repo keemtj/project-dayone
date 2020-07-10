@@ -11,14 +11,13 @@ const cx = classNames.bind(styles);
 
 const CalendarModal = () => {
   const context = React.useContext(CalendarContext);
-  const { calendarHook } = context;
   const {
     state,
     closeModal,
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-  } = calendarHook;
+  } = context;
 
   const { now, modal } = state;
   const { warning, inputs, display } = modal;
@@ -56,7 +55,6 @@ const CalendarModal = () => {
             <span>월</span>
           </li>
         </ul>
-
         <button
           type="button"
           className={cx('goBtn')}
