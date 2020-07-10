@@ -9,12 +9,7 @@ function App() {
   const { loginState } = context;
   const { isLoggedIn } = loginState;
 
-  return (
-    <>
-      {isLoggedIn ? <WrapperPage /> : <Login />}
-      {/* <WrapperPage /> */}
-    </>
-  );
+  return <>{isLoggedIn ? <WrapperPage /> : <Login />}</>;
 }
 
 export default App;
