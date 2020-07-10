@@ -4,11 +4,8 @@ import classNames from 'classnames/bind';
 import { MainContext } from '../Context/MainContext';
 import styles from './Style/MyPage.module.scss';
 import DiaryViewer from './DiaryViewer';
-import {
-  fontAwesomeIcons,
-  FontAwesomeIcon,
-} from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -39,14 +36,11 @@ const MyPage = () => {
           </li>
           <li>
             <span className={cx('numbers')}>2.3</span>
-            <span className={cx('caption')}>
-              평균
-              {/* <br /> */}
-              일기수
-            </span>
+            <span className={cx('caption')}>평균 일기수</span>
           </li>
         </ul>
         <button type="button" className={cx('logoutBtn')}>
+          <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
           로그아웃
         </button>
       </div>

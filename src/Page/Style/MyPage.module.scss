@@ -19,6 +19,10 @@ main {
       line-height: 1.7rem;
     }
 
+    .greeting span {
+      font-weight: 700;
+    }
+
     .statistics {
       display: flex;
       justify-content: space-between;
@@ -46,9 +50,21 @@ main {
       position: absolute;
       top: 1.6rem;
       right: 0;
-      background: lightgray;
-      width: 100px;
+      color: #aaa;
+      background: #eee;
+      width: 80px;
       height: 2rem;
+      transition: 0.3s;
+
+      .icon {
+        margin-right: 3px;
+      }
+
+      &:hover {
+        color: #fff;
+        background: #aaa;
+        transition: 0.3s;
+      }
     }
   }
 
