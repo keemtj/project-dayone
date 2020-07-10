@@ -3,10 +3,11 @@ import classNames from 'classnames/bind';
 import styles from './Style/Map.module.scss';
 import ReactMap from '../Components/ReactMap';
 import DiarySublist from '../Components/DiarySublist';
-import { testContext } from '../Context/testContext';
+import { MainContext } from '../Context/MainContext';
+
 const cx = classNames.bind(styles);
 const Map = () => {
-  const context = React.useContext(testContext);
+  const context = React.useContext(MainContext);
   const { state } = context;
   const { diaries } = state;
   const [mapList, setMaplist] = useState([]);

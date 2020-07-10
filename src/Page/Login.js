@@ -1,21 +1,21 @@
 import React, { useRef, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
-import { loginContext } from '../Context/loginContext';
+import { LoginContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
-  const context = useContext(loginContext);
+  const context = useContext(LoginContext);
   const {
-    state,
+    loginState,
     fetchChange,
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
   } = context;
-  const { users, message } = state;
-  const { id, password } = state.inputs;
+  const { users, message } = loginState;
+  const { id, password } = loginState.inputs;
   const idInputFocus = useRef();
 
   const onChange = (e) => {

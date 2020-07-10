@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from '../Style/DiaryTitle.module.scss';
-import { testContext } from '../../Context/testContext';
+import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const DiaryTitle = () => {
-  const { writeTitle } = React.useContext(testContext);
+  const { writeTitle } = React.useContext(MainContext);
   const onChange = (e) => {
     writeTitle(e.target.value);
   };

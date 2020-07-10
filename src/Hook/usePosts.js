@@ -1,16 +1,16 @@
 import { useEffect, useReducer } from 'react';
-import testApi from '../Api/testApi';
-import { initialState, testReducer } from '../Reducer/testReducer';
+import Api from '../Api/Api';
+import { initialState, mainReducer } from '../Reducer/mainReducer';
 
 const usePosts = () => {
-  const [state, dispatch] = useReducer(testReducer, initialState);
+  const [state, dispatch] = useReducer(mainReducer, initialState);
 
   const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     try {
-      const postsData = await testApi.getDiaries();
-      console.dir(postsData);
-      dispatch({ type: 'SUCCESS', postsData });
+      const diaries = await Api.getDiaries();
+      console.log('diaries:', diaries);
+      dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({
         type: 'ERROR',
@@ -21,7 +21,7 @@ const usePosts = () => {
 
   const submitDiaryToServer = async () => {
     try {
-      await testApi.postDiaries(state.currentDiary);
+      await Api.postDiaries(state.currentDiary);
     } catch (e) {
       dispatch({
         type: 'ERROR',
@@ -37,7 +37,6 @@ const usePosts = () => {
   const submitDiary = () => {
     dispatch({ type: 'SUBMIT_POST' });
     submitDiaryToServer();
-    // dispatch({ type: 'SUBMIT_POST_SERVER' });
   };
 
   const writeTitle = (write) => {
