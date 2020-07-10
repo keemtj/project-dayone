@@ -5,7 +5,7 @@ const diaries = [
     id: 1,
     title: 'Diary Title 1',
     content: 'This is diary 1',
-    date: '2020/03/02',
+    date: '2020-5-14',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [
       'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
@@ -17,7 +17,7 @@ const diaries = [
     id: 2,
     title: 'Diary Title 2',
     content: 'This is diary 2',
-    date: '2020/04/17',
+    date: '2020-5-21',
     location: { lat: 37.620842424005616, lng: 127.1583774403176 },
     imagePaths: [],
     isBookmarked: false,
@@ -26,7 +26,7 @@ const diaries = [
     id: 3,
     title: 'Diary Title 3',
     content: 'This is diary 3',
-    date: '2020/04/21',
+    date: '2020-5-21',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -38,7 +38,7 @@ const diaries = [
     id: 4,
     title: 'Diary Title 4',
     content: 'This is diary 4',
-    date: '2020/04/25',
+    date: '2020-6-13',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -50,7 +50,7 @@ const diaries = [
     id: 5,
     title: 'Diary Title 5',
     content: 'This is diary 5',
-    date: '2020/04/28',
+    date: '2020-6-15',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -62,7 +62,7 @@ const diaries = [
     id: 6,
     title: 'Diary Title 6',
     content: 'This is diary 6',
-    date: '2020/05/01',
+    date: '2020-7-1',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -74,7 +74,7 @@ const diaries = [
     id: 7,
     title: 'Diary Title 7',
     content: 'This is diary 7',
-    date: '2020/05/02',
+    date: '2020-7-1',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -86,7 +86,7 @@ const diaries = [
     id: 8,
     title: 'Diary Title 8',
     content: 'This is diary 8',
-    date: '2020/06/01',
+    date: '2020-7-1',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -98,7 +98,7 @@ const diaries = [
     id: 9,
     title: 'Diary Title 9',
     content: 'This is diary 9',
-    date: '2020/07/01',
+    date: '2020-7-1',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -110,7 +110,7 @@ const diaries = [
     id: 10,
     title: 'Diary Title 10',
     content: 'This is diary 10',
-    date: '2020/07/04',
+    date: '2020-7-8',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -122,7 +122,7 @@ const diaries = [
     id: 11,
     title: 'Diary Title 11',
     content: 'This is diary 11',
-    date: '2020/07/05',
+    date: '2020-7-10',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',

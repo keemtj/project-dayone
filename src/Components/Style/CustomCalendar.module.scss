@@ -1,6 +1,5 @@
 .calendar {
   width: 70%;
-  // background: lightblue;
 
   & button {
     outline: none;
@@ -11,9 +10,8 @@
     display: flex;
     justify-content: space-between;
     height: 2rem;
-    // background: lightgoldenrodyellow;
 
-    & .state {
+    & .calendarState {
       width: 80%;
       text-align: center;
       font-size: 1.1rem;
@@ -42,7 +40,6 @@
   }
 
   & .dateView {
-    // background: lightseagreen;
     padding: 0.8rem;
 
     & button {
@@ -75,6 +72,22 @@
       width: 2rem;
       height: 2rem;
       line-height: 2rem;
+    }
+
+    & .amount_1 {
+      background: #d1ecfd;
+    }
+
+    & .amount_2 {
+      background: #abdcfc;
+    }
+
+    & .amount_3 {
+      background: #67bff9;
+    }
+
+    & .amount_4 {
+      background: #309ae0;
     }
   }
 }
