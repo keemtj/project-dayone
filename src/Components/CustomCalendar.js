@@ -15,8 +15,8 @@ const cx = classNames.bind(styles);
 
 const CustomCalendar = () => {
   const calCtx = React.useContext(CalendarContext);
-  const testCtx = React.useContext(MainContext);
-  const { state } = testCtx;
+  const mainCtx = React.useContext(MainContext);
+  const { state } = mainCtx;
   const {
     dispatch,
     calendarState,
