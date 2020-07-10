@@ -7,7 +7,7 @@ const initialState = {
     //   date: '',
     //   location: {},
     //   isBookmarked: false,
-    //   images: [],
+    //   imagePaths: [],
     // },
   ],
   currentDiary: {
@@ -17,7 +17,7 @@ const initialState = {
     date: '',
     location: {},
     isBookmarked: false,
-    images: [],
+    imagePaths: [],
   },
   error: {
     state: false,
@@ -67,7 +67,7 @@ const testReducer = (state, action) => {
     case 'PUSH_IMG':
       return {
         ...state,
-        currentDiary: { ...state.currentDiary, images: action.images },
+        currentDiary: { ...state.currentDiary, imagePaths: action.images },
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
