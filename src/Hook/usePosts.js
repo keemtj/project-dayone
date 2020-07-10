@@ -47,6 +47,10 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_IMG', images });
   };
 
+  const bookmarkDiary = () => {
+    dispatch({ type: 'TOGGLE_BOOKMARK' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -59,6 +63,7 @@ const usePosts = () => {
     submitDiary,
     writeTitle,
     pushImg,
+    bookmarkDiary,
   ];
 };
 

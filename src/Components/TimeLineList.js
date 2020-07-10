@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { MainContext } from '../Context/MainContext';
 import styles from './Style/TimeLineList.module.scss';
 
 const cx = classNames.bind(styles);
 
 const TimeLineList = ({ diary }) => {
-  const { id, title, content, date, imagePaths } = diary;
-  console.log(content, date);
+  const { id, title, content, date, imagePaths, isBookmarked } = diary;
+  const context = useContext(MainContext);
+  const { bookmarkDiary } = context;
+
+  const onClickBookmark = (e) => {
+    bookmarkDiary();
+  };
 
   return (
     <li className={cx('timelineList')}>
+      <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
+        {isBookmarked ? (
+          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
+        ) : (
+          <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
+        )}
+        {console.log(isBookmarked)}
+      </button>
       <Link to={`/diaryViewer/${id}`}>
         <figure>
-          <FontAwesomeIcon icon={faBookmark} className={cx('bookmark')} />
           <div
             className={cx('thumbnail')}
             style={{
