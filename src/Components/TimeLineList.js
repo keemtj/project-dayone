@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import DiaryViewer from '../Page/DiaryViewer';
 import styles from './Style/TimeLineList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -11,22 +10,25 @@ const TimeLineList = ({ diary }) => {
   console.log(content, date);
 
   return (
-    <Link to={`/diaryViewer/${id}`}>
-      <li className={cx('timelineList')}>
+    <li className={cx('timelineList')}>
+      <Link to={`/diaryViewer/${id}`}>
         <figure>
-          <img
-            src={
-              imagePaths.length !== 0
-                ? imagePaths[0]
-                : 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg'
-            }
-            alt=""
+          <div
+            className={cx('imageWrapper')}
+            style={{
+              backgroundImage: `url(
+                ${
+                  imagePaths.length
+                    ? imagePaths[0]
+                    : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+                }
+                )`,
+            }}
           />
           <figcaption>{title}</figcaption>
         </figure>
-      </li>
-      <Route path="/diaryViewer/:id" component={DiaryViewer} />
-    </Link>
+      </Link>
+    </li>
   );
 };
 

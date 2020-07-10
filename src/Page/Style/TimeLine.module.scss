@@ -2,25 +2,30 @@ $mainColor: #67bff9;
 
 .timelineNav {
   padding: 0.6rem 0 0.6rem 0;
-  color: #d1d1d1;
   font-size: 1.8rem;
   text-align: end;
+
   button {
     margin-left: 1rem;
     background-color: none;
     border: none;
+    color: #d1d1d1;
     outline: none;
     cursor: pointer;
+
     .icon {
       text-align: center;
+
       &:last-child {
         font-size: 1.9rem;
       }
     }
+
     &:hover {
       color: $mainColor;
     }
   }
+
   .active {
     color: $mainColor;
   }
@@ -30,4 +35,6 @@ $mainColor: #67bff9;
   display: flex;
   align-items: center;
   flex-flow: row wrap;
+  background-color: yellowgreen;
+  // margin-left: -10px;
 }

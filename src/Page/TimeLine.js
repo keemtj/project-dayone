@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import {
   faThLarge,
@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 
 const Timeline = () => {
   const [fetchData] = usePosts();
-  console.log(fetchData.diaries);
+  const [nav, setNav] = useState('card'); // card, list, media
 
   return (
     <div>
