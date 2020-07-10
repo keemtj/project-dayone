@@ -18,31 +18,31 @@ export const calendarInitState = {
     warning: '',
   },
   selectedDate: '',
-  diaries: [
-    {
-      _id: 1,
-      id: 1,
-      title: 'asdjfkl',
-      content: 'blablablalaalbjaklbjla',
-      date: 'Sat Jul 14 2020 00:00:00 GMT+0900 (대한민국 표준시)',
-      location: '성수',
-    },
-    {
-      _id: 1,
-      id: 2,
-      title: '로롱놀오',
-      content: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
-      date: '2020.07.04',
-      location: '성수',
-    },
-    {
-      _id: 1,
-      id: 3,
-      title: '캬캬캬캬캬ㅑㅋ',
-      content: '가나다라마바사',
-      date: '2020.07.04',
-      location: '성수',
-    },
+  sublist: [
+    // {
+    //   _id: 1,
+    //   id: 1,
+    //   title: 'asdjfkl',
+    //   content: 'blablablalaalbjaklbjla',
+    //   date: 'Sat Jul 14 2020 00:00:00 GMT+0900 (대한민국 표준시)',
+    //   location: '성수',
+    // },
+    // {
+    //   _id: 1,
+    //   id: 2,
+    //   title: '로롱놀오',
+    //   content: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
+    //   date: '2020.07.04',
+    //   location: '성수',
+    // },
+    // {
+    //   _id: 1,
+    //   id: 3,
+    //   title: '캬캬캬캬캬ㅑㅋ',
+    //   content: '가나다라마바사',
+    //   date: '2020.07.04',
+    //   location: '성수',
+    // },
   ],
 };
 

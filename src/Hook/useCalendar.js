@@ -2,8 +2,11 @@ import { useReducer, useEffect } from 'react';
 import { calendarInitState, calendarReducer } from '../Reducer/calendarReducer';
 
 const useCalendar = () => {
-  const [state, dispatch] = useReducer(calendarReducer, calendarInitState);
-  const { now, calendar, modal } = state;
+  const [calendarState, dispatch] = useReducer(
+    calendarReducer,
+    calendarInitState,
+  );
+  const { now, calendar, modal } = calendarState;
   const { year, month } = calendar;
 
   const fetchData = async () => {
@@ -169,7 +172,7 @@ const useCalendar = () => {
   }, []);
 
   return {
-    state,
+    calendarState,
     getFirstDay,
     getDatesArray,
     getNow,

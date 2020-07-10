@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,27 +9,27 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/CustomCalendar.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
+import { testContext } from '../Context/testContext';
 
 const cx = classNames.bind(styles);
 
 const CustomCalendar = () => {
-  const context = React.useContext(CalendarContext);
+  const calCtx = React.useContext(CalendarContext);
+  const testCtx = React.useContext(testContext);
+  const { state } = testCtx;
   const {
-    state,
-    // getNow,
+    calendarState,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
     onClickNextYear,
     openModal,
-  } = context;
+  } = calCtx;
 
-  const { now, calendar } = state;
+  const { diaries } = state;
+  const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
-
-  // useEffect(() => {
-  // getNow();
-  // }, []);
+  console.log(diaries.map(({ date }) => date));
 
   return (
     <>
@@ -49,7 +49,11 @@ const CustomCalendar = () => {
           >
             <FontAwesomeIcon icon={faAngleLeft} className={cx('icon')} />
           </button>
-          <button type="button" className={cx('state')} onClick={openModal}>
+          <button
+            type="button"
+            className={cx('calendarState')}
+            onClick={openModal}
+          >
             {`${year}. ${month < 10 ? `0${month}` : month}.`}
           </button>
           <button
@@ -80,12 +84,18 @@ const CustomCalendar = () => {
         </ul>
         <div className={cx('dateView')}>
           {datesArray.map(({ yy, mm, dd }) => {
+            const fullDate = `${yy}-${mm}-${dd}`;
+            const amount = `amount_${
+              diaries.filter((diary) => diary.date === fullDate).length
+            }`;
+
             return (
               <button
                 key={dd}
                 type="button"
                 className={cx(
-                  `${yy}-${mm}-${dd}`,
+                  `${fullDate}`,
+                  `${amount}`,
                   {
                     today:
                       yy === now.year && mm === now.month && dd === now.date,

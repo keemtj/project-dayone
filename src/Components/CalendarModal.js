@@ -10,16 +10,16 @@ import { CalendarContext } from '../Context/CalendarContext';
 const cx = classNames.bind(styles);
 
 const CalendarModal = () => {
-  const context = React.useContext(CalendarContext);
+  const calCtx = React.useContext(CalendarContext);
   const {
-    state,
+    calendarState,
     closeModal,
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-  } = context;
+  } = calCtx;
 
-  const { now, modal } = state;
+  const { now, modal } = calendarState;
   const { warning, inputs, display } = modal;
 
   return (
