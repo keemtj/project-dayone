@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const posts = axios.create();
 
-const testApi = {
+const Api = {
   getDiaries: () =>
     posts
       .get('/api/posts')
@@ -20,4 +20,4 @@ const testApi = {
       }),
 };
 
-export default testApi;
+export default Api;

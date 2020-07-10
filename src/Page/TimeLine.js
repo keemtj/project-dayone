@@ -8,12 +8,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
-import { testContext } from '../Context/testContext';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  const context = useContext(testContext);
+  const context = useContext(MainContext);
   const { state } = context;
   // console.log(state.diaries);
 

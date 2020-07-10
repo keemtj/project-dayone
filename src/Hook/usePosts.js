@@ -1,14 +1,14 @@
 import { useEffect, useReducer } from 'react';
-import testApi from '../Api/testApi';
-import { initialState, testReducer } from '../Reducer/testReducer';
+import Api from '../Api/Api';
+import { initialState, mainReducer } from '../Reducer/mainReducer';
 
 const usePosts = () => {
-  const [state, dispatch] = useReducer(testReducer, initialState);
+  const [state, dispatch] = useReducer(mainReducer, initialState);
 
   const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     try {
-      const diaries = await testApi.getDiaries();
+      const diaries = await Api.getDiaries();
       console.log('diaries:', diaries);
       dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
@@ -21,7 +21,7 @@ const usePosts = () => {
 
   const submitDiaryToServer = async () => {
     try {
-      await testApi.postDiaries(state.currentDiary);
+      await Api.postDiaries(state.currentDiary);
     } catch (e) {
       dispatch({
         type: 'ERROR',
