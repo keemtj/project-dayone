@@ -54,10 +54,7 @@ const useCalendar = () => {
     const today = new Date();
     const yy = today.getFullYear();
     const mm = today.getMonth() + 1;
-    const dd =
-      new String(today)[8] === '0'
-        ? new String(today).slice(9, 10)
-        : new String(today).slice(8, 10);
+    const dd = today.getDate();
 
     dispatch({
       type: 'GET_NOW',
