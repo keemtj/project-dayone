@@ -5,12 +5,22 @@ import { initialState } from '../Reducer/loginReducer';
 const loginContext = createContext(initialState);
 
 const LoginProvider = ({ children }) => {
-  const [state, fetchLoginData] = useLogin();
+  const [
+    state,
+    fetchChange,
+    fetchUserCheck,
+    fetchErrorMessage,
+    fetchReset,
+  ] = useLogin();
 
   const loginData = {
     state,
-    fetchLoginData,
+    fetchChange,
+    fetchUserCheck,
+    fetchErrorMessage,
+    fetchReset,
   };
+
   return (
     <loginContext.Provider value={loginData}>{children}</loginContext.Provider>
   );

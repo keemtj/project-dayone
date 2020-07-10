@@ -14,9 +14,6 @@ const initialState = {
 };
 
 const loginReducer = (state, action) => {
-  console.log('action', action);
-  console.log('state', state);
-
   switch (action.type) {
     case 'CHANGE_INPUT':
       return {

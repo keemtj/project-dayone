@@ -1,26 +1,25 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import { TestProvider } from './Context/testContext';
 import Login from './Page/Login';
 import WrapperPage from './Page/WrapperPage';
-import { initialState, loginReducer } from './Reducer/loginReducer';
-
-export const loginContext = createContext(initialState);
+import { loginContext } from './Context/loginContext';
 
 function App() {
-  const [state, dispatch] = useReducer(loginReducer, initialState);
-  const loginData = { state, dispatch };
+  const context = useContext(loginContext);
+  const { state } = context;
+  const { isLoggedIn } = state;
 
   return (
-    <loginContext.Provider value={loginData}>
-      {state.isLoggedIn ? (
+    <>
+      {isLoggedIn ? (
         <TestProvider>
           <WrapperPage />
         </TestProvider>
       ) : (
-        <Login state={state} dispatch={dispatch} />
+        <Login />
       )}
-    </loginContext.Provider>
+    </>
   );
 }
 
