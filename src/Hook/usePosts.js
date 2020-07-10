@@ -8,9 +8,9 @@ const usePosts = () => {
   const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     try {
-      const postsData = await testApi.getDiaries();
-      console.dir(postsData);
-      dispatch({ type: 'SUCCESS', postsData });
+      const diaries = await testApi.getDiaries();
+      console.dir(diaries);
+      dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({
         type: 'ERROR',
@@ -37,7 +37,6 @@ const usePosts = () => {
   const submitDiary = () => {
     dispatch({ type: 'SUBMIT_POST' });
     submitDiaryToServer();
-    // dispatch({ type: 'SUBMIT_POST_SERVER' });
   };
 
   const writeTitle = (write) => {
