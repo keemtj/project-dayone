@@ -10,13 +10,7 @@ const Map = () => {
   const context = React.useContext(MainContext);
   const { state } = context;
   const { diaries } = state;
-<<<<<<< HEAD
-
   const [mapList, setMaplist] = useState([]);
-
-=======
-  const [mapList, setMaplist] = useState([]);
->>>>>>> e8b2dca7046dcb58f22a78bdc0a9706bdab7df22
   const filterDiariesByLoc = (lat, lng) => {
     setMaplist(
       diaries.filter(
