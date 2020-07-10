@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
-import { LoginContext } from '../Context/MainContext';
+import { LoginContext, MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +13,7 @@ const Login = () => {
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    dispatch,
   } = context;
   const { users, message } = loginState;
   const { id, password } = loginState.inputs;
@@ -31,6 +32,14 @@ const Login = () => {
           ? fetchUserCheck(id, password) // dispatch({ type: 'USER_CHECK', userId: id, password })
           : fetchErrorMessage(), // dispatch({ type: 'ERROR_MESSAGE' }),
     );
+
+    dispatch({
+      type: 'GET_USER_DATA',
+      data: users.filter(
+        ({ userId, userPw }) => userId === id && userPw === password,
+      )[0],
+    });
+
     fetchReset(); // dispatch({ type: 'RESET_INPUT' });
     idInputFocus.current.focus();
   };

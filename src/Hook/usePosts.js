@@ -51,7 +51,15 @@ const usePosts = () => {
     fetchData();
   }, []);
 
-  return [state, fetchData, writePost, submitDiary, writeTitle, pushImg];
+  return [
+    state,
+    dispatch,
+    fetchData,
+    writePost,
+    submitDiary,
+    writeTitle,
+    pushImg,
+  ];
 };
 
 export default usePosts;

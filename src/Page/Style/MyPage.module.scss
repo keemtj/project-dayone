@@ -1,3 +1,104 @@
-div {
-  color: black;
+main {
+  margin-top: 30px;
+  width: 80%;
+  margin: 0 auto;
+
+  .profile {
+    display: flex;
+    // justify-content: space-between;
+    margin: 2rem 0 0;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding: 1rem 3rem 2rem;
+
+    .greeting,
+    .greeting span {
+      font-size: 1.2rem;
+      text-align: center;
+      display: block;
+      line-height: 1.7rem;
+    }
+
+    .greeting span {
+      font-weight: 700;
+    }
+
+    .statistics {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      margin: 1rem 7rem 0;
+
+      & li {
+        text-align: center;
+
+        span {
+          font-size: 1rem;
+          padding: 0 3px;
+        }
+
+        .numbers {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .logoutBtn {
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      position: absolute;
+      top: 1.6rem;
+      right: 0;
+      color: #aaa;
+      background: #eee;
+      width: 80px;
+      height: 2rem;
+      transition: 0.3s;
+
+      .icon {
+        margin-right: 3px;
+      }
+
+      &:hover {
+        color: #fff;
+        background: #aaa;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .listTitle {
+    font-size: 1.3rem;
+    color: #67bff9;
+    padding: 20px 10px 5px;
+
+    & .icon {
+      margin-right: 7px;
+    }
+  }
+
+  .diaryList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    .diary figure {
+      margin: 20px 10px 0;
+
+      .thumbnail {
+        width: 11rem;
+        height: 9rem;
+      }
+
+      figcaption {
+        height: 2rem;
+        text-align: center;
+        padding-top: 7px;
+        background: rgba(240, 240, 240, 0.884);
+      }
+    }
+  }
 }

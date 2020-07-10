@@ -1,4 +1,5 @@
 const initialState = {
+  userData: {},
   diaries: [
     // {
     //   id: 1,
@@ -68,6 +69,11 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         currentDiary: { ...state.currentDiary, imagePaths: action.images },
+      };
+    case 'GET_USER_DATA':
+      return {
+        ...state,
+        userData: { ...action.data, active: true },
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
