@@ -1,10 +1,11 @@
-const initialState = {
+const loginInitialState = {
   isLoggedIn: false,
   users: [
     { id: 1, userId: 'dorodoro', userPw: '123', active: false },
     { id: 2, userId: 'jay', userPw: '123', active: false },
     { id: 3, userId: 'jimmy', userPw: '123', active: false },
     { id: 4, userId: 'haeuni', userPw: '123', active: false },
+    { id: 5, userId: 'f', userPw: 'f', active: false },
   ],
   inputs: {
     id: '',
@@ -50,4 +51,4 @@ const loginReducer = (state, action) => {
   }
 };
 
-export { initialState, loginReducer };
+export { loginInitialState, loginReducer };

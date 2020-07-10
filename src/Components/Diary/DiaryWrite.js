@@ -3,12 +3,12 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import classNames from 'classnames/bind';
 import styles from '../Style/DiaryWrite.module.scss';
-import { testContext } from '../../Context/testContext';
+import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const DiaryWrite = () => {
-  const { writePost, pushImg } = useContext(testContext);
+  const { writePost, pushImg } = useContext(MainContext);
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 

@@ -6,7 +6,12 @@ import { CalendarContext } from '../Context/CalendarContext';
 const cx = classNames.bind(styles);
 
 const DiarySublist = ({ mapList }) => {
+<<<<<<< HEAD
   const calendarList = React.useContext(CalendarContext);
+=======
+  const calCtx = React.useContext(CalendarContext);
+  const calendarList = calCtx && calCtx.calendarState.sublist;
+>>>>>>> e8b2dca7046dcb58f22a78bdc0a9706bdab7df22
   const subList = calendarList || mapList;
 
   return (

@@ -26,7 +26,7 @@ const initialState = {
   loading: false,
 };
 
-const testReducer = (state, action) => {
+const mainReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
@@ -36,7 +36,7 @@ const testReducer = (state, action) => {
     case 'SUCCESS':
       return {
         ...state,
-        diaries: action.postsData,
+        diaries: action.diaries,
         loading: false,
       };
     case 'ERROR':
@@ -74,4 +74,4 @@ const testReducer = (state, action) => {
   }
 };
 
-export { initialState, testReducer };
+export { initialState, mainReducer };

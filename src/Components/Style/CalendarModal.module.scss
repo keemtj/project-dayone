@@ -1,5 +1,4 @@
 .dimmed {
-  display: none;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -40,10 +39,6 @@
       &::placeholder {
         color: #aaa;
       }
-
-      // &:focus {
-      //   border: 1px solid #67bff9;
-      // }
     }
 
     & button {
