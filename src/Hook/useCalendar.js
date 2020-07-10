@@ -9,16 +9,6 @@ const useCalendar = () => {
   const { now, calendar, modal } = calendarState;
   const { year, month } = calendar;
 
-  const fetchData = async () => {
-    dispatch({ type: 'LOADING' });
-    try {
-      const data = await 'api';
-      dispatch({ type: 'SUCCESS', data });
-    } catch (e) {
-      dispatch({ type: 'ERROR', error: e });
-    }
-  };
-
   const getFirstDay = (array) => {
     const startDate = array[0];
     const firstDay = new Date(
@@ -116,6 +106,7 @@ const useCalendar = () => {
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
   const onClickDimmed = ({ target }) => {
+    if (target.nodeName !== 'DIV') return;
     if (!target.className.includes('dimmed')) return;
     closeModal();
   };
@@ -149,8 +140,12 @@ const useCalendar = () => {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
     } else if (
       (inputType === 'year' && value > now.year) ||
-      (modal.inputs.year === now.year && value > now.month) ||
-      (value === now.year && modal.inputs.month > now.month)
+      (inputType === 'month' &&
+        modal.inputs.year === now.year &&
+        value > now.month) ||
+      (inputType === 'year' &&
+        value === now.year &&
+        modal.inputs.month > now.month)
     ) {
       dispatch({
         type: 'SHOW_WARNING',
@@ -161,8 +156,12 @@ const useCalendar = () => {
     }
   };
 
+  const enterInputs = (e) => {
+    if (e.keyCode !== 13) return;
+    changeCalendarState();
+  };
+
   useEffect(() => {
-    // fetchData();
     getNow();
   }, []);
 
@@ -181,6 +180,7 @@ const useCalendar = () => {
     onClickDimmed,
     changeCalendarState,
     changeInputs,
+    enterInputs,
   };
 };
 
