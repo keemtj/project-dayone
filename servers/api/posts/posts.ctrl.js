@@ -2,8 +2,8 @@ let diaryId = 3;
 
 const diaries = [
   {
-    _id: 1,
     id: 1,
+<<<<<<< HEAD
     title: 'Diary Title 1',
     content: 'This is diary 1',
     date: '2020/03/02',
@@ -13,20 +13,36 @@ const diaries = [
       'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
     ],
     isBookmarked: true,
+=======
+    title: 'asdjfkl',
+    body: 'blablablalaalbjaklbjla',
+    date: '2020.07.02',
+    location: '성수',
+    isBookmarked: false,
+    images: [],
+>>>>>>> 991839c51dd4b4d761ac624fe7779c79e831def4
   },
   {
-    _id: 1,
     id: 2,
+<<<<<<< HEAD
     title: 'Diary Title 2',
     content: 'This is diary 2',
     date: '2020/04/17',
     location: { lat: 37.620842424005616, lng: 127.1583774403176 },
     imagePaths: [],
     isBookmarked: false,
+=======
+    title: '로롱놀오test',
+    body: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
+    date: '2020.07.04',
+    location: '성수',
+    isBookmarked: true,
+    images: [],
+>>>>>>> 991839c51dd4b4d761ac624fe7779c79e831def4
   },
   {
-    _id: 1,
     id: 3,
+<<<<<<< HEAD
     title: 'Diary Title 3',
     content: 'This is diary 3',
     date: '2020/04/21',
@@ -143,6 +159,58 @@ const diaries = [
   },
 ];
 
+=======
+    title: '캬캬캬캬캬ㅑㅋ',
+    body: '가나다라마바사',
+    date: '2020.07.04',
+    location: '성수',
+    isBookmarked: false,
+    images: [],
+  },
+];
+
+// const users = [
+//   {
+//     id: 1,
+//     userId: 'asdf',
+//     userPw: '1234',
+//     active: false,
+//     diaries: [
+//       {
+//         // _id: 1,
+//         id: 1,
+//         title: 'asdjfkl',
+//         body: 'blablablalaalbjaklbjla',
+//         date: '2020.07.02',
+//         location: { lat: 12312.1341, lng: 12093.123 },
+//         isBookmarked: false,
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//       },
+//       {
+//         // _id: 1,
+//         id: 2,
+//         title: '로롱놀오',
+//         body: 'ㅈ셔ㅑ댖겨ㅑㄷ져갸ㅐ',
+//         date: '2020.07.04',
+//         location: '성수',
+//         isBookmarked: false,
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//       },
+//       {
+//         // _id: 1,
+//         id: 3,
+//         title: '캬캬캬캬캬ㅑㅋ',
+//         body: '가나다라마바사',
+//         date: '2020.07.04',
+//         location: '성수',
+//         isBookmarked: false,
+//         imagePaths: ['adsfa.png', 'adfa.png'],
+//       },
+//     ],
+//   },
+// ];
+
+>>>>>>> 991839c51dd4b4d761ac624fe7779c79e831def4
 /* 전체 diary list 조회
 GET /api/posts
 */

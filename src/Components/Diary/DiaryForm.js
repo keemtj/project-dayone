@@ -7,7 +7,7 @@ import DiarySubmitBtn from './DiarySubmitBtn';
 
 const DiaryForm = () => {
   return (
-    <form action="#">
+    <form>
       <DiaryTitle />
       <DiaryCalender />
       <DiaryWrite />

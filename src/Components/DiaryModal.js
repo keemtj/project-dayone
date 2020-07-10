@@ -6,7 +6,6 @@ import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
 import ModalMap from './Diary/ModalMap';
 import ModalCalendar from './Diary/ModalCalendar';
-import ModalSubmit from './Diary/ModalSubmit';
 
 const cx = classNames.bind(styles);
 
@@ -21,25 +20,27 @@ const Modal = () => {
     setModalState('initial');
   };
 
+  const changeModalState = () => {
+    if (modalState === 'Calendar') return 'block';
+    if (modalState === 'Map') return 'block';
+    return 'none';
+  };
+
   const changeModal = () => {
     if (modalState === 'Calendar') return <ModalCalendar />;
     if (modalState === 'Map') return <ModalMap />;
-    if (modalState === 'Submit') {
-      return <ModalSubmit />;
-    }
     return <></>;
   };
 
   return (
     <div
-      style={{ display: `${modalState === 'initial' ? 'none' : 'block'}` }}
+      style={{ display: `${changeModalState()}` }}
       className={cx('dimed')}
       onClick={onClick}
     >
-      <div className={cx('modal', `${modalState === 'Submit' ? 'small' : ''}`)}>
+      <div className={cx('modal')}>
         {changeModal()}
         <button
-          style={{ display: `${modalState === 'Submit' ? 'none' : 'block'}` }} // 작은 모달 따로 뺼 것.
           className={cx('modalDeleteBtn')}
           type="button"
           onClick={onClick}
