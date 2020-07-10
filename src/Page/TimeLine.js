@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 const Timeline = () => {
   const context = useContext(testContext);
   const { state } = context;
-  console.log(state.postsData);
+  // console.log(state.diaries);
 
   return (
     <div>

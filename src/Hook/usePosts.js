@@ -9,7 +9,7 @@ const usePosts = () => {
     dispatch({ type: 'LOADING' });
     try {
       const diaries = await testApi.getDiaries();
-      console.dir(diaries);
+      console.log('diaries:', diaries);
       dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({

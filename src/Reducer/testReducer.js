@@ -36,7 +36,7 @@ const testReducer = (state, action) => {
     case 'SUCCESS':
       return {
         ...state,
-        diaries: action.postsData,
+        diaries: action.diaries,
         loading: false,
       };
     case 'ERROR':
