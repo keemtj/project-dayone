@@ -1,5 +1,24 @@
 const initialState = {
-  postsData: [],
+  diaries: [
+    // {
+    //   id: 1,
+    //   title: '',
+    //   body: '',
+    //   date: '',
+    //   location: {},
+    //   isBookmarked: false,
+    //   imagePaths: [],
+    // },
+  ],
+  currentDiary: {
+    id: 1,
+    title: '',
+    body: '',
+    date: '',
+    location: {},
+    isBookmarked: false,
+    imagePaths: [],
+  },
   error: {
     state: false,
     message: null,
@@ -17,7 +36,7 @@ const testReducer = (state, action) => {
     case 'SUCCESS':
       return {
         ...state,
-        postsData: action.postsData,
+        diaries: action.postsData,
         loading: false,
       };
     case 'ERROR':
@@ -28,6 +47,27 @@ const testReducer = (state, action) => {
           message: action.message,
         },
         loading: false,
+      };
+    case 'WRITE_POST':
+      return {
+        ...state,
+        currentDiary: { ...state.currentDiary, body: action.write },
+      };
+    case 'SUBMIT_POST':
+      return {
+        ...state,
+        diaries: [...state.diaries, state.currentDiary],
+        currentDiary: {},
+      };
+    case 'WRITE_TITLE':
+      return {
+        ...state,
+        currentDiary: { ...state.currentDiary, title: action.write },
+      };
+    case 'PUSH_IMG':
+      return {
+        ...state,
+        currentDiary: { ...state.currentDiary, imagePaths: action.images },
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

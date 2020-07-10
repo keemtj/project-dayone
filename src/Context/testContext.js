@@ -7,11 +7,22 @@ const testContext = createContext(initialState);
 
 const TestProvider = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, fetchData] = usePosts();
+  const [
+    state,
+    fetchData,
+    writePost,
+    submitDiary,
+    writeTitle,
+    pushImg,
+  ] = usePosts();
 
   const data = {
     state,
     fetchData,
+    writePost,
+    submitDiary,
+    writeTitle,
+    pushImg,
   };
   return <testContext.Provider value={data}>{children}</testContext.Provider>;
 };

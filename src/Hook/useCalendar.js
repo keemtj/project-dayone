@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from 'react';
 import { calendarInitState, calendarReducer } from '../Reducer/calendarReducer';
 
-const useCalendarFetch = () => {
+const useCalendar = () => {
   const [state, dispatch] = useReducer(calendarReducer, calendarInitState);
 
   const fetchData = async () => {
@@ -19,4 +19,4 @@ const useCalendarFetch = () => {
   }, []);
 };
 
-export default useCalendarFetch;
+export default useCalendar;

@@ -1,16 +1,16 @@
 import React from 'react';
 import DiaryForm from '../Components/Diary/DiaryForm';
-import Modal from '../Components/Modal';
 import { DiaryProvider } from '../Context/DiaryContext';
-import ModalSmall from '../Components/ModalSmall';
+import DiaryModal from '../Components/DiaryModal';
+import DiaryModalSmall from '../Components/DiaryModalSmall';
 
-const Diary = ({ history }) => {
+const Diary = () => {
   return (
     <main>
-      <DiaryProvider history={history}>
+      <DiaryProvider>
         <DiaryForm />
-        <Modal />
-        <ModalSmall />
+        <DiaryModal />
+        <DiaryModalSmall />
       </DiaryProvider>
     </main>
   );
