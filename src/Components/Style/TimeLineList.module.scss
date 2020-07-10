@@ -3,9 +3,9 @@ $mainColor: #67bff9;
 .timelineList {
   position: relative;
   border: 1px solid #fff;
-  margin: 1.75rem;
-  width: 13rem;
-  height: 13rem;
+  margin: 0.4rem;
+  width: 15rem;
+  height: 15rem;
   overflow: hidden;
 
   &:nth-child(4n) {
@@ -13,6 +13,9 @@ $mainColor: #67bff9;
   }
   &:nth-child(4n + 1) {
     margin-left: 0;
+  }
+  &:nth-child(n + 5) {
+    margin-top: 1rem;
   }
   &:hover {
     border: 1px solid $mainColor;
@@ -25,10 +28,10 @@ $mainColor: #67bff9;
       position: absolute;
       bottom: 0px;
       width: 100%;
-      background-color: rgba($color: #fff, $alpha: 0.75);
-      padding: 1rem;
+      background-color: rgba($color: #fff, $alpha: 0.6);
+      padding: 0.5rem 1rem 0.5rem 1rem;
       color: $mainColor;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
   }
