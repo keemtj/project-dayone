@@ -48,7 +48,10 @@ const usePosts = () => {
   };
 
   const bookmarkDiary = () => {
-    dispatch({ type: 'TOGGLE_BOOKMARK' });
+    dispatch({
+      type: 'TOGGLE_BOOKMARK',
+      isBookmarked: state.currentDiary.isBookmarked,
+    });
   };
 
   useEffect(() => {

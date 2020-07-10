@@ -80,7 +80,7 @@ const mainReducer = (state, action) => {
         ...state,
         currentDiary: {
           ...state.currentDiary,
-          isBookmarked: !state.currentDiary.isBookmarked,
+          isBookmarked: !action.isBookmarked,
         },
       };
     default:
