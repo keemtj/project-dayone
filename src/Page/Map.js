@@ -12,10 +12,10 @@ const Map = () => {
   const { state } = context;
   const { diaries } = state;
 
-  const [sublist, setSublist] = useState([]);
+  const [mapList, setMaplist] = useState([]);
 
   const filterDiariesByLoc = (lat, lng) => {
-    setSublist(
+    setMaplist(
       diaries.filter(
         ({ location }) => location.lat === lat && location.lng === lng,
       ),
@@ -30,7 +30,7 @@ const Map = () => {
         diaries={diaries}
         filterDiariesByLoc={filterDiariesByLoc}
       />
-      <DiarySublist sublist={sublist} />
+      <DiarySublist mapList={mapList} />
     </main>
   );
 };

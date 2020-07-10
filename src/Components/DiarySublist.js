@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/DiarySublist.module.scss';
+import { CalendarContext } from '../Context/CalendarContext';
 
 const cx = classNames.bind(styles);
 
-const DiarySublist = ({ sublist }) => {
+const DiarySublist = ({ mapList }) => {
+  const calendarList = React.useContext(CalendarContext);
+  const subList = calendarList || mapList;
+
   return (
     <ul className={cx('diaryList')}>
       <div className={cx('addBtn')}>+</div>
-      {sublist.map(({ id, title, content, imagePaths }) => {
+      {subList.map(({ id, title, content, imagePaths }) => {
         return (
           <li key={id} className={cx('diary')}>
             <img
