@@ -10,6 +10,7 @@ const LoginContext = createContext(loginInitialState);
 const MainProvider = ({ children }) => {
   const [
     state,
+    dispatch,
     fetchData,
     writePost,
     submitDiary,
@@ -40,6 +41,7 @@ const MainProvider = ({ children }) => {
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    dispatch,
   };
   return (
     <MainContext.Provider value={mainData}>
