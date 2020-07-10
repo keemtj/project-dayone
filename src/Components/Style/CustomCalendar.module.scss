@@ -46,6 +46,7 @@
       font-size: 1rem;
       width: 6rem;
       height: 6rem;
+      border-radius: 5px;
       // border: 1px solid gray;
 
       &:enabled {
@@ -74,20 +75,16 @@
       line-height: 2rem;
     }
 
-    & .amount_1 {
+    & .oneDiary {
       background: #d1ecfd;
     }
 
-    & .amount_2 {
+    & .someDiaries {
       background: #abdcfc;
     }
 
-    & .amount_3 {
+    & .manyDiaries {
       background: #67bff9;
-    }
-
-    & .amount_4 {
-      background: #309ae0;
     }
   }
 }
