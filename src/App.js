@@ -66,7 +66,16 @@ function App() {
   const loginData = { state, dispatch };
 
   return (
-    <loginContext.Provider value={loginData}>
+    <>
+      {/* 로그인 하기 귀찮아서 만든 코드 */}
+      <loginContext.Provider value={loginData}>
+        <TestProvider>
+          <WrapperPage />
+        </TestProvider>
+      </loginContext.Provider>
+
+      {/* 로그인화면이 나오는 원래코드 */}
+      {/* <loginContext.Provider value={loginData}>
       {state.isLoggedIn ? (
         <TestProvider>
           <WrapperPage />
@@ -74,7 +83,8 @@ function App() {
       ) : (
         <Login state={state} dispatch={dispatch} />
       )}
-    </loginContext.Provider>
+    </loginContext.Provider> */}
+    </>
   );
 }
 
