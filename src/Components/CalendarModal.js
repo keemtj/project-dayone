@@ -21,18 +21,17 @@ const CalendarModal = () => {
   } = useCalendar();
 
   const { now, modal } = state;
-  const { warning, inputs } = modal;
+  const { warning, inputs, display } = modal;
 
-  useEffect(() => {
-    console.log(modal);
-  }, []);
+  // console.log(modal);
 
   return (
     <div
       className={cx('dimmed')}
-      style={{ display: state }}
+      style={{ display: modal.display ? 'block' : 'none' }}
       onClick={onClickDimmed}
     >
+      {console.log(modal)}
       <div className={cx('modal')}>
         <ul className={cx('inputs')}>
           <li>

@@ -13,7 +13,7 @@ export const calendarInitState = {
     datesArray: [],
   },
   modal: {
-    state: 'none',
+    display: false,
     inputs: { year: '', month: '' },
     warning: '',
   },
@@ -108,7 +108,7 @@ export const calendarReducer = (state, action) => {
       return {
         ...state,
         modal: {
-          state: 'block',
+          display: true,
           inputs: {
             year: state.now.year,
             month: state.now.month,
@@ -121,7 +121,7 @@ export const calendarReducer = (state, action) => {
         ...state,
         modal: {
           ...state.modal,
-          state: 'none',
+          display: false,
         },
       };
     case 'CHANGE_INPUTS':

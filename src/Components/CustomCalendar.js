@@ -17,7 +17,7 @@ const CustomCalendar = () => {
   const { useCalendar } = context;
   const {
     state,
-    getNow,
+    // getNow,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
@@ -28,9 +28,9 @@ const CustomCalendar = () => {
   const { now, calendar } = state;
   const { year, month, datesArray, startDay } = calendar;
 
-  useEffect(() => {
-    getNow();
-  }, []);
+  // useEffect(() => {
+  // getNow();
+  // }, []);
 
   return (
     <>

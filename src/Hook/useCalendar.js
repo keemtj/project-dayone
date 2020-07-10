@@ -62,9 +62,9 @@ const useCalendar = () => {
     const yy = today.getFullYear();
     const mm = today.getMonth() + 1;
     const dd =
-      new String(today)[11] === '0'
-        ? new String(today).slice(10, 11)
-        : new String(today).slice(9, 11);
+      new String(today)[8] === '0'
+        ? new String(today).slice(9, 10)
+        : new String(today).slice(8, 10);
 
     dispatch({
       type: 'GET_NOW',
@@ -109,7 +109,11 @@ const useCalendar = () => {
     }
   };
 
-  const openModal = () => dispatch({ type: 'OPEN_MODAL' });
+  // const openModal = () => dispatch({ type: 'OPEN_MODAL' });
+  const openModal = ({ target }) => {
+    console.log(target);
+    dispatch({ type: 'OPEN_MODAL' });
+  };
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
   const onClickDimmed = ({ target }) => {
@@ -160,6 +164,7 @@ const useCalendar = () => {
 
   useEffect(() => {
     // fetchData();
+    getNow();
   }, []);
 
   return {
