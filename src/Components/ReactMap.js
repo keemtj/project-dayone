@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
 /* eslint-disable no-new */
 import React, { useEffect } from 'react';
@@ -21,26 +22,65 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    const imageSrc =
-      'https://user-images.githubusercontent.com/67693474/86579099-cdbf2d00-bfb7-11ea-9c6e-177382b49033.png';
-    const imageSize = new kakao.maps.Size(100, 100); // 마커이미지의 크기입니다
-    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    const markerImage = new kakao.maps.MarkerImage(
-      imageSrc,
-      imageSize,
-      imageOption,
+    let selectedMarker = null;
+
+    const normalImageSrc =
+      'https://user-images.githubusercontent.com/67693474/87041096-ad4bd880-c22c-11ea-9f6b-c97dbc74a2d9.png';
+    const clickImageSrc =
+      'https://user-images.githubusercontent.com/67693474/87041692-935ec580-c22d-11ea-9fbf-772878fffa18.png';
+    const normalImageSize = new kakao.maps.Size(50, 64);
+    const overImageSize = new kakao.maps.Size(55, 70);
+    const clickImageSize = new kakao.maps.Size(55, 70);
+    const normalImageOption = {
+      offset: new kakao.maps.Point(0, 0),
+      shape: 'poly',
+      coords:
+        '26, 61, 29, 58, 31, 56, 34, 54, 37, 50, 39, 47, 43, 44, 46, 41, 47, 36, 48, 30, 49, 22, 47, 17, 45, 12, 40, 7, 35, 4, 28, 2, 22, 3, 16, 4, 10, 8, 7, 12, 4, 18, 2, 24, 2, 30, 3, 35, 5, 40, 8, 44, 11, 47, 14, 48, 17, 52, 19, 55, 22, 28',
+    };
+    const overImageOption = {
+      offset: new kakao.maps.Point(0, 5),
+    };
+    const clickImageOption = {
+      offset: new kakao.maps.Point(0, 5),
+      shape: 'poly',
+      coords:
+        '29, 67, 33, 64, 36, 60, 39, 55, 40, 53, 45, 51, 49, 48, 52, 42, 52, 35, 53, 29, 54, 24, 52, 18, 48, 13, 44, 9, 37, 5, 31, 4, 25, 4, 18, 5, 13, 9, 9, 14, 6, 19, 5, 24, 3, 29, 4, 35, 5, 42, 8, 47, 12, 50, 16, 53, 20, 56, 22, 59, 25, 63',
+    };
+
+    const normalImage = new kakao.maps.MarkerImage(
+      normalImageSrc,
+      normalImageSize,
+      normalImageOption,
+    );
+    const overImage = new kakao.maps.MarkerImage(
+      normalImageSrc,
+      overImageSize,
+      overImageOption,
+    );
+    const clickImage = new kakao.maps.MarkerImage(
+      clickImageSrc,
+      clickImageSize,
+      clickImageOption,
     );
 
-    const makeOverListener = (map, marker, infowindow) => () => {
-      infowindow.open(map, marker);
+    const makeOverListener = (marker) => () => {
+      if (!selectedMarker || selectedMarker !== marker) {
+        marker.setImage(overImage);
+      }
     };
 
-    const makeOutListener = (infowindow) => () => {
-      infowindow.close();
+    const makeOutListener = (marker) => () => {
+      if (!selectedMarker || selectedMarker !== marker) {
+        marker.setImage(normalImage);
+      }
     };
 
-    const makeClickListener = (lat, lng) => () => {
+    const makeClickListener = (marker, lat, lng) => () => {
+      if (!selectedMarker || marker !== selectedMarker) {
+        !!selectedMarker && selectedMarker.setImage(normalImage);
+        marker.setImage(clickImage);
+      }
+      selectedMarker = marker;
       filterDiariesByLoc(lat, lng);
     };
 
@@ -51,28 +91,25 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
 
         const marker = new kakao.maps.Marker({
           position: new kakao.maps.LatLng(lat, lng),
-          image: markerImage,
-        });
-
-        const infowindow = new kakao.maps.InfoWindow({
-          content: diary.title,
+          image: normalImage,
         });
 
         kakao.maps.event.addListener(
           marker,
           'click',
-          makeClickListener(lat, lng),
+          makeClickListener(marker, lat, lng),
         );
 
         kakao.maps.event.addListener(
           marker,
           'mouseover',
-          makeOverListener(map, marker, infowindow),
+          makeOverListener(marker),
         );
+
         kakao.maps.event.addListener(
           marker,
           'mouseout',
-          makeOutListener(infowindow),
+          makeOutListener(marker),
         );
 
         markers.push(marker);
