@@ -58,7 +58,7 @@ const DiaryWrite = () => {
 
       [...child.children].forEach((v) => {
         if (v.nodeName !== 'IMG') return;
-        images.push(v);
+        images.push(v.src);
       });
     });
     console.log(images);
