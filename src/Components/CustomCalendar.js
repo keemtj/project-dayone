@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 const CustomCalendar = () => {
   const context = React.useContext(CalendarContext);
-  const { useCalendar } = context;
+  const { calendarHook } = context;
   const {
     state,
     // getNow,
@@ -23,7 +23,7 @@ const CustomCalendar = () => {
     onClickNextMonth,
     onClickNextYear,
     openModal,
-  } = useCalendar();
+  } = calendarHook;
 
   const { now, calendar } = state;
   const { year, month, datesArray, startDay } = calendar;

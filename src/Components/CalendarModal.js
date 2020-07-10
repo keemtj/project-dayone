@@ -11,27 +11,24 @@ const cx = classNames.bind(styles);
 
 const CalendarModal = () => {
   const context = React.useContext(CalendarContext);
-  const { useCalendar } = context;
+  const { calendarHook } = context;
   const {
     state,
     closeModal,
     onClickDimmed,
     changeCalendarState,
     changeInputs,
-  } = useCalendar();
+  } = calendarHook;
 
   const { now, modal } = state;
   const { warning, inputs, display } = modal;
 
-  // console.log(modal);
-
   return (
     <div
       className={cx('dimmed')}
-      style={{ display: modal.display ? 'block' : 'none' }}
+      style={{ display: display ? 'block' : 'none' }}
       onClick={onClickDimmed}
     >
-      {console.log(modal)}
       <div className={cx('modal')}>
         <ul className={cx('inputs')}>
           <li>

@@ -4,7 +4,8 @@ import useCalendar from '../Hook/useCalendar';
 export const CalendarContext = React.createContext(null);
 
 export const CalendarProvider = ({ children, history }) => {
-  const contextValue = { history, useCalendar };
+  const calendarHook = useCalendar();
+  const contextValue = { history, calendarHook };
 
   return (
     <CalendarContext.Provider value={contextValue}>

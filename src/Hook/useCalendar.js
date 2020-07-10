@@ -113,6 +113,7 @@ const useCalendar = () => {
   const openModal = ({ target }) => {
     console.log(target);
     dispatch({ type: 'OPEN_MODAL' });
+    console.log(modal);
   };
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
