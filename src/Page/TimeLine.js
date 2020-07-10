@@ -20,13 +20,13 @@ const Timeline = () => {
   return (
     <div>
       <div className={cx('timelineNav')}>
-        <button type="button">
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon', 'active')} />
+        <button type="button" className={cx('active')}>
+          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
         </button>
-        <button type="button">
+        <button type="button" className={cx('')}>
           <FontAwesomeIcon icon={faThList} className={cx('icon')} />
         </button>
-        <button type="button">
+        <button type="button" className={cx('')}>
           <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
         </button>
       </div>

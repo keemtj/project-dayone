@@ -6,7 +6,6 @@ const cx = classNames.bind(styles);
 
 const TimeLineList = ({ diary }) => {
   const { title, content, date, imagePaths } = diary;
-  console.log(diary);
   console.log(content, date);
 
   return (

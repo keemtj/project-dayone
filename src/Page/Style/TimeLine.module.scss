@@ -5,10 +5,17 @@ $mainColor: #67bff9;
   color: #d1d1d1;
   font-size: 1.8rem;
   text-align: end;
-  .icon {
+  button {
     margin-left: 1rem;
-    &:last-child {
-      font-size: 1.9rem;
+    background-color: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    .icon {
+      text-align: center;
+      &:last-child {
+        font-size: 1.9rem;
+      }
     }
     &:hover {
       color: $mainColor;
