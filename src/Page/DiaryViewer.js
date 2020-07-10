@@ -1,8 +1,8 @@
 import React from 'react';
-import { testContext } from '../Context/testContext';
+import { MainContext } from '../Context/MainContext';
 
 const DiaryViewer = () => {
-  const { state } = React.useContext(testContext);
+  const { state } = React.useContext(MainContext);
   console.log(state);
   return (
     <div>

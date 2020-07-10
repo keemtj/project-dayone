@@ -9,13 +9,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/CustomCalendar.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
-import { testContext } from '../Context/testContext';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const CustomCalendar = () => {
   const calCtx = React.useContext(CalendarContext);
-  const testCtx = React.useContext(testContext);
+  const testCtx = React.useContext(MainContext);
   const { state } = testCtx;
   const {
     dispatch,

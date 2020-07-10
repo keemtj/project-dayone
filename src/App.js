@@ -1,24 +1,18 @@
 import React, { useContext } from 'react';
 import './App.css';
-import { TestProvider } from './Context/testContext';
 import Login from './Page/Login';
 import WrapperPage from './Page/WrapperPage';
-import { loginContext } from './Context/loginContext';
+import { LoginContext } from './Context/MainContext';
 
 function App() {
-  const context = useContext(loginContext);
-  const { state } = context;
-  const { isLoggedIn } = state;
+  const context = useContext(LoginContext);
+  const { loginState } = context;
+  const { isLoggedIn } = loginState;
 
   return (
     <>
-      {isLoggedIn ? (
-        <TestProvider>
-          <WrapperPage />
-        </TestProvider>
-      ) : (
-        <Login />
-      )}
+      {console.log(context)}
+      {isLoggedIn ? <WrapperPage /> : <Login />}
     </>
   );
 }

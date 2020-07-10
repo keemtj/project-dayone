@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
-import { initialState, loginReducer } from '../Reducer/loginReducer';
+import { loginInitialState, loginReducer } from '../Reducer/loginReducer';
 
 const useLogin = () => {
-  const [state, dispatch] = useReducer(loginReducer, initialState);
+  const [loginState, dispatch] = useReducer(loginReducer, loginInitialState);
 
   const fetchChange = (name, value) => {
     return dispatch({ type: 'CHANGE_INPUT', name, value });
@@ -20,7 +20,13 @@ const useLogin = () => {
     return dispatch({ type: 'RESET_INPUT' });
   };
 
-  return [state, fetchChange, fetchUserCheck, fetchErrorMessage, fetchReset];
+  return [
+    loginState,
+    fetchChange,
+    fetchUserCheck,
+    fetchErrorMessage,
+    fetchReset,
+  ];
 };
 
 export default useLogin;
