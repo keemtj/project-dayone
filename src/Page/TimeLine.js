@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import {
   faThLarge,
@@ -8,15 +8,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
-import { MainContext } from '../Context/MainContext';
+import usePosts from '../Hook/usePosts';
+// import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  const context = useContext(MainContext);
-  const { state } = context;
-  // console.log(state.diaries);
-
+  const [fetchData] = usePosts();
+  console.log(fetchData.diaries);
   return (
     <div>
       <div className={cx('timelineNav')}>
@@ -25,16 +24,9 @@ const Timeline = () => {
         <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
       </div>
       <ul className={cx('timelineWrapper')}>
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
-        <TimeLineList />
+        {fetchData.diaries.map((diary) => (
+          <TimeLineList key={diary.id} />
+        ))}
       </ul>
     </div>
   );
