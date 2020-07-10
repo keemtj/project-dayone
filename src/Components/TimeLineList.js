@@ -14,22 +14,17 @@ const TimeLineList = ({ diary }) => {
   const { bookmarkDiary } = context;
 
   const onClickBookmark = () => {
-    bookmarkDiary(isBookmarked);
+    bookmarkDiary();
   };
 
   return (
     <li className={cx('timelineList')}>
-      <button
-        type="button"
-        className={cx('iconBtn')}
-        onClick={() => onClickBookmark(isBookmarked)}
-      >
+      <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
         ) : (
           <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
         )}
-        {console.log(isBookmarked)}
       </button>
       <Link to={`/diaryViewer/${id}`}>
         <figure>
