@@ -1,8 +1,7 @@
-let diaryId = 3;
+let diaryId = 12;
 
 const diaries = [
   {
-    _id: 1,
     id: 1,
     title: 'Diary Title 1',
     content: 'This is diary 1',
@@ -15,7 +14,6 @@ const diaries = [
     isBookmarked: true,
   },
   {
-    _id: 1,
     id: 2,
     title: 'Diary Title 2',
     content: 'This is diary 2',
@@ -25,7 +23,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 1,
     id: 3,
     title: 'Diary Title 3',
     content: 'This is diary 3',
@@ -38,7 +35,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 2,
     id: 4,
     title: 'Diary Title 4',
     content: 'This is diary 4',
@@ -51,7 +47,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 3,
     id: 5,
     title: 'Diary Title 5',
     content: 'This is diary 5',
@@ -64,7 +59,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 4,
     id: 6,
     title: 'Diary Title 6',
     content: 'This is diary 6',
@@ -77,7 +71,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 2,
     id: 7,
     title: 'Diary Title 7',
     content: 'This is diary 7',
@@ -90,7 +83,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 1,
     id: 8,
     title: 'Diary Title 8',
     content: 'This is diary 8',
@@ -103,7 +95,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 3,
     id: 9,
     title: 'Diary Title 9',
     content: 'This is diary 9',
@@ -116,7 +107,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 4,
     id: 10,
     title: 'Diary Title 10',
     content: 'This is diary 10',
@@ -129,7 +119,6 @@ const diaries = [
     isBookmarked: false,
   },
   {
-    _id: 4,
     id: 11,
     title: 'Diary Title 11',
     content: 'This is diary 11',
