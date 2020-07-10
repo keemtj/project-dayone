@@ -20,9 +20,15 @@ const Timeline = () => {
   return (
     <div>
       <div className={cx('timelineNav')}>
-        <FontAwesomeIcon icon={faThLarge} className={cx('icon', 'active')} />
-        <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-        <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
+        <button type="button">
+          <FontAwesomeIcon icon={faThLarge} className={cx('icon', 'active')} />
+        </button>
+        <button type="button">
+          <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+        </button>
+        <button type="button">
+          <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
+        </button>
       </div>
       <ul className={cx('timelineWrapper')}>
         {fetchData.diaries.map((diary) => (
