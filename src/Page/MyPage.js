@@ -16,7 +16,7 @@ const MyPage = () => {
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
   return (
-    <main>
+    <main className={cx('main')}>
       <div className={cx('profile')}>
         <h2 className={cx('greeting')}>
           안녕하세요
