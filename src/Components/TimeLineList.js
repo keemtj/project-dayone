@@ -42,8 +42,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
             }}
           />
           <figcaption>
-            <h2>{title}</h2>
-            {/* {timelineNav === 'media' ? '' : title} */}
+            {timelineNav === 'media' ? '' : title}
             <p>
               {timelineNav === 'card' || timelineNav === 'media' ? '' : content}
             </p>

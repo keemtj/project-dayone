@@ -107,7 +107,6 @@ $mainColor: #67bff9;
       color: #181818;
       font-size: 1.6rem;
       font-weight: 500;
-      // width: calc(100vw - 400px);
       height: 200px;
 
       h2 {
@@ -135,8 +134,38 @@ $mainColor: #67bff9;
 
 // media
 @mixin timeline-media-layout {
+  position: relative;
+  border: 1px solid #d1d3d2;
+  width: 24%;
+  height: 25%;
+
+  &:nth-child(4n + 1) {
+    margin-right: 0.5rem;
+  }
+
+  &:nth-child(4n + 2) {
+    margin-right: 0.5rem;
+  }
+
+  &:nth-child(4n + 3) {
+    margin-right: 0.5rem;
+  }
+
+  &:nth-child(n + 5) {
+    margin-top: 0.8rem;
+  }
 }
+
 @mixin timeline-media-body {
+  figure {
+    .thumbnail {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 238px;
+      height: 238px;
+    }
+  }
 }
 
 // apply mixin

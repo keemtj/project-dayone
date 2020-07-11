@@ -43,7 +43,8 @@ $mainColor: #67bff9;
   // background-color: yellowgreen;
 
   &::after {
+    display: block;
     content: '';
-    flex: auto;
+    width: 24%;
   }
 }
