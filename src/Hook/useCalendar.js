@@ -127,6 +127,9 @@ const useCalendar = () => {
     closeModal();
   };
 
+  const changeMonthInput = () => {};
+  const changeYearInput = () => {};
+
   const changeInputs = ({ target }) => {
     const inputType = target.className;
     const { value } = target;
