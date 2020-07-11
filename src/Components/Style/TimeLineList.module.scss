@@ -107,16 +107,27 @@ $mainColor: #67bff9;
       color: #181818;
       font-size: 1.6rem;
       font-weight: 500;
+      // width: calc(100vw - 400px);
       height: 200px;
+
       h2 {
         height: 30px;
       }
+
       p {
+        width: calc(100vw - 400px);
+        height: 70%;
         margin-top: 1rem;
         font-size: 1.2rem;
-        white-space: normal;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: normal;
+        line-height: 1.4;
+        text-align: left;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
       }
     }
   }
