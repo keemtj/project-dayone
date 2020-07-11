@@ -16,6 +16,7 @@ const MainProvider = ({ children }) => {
     submitDiary,
     writeTitle,
     pushImg,
+    bookmarkDiary,
   ] = usePosts();
 
   const [
@@ -33,6 +34,7 @@ const MainProvider = ({ children }) => {
     submitDiary,
     writeTitle,
     pushImg,
+    bookmarkDiary,
   };
 
   const loginData = {
