@@ -42,10 +42,13 @@ const TimeLineList = ({ diary, timelineNav }) => {
             }}
           />
           <figcaption>
-            {timelineNav === 'media' ? '' : title}
-            {timelineNav === 'list' && '\n'}
-            {timelineNav === 'list' && date}
-            <p>
+            <div className={cx('diaryTitle')}>
+              {timelineNav === 'media' ? '' : title}
+            </div>
+            <div className={cx('diaryDate')}>
+              {timelineNav === 'list' && date}
+            </div>
+            <p className={cx('diaryContent')}>
               {timelineNav === 'card' || timelineNav === 'media'
                 ? null
                 : content}
