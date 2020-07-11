@@ -127,25 +127,35 @@ const useCalendar = () => {
     closeModal();
   };
 
-  const changeMonthInput = () => {};
-  const changeYearInput = () => {};
-
-  const changeInputs = ({ target }) => {
-    const inputType = target.className;
+  const changeMonthInput = ({ target }) => {
     const { value } = target;
+    const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_INPUTS', inputType, value });
+    dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
+    console.log('modal', modal.inputs, 'now', now);
 
-    if (inputType === 'month' && ((value !== '' && value < 1) || value > 12)) {
+    if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
-    } else if (
-      (inputType === 'year' && value > now.year) ||
-      (inputType === 'month' &&
-        modal.inputs.year === now.year &&
-        value > now.month) ||
-      (inputType === 'year' &&
-        value === now.year &&
-        modal.inputs.month > now.month)
+    } else if (modal.inputs.year === now.year && numberValue > now.month) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+      });
+    } else {
+      dispatch({ type: 'REMOVE_WARNING' });
+    }
+  };
+
+  const changeYearInput = ({ target }) => {
+    const { value } = target;
+    const numberValue = parseInt(value, 10);
+
+    dispatch({ type: 'CHANGE_YEAR_INPUT', numberValue });
+    console.log('modal', modal.inputs, 'now', now);
+
+    if (
+      numberValue > now.year ||
+      (numberValue === now.year && modal.inputs.month > now.month)
     ) {
       dispatch({
         type: 'SHOW_WARNING',
@@ -179,8 +189,9 @@ const useCalendar = () => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
     enterInputs,
+    changeYearInput,
+    changeMonthInput,
   };
 };
 

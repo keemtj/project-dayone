@@ -123,12 +123,20 @@ export const calendarReducer = (state, action) => {
           display: false,
         },
       };
-    case 'CHANGE_INPUTS':
+    case 'CHANGE_MONTH_INPUT':
       return {
         ...state,
         modal: {
           ...state.modal,
-          inputs: { ...state.modal.inputs, [action.inputType]: action.value },
+          inputs: { ...state.modal.inputs, month: action.value },
+        },
+      };
+    case 'CHANGE_YEAR_INPUT':
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          inputs: { ...state.modal.inputs, year: action.value },
         },
       };
     case 'SHOW_WARNING':
