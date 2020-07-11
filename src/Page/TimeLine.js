@@ -48,7 +48,11 @@ const Timeline = () => {
       </div>
       <ul className={cx('timelineWrapper')}>
         {fetchData.diaries.map((diary) => (
-          <TimeLineList key={diary.id} diary={diary} />
+          <TimeLineList
+            key={diary.id}
+            diary={diary}
+            timelineNav={timelineNav}
+          />
         ))}
       </ul>
     </div>

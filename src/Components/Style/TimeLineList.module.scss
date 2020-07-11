@@ -1,12 +1,9 @@
 $mainColor: #67bff9;
 
-.timelineList {
+@mixin timeline-card {
   position: relative;
   border: 1px solid #fff;
   min-width: 23%;
-  // margin: 0.81rem;
-  // width: 14rem;
-  // height: 14rem;
 
   &:nth-child(4n + 1) {
     margin-right: 1.66rem;
@@ -63,8 +60,29 @@ $mainColor: #67bff9;
       font-weight: 500;
     }
   }
+}
 
+@mixin timeline-list {
+}
+
+@mixin timeline-media {
+}
+
+@mixin timeline-hover {
   &:hover {
     border: 1px solid $mainColor;
   }
+}
+
+.timeline-card {
+  @include timeline-card;
+  @include timeline-hover;
+}
+
+.timeline-list {
+  @include timeline-list;
+}
+
+.timeline-media {
+  @include timeline-media;
 }

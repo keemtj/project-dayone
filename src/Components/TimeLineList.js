@@ -8,7 +8,7 @@ import styles from './Style/TimeLineList.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TimeLineList = ({ diary }) => {
+const TimeLineList = ({ diary, timelineNav }) => {
   const { id, title, content, date, imagePaths, isBookmarked } = diary;
   const context = useContext(MainContext);
   const { bookmarkDiary } = context;
@@ -18,7 +18,7 @@ const TimeLineList = ({ diary }) => {
   };
 
   return (
-    <li className={cx('timelineList')}>
+    <li className={cx(`timeline-${timelineNav}`)}>
       <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
