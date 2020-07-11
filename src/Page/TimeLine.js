@@ -18,8 +18,6 @@ const Timeline = () => {
   const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
 
   const onClickNav = (e) => {
-    // 조건 재설정
-    if (e.target.matches('path') || e.target.matches('svg')) return;
     setTimeLineNav(e.target.className);
   };
 
