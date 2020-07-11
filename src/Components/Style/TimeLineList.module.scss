@@ -34,7 +34,7 @@ $mainColor: #67bff9;
 @mixin timeline-card-layout {
   position: relative;
   border: 1px solid #d1d3d2;
-  width: 24%;
+  width: 240px;
   height: 238px;
 
   &:nth-child(4n + 1) {
