@@ -43,6 +43,8 @@ const TimeLineList = ({ diary, timelineNav }) => {
           />
           <figcaption>
             {timelineNav === 'media' ? '' : title}
+            &nbsp;
+            {timelineNav === 'list' && date}
             <p>
               {timelineNav === 'card' || timelineNav === 'media' ? '' : content}
             </p>
