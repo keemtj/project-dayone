@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -40,7 +41,13 @@ const TimeLineList = ({ diary, timelineNav }) => {
                 )`,
             }}
           />
-          <figcaption>{title}</figcaption>
+          <figcaption>
+            <h2>{title}</h2>
+            {/* {timelineNav === 'media' ? '' : title} */}
+            <p>
+              {timelineNav === 'card' || timelineNav === 'media' ? '' : content}
+            </p>
+          </figcaption>
         </figure>
       </Link>
     </li>
