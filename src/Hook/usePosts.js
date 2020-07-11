@@ -30,6 +30,21 @@ const usePosts = () => {
     }
   };
 
+  const getDiary = async (id) => {
+    // if (state.diaries.find((v) => v.id === +id)) return;
+    try {
+      const diary = await Api.getDiaryById(id);
+      console.log('testtt', diary);
+
+      dispatch({ type: 'GET_DIARY', diary });
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
+  };
+
   const writePost = (write) => {
     dispatch({ type: 'WRITE_POST', write });
   };
@@ -47,11 +62,29 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_IMG', images });
   };
 
+  const pushDiaryId = () => {
+    dispatch({ type: 'PUSH_DIARY_ID' });
+  };
+
+  const clearViewerDiary = () => {
+    dispatch({ type: 'CLEAR_VIEWERDIARY' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  return [state, fetchData, writePost, submitDiary, writeTitle, pushImg];
+  return [
+    state,
+    fetchData,
+    writePost,
+    submitDiary,
+    writeTitle,
+    pushImg,
+    pushDiaryId,
+    getDiary,
+    clearViewerDiary,
+  ];
 };
 
 export default usePosts;

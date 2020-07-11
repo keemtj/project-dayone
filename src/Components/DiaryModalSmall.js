@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 const ModalSmall = () => {
   const history = useHistory();
   const { modalState, setModalState } = React.useContext(DiaryContext);
-  const { submitDiary } = React.useContext(MainContext);
+  const { state, submitDiary } = React.useContext(MainContext);
 
   const onClick = (e) => {
     if (
@@ -28,7 +28,7 @@ const ModalSmall = () => {
   };
 
   const confirmSubmit = () => {
-    history.push(`/diaryViewer/${1}`);
+    history.push(`/diaryViewer/${state.currentDiary.id}`);
     setModalState('initial');
     if (modalState === 'Submit') submitDiary();
   };

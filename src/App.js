@@ -9,7 +9,13 @@ function App() {
   const { loginState } = context;
   const { isLoggedIn } = loginState;
 
-  return <>{isLoggedIn ? <WrapperPage /> : <Login />}</>;
+  return (
+    <>
+      {/* {isLoggedIn ? <WrapperPage /> : <Login />} */}
+      {/* 새로고침시 로그인 하기 귀찮아서 만듦 원본코드는 윗줄 */}
+      {<WrapperPage />}
+    </>
+  );
 }
 
 export default App;

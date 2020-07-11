@@ -10,6 +10,13 @@ const Api = {
       .catch((e) => {
         console.error(e, e.message);
       }),
+  getDiaryById: (id) =>
+    posts
+      .get(`/api/posts/${id - 1}`)
+      .then((res) => res.data)
+      .catch((e) => {
+        console.error(e, e.message);
+      }),
   postDiaries: (payload) =>
     posts
       .post('/api/posts', payload)

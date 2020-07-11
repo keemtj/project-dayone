@@ -1,3 +1,8 @@
+const getToday = () => {
+  const today = new Date();
+  return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+};
+
 const initialState = {
   diaries: [
     // {
@@ -14,17 +19,20 @@ const initialState = {
     id: 1,
     title: '',
     body: '',
-    date: '',
+    date: getToday(),
     location: {},
     isBookmarked: false,
     imagePaths: [],
   },
+  viewerDiary: {},
   error: {
     state: false,
     message: null,
   },
   loading: false,
 };
+
+console.log(new Date());
 
 const mainReducer = (state, action) => {
   switch (action.type) {
@@ -68,6 +76,22 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         currentDiary: { ...state.currentDiary, imagePaths: action.images },
+      };
+    case 'PUSH_DIARY_ID':
+      return {
+        ...state,
+        currentDiary: { ...state.currentDiary, id: state.diaries.length + 1 },
+        // currentDiary: { ...state.currentDiary },
+      };
+    case 'GET_DIARY':
+      return {
+        ...state,
+        viewerDiary: action.diary,
+      };
+    case 'CLEAR_VIEWERDIARY':
+      return {
+        ...state,
+        viewerDiary: {},
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
