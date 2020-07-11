@@ -18,8 +18,7 @@ const Timeline = () => {
   const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
 
   const onClickNav = (e) => {
-    // 조건 재설정
-    if (e.target.matches('path') || e.target.matches('svg')) return;
+    if (e.target.classList.length === 2) return;
     setTimeLineNav(e.target.className);
   };
 
@@ -50,7 +49,11 @@ const Timeline = () => {
       </div>
       <ul className={cx('timelineWrapper')}>
         {fetchData.diaries.map((diary) => (
-          <TimeLineList key={diary.id} diary={diary} />
+          <TimeLineList
+            key={diary.id}
+            diary={diary}
+            timelineNav={timelineNav}
+          />
         ))}
       </ul>
     </div>

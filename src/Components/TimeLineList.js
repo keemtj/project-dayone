@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -8,7 +9,7 @@ import styles from './Style/TimeLineList.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TimeLineList = ({ diary }) => {
+const TimeLineList = ({ diary, timelineNav }) => {
   const { id, title, content, date, imagePaths, isBookmarked } = diary;
   const context = useContext(MainContext);
   const { bookmarkDiary } = context;
@@ -18,7 +19,7 @@ const TimeLineList = ({ diary }) => {
   };
 
   return (
-    <li className={cx('timelineList')}>
+    <li className={cx(`timeline-${timelineNav}`)}>
       <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
@@ -40,7 +41,19 @@ const TimeLineList = ({ diary }) => {
                 )`,
             }}
           />
-          <figcaption>{title}</figcaption>
+          <figcaption>
+            <div className={cx('diaryTitle')}>
+              {timelineNav === 'media' ? '' : title}
+            </div>
+            <div className={cx('diaryDate')}>
+              {timelineNav === 'list' && date}
+            </div>
+            <p className={cx('diaryContent')}>
+              {timelineNav === 'card' || timelineNav === 'media'
+                ? null
+                : content}
+            </p>
+          </figcaption>
         </figure>
       </Link>
     </li>
