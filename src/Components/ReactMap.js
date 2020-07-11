@@ -87,6 +87,11 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
     const makeMarkers = (diaries) => {
       const markers = [];
       diaries.forEach((diary) => {
+        console.log('prop length: ', Object.keys(diary.location).length);
+        const hasLocation = Object.keys(diary.location).length > 0;
+        console.log('hasLocation?: ', hasLocation);
+        if (!hasLocation) return;
+
         const { lat, lng } = diary.location;
 
         const marker = new kakao.maps.Marker({
