@@ -18,6 +18,7 @@ const Timeline = () => {
   const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
 
   const onClickNav = (e) => {
+    if (e.target.classList.length === 2) return;
     setTimeLineNav(e.target.className);
   };
 
