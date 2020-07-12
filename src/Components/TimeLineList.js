@@ -14,19 +14,32 @@ const TimeLineList = ({ diary, timelineNav }) => {
   const context = useContext(MainContext);
   const { bookmarkDiary } = context;
 
-  const onClickBookmark = () => {
-    bookmarkDiary();
+  const onClickBookmark = (e) => {
+    console.log(e.target.checked);
+    bookmarkDiary(e.target.checked);
   };
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
+      <input
+        id="ckBookmark"
+        type="checkbox"
+        checked={isBookmarked ? 'checked' : ''}
+        onChange={onClickBookmark}
+      />
+      <label htmlFor="ckBookmark">
+        <span>
+          체크
+          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
+        </span>
+      </label>
+      {/* <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
         ) : (
           <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
         )}
-      </button>
+      </button> */}
       <Link to={`/diaryViewer/${id}`}>
         <figure>
           <div

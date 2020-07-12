@@ -8,26 +8,47 @@ $mainColor: #67bff9;
 }
 
 @mixin timeline-bookmark {
-  .iconBtn {
-    border: none;
-    background-color: rgba($color: #000000, $alpha: 0);
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  input[type='checkbox'] + label span {
+    display: inline-block;
+    width: 15px;
+    height: 20px;
+    vertical-align: middle;
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    outline: none;
+    color: #1d1d1d;
+    font-size: 1.2rem;
     cursor: pointer;
-
-    .bookmarked {
-      // Need to fix
-      color: $mainColor;
-      font-size: 1.2rem;
-    }
-
-    .notBookmarked {
-      color: #1d1d1d;
-      font-size: 1.2rem;
-    }
   }
+
+  input[type='checkbox']:checked + label span {
+    color: $mainColor;
+  }
+
+  // .iconBtn {
+  //   border: none;
+  //   background-color: rgba($color: #000000, $alpha: 0);
+  //   position: absolute;
+  //   top: 0.5rem;
+  //   right: 0.5rem;
+  //   outline: none;
+  //   cursor: pointer;
+  // }
+
+  // .bookmarked {
+  //   // Need to fix
+  //   color: $mainColor;
+  //   font-size: 1.2rem;
+  // }
+
+  // .notBookmarked {
+  //   color: #1d1d1d;
+  //   font-size: 1.2rem;
+  // }
 }
 
 @mixin timeline-ellipsis {
