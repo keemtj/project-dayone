@@ -33,7 +33,9 @@ const CustomCalendar = () => {
 
   const getSublist = ({ target }) => {
     const date = target.className.split(' ')[0];
+    console.log('getSublist..date: ', date);
     const sublist = diaries.filter((diary) => diary.date === date);
+    console.log('sublist: ', sublist);
     dispatch({ type: 'GET_SUBLIST', sublist });
   };
 
