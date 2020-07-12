@@ -190,8 +190,8 @@ const useCalendar = () => {
     onClickDimmed,
     changeCalendarState,
     enterInputs,
-    changeMonthInput,
     changeYearInput,
+    changeMonthInput,
   };
 };
 
