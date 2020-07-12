@@ -18,7 +18,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
   const onChangeBookmark = (e) => {
     console.log('[c]', e.target.checked);
     console.log('[dc]', e.target.defaultChecked);
-    bookmarkDiary(id, e.target.checked);
+    bookmarkDiary(id, e.target.defaultChecked);
   };
 
   return (
@@ -26,7 +26,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
       <input
         id={id}
         type="checkbox"
-        checked={isBookmarked ? 'checked' : ''}
+        defaultChecked={isBookmarked ? 'checked' : ''}
         onChange={onChangeBookmark}
       />
       <label htmlFor={id}>

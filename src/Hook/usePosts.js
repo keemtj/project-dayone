@@ -47,9 +47,10 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_IMG', images });
   };
 
-  const bookmarkDiary = (isBookmarked) => {
+  const bookmarkDiary = (id, isBookmarked) => {
     dispatch({
       type: 'TOGGLE_BOOKMARK',
+      id,
       isBookmarked,
     });
   };
