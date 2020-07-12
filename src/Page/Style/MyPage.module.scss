@@ -5,11 +5,11 @@
 
   .profile {
     display: flex;
-    // justify-content: space-between;
+    justify-content: space-between;
     margin: 2rem 0 0;
     border-bottom: 1px solid #ddd;
     position: relative;
-    padding: 1rem 3rem 2rem;
+    padding: 1rem 1rem 2rem;
 
     .greeting,
     .greeting span {
@@ -17,17 +17,19 @@
       text-align: center;
       display: block;
       line-height: 1.7rem;
+      margin-left: 3rem;
     }
 
     .greeting span {
       font-weight: 700;
+      margin: 0;
     }
 
     .statistics {
       display: flex;
       justify-content: space-between;
-      width: 50%;
-      margin: 1rem 7rem 0;
+      width: 45%;
+      margin: 1rem 3rem 0;
 
       & li {
         text-align: center;
@@ -47,14 +49,16 @@
       border: none;
       cursor: pointer;
       border-radius: 5px;
-      position: absolute;
-      top: 1.6rem;
-      right: 0;
+      // position: absolute;
+      // top: 1.5rem;
+      // right: 0;
+      margin: 0.5rem 0 0;
       color: #aaa;
       background: #eee;
       width: 80px;
       height: 2rem;
       transition: 0.3s;
+      outline: none;
 
       .icon {
         margin-right: 3px;
@@ -82,22 +86,27 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    width: 95%;
     margin: 0 auto;
 
     .diary figure {
-      margin: 20px 10px 0;
+      margin: 20px 0.4rem 0;
+      width: 11rem;
 
       .thumbnail {
         width: 11rem;
         height: 9rem;
       }
 
-      figcaption {
+      .diaryTitle {
         height: 2rem;
         text-align: center;
-        padding-top: 7px;
         background: rgba(240, 240, 240, 0.884);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 7px 10px 0;
+        font-weight: 600;
       }
     }
   }

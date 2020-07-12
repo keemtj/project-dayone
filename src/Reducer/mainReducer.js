@@ -83,6 +83,12 @@ const mainReducer = (state, action) => {
           isBookmarked: !action.isBookmarked,
         },
       };
+    case 'LOG_OUT':
+      // return initialState;
+      return {
+        ...state,
+        userData: {},
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
