@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { MainContext } from '../Context/MainContext';
-import styles from './Style/MyPage.module.scss';
-import DiaryViewer from './DiaryViewer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import styles from './Style/MyPage.module.scss';
+import DiaryViewer from './DiaryViewer';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +16,7 @@ const MyPage = () => {
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
   return (
-    <main>
+    <main className={cx('main')}>
       <div className={cx('profile')}>
         <h2 className={cx('greeting')}>
           안녕하세요
