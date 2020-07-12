@@ -20,12 +20,15 @@ const useLogin = () => {
     return dispatch({ type: 'RESET_INPUT' });
   };
 
+  const logOut = () => dispatch({ type: 'LOG_OUT' });
+
   return [
     loginState,
     fetchChange,
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    logOut,
   ];
 };
 

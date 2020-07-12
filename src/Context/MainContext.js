@@ -25,6 +25,7 @@ const MainProvider = ({ children }) => {
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    logOut,
   ] = useLogin();
 
   const mainData = {
@@ -35,6 +36,7 @@ const MainProvider = ({ children }) => {
     writeTitle,
     pushImg,
     bookmarkDiary,
+    dispatch,
   };
 
   const loginData = {
@@ -44,6 +46,7 @@ const MainProvider = ({ children }) => {
     fetchErrorMessage,
     fetchReset,
     dispatch,
+    logOut,
   };
   return (
     <MainContext.Provider value={mainData}>

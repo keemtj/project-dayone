@@ -5,15 +5,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/MyPage.module.scss';
 import DiaryViewer from './DiaryViewer';
-import { MainContext } from '../Context/MainContext';
+import { MainContext, LoginContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const MyPage = () => {
   const mainCtx = React.useContext(MainContext);
+  const loginCtx = React.useContext(LoginContext);
+  const { logOut } = loginCtx;
+  const { dispatch } = mainCtx;
   const { diaries, userData } = mainCtx.state;
   const { userId } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
+
+  const onClickLogOut = () => {
+    dispatch({ type: 'LOG_OUT' });
+    logOut();
+  };
 
   return (
     <main className={cx('main')}>
@@ -39,7 +47,11 @@ const MyPage = () => {
             <span className={cx('caption')}>평균 일기수</span>
           </li>
         </ul>
-        <button type="button" className={cx('logoutBtn')}>
+        <button
+          type="button"
+          className={cx('logoutBtn')}
+          onClick={onClickLogOut}
+        >
           <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
           로그아웃
         </button>
