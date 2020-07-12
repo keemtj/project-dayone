@@ -47,12 +47,18 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_IMG', images });
   };
 
-  const bookmarkDiary = (id, isBookmarked) => {
-    dispatch({
-      type: 'TOGGLE_BOOKMARK',
-      id,
-      isBookmarked,
-    });
+  const patchBookmark = async (id, isBookmarked) => {
+    // id = diary.id
+    // isBookmarked = e.target.checked
+    try {
+      await Api.patchDiaries({ id, isBookmarked });
+      dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
   };
 
   useEffect(() => {
@@ -67,7 +73,7 @@ const usePosts = () => {
     submitDiary,
     writeTitle,
     pushImg,
-    bookmarkDiary,
+    patchBookmark,
   ];
 };
 

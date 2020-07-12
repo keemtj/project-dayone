@@ -16,7 +16,7 @@ const MainProvider = ({ children }) => {
     submitDiary,
     writeTitle,
     pushImg,
-    bookmarkDiary,
+    patchBookmark,
   ] = usePosts();
 
   const [
@@ -35,7 +35,7 @@ const MainProvider = ({ children }) => {
     submitDiary,
     writeTitle,
     pushImg,
-    bookmarkDiary,
+    patchBookmark,
     dispatch,
   };
 
