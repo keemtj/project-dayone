@@ -16,8 +16,9 @@ const CalendarModal = () => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
     enterInputs,
+    changeMonthInput,
+    changeYearInput,
   } = calCtx;
 
   const { now, modal } = calendarState;
@@ -38,7 +39,7 @@ const CalendarModal = () => {
               min="1970"
               max={now.year}
               placeholder={now.year}
-              onChange={changeInputs}
+              onChange={changeYearInput}
               onKeyUp={enterInputs}
               value={inputs.year}
             />
@@ -51,7 +52,7 @@ const CalendarModal = () => {
               min="1"
               max="12"
               placeholder={now.month}
-              onChange={changeInputs}
+              onChange={changeMonthInput}
               onKeyUp={enterInputs}
               value={inputs.month}
             />

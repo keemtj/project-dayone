@@ -46,6 +46,13 @@ const loginReducer = (state, action) => {
         ...state,
         message: '가입하지 않은 아이디이거나, 잘못된 비밀번호 입니다.',
       };
+    case 'LOG_OUT':
+      return {
+        ...state,
+        isLoggedIn: false,
+        users: state.users.map((user) => ({ ...user, active: false })),
+        message: '',
+      };
     default:
       throw new Error('Unhandled action');
   }

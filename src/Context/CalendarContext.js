@@ -18,8 +18,9 @@ export const CalendarProvider = ({ children }) => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
     enterInputs,
+    changeMonthInput,
+    changeYearInput,
   } = useCalendar();
 
   const contextValue = {
@@ -36,8 +37,9 @@ export const CalendarProvider = ({ children }) => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
     enterInputs,
+    changeMonthInput,
+    changeYearInput,
   };
 
   return (
