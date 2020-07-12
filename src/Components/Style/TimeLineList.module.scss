@@ -76,14 +76,15 @@ $mainColor: #67bff9;
 
     figcaption {
       background-color: #f0f0f0;
-      padding: 0.6rem 1rem 0.7rem 1rem;
+      padding: 0.6rem 1rem 0.6rem 1rem;
       border-top: 1px solid #ffffff;
       color: #181818;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 500;
 
       .diaryTitle {
         @include timeline-ellipsis;
+        text-align: center;
         -webkit-line-clamp: 1;
         word-break: break-all;
       }
@@ -129,21 +130,24 @@ $mainColor: #67bff9;
         font-size: 1.6rem;
         font-weight: 500;
         @include timeline-ellipsis;
+        text-align: center;
         -webkit-line-clamp: 1;
       }
       .diaryDate {
         margin-top: 0.8rem;
         font-size: 1.2rem;
         color: #434548;
+        text-align: end;
       }
       .diaryContent {
         width: 100%;
-        height: 60%;
+        height: 57%;
         margin-top: 0.7rem;
         font-size: 1.2rem;
-        line-height: 1.2;
+        line-height: 1.6;
         @include timeline-ellipsis;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
+        text-indent: 0.8rem;
       }
     }
   }
