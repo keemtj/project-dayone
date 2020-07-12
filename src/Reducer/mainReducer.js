@@ -78,10 +78,7 @@ const mainReducer = (state, action) => {
     case 'TOGGLE_BOOKMARK':
       return {
         ...state,
-        currentDiary: {
-          ...state.currentDiary,
-          isBookmarked: !action.isBookmarked,
-        },
+        diaries: [...state.diaries, { isBookmarked: !action.isBookmarked }],
       };
     case 'LOG_OUT':
       // return initialState;

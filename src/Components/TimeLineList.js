@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,19 +15,32 @@ const TimeLineList = ({ diary, timelineNav }) => {
   const context = useContext(MainContext);
   const { bookmarkDiary } = context;
 
-  const onClickBookmark = () => {
-    bookmarkDiary();
+  const onChangeBookmark = (e) => {
+    console.log('[c]', e.target.checked);
+    console.log('[dc]', e.target.defaultChecked);
+    bookmarkDiary(id, e.target.defaultChecked);
   };
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      <button type="button" className={cx('iconBtn')} onClick={onClickBookmark}>
+      <input
+        id={id}
+        type="checkbox"
+        defaultChecked={isBookmarked ? 'checked' : ''}
+        onChange={onChangeBookmark}
+      />
+      <label htmlFor={id}>
+        <span>
+          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
+        </span>
+      </label>
+      {/* <button type="button" className={cx('iconBtn')} onClick={onChangeBookmark}>
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
         ) : (
           <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
         )}
-      </button>
+      </button> */}
       <Link to={`/diaryViewer/${id}`}>
         <figure>
           <div
@@ -43,6 +57,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
           />
           <figcaption>
             <div className={cx('diaryTitle')}>
+              {isBookmarked ? 'checked' : 'unchecked'}
               {timelineNav === 'media' ? '' : title}
             </div>
             <div className={cx('diaryDate')}>
