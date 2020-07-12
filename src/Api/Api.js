@@ -21,7 +21,7 @@ const Api = {
   patchDiaries: (payload) => {
     console.log('bookmark', payload);
     return posts
-      .patch(`/api/posts/:${payload.id}`, payload)
+      .patch(`/api/posts/${payload.id}`, payload)
       .then((res) => res.data)
       .then(() => console.log('patch payload', payload))
       .catch((e) => console.error(e, e.message));

@@ -50,6 +50,7 @@ const usePosts = () => {
   const patchBookmark = async (id, isBookmarked) => {
     // id = diary.id
     // isBookmarked = e.target.checked
+    // dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
     try {
       await Api.patchDiaries({ id, isBookmarked });
       dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });

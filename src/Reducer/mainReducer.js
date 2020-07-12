@@ -86,7 +86,7 @@ const mainReducer = (state, action) => {
         currentDiary: {
           ...state.currentDiary,
           id: action.id,
-          isBookmarked: !action.isBookmarked,
+          isBookmarked: action.isBookmarked,
         },
       };
     case 'LOG_OUT':
