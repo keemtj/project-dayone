@@ -63,7 +63,7 @@ const MyPage = () => {
                     className={cx('thumbnail')}
                     alt="thumbnail"
                   />
-                  <figcaption>{title}</figcaption>
+                  <figcaption className={cx('diaryTitle')}>{title}</figcaption>
                 </figure>
               </Link>
             </li>

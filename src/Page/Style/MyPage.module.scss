@@ -87,17 +87,21 @@
 
     .diary figure {
       margin: 20px 10px 0;
+      width: 11rem;
 
       .thumbnail {
         width: 11rem;
         height: 9rem;
       }
 
-      figcaption {
+      .diaryTitle {
         height: 2rem;
         text-align: center;
-        padding-top: 7px;
         background: rgba(240, 240, 240, 0.884);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 7px 5px 0;
       }
     }
   }

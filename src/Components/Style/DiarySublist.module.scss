@@ -60,6 +60,11 @@ $mainColor: #67bff9;
         font-weight: 600;
         color: #181818;
         margin-top: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.5rem;
+        padding: 0 5px;
       }
 
       .details {

@@ -21,7 +21,7 @@ const DiarySublist = ({ mapList }) => {
         <button type="button" className={cx('addBtn')} onClick={writeDiary}>
           +
         </button>
-        {subList.map(({ id, title, content, imagePaths }) => {
+        {subList.map(({ id, title, date, location, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
               <Link to={`/diaryViewer/${id}`}>
@@ -36,7 +36,7 @@ const DiarySublist = ({ mapList }) => {
                 />
                 <div className={cx('info')}>
                   <h2 className={cx('title')}>{title}</h2>
-                  <p className={cx('details')}>{content}</p>
+                  <p className={cx('details')}>{date}</p>
                 </div>
               </Link>
             </li>
