@@ -86,11 +86,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    width: 95%;
     margin: 0 auto;
 
     .diary figure {
-      margin: 20px 10px 0;
+      margin: 20px 0.4rem 0;
       width: 11rem;
 
       .thumbnail {
@@ -105,7 +105,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        padding: 7px 5px 0;
+        padding: 7px 10px 0;
+        font-weight: 600;
       }
     }
   }

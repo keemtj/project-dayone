@@ -84,8 +84,10 @@ const mainReducer = (state, action) => {
         },
       };
     case 'LOG_OUT':
+      // return initialState;
       return {
-        ...initialState,
+        ...state,
+        userData: {},
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

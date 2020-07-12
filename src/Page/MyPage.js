@@ -18,6 +18,12 @@ const MyPage = () => {
   const { userId } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
+  const yy = diaries[0].date.split('-')[0];
+  const mm = diaries[0].date.split('-')[1];
+  const dd = diaries[0].date.split('-')[2];
+  const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
+  const diaryPerDay = Number((diaryTerm / diaries.length).toFixed(2));
+
   const onClickLogOut = () => {
     dispatch({ type: 'LOG_OUT' });
     logOut();
@@ -35,15 +41,15 @@ const MyPage = () => {
         </h2>
         <ul className={cx('statistics')}>
           <li>
-            <span className={cx('numbers')}>235</span>
+            <span className={cx('numbers')}>{diaries.length}</span>
             <span className={cx('caption')}>일기수</span>
           </li>
           <li>
-            <span className={cx('numbers')}>23</span>
+            <span className={cx('numbers')}>{bookmarked.length}</span>
             <span className={cx('caption')}>북마크수</span>
           </li>
           <li>
-            <span className={cx('numbers')}>2.3</span>
+            <span className={cx('numbers')}>{diaryPerDay}</span>
             <span className={cx('caption')}>평균 일기수</span>
           </li>
         </ul>
