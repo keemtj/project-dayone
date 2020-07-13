@@ -9,10 +9,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/ModalCalendar.module.scss';
 import useCalendar from '../../Hook/useCalendar';
+import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const ModalCalendar = () => {
+  const mainCtx = React.useContext(MainContext);
+  const { dispatch } = mainCtx;
   const hook = useCalendar();
   const {
     onClickPrevMonth,
@@ -22,6 +25,13 @@ const ModalCalendar = () => {
   } = hook;
   const { now, calendar } = hook.calendarState;
   const { month, year, datesArray, startDay } = calendar;
+
+  const changeDate = (e) => {
+    // const target =
+    // e.target.nodeName === 'span' ? e.target.parentNode : e.target;
+    const date = e.target.className.split(' ')[0];
+    dispatch({ type: 'CHANGE_DATE', date });
+  };
 
   return (
     <>
@@ -77,6 +87,7 @@ const ModalCalendar = () => {
               <button
                 key={dd}
                 type="button"
+                onClick={changeDate}
                 className={cx(
                   `${fullDate}`,
                   {

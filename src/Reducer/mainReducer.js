@@ -90,6 +90,14 @@ const mainReducer = (state, action) => {
         ...state,
         userData: {},
       };
+    case 'CHANGE_DATE':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          date: action.date,
+        },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
