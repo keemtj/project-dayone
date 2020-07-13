@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
-import { LoginContext, MainContext } from '../Context/MainContext';
+import { LoginContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
