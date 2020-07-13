@@ -6,7 +6,7 @@ const diaries = [
     title:
       'Diary Title 1, 일기를 처음으로 쓴 날인데 일기 제목이 너무 길면 어떡하지?',
     content:
-      'This is diary 1, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+      '<p>This is diary 1, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>',
     date: '2020-5-14',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [
@@ -18,7 +18,7 @@ const diaries = [
   {
     id: 2,
     title: 'Diary Title 2',
-    content: 'This is diary 2',
+    content: '<p>This is diary 2</p>',
     date: '2020-5-21',
     location: { lat: 37.620842424005616, lng: 127.1583774403176 },
     imagePaths: [],
@@ -27,7 +27,7 @@ const diaries = [
   {
     id: 3,
     title: 'Diary Title 3',
-    content: 'This is diary 3',
+    content: '<p>This is diary 3</p>',
     date: '2020-5-21',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -39,7 +39,7 @@ const diaries = [
   {
     id: 4,
     title: 'Diary Title 4',
-    content: 'This is diary 4',
+    content: '<p>This is diary 4</p>',
     date: '2020-6-2',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -51,7 +51,7 @@ const diaries = [
   {
     id: 5,
     title: 'Diary Title 5',
-    content: 'This is diary 5',
+    content: '<p>This is diary 5</p>',
     date: '2020-6-6',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -63,7 +63,7 @@ const diaries = [
   {
     id: 6,
     title: 'Diary Title 6',
-    content: 'This is diary 6',
+    content: '<p>This is diary 6</p>',
     date: '2020-6-15',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -75,7 +75,7 @@ const diaries = [
   {
     id: 7,
     title: 'Diary Title 7',
-    content: 'This is diary 7',
+    content: '<p>This is diary 7</p>',
     date: '2020-6-19',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -87,7 +87,7 @@ const diaries = [
   {
     id: 8,
     title: 'Diary Title 8',
-    content: 'This is diary 8',
+    content: '<p>This is diary 8</p>',
     date: '2020-6-19',
     location: { lat: 37.524915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -99,7 +99,7 @@ const diaries = [
   {
     id: 9,
     title: 'Diary Title 9',
-    content: 'This is diary 9',
+    content: '<p>This is diary 9</p>',
     date: '2020-7-1',
     location: { lat: 37.444915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -111,7 +111,7 @@ const diaries = [
   {
     id: 10,
     title: 'Diary Title 10',
-    content: 'This is diary 10',
+    content: '<p>This is diary 10</p>',
     date: '2020-7-4',
     location: { lat: 37.444915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -123,7 +123,7 @@ const diaries = [
   {
     id: 11,
     title: 'Diary Title 11',
-    content: 'This is diary 11',
+    content: '<p>This is diary 11</p>',
     date: '2020-7-4',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
@@ -135,7 +135,7 @@ const diaries = [
   {
     id: 12,
     title: 'Diary Title 12',
-    content: 'This is diary 12',
+    content: '<p>This is diary 12</p>',
     date: '2020-7-5',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [
@@ -147,8 +147,8 @@ const diaries = [
   {
     id: 13,
     title: 'Diary Title 13',
-    content: 'This is diary 13',
-    date: '2020-7-12',
+    content: '<p>This is diary 13</p>',
+    date: '2020-7-9',
     location: {},
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -159,7 +159,7 @@ const diaries = [
   {
     id: 14,
     title: 'Diary Title 14',
-    content: 'This is diary 14',
+    content: '<p>This is diary 14</p>',
     date: '2020-7-13',
     location: {},
     imagePaths: [
@@ -171,7 +171,7 @@ const diaries = [
   {
     id: 15,
     title: 'Diary Title 15',
-    content: 'This is diary 15',
+    content: '<p>This is diary 15</p>',
     date: '2020-7-13',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [
@@ -195,9 +195,24 @@ POST /api/posts
 */
 exports.write = (ctx) => {
   // REST API의 Requiest Body는 ctx.request.body에서 조회 가능
-  const { _id, title, body, date, location } = ctx.request.body;
+  const {
+    title,
+    content,
+    date,
+    location,
+    imagePaths,
+    isBookmarked,
+  } = ctx.request.body;
   diaryId += 1;
-  const diary = { _id, id: diaryId, title, body, date, location };
+  const diary = {
+    id: diaryId,
+    title,
+    content,
+    date,
+    location,
+    imagePaths,
+    isBookmarked,
+  };
   diaries.push(diary);
   ctx.body = diary;
 };

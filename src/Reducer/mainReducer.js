@@ -1,10 +1,15 @@
+const getToday = () => {
+  const today = new Date();
+  return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+};
+
 const initialState = {
   userData: {},
   diaries: [
     // {
     //   id: 1,
     //   title: '',
-    //   body: '',
+    //   content: '',
     //   date: '',
     //   location: {},
     //   isBookmarked: false,
@@ -14,12 +19,13 @@ const initialState = {
   currentDiary: {
     id: 1,
     title: '',
-    body: '',
-    date: '',
+    content: '',
+    date: getToday(),
     location: {},
     isBookmarked: false,
     imagePaths: [],
   },
+  viewerDiary: {},
   error: {
     state: false,
     message: null,
@@ -52,13 +58,13 @@ const mainReducer = (state, action) => {
     case 'WRITE_POST':
       return {
         ...state,
-        currentDiary: { ...state.currentDiary, body: action.write },
+        currentDiary: { ...state.currentDiary, content: action.write },
       };
     case 'SUBMIT_POST':
       return {
         ...state,
         diaries: [...state.diaries, state.currentDiary],
-        currentDiary: {},
+        currentDiary: initialState.currentDiary,
       };
     case 'WRITE_TITLE':
       return {
@@ -70,10 +76,30 @@ const mainReducer = (state, action) => {
         ...state,
         currentDiary: { ...state.currentDiary, imagePaths: action.images },
       };
+    case 'PUSH_DIARY_ID':
+      return {
+        ...state,
+        currentDiary: { ...state.currentDiary, id: state.diaries.length + 1 },
+      };
+    case 'GET_DIARY_BY_ID':
+      return {
+        ...state,
+        viewerDiary: action.diary,
+      };
+    case 'CLEAR_VIEWERDIARY':
+      return {
+        ...state,
+        viewerDiary: {},
+      };
     case 'GET_USER_DATA':
       return {
         ...state,
         userData: { ...action.data, active: true },
+      };
+    case 'DELETE_DIARY':
+      return {
+        ...state,
+        diaries: state.diaries.filter((diary) => diary.id !== action.id),
       };
     case 'TOGGLE_BOOKMARK':
       return {

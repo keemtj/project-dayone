@@ -20,24 +20,26 @@ const DiaryWrite = () => {
         toolbar: [
           [{ font: [] }, { size: [] }],
           ['image'],
-          ['underline', 'strike'],
+          ['bold', 'italic', 'underline', 'strike'],
           [{ list: 'ordered' }, { list: 'bullet' }],
           ['blockquote', 'link'],
         ],
       },
-      formats: [
-        'font',
-        'size',
-        'image',
-        'bold',
-        'italic',
-        'underline',
-        'strike',
-        'ordered',
-        'bullet',
-        'blockquote',
-        'link',
-      ],
+      // formats: [
+      //   'header',
+      //   'font',
+      //   'size',
+      //   'image',
+      //   'bold',
+      //   'italic',
+      //   'underline',
+      //   'strike',
+      //   'ordered',
+      //   'bullet',
+      //   'list',
+      //   'blockquote',
+      //   'link',
+      // ],
     });
 
     // Quill - text change event 감지
@@ -61,7 +63,7 @@ const DiaryWrite = () => {
         images.push(v.src);
       });
     });
-    console.log(images);
+    // console.log(images);
     pushImg(images);
   };
 
