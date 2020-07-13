@@ -1,5 +1,28 @@
 $mainColor: #67bff9;
 
+.addBtn {
+  font-size: 1.8rem;
+  display: block;
+  background: white;
+  color: #b0b0b0;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin: 20px auto;
+  border-radius: 500px;
+  border: 1px solid #b0b0b0;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: $mainColor;
+    color: #ffffff;
+    // border: #ffffff;
+    border: $mainColor;
+    transition: 0.3s;
+  }
+}
+
 .diaryList {
   position: absolute;
   top: 0;
@@ -8,29 +31,6 @@ $mainColor: #67bff9;
   height: 100%;
   background: rgb(248, 248, 248);
   overflow: scroll;
-
-  .addBtn {
-    font-size: 1.8rem;
-    display: block;
-    background: white;
-    color: #b0b0b0;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    margin: 20px auto;
-    border-radius: 500px;
-    border: 1px solid #b0b0b0;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      background: $mainColor;
-      color: #ffffff;
-      // border: #ffffff;
-      border: $mainColor;
-      transition: 0.3s;
-    }
-  }
 
   .diary a {
     display: flex;

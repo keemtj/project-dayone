@@ -31,7 +31,7 @@ const diaries = [
     date: '2020-5-21',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
     imagePaths: [
-      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5TgAiOTKorndQ1qt21VR9IVpItkvJi3-wjQ&usqp=CAU',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
     isBookmarked: true,
