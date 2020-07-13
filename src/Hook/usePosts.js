@@ -37,11 +37,36 @@ const usePosts = () => {
       dispatch({ type: 'GET_DIARY_BY_ID', diary: stateDiary });
       return;
     }
-
     // state에 다이어리 정보가 없어서 서버요청 갔다와야 하는 경우
     try {
       const diary = await Api.getDiaryById(id);
       dispatch({ type: 'GET_DIARY_BY_ID', diary });
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
+  };
+
+  const deleteDiaryFromServer = async (id) => {
+    try {
+      await Api.deleteDiary(id);
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
+  };
+
+  const patchBookmark = async (id, isBookmarked) => {
+    // id = diary.id
+    // isBookmarked = e.target.checked
+    // dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
+    try {
+      await Api.patchDiaries({ id, isBookmarked });
+      dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
     } catch (e) {
       dispatch({
         type: 'ERROR',
@@ -57,6 +82,11 @@ const usePosts = () => {
   const submitDiary = () => {
     dispatch({ type: 'SUBMIT_POST' });
     submitDiaryToServer();
+  };
+
+  const deleteDiary = (id) => {
+    dispatch({ type: 'DELETE_DIARY', id });
+    deleteDiaryFromServer(id);
   };
 
   const writeTitle = (write) => {
@@ -83,21 +113,6 @@ const usePosts = () => {
     });
   };
 
-  const patchBookmark = async (id, isBookmarked) => {
-    // id = diary.id
-    // isBookmarked = e.target.checked
-    // dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
-    try {
-      await Api.patchDiaries({ id, isBookmarked });
-      dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
-    } catch (e) {
-      dispatch({
-        type: 'ERROR',
-        error: { error: { state: true, error: e.message } },
-      });
-    }
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -115,6 +130,7 @@ const usePosts = () => {
     clearViewerDiary,
     bookmarkDiary,
     patchBookmark,
+    deleteDiary,
   ];
 };
 

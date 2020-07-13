@@ -21,7 +21,7 @@ h4,
 h5,
 h6,
 p,
-/* blockquote, */
+blockquote,
 pre,
 a,
 abbr,
@@ -32,7 +32,7 @@ cite,
 code,
 del,
 dfn,
-em,
+/* em, */
 img,
 ins,
 kbd,
@@ -41,7 +41,7 @@ s,
 samp,
 small,
 strike,
-strong,
+/* strong, */
 sub,
 sup,
 tt,
@@ -117,7 +117,7 @@ ol,
 ul {
   list-style: none;
 }
-/* blockquote,
+blockquote,
 q {
   quotes: none;
 }
@@ -127,7 +127,7 @@ q:before,
 q:after {
   content: '';
   content: none;
-} */
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
