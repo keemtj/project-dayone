@@ -9,10 +9,10 @@ import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const ModalSmall = () => {
+const ModalSmall = ({ viewerState, setViewerState, id }) => {
   const history = useHistory();
   const { modalState, setModalState } = React.useContext(DiaryContext);
-  const { submitDiary } = React.useContext(MainContext);
+  const { state, submitDiary, deleteDiary } = React.useContext(MainContext);
 
   const onClick = (e) => {
     if (
@@ -20,21 +20,31 @@ const ModalSmall = () => {
       !e.target.className.includes('modalDeleteBtn')
     )
       return;
-    setModalState('initial');
+    if (modalState === 'Submit') setModalState('initial');
+    if (viewerState === 'Delete') setViewerState('initial');
   };
 
   const cancelSubmit = () => {
-    setModalState('initial');
+    if (modalState === 'Submit') setModalState('initial');
+    if (viewerState === 'Delete') setViewerState('initial');
   };
 
   const confirmSubmit = () => {
-    history.push(`/diaryViewer/${1}`);
-    setModalState('initial');
-    if (modalState === 'Submit') submitDiary();
+    if (modalState === 'Submit') {
+      submitDiary();
+      history.push(`/diaryViewer/${state.currentDiary.id}`);
+      setModalState('initial');
+    }
+    if (viewerState === 'Delete') {
+      deleteDiary(id);
+      history.goBack();
+      setViewerState('initial');
+    }
   };
 
   const changeModalState = () => {
     if (modalState === 'Submit') return 'block';
+    if (viewerState === 'Delete') return 'block';
     return 'none';
   };
 
@@ -43,6 +53,8 @@ const ModalSmall = () => {
       return (
         <span className={cx('message')}>일기 작성을 완료하시겠습니까?</span>
       );
+    if (viewerState === 'Delete')
+      return <span className={cx('message')}>일기를 삭제 하시겠습니까?</span>;
     return <></>;
   };
 

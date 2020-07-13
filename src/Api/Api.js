@@ -10,6 +10,13 @@ const Api = {
       .catch((e) => {
         console.error(e, e.message);
       }),
+  getDiaryById: (id) =>
+    posts
+      .get(`/api/posts/${id}`)
+      .then((res) => res.data)
+      .catch((e) => {
+        console.error(e, e.message);
+      }),
   postDiaries: (payload) =>
     posts
       .post('/api/posts', payload)
@@ -26,6 +33,13 @@ const Api = {
       .then(() => console.log('patch payload', payload))
       .catch((e) => console.error(e, e.message));
   },
+  deleteDiary: (id) =>
+    posts
+      .delete(`/api/posts/${id}`)
+      .then((res) => res.data)
+      .catch((e) => {
+        console.error(e, e.message);
+      }),
 };
 
 export default Api;
