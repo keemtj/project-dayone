@@ -17,8 +17,8 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   const onChangeBookmark = (e) => {
     patchBookmark(id, e.target.checked);
-    console.log('[timeline] diary.id =', id);
-    console.log('[timeline] e.target.checked =', e.target.checked);
+    // console.log('[timeline] diary.id =', id);
+    // console.log('[timeline] e.target.checked =', e.target.checked);
   };
 
   return (
@@ -29,7 +29,6 @@ const TimeLineList = ({ diary, timelineNav }) => {
         type="checkbox"
         checked={isBookmarked ? 'checked' : ''}
         onChange={onChangeBookmark}
-        // onChange={patchBookmark}
       />
       <label htmlFor={id}>
         <span>
