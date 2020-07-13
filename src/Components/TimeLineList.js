@@ -13,20 +13,21 @@ const cx = classNames.bind(styles);
 const TimeLineList = ({ diary, timelineNav }) => {
   const { id, title, content, date, imagePaths, isBookmarked } = diary;
   const context = useContext(MainContext);
-  const { bookmarkDiary } = context;
+  const { patchBookmark } = context;
 
   const onChangeBookmark = (e) => {
-    console.log('[c]', e.target.checked);
-    console.log('[dc]', e.target.defaultChecked);
-    bookmarkDiary(id, e.target.defaultChecked);
+    patchBookmark(id, e.target.checked);
+    console.log('[timeline] diary.id =', id);
+    console.log('[timeline] e.target.checked =', e.target.checked);
   };
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
+      {console.log('current bookmark checked:', isBookmarked)}
       <input
         id={id}
         type="checkbox"
-        defaultChecked={isBookmarked ? 'checked' : ''}
+        checked={isBookmarked ? 'checked' : ''}
         onChange={onChangeBookmark}
       />
       <label htmlFor={id}>
@@ -34,7 +35,11 @@ const TimeLineList = ({ diary, timelineNav }) => {
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
         </span>
       </label>
-      {/* <button type="button" className={cx('iconBtn')} onClick={onChangeBookmark}>
+      {/* <button
+        type="button"
+        className={cx('iconBtn')}
+        onClick={onChangeBookmark}
+      >
         {isBookmarked ? (
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
         ) : (

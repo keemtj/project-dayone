@@ -20,6 +20,7 @@ const MainProvider = ({ children }) => {
     getDiary,
     clearViewerDiary,
     bookmarkDiary,
+    patchBookmark,
   ] = usePosts();
 
   const [
@@ -42,6 +43,7 @@ const MainProvider = ({ children }) => {
     getDiary,
     clearViewerDiary,
     bookmarkDiary,
+    patchBookmark,
     dispatch,
   };
 

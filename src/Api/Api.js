@@ -25,6 +25,14 @@ const Api = {
       .catch((e) => {
         console.error(e, e.message);
       }),
+  patchDiaries: (payload) => {
+    console.log('bookmark', payload);
+    return posts
+      .patch(`/api/posts/${payload.id}`, payload)
+      .then((res) => res.data)
+      .then(() => console.log('patch payload', payload))
+      .catch((e) => console.error(e, e.message));
+  },
 };
 
 export default Api;
