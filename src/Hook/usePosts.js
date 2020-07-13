@@ -70,12 +70,21 @@ const usePosts = () => {
     dispatch({ type: 'CLEAR_VIEWERDIARY' });
   };
 
+  const bookmarkDiary = (id, isBookmarked) => {
+    dispatch({
+      type: 'TOGGLE_BOOKMARK',
+      id,
+      isBookmarked,
+    });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return [
     state,
+    dispatch,
     fetchData,
     writePost,
     submitDiary,
@@ -84,6 +93,7 @@ const usePosts = () => {
     pushDiaryId,
     getDiary,
     clearViewerDiary,
+    bookmarkDiary,
   ];
 };
 

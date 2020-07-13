@@ -6,40 +6,43 @@ $mainColor: #67bff9;
   right: 0;
   width: 30%;
   height: 100%;
-  background: #f9f9f9;
+  background: rgb(248, 248, 248);
   overflow: scroll;
 
   .addBtn {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    display: block;
     background: white;
     color: #b0b0b0;
     width: 40px;
     height: 40px;
     text-align: center;
-    vertical-align: middle;
     margin: 20px auto;
-    border-radius: 55px;
+    border-radius: 500px;
     border: 1px solid #b0b0b0;
     cursor: pointer;
+    transition: 0.3s;
+
     &:hover {
       background: $mainColor;
       color: #ffffff;
       // border: #ffffff;
       border: $mainColor;
+      transition: 0.3s;
     }
   }
 
-  .diary {
+  .diary a {
     display: flex;
-    margin: 0.8rem auto;
+    border-bottom: 1px solid #cecece;
     width: 95%;
     height: 5rem;
-    border-radius: 12px;
+    margin: 0 auto;
     background: #ffffff;
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0px 0px 12px #b0b0b0, 0px 0px 12px #ffffff;
+      background: #ebebeb73;
     }
 
     .thumbnail {
@@ -57,6 +60,11 @@ $mainColor: #67bff9;
         font-weight: 600;
         color: #181818;
         margin-top: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.5rem;
+        padding: 0 5px;
       }
 
       .details {

@@ -10,6 +10,7 @@ const LoginContext = createContext(loginInitialState);
 const MainProvider = ({ children }) => {
   const [
     state,
+    dispatch,
     fetchData,
     writePost,
     submitDiary,
@@ -18,6 +19,7 @@ const MainProvider = ({ children }) => {
     pushDiaryId,
     getDiary,
     clearViewerDiary,
+    bookmarkDiary,
   ] = usePosts();
 
   const [
@@ -26,6 +28,7 @@ const MainProvider = ({ children }) => {
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    logOut,
   ] = useLogin();
 
   const mainData = {
@@ -38,6 +41,8 @@ const MainProvider = ({ children }) => {
     pushDiaryId,
     getDiary,
     clearViewerDiary,
+    bookmarkDiary,
+    dispatch,
   };
 
   const loginData = {
@@ -46,6 +51,8 @@ const MainProvider = ({ children }) => {
     fetchUserCheck,
     fetchErrorMessage,
     fetchReset,
+    dispatch,
+    logOut,
   };
   return (
     <MainContext.Provider value={mainData}>

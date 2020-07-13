@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,9 @@ const CalendarModal = () => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
+    enterInputs,
+    changeMonthInput,
+    changeYearInput,
   } = calCtx;
 
   const { now, modal } = calendarState;
@@ -37,7 +39,8 @@ const CalendarModal = () => {
               min="1970"
               max={now.year}
               placeholder={now.year}
-              onChange={changeInputs}
+              onChange={changeYearInput}
+              onKeyUp={enterInputs}
               value={inputs.year}
             />
             <span>년</span>
@@ -49,7 +52,8 @@ const CalendarModal = () => {
               min="1"
               max="12"
               placeholder={now.month}
-              onChange={changeInputs}
+              onChange={changeMonthInput}
+              onKeyUp={enterInputs}
               value={inputs.month}
             />
             <span>월</span>

@@ -9,16 +9,6 @@ const useCalendar = () => {
   const { now, calendar, modal } = calendarState;
   const { year, month } = calendar;
 
-  const fetchData = async () => {
-    dispatch({ type: 'LOADING' });
-    try {
-      const data = await 'api';
-      dispatch({ type: 'SUCCESS', data });
-    } catch (e) {
-      dispatch({ type: 'ERROR', error: e });
-    }
-  };
-
   const getFirstDay = (array) => {
     const startDate = array[0];
     const firstDay = new Date(
@@ -64,10 +54,7 @@ const useCalendar = () => {
     const today = new Date();
     const yy = today.getFullYear();
     const mm = today.getMonth() + 1;
-    const dd =
-      new String(today)[8] === '0'
-        ? new String(today).slice(9, 10)
-        : new String(today).slice(8, 10);
+    const dd = today.getDate();
 
     dispatch({
       type: 'GET_NOW',
@@ -116,6 +103,7 @@ const useCalendar = () => {
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
   const onClickDimmed = ({ target }) => {
+    if (target.nodeName !== 'DIV') return;
     if (!target.className.includes('dimmed')) return;
     closeModal();
   };
@@ -139,18 +127,35 @@ const useCalendar = () => {
     closeModal();
   };
 
-  const changeInputs = ({ target }) => {
-    const inputType = target.className;
+  const changeMonthInput = ({ target }) => {
     const { value } = target;
+    const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_INPUTS', inputType, value });
+    dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
+    console.log('modal', modal.inputs, 'now', now);
 
-    if (inputType === 'month' && ((value !== '' && value < 1) || value > 12)) {
+    if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
-    } else if (
-      (inputType === 'year' && value > now.year) ||
-      (modal.inputs.year === now.year && value > now.month) ||
-      (value === now.year && modal.inputs.month > now.month)
+    } else if (modal.inputs.year === now.year && numberValue > now.month) {
+      dispatch({
+        type: 'SHOW_WARNING',
+        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+      });
+    } else {
+      dispatch({ type: 'REMOVE_WARNING' });
+    }
+  };
+
+  const changeYearInput = ({ target }) => {
+    const { value } = target;
+    const numberValue = parseInt(value, 10);
+
+    dispatch({ type: 'CHANGE_YEAR_INPUT', numberValue });
+    console.log('modal', modal.inputs, 'now', now);
+
+    if (
+      numberValue > now.year ||
+      (numberValue === now.year && modal.inputs.month > now.month)
     ) {
       dispatch({
         type: 'SHOW_WARNING',
@@ -161,18 +166,18 @@ const useCalendar = () => {
     }
   };
 
-  const getSublist = ({ target }) => {
-    const date = target.className.split(' ')[0];
-    console.log(date);
+  const enterInputs = (e) => {
+    if (e.keyCode !== 13) return;
+    changeCalendarState();
   };
 
   useEffect(() => {
-    // fetchData();
     getNow();
   }, []);
 
   return {
     calendarState,
+    dispatch,
     getFirstDay,
     getDatesArray,
     getNow,
@@ -184,8 +189,9 @@ const useCalendar = () => {
     closeModal,
     onClickDimmed,
     changeCalendarState,
-    changeInputs,
-    getSublist,
+    enterInputs,
+    changeYearInput,
+    changeMonthInput,
   };
 };
 

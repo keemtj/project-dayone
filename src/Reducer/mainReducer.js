@@ -4,6 +4,7 @@ const getToday = () => {
 };
 
 const initialState = {
+  userData: {},
   diaries: [
     // {
     //   id: 1,
@@ -92,6 +93,22 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         viewerDiary: {},
+      };
+    case 'GET_USER_DATA':
+      return {
+        ...state,
+        userData: { ...action.data, active: true },
+      };
+    case 'TOGGLE_BOOKMARK':
+      return {
+        ...state,
+        diaries: [...state.diaries, { isBookmarked: !action.isBookmarked }],
+      };
+    case 'LOG_OUT':
+      // return initialState;
+      return {
+        ...state,
+        userData: {},
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

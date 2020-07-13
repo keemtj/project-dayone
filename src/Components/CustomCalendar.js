@@ -15,22 +15,29 @@ const cx = classNames.bind(styles);
 
 const CustomCalendar = () => {
   const calCtx = React.useContext(CalendarContext);
-  const testCtx = React.useContext(MainContext);
-  const { state } = testCtx;
+  const mainCtx = React.useContext(MainContext);
+  const { state } = mainCtx;
   const {
+    dispatch,
     calendarState,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
     onClickNextYear,
     openModal,
-    getSublist,
   } = calCtx;
 
   const { diaries } = state;
   const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
-  console.log(diaries.map(({ date }) => date));
+
+  const getSublist = ({ target }) => {
+    const date = target.className.split(' ')[0];
+    console.log('getSublist..date: ', date);
+    const sublist = diaries.filter((diary) => diary.date === date);
+    console.log('sublist: ', sublist);
+    dispatch({ type: 'GET_SUBLIST', sublist });
+  };
 
   return (
     <>
@@ -86,9 +93,21 @@ const CustomCalendar = () => {
         <div className={cx('dateView')}>
           {datesArray.map(({ yy, mm, dd }) => {
             const fullDate = `${yy}-${mm}-${dd}`;
-            const amount = `amount_${
-              diaries.filter((diary) => diary.date === fullDate).length
-            }`;
+            let amount = diaries.filter(({ date }) => date === fullDate).length;
+
+            switch (amount) {
+              case 0:
+                amount = '';
+                break;
+              case 1:
+                amount = 'oneDiary';
+                break;
+              case 2 || 3:
+                amount = 'someDiaries';
+                break;
+              default:
+                amount = 'manyDiaries';
+            }
 
             return (
               <button
