@@ -21,6 +21,7 @@ const DiarySublist = ({ mapList }) => {
         <button type="button" className={cx('addBtn')} onClick={writeDiary}>
           +
         </button>
+        <li>{subList.length ? null : 'blabla'}</li>
         {subList.map(({ id, title, date, location, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
