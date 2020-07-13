@@ -29,6 +29,13 @@ $mainColor: #67bff9;
     border: none;
     color: rgb(150, 150, 150);
     background-color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: rgb(100, 100, 100);
+      transition: 0.3s;
+    }
   }
 }
 

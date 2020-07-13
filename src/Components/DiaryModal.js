@@ -6,6 +6,8 @@ import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
 import ModalMap from './Diary/ModalMap';
 import ModalCalendar from './Diary/ModalCalendar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -45,7 +47,7 @@ const Modal = () => {
           type="button"
           onClick={onClick}
         >
-          X
+          <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
     </div>
