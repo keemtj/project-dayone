@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-nested-ternary */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +23,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      {console.log('current bookmark checked:', isBookmarked)}
+      {/* {console.log('current bookmark checked:', isBookmarked)} */}
       <input
         id={id}
         type="checkbox"
