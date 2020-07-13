@@ -1,0 +1,52 @@
+$mainColor: #67bff9;
+
+.header {
+  position: fixed;
+  width: 100%;
+  // padding: 0.4rem 0 0.4rem 0;
+  background: $mainColor;
+  z-index: 10;
+
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    min-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+  }
+
+  .logo,
+  .icon {
+    color: white;
+    cursor: pointer;
+  }
+  
+  .logo {
+    margin: 15px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .icon {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .container {
+    width: 90% !important;
+  }
+}

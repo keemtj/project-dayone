@@ -1,68 +1,128 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 다이어리 앱 DAY ONE 클론 코딩
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+# 주제
 
-### `yarn start`
+기존의 저널링 어플리케이션 Day One을 React.js를 통하여 데스크탑 버전으로 새롭게 재설계
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# 구성원
 
-### `yarn test`
+- PM: 김태진
+- T1: 김우정
+- T2: 이하은
+- T3: 주한슬
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `yarn build`
+# 프로젝트 핵심 목표
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node Express Server를 구축하여 REST API 구현
+- React를 이용한 컴포넌트 설계
+- Router를 이용하여 SPA(Single-Page Application) 구현
+- Context API + useReducer Hooks를 이용한 상태 관리
+- CSS Module을 통하여 컴포넌트 스타일 클래스 이름의 중첩 현상 방지
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# MVP(Minimum Viable Product, 최소 기능 구현)
 
-### `yarn eject`
+## 기능별 목표
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 로그인 페이지
+- 타임라인 페이지
+- 캘린더 페이지
+- 지도 페이지
+- 일기 작성 및 수정 페이지
+- 일기 보기 페이지
+- 마이 페이지(Option)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 기능별 1차 목표
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 로그인 페이지
 
-## Learn More
+  - 로그인 / 로그아웃 상태 관리
+  - 아이디/ 패스워드 일치 확인
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 타임라인 페이지
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - 일기별 제목, 작성일, 썸네일이 포함된 목록 나열
+  - 뷰 설정에 따라 일기 목록을 리스트/카드 형식으로 전환
+  - 일기 클릭시 해당 일기 페이지로 이동
 
-### Code Splitting
+- 캘린더 페이지
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+  - 달력에 일기 작성 여부 표시
+  - 일기 목록에 해당 날짜의 일기 나열
+  - 해당 날짜의 일기 작성 페이지로 바로가기
 
-### Analyzing the Bundle Size
+- 지도 페이지
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+  - 지도 API를 활용하여 현재 위치 표시
+  - 각 일기의 위치를 북마크로 표시
+  - 일기 목록에 해당 위치의 일기 나열
 
-### Making a Progressive Web App
+- 일기 작성 및 수정 페이지
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+  - 일기 내용 저장
+  - 일기 작성 날짜 설정
+  - 일기 작성 위치 설정
 
-### Advanced Configuration
+- 일기 보기 페이지
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  - 작성된 일기 뷰어
 
-### Deployment
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## 기능별 2차 목표(Option)
 
-### `yarn build` fails to minify
+- 타임라인 페이지
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  - 미디어 목록 형식의 뷰 설정 추가
+
+- 캘린더 페이지
+
+  - 일기의 개수에 따라 색상을 다르게 표시
+
+- 지도 페이지
+
+  - 일기의 개수에 따라 색상을 다르게 표시
+  - 줌 인/아웃에 따른 북마크 표시
+
+- 일기 작성 및 수정 페이지
+
+  - 사진 및 영상 파일 첨부
+
+- 일기 보기 페이지
+
+  - 작성된 일기의 수정 버튼 기능 추가
+
+    (일기 작성 및 수정 페이지로 이동)
+
+- 마이 페이지
+
+  - 사용자 정보 표시
+  - 작성한 일기의 개수 표시
+  - 북마크 일기 표시
+
+<br>
+
+# 사용 기술
+
+- Slack
+- Figma
+- HTML
+- JavaScript
+- React
+- SCSS
+- Node Express
+
+<br>
+
+# 코딩 컨벤션
+
+[코딩 컨벤션](/convention.md)

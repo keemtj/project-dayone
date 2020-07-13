@@ -1,0 +1,50 @@
+$mainColor: #67bff9;
+
+.timelineNav {
+  // background-color: tomato;
+  padding: 0.6rem 0 1.1rem 0;
+  font-size: 1.8rem;
+  text-align: end;
+
+  button {
+    margin-left: 1rem;
+    background-color: none;
+    border: none;
+    color: #d1d1d1;
+    outline: none;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: -0.4rem;
+    }
+
+    .icon {
+      text-align: center;
+
+      &:last-child {
+        font-size: 1.9rem;
+      }
+    }
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  .active {
+    color: $mainColor;
+  }
+}
+
+.timelineWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  // background-color: yellowgreen;
+
+  &::after {
+    display: block;
+    content: '';
+    width: 24%;
+  }
+}
