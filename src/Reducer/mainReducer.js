@@ -64,7 +64,7 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         diaries: [...state.diaries, state.currentDiary],
-        currentDiary: {},
+        currentDiary: initialState.currentDiary,
       };
     case 'WRITE_TITLE':
       return {
@@ -80,7 +80,6 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         currentDiary: { ...state.currentDiary, id: state.diaries.length + 1 },
-        // currentDiary: { ...state.currentDiary },
       };
     case 'GET_DIARY_BY_ID':
       return {

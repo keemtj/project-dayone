@@ -195,9 +195,24 @@ POST /api/posts
 */
 exports.write = (ctx) => {
   // REST API의 Requiest Body는 ctx.request.body에서 조회 가능
-  const { _id, title, body, content, date, location } = ctx.request.body;
+  const {
+    title,
+    content,
+    date,
+    location,
+    imagePaths,
+    isBookmarked,
+  } = ctx.request.body;
   diaryId += 1;
-  const diary = { _id, id: diaryId, title, body, content, date, location };
+  const diary = {
+    id: diaryId,
+    title,
+    content,
+    date,
+    location,
+    imagePaths,
+    isBookmarked,
+  };
   diaries.push(diary);
   ctx.body = diary;
 };
