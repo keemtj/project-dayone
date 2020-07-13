@@ -96,6 +96,11 @@ const mainReducer = (state, action) => {
         ...state,
         userData: { ...action.data, active: true },
       };
+    case 'DELETE_DIARY':
+      return {
+        ...state,
+        diaries: state.diaries.filter((diary) => diary.id !== action.id),
+      };
     case 'TOGGLE_BOOKMARK':
       // Work in progress
       // action.id = diary.id

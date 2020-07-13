@@ -36,8 +36,8 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
       setModalState('initial');
     }
     if (viewerState === 'Delete') {
-      // deleteDiary(id);
-      // history.goBack();
+      deleteDiary(id);
+      history.goBack();
       setViewerState('initial');
     }
   };

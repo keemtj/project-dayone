@@ -55,7 +55,7 @@ const DiaryViewer = () => {
       <DiaryModalSmall
         viewerState={viewerState}
         setViewerState={setViewerState}
-        id={id}
+        id={+id}
       />
     </main>
   );
