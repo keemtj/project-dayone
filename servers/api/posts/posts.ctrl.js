@@ -171,7 +171,7 @@ const diaries = [
   {
     id: 15,
     title: 'Diary Title 15',
-    content: 'This is diary 15',
+    content: '<p>This is diary 15<p>',
     date: '2020-7-5',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [

@@ -1,5 +1,9 @@
 const initialState = {
-  userData: {},
+  userData: {
+    // _id: 1,
+    // userId: 'dorodoro',
+    // userPw: '123,
+  },
   diaries: [
     // {
     //   id: 1,
