@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-nested-ternary */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,6 +29,7 @@ const TimeLineList = ({ diary, timelineNav }) => {
         type="checkbox"
         checked={isBookmarked ? 'checked' : ''}
         onChange={onChangeBookmark}
+        // onChange={patchBookmark}
       />
       <label htmlFor={id}>
         <span>
