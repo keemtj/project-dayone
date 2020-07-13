@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -33,11 +33,21 @@ const CustomCalendar = () => {
 
   const getSublist = ({ target }) => {
     const date = target.className.split(' ')[0];
-    console.log('getSublist..date: ', date);
+    // console.log('getSublist..date: ', date);
     const sublist = diaries.filter((diary) => diary.date === date);
-    console.log('sublist: ', sublist);
+    // console.log('sublist: ', sublist);
     dispatch({ type: 'GET_SUBLIST', sublist });
   };
+
+  const getTodaySublist = (now) => {
+    const today = `${now.year}-${now.month}-${now.date}`;
+    const sublist = diaries.filter((diary) => diary.date === today);
+    dispatch({ type: 'GET_SUBLIST', sublist });
+  };
+
+  useEffect(() => {
+    getTodaySublist(now);
+  }, [now]);
 
   return (
     <>
