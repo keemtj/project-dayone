@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-nested-ternary */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,8 +17,8 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   const onChangeBookmark = (e) => {
     patchBookmark(id, e.target.checked);
-    console.log('[timeline] diary.id =', id);
-    console.log('[timeline] e.target.checked =', e.target.checked);
+    // console.log('[timeline] diary.id =', id);
+    // console.log('[timeline] e.target.checked =', e.target.checked);
   };
 
   return (

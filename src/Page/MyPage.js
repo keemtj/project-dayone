@@ -67,7 +67,7 @@ const MyPage = () => {
         Bookmarked Diaries
       </h3>
       <ul className={cx('diaryList')}>
-        {bookmarked.map(({ id, title, imagePaths }) => {
+        {bookmarked.map(({ id, title, date, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
               <Link to={`/diaryViewer/${id}`}>
@@ -81,7 +81,10 @@ const MyPage = () => {
                     className={cx('thumbnail')}
                     alt="thumbnail"
                   />
-                  <figcaption className={cx('diaryTitle')}>{title}</figcaption>
+                  <figcaption className={cx('caption')}>
+                    <span className={cx('diaryTitle')}>{title}</span>
+                    <span className={cx('diaryDate')}>{date}</span>
+                  </figcaption>
                 </figure>
               </Link>
             </li>

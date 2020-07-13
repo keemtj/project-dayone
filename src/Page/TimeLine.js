@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,13 +8,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
-import usePosts from '../Hook/usePosts';
-// import { MainContext } from '../Context/MainContext';
+// import usePosts from '../Hook/usePosts';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  const [fetchData] = usePosts();
+  // const [fetchData] = usePosts();
+  const context = useContext(MainContext);
+  const { diaries } = context.state;
   const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
 
   const onClickNav = (e) => {
@@ -48,7 +50,7 @@ const Timeline = () => {
         </button>
       </div>
       <ul className={cx('timelineWrapper')}>
-        {fetchData.diaries.map((diary) => (
+        {diaries.map((diary) => (
           <TimeLineList
             key={diary.id}
             diary={diary}
