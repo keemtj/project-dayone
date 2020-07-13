@@ -36,7 +36,7 @@ const usePosts = () => {
       const diary = await Api.getDiaryById(id);
       console.log('testtt', diary);
 
-      dispatch({ type: 'GET_DIARY', diary });
+      dispatch({ type: 'GET_DIARY_BY_ID', diary });
     } catch (e) {
       dispatch({
         type: 'ERROR',

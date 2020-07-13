@@ -21,7 +21,7 @@ const DiaryWrite = () => {
           [{ font: [] }, { size: [] }],
           ['image'],
           ['underline', 'strike'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
+          // [{ list: 'ordered' }, { list: 'bullet' }],
           ['blockquote', 'link'],
         ],
       },
@@ -61,7 +61,7 @@ const DiaryWrite = () => {
         images.push(v.src);
       });
     });
-    console.log(images);
+    // console.log(images);
     pushImg(images);
   };
 

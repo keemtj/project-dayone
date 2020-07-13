@@ -10,7 +10,7 @@ $mainColor: #67bff9;
   .container {
     width: 100%;
     max-width: 1000px;
-    min-width: 800px;
+    // min-width: 800px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -28,14 +28,16 @@ $mainColor: #67bff9;
     color: white;
     cursor: pointer;
   }
-
+  
   .logo {
     margin: 15px 0;
     font-size: 1.6rem;
     font-weight: 600;
   }
+  
   a {
     color: #fff;
+    text-decoration: none;
   }
 
   .icon {

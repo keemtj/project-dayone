@@ -21,7 +21,7 @@ h4,
 h5,
 h6,
 p,
-blockquote,
+/* blockquote, */
 pre,
 a,
 abbr,
@@ -117,7 +117,7 @@ ol,
 ul {
   list-style: none;
 }
-blockquote,
+/* blockquote,
 q {
   quotes: none;
 }
@@ -127,15 +127,15 @@ q:before,
 q:after {
   content: '';
   content: none;
-}
+} */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-a {
+/* a {
   text-decoration: none;
   color: #181818;
-}
+} */
 button {
   background-color: #fff;
 }

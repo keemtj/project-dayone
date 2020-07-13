@@ -12,7 +12,7 @@ const Api = {
       }),
   getDiaryById: (id) =>
     posts
-      .get(`/api/posts/${id - 1}`)
+      .get(`/api/posts/${id}`)
       .then((res) => res.data)
       .catch((e) => {
         console.error(e, e.message);

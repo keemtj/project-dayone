@@ -9,7 +9,7 @@ const initialState = {
     // {
     //   id: 1,
     //   title: '',
-    //   body: '',
+    //   content: '',
     //   date: '',
     //   location: {},
     //   isBookmarked: false,
@@ -19,7 +19,7 @@ const initialState = {
   currentDiary: {
     id: 1,
     title: '',
-    body: '',
+    content: '',
     date: getToday(),
     location: {},
     isBookmarked: false,
@@ -32,8 +32,6 @@ const initialState = {
   },
   loading: false,
 };
-
-console.log(new Date());
 
 const mainReducer = (state, action) => {
   switch (action.type) {
@@ -60,7 +58,7 @@ const mainReducer = (state, action) => {
     case 'WRITE_POST':
       return {
         ...state,
-        currentDiary: { ...state.currentDiary, body: action.write },
+        currentDiary: { ...state.currentDiary, content: action.write },
       };
     case 'SUBMIT_POST':
       return {
@@ -84,7 +82,7 @@ const mainReducer = (state, action) => {
         currentDiary: { ...state.currentDiary, id: state.diaries.length + 1 },
         // currentDiary: { ...state.currentDiary },
       };
-    case 'GET_DIARY':
+    case 'GET_DIARY_BY_ID':
       return {
         ...state,
         viewerDiary: action.diary,
