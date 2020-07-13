@@ -4,6 +4,6 @@ const posts = require('./posts');
 
 const api = new Router();
 
-api.use('/users', posts.routes());
+api.use('/posts', posts.routes());
 
 module.exports = api;
