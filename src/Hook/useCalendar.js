@@ -132,7 +132,7 @@ const useCalendar = () => {
     const numberValue = parseInt(value, 10);
 
     dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
-    console.log('modal', modal.inputs, 'now', now);
+    console.log(numberValue);
 
     if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
