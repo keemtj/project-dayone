@@ -9,7 +9,7 @@ const usePosts = () => {
     dispatch({ type: 'LOADING' });
     try {
       const diaries = await Api.getDiaries();
-      console.log('diaries:', diaries);
+      // console.log('diaries:', diaries);
       dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({
@@ -61,12 +61,12 @@ const usePosts = () => {
   };
 
   const patchBookmark = async (id, isBookmarked) => {
-    // id = diary.id
-    // isBookmarked = e.target.checked
-    // dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
+    // id = diary.id;
+    // isBookmarked = e.target.checked;
+    dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
+
     try {
       await Api.patchDiaries({ id, isBookmarked });
-      dispatch({ type: 'TOGGLE_BOOKMARK', id, isBookmarked });
     } catch (e) {
       dispatch({
         type: 'ERROR',

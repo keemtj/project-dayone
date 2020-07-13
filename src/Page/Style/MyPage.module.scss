@@ -89,24 +89,75 @@
     width: 95%;
     margin: 0 auto;
 
-    .diary figure {
-      margin: 20px 0.4rem 0;
+    li {
+      position: relative;
       width: 11rem;
+      height: 11rem;
+      margin: 20px 0.43rem 0;
+
+      &:hover {
+        & figure .thumbnail {
+          filter: brightness(55%);
+          transition: 0.3s;
+        }
+        & figure .caption {
+          visibility: visible;
+        }
+
+        & .bookmark {
+          visibility: visible;
+        }
+      }
+    }
+
+    .diary figure {
+      position: relative;
 
       .thumbnail {
         width: 11rem;
-        height: 9rem;
+        height: 11rem;
+        transition: 0.3s;
       }
 
-      .diaryTitle {
-        height: 2rem;
-        text-align: center;
-        background: rgba(240, 240, 240, 0.884);
+      .caption {
+        position: absolute;
+        top: calc(50% - 2rem);
+        left: 0;
+        width: 100%;
+        padding: 7px 10px 0;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
         white-space: nowrap;
-        padding: 7px 10px 0;
-        font-weight: 600;
+        color: #fff;
+        visibility: hidden;
+
+        .diaryTitle {
+          font-weight: 600;
+          font-size: 1.2rem;
+        }
+
+        .diaryDate {
+          display: block;
+          padding: 10px 0;
+          font-weight: 500;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .bookmark {
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      font-size: 1.3rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 50;
+      visibility: hidden;
+
+      input {
+        visibility: hidden;
       }
     }
   }

@@ -102,24 +102,27 @@ const mainReducer = (state, action) => {
         diaries: state.diaries.filter((diary) => diary.id !== action.id),
       };
     case 'TOGGLE_BOOKMARK':
-      // Work in progress
-      // action.id = diary.id
-      // action.isBookmarked = e.target.checked = boolean
-      console.log('[mainReducer] action.id =', action.id);
-      console.log('[mainReducer] action.isBookmarked =', action.isBookmarked);
       return {
         ...state,
-        currentDiary: {
-          ...state.currentDiary,
-          id: action.id,
-          isBookmarked: action.isBookmarked,
-        },
+        diaries: state.diaries.map((diary) => {
+          return +diary.id === +action.id
+            ? { ...diary, isBookmarked: !diary.isBookmarked }
+            : diary;
+        }),
       };
     case 'LOG_OUT':
       // return initialState;
       return {
         ...state,
         userData: {},
+      };
+    case 'CHANGE_DATE':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          date: action.date,
+        },
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

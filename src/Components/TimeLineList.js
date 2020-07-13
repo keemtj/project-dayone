@@ -17,13 +17,13 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   const onChangeBookmark = (e) => {
     patchBookmark(id, e.target.checked);
-    console.log('[timeline] diary.id =', id);
-    console.log('[timeline] e.target.checked =', e.target.checked);
+    // console.log('[timeline] diary.id =', id);
+    // console.log('[timeline] e.target.checked =', e.target.checked);
   };
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      {console.log('current bookmark checked:', isBookmarked)}
+      {/* {console.log('current bookmark checked:', isBookmarked)} */}
       <input
         id={id}
         type="checkbox"
