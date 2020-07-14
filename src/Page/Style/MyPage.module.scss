@@ -64,7 +64,8 @@
         margin-right: 3px;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: #fff;
         background: #aaa;
         transition: 0.3s;
@@ -95,7 +96,8 @@
       height: 13rem;
       margin: 20px 14.5px 10px;
 
-      &:hover {
+      &:hover,
+      & a:focus {
         & figure .thumbnail {
           filter: brightness(55%);
           transition: 0.3s;
