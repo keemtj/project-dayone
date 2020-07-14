@@ -1,9 +1,5 @@
 $mainColor: #67bff9;
 
-// common
-@mixin timeline-hover {
-}
-
 @mixin timeline-bookmark {
   input[type='checkbox'] {
     display: none;
@@ -27,79 +23,77 @@ $mainColor: #67bff9;
   }
 }
 
-@mixin timeline-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: keep-all;
-  text-align: justify;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  @content;
-}
-
-// list
-@mixin timeline-list {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  border: 1px solid #ffffff;
-  width: 100%;
-  height: 25%;
-
-  &:nth-child(n + 2) {
-    margin-top: 1rem;
-  }
-  figure {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-
-    .thumbnail {
-      width: 200px;
-      height: 200px;
-    }
-
-    figcaption {
-      padding: 1.3rem 1.8rem;
-      color: #181818;
-      width: 760px;
-      height: 200px;
-
-      .diaryTitle {
-        font-size: 1.6rem;
-        font-weight: 500;
-        @include timeline-ellipsis;
-        text-align: center;
-        -webkit-line-clamp: 1;
-      }
-      .diaryDate {
-        margin-top: 0.8rem;
-        font-size: 1.2rem;
-        color: #434548;
-        text-align: end;
-      }
-      .diaryContent {
-        width: 100%;
-        height: 57%;
-        margin-top: 0.7rem;
-        font-size: 1.2rem;
-        line-height: 1.6;
-        @include timeline-ellipsis;
-        -webkit-line-clamp: 3;
-        text-indent: 0.8rem;
-      }
-    }
-  }
-}
-
 .timelineWrapper {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 
-  // apply mixin
   .timeline-list {
-    @include timeline-list;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border: 1px solid #ffffff;
+    width: 100%;
+    height: 25%;
+
+    &:nth-child(n + 2) {
+      margin-top: 1rem;
+    }
+
+    figure {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .thumbnail {
+        width: 200px;
+        height: 200px;
+      }
+
+      figcaption {
+        padding: 1.3rem 1.8rem;
+        color: #181818;
+        width: 760px;
+        height: 200px;
+
+        .title {
+          font-size: 1.6rem;
+          font-weight: 500;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: keep-all;
+          text-align: justify;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          text-align: center;
+          -webkit-line-clamp: 1;
+        }
+
+        .date {
+          margin-top: 0.8rem;
+          font-size: 1.2rem;
+          color: #434548;
+          text-align: end;
+        }
+
+        .content {
+          width: 100%;
+          height: 57%;
+          margin-top: 0.7rem;
+          font-size: 1.2rem;
+          line-height: 1.6;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: keep-all;
+          text-align: justify;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          text-indent: 0.8rem;
+        }
+      }
+    }
+
     @include timeline-bookmark;
   }
 
