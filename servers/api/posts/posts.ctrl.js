@@ -194,7 +194,7 @@ POST /api/posts
 { _id, title, body, date, location }
 */
 exports.write = (ctx) => {
-  // REST API의 Requiest Body는 ctx.request.body에서 조회 가능
+  // REST API의 Request Body는 ctx.request.body에서 조회 가능
   const { _id, title, body, date, location } = ctx.request.body;
   diaryId += 1;
   const diary = { _id, id: diaryId, title, body, date, location };

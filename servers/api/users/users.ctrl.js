@@ -1,5 +1,3 @@
-let diaryId = 15;
-
 const users = [
   {
     _id: 1,
@@ -171,113 +169,56 @@ const users = [
   },
 ];
 
-/* 전체 diary list 조회
-GET /api/posts
+/*
+전체 유저 리스트 조회 
+GET /api/users
 */
-exports.list = (ctx) => {
+exports.users = (ctx) => {
   ctx.body = users;
 };
 
-/* 새로운 diary 작성
-POST /api/posts
-{ _id, title, body, date, location }
+/*
+특정 유저 조회
+GET /api/users/:id
 */
-exports.write = (ctx) => {
-  // REST API의 Requiest Body는 ctx.request.body에서 조회 가능
-  const { _id, title, body, date, location } = ctx.request.body;
-  diaryId += 1;
-  const diary = { _id, id: diaryId, title, body, date, location };
-  users.push(diary);
+exports.user = (ctx) => {
+  const { id } = ctx.params;
+  // eslint-disable-next-line no-underscore-dangle
+  const user = users.find((u) => u._id.toString() === id);
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = {
+      message: '유저가 존재하지 않습니다.',
+    };
+    return;
+  }
+  ctx.body = user;
+};
+
+exports.diaries = (ctx) => {
+  const { id } = ctx.params;
+  // eslint-disable-next-line no-underscore-dangle
+  const user = users.find((u) => u._id.toString() === id);
+  ctx.body = user.diaries;
+};
+
+exports.diary = (ctx) => {
+  const { id } = ctx.params;
+  // eslint-disable-next-line no-underscore-dangle
+  const diaries = users.map((user) => user.diaries);
+  const diary = diaries.find((d) => d.id.toString() === id);
   ctx.body = diary;
 };
-
-/* 특정 다이어리 조회
-GET /api/posts/:id
+/*
+새로운 유저 가입(미완성 코드)
+POST /api/users
+{ _id, userId, userPw, diaries }
 */
-exports.read = (ctx) => {
-  const { id } = ctx.params;
-  // 주어진 id값으로 diary 찾기
-  // 파라미터로 받아 온 값은 문자열 형식
-  // 파라미터를 숫자로 변환 또는 비교할 d.id 값을 문자열로 변경
-  const diary = users.find((d) => d.id.toString() === id);
-  // diary가 없으면 오류 반환
-  if (!diary) {
-    ctx.status = 404;
-    ctx.body = {
-      message: '다이어리가 존재하지 않습니다.',
-    };
-    return;
-  }
-  ctx.body = diary;
-};
-
-/* 특정 다이어리 제거
-DELETE /api/posts/:id
-*/
-exports.remove = (ctx) => {
-  const { id } = ctx.params;
-  // 제거할 diary의 id를 찾기
-  const index = users.findIndex((d) => d.id.toString() === id);
-  // 찾는 diary가 없으면 오류 반환
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      message: '다이어리가 존재하지 않습니다.',
-    };
-    return;
-  }
-  // index번째 diary 제거
-  users.splice(index, 1);
-  ctx.status = 204; // No Content
-};
-
-/* 특정 다이어리 수정(특정 부분 수정)
-PATCH /api/posts/:id
-{ title, body, date, location }
-*/
-exports.update = (ctx) => {
-  // 특정 부분만 수정(교체)
-  const { id } = ctx.params;
-  // 해당 id를 가진 diary를 찾음
-  const index = users.findIndex((d) => d.id.toString() === id);
-  // diary가 없으면 오류 반환
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      message: '포스트가 존재하지 않습니다.',
-    };
-    return;
-  }
-  users[index] = {
-    ...users[index],
-    ...ctx.request.body,
-  };
-  ctx.body = users[index];
-};
-
-/* 특정 다이어리 수정(교체)
-PUT /api/posts/:id
-{ title, body, date, location }
-*/
-exports.replace = (ctx) => {
-  // 전체 다이어리 정보를 입력하여 데이터를 통째로 교체
-  const { _id, id } = ctx.params;
-  // 해당하는 id를 가진 다이어리를 찾음
-  const index = users.findIndex((d) => d.id.toString() === id);
-  // 찾는 diary가 없으면 오류 반환
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      message: '다이어리가 존재하지 않습니다.',
-    };
-    return;
-  }
-  // 전체 users를 덮어 씌움
-  // _id, id를 제외한 기본 정보를 날리고, 객체를 새로 생성
-  users[index] = {
-    _id,
-    id,
-    ...ctx.request.body,
-  };
-  ctx.body = users[index];
-};
+// let joinId = 2;
+// exports.join = (ctx) => {
+//   const { userId, userPw, diaries } = ctx.request.body;
+//   joinId += 1;
+//   const user = { _id: joinId, userId, userPw, diaries };
+//   users.push(user);
+//   ctx.body = user;
+// };
