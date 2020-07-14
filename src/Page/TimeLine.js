@@ -12,14 +12,16 @@ const Timeline = () => {
   return (
     <main>
       <div className={cx('timelineNav')}>
-        <NavLink to="/timeline/list" activeClassName={cx('active')}>
-          <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-          <span className={cx('tooltip')}>리스트</span>
-        </NavLink>
-        <NavLink to="/timeline/media" activeClassName={cx('active')}>
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-          <span className={cx('tooltip')}>사진</span>
-        </NavLink>
+        <div className={cx('nav')}>
+          <NavLink to="/timeline/list" activeClassName={cx('active')}>
+            <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+            {/* <span className={cx('tooltip')}>리스트</span> */}
+          </NavLink>
+          <NavLink to="/timeline/media" activeClassName={cx('active')}>
+            <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+            {/* <span className={cx('tooltip')}>사진</span> */}
+          </NavLink>
+        </div>
         <SubRouter />
       </div>
     </main>

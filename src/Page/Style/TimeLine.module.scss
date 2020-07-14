@@ -1,16 +1,13 @@
 $mainColor: #67bff9;
 
 .timelineNav {
-  text-align: end;
-
-  a {
-    display: inline-block;
-    padding: 1rem;
-    margin-right: -1rem;
-  }
-
-  a:link {
-    text-decoration: none;
+  .nav {
+    text-align: end;
+    padding: 1rem 0 1rem 0;
+    margin-right: -0.5rem;
+    a {
+      padding: 0.5rem;
+    }
   }
 
   a:visited {
@@ -30,47 +27,45 @@ $mainColor: #67bff9;
   .active .icon {
     color: $mainColor;
   }
-}
 
-.tooltip {
-  visibility: hidden;
-  opacity: 0;
-  width: max-content;
-  text-align: center;
-  position: absolute;
-  background: #555;
-  transition: opacity 0.3s;
-  font-size: 0.7rem;
-  padding: 3px 7px 4px;
-  z-index: 10;
-  border-radius: 5px;
-  color: #fff;
-}
+  // .tooltip {
+  //   visibility: hidden;
+  //   opacity: 0;
+  //   width: max-content;
+  //   text-align: center;
+  //   position: absolute;
+  //   background: #555;
+  //   transition: opacity 0.3s;
+  //   font-size: 0.7rem;
+  //   padding: 3px 7px 4px;
+  //   z-index: 10;
+  //   border-radius: 5px;
+  //   color: #fff;
+  // }
 
-main div a:nth-child(1) .tooltip {
-  right: 206px;
-  top: 100px;
-}
+  // main div a:nth-child(1) .tooltip {
+  //   right: 10px;
+  // }
 
-main div a:nth-child(2) .tooltip {
-  right: 176px;
-  top: 100px;
-}
+  // main div a:nth-child(2) .tooltip {
+  //   right: 10px;
+  // }
 
-.tooltip::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 51%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent #555 transparent;
-}
+  // .tooltip::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: -10px;
+  //   left: 51%;
+  //   margin-left: -5px;
+  //   border-width: 5px;
+  //   border-style: solid;
+  //   border-color: transparent transparent #555 transparent;
+  // }
 
-a:hover .tooltip {
-  transition: 0.3s;
-  transition-delay: 0.3s;
-  visibility: visible;
-  opacity: 1;
+  // a:hover .tooltip {
+  //   transition: 0.3s;
+  //   transition-delay: 0.3s;
+  //   visibility: visible;
+  //   opacity: 1;
+  // }
 }
