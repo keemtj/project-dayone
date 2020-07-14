@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
 import { MainContext } from '../Context/MainContext';
+import SubRouter from '../Router/SubRouter';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +23,7 @@ const Timeline = () => {
 
   return (
     <div>
-      <div className={cx('timelineNav')}>
+      {/* <div className={cx('timelineNav')}>
         <button
           type="button"
           onClick={onClickNav}
@@ -45,7 +47,31 @@ const Timeline = () => {
             timelineNav={timelineNav}
           />
         ))}
-      </ul>
+      </ul> */}
+      <div className={cx('timelineNav')}>
+        <Link to="/timeline/list">
+          <button
+            type="button"
+            onClick={onClickNav}
+            className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
+          >
+            <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+          </button>
+        </Link>
+        <Link to="/timeline/media">
+          <button
+            type="button"
+            onClick={onClickNav}
+            className={cx(
+              'media',
+              `${timelineNav === 'media' ? 'active' : ''}`,
+            )}
+          >
+            <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+          </button>
+        </Link>
+        <SubRouter />
+      </div>
     </div>
   );
 };
