@@ -131,8 +131,7 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
-    console.log(numberValue);
+    dispatch({ type: 'CHANGE_MONTH_INPUT', value: numberValue });
 
     if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
@@ -150,8 +149,7 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_YEAR_INPUT', numberValue });
-    console.log('modal', modal.inputs, 'now', now);
+    dispatch({ type: 'CHANGE_YEAR_INPUT', value: numberValue });
 
     if (
       numberValue > now.year ||

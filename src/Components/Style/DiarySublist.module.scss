@@ -15,7 +15,8 @@ $outline: 1px solid #dbdbdb;
   cursor: pointer;
   transition: 0.3s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: $mainColor;
     color: #ffffff;
     // border: #ffffff;
@@ -49,7 +50,7 @@ $outline: 1px solid #dbdbdb;
     border-bottom: $outline;
     margin: -1px auto 0;
     background: #ffffff;
-    
+
     &:hover {
       background: #ebebeb73;
     }
@@ -63,7 +64,6 @@ $outline: 1px solid #dbdbdb;
     background: #ffffff;
     text-decoration: none;
     cursor: pointer;
-
 
     .thumbnail {
       // padding: 5px;
