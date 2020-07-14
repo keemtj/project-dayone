@@ -12,7 +12,9 @@ const cx = classNames.bind(styles);
 const ModalSmall = ({ viewerState, setViewerState, id }) => {
   const history = useHistory();
   const { modalState, setModalState } = React.useContext(DiaryContext);
-  const { state, submitDiary, deleteDiary } = React.useContext(MainContext);
+  const { state, submitDiary, deleteDiary, editDiary } = React.useContext(
+    MainContext,
+  );
 
   const onClick = (e) => {
     if (
@@ -24,21 +26,22 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
     if (viewerState === 'Delete') setViewerState('initial');
   };
 
-  const cancelSubmit = () => {
+  const clickCancel = () => {
     if (modalState === 'Submit') setModalState('initial');
     if (viewerState === 'Delete') setViewerState('initial');
   };
 
-  const confirmSubmit = () => {
+  const clickConfirm = () => {
     if (modalState === 'Submit') {
-      submitDiary();
+      if (!state.editState) submitDiary();
       history.push(`/diaryViewer/${state.currentDiary.id}`);
       setModalState('initial');
     }
+    if (state.editState) {
+      editDiary();
+    }
     if (viewerState === 'Delete') {
       deleteDiary(id);
-      // history.goBack();
-      // setViewerState('initial');
       setViewerState('Deleted');
     }
   };
@@ -48,10 +51,6 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
     if (viewerState === 'Delete') return 'block';
     if (viewerState === 'Deleted') return 'block';
     return 'none';
-  };
-
-  const changeHeight = () => {
-    return viewerState === 'Deleted' ? { height: '98px' } : {};
   };
 
   const changeDisplay = () => {
@@ -76,7 +75,6 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
         </span>
       );
     }
-    // style={{ marginTop: '26px' }}
     return <></>;
   };
 
@@ -92,7 +90,7 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
           style={changeDisplay()}
           className={cx('cancel')}
           type="button"
-          onClick={cancelSubmit}
+          onClick={clickCancel}
         >
           취소
         </button>
@@ -100,7 +98,7 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
           style={changeDisplay()}
           className={cx('confirm')}
           type="button"
-          onClick={confirmSubmit}
+          onClick={clickConfirm}
         >
           확인
         </button>

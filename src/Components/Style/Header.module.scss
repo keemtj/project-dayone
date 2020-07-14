@@ -3,7 +3,6 @@ $mainColor: #67bff9;
 .header {
   position: fixed;
   width: 100%;
-  // padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
   z-index: 10;
 
@@ -21,28 +20,27 @@ $mainColor: #67bff9;
     justify-content: space-between;
     align-items: center;
     width: 25%;
-  }
 
-  .logo,
-  .icon {
-    color: white;
-    cursor: pointer;
+    a {position: relative;}
   }
 
   .logo {
     margin: 15px 0;
     font-size: 1.6rem;
     font-weight: 600;
-  }
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    position: relative;
+    
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 
   .icon {
+    color: #218DD3;
     font-size: 1.4rem;
+  }
+  .active .icon {
+    color: #fff;
   }
 }
 
@@ -65,13 +63,14 @@ $mainColor: #67bff9;
   padding: 3px 7px 4px;
   z-index: 10;
   border-radius: 5px;
+  color: #fff;
 }
 
 .nav a:nth-child(1) .tooltip {
   left: 0;
 }
 .nav a:nth-child(2) .tooltip {
-  left: -16px;
+  left: -17px;
 }
 .nav a:nth-child(3) .tooltip {
   left: -3px;

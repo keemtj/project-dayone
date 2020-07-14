@@ -18,10 +18,13 @@ const MainProvider = ({ children }) => {
     pushImg,
     pushDiaryId,
     getDiary,
+    clearCurrentDiary,
     clearViewerDiary,
     bookmarkDiary,
     patchBookmark,
     deleteDiary,
+    setEditState,
+    editDiary,
   ] = usePosts();
 
   const [
@@ -43,10 +46,13 @@ const MainProvider = ({ children }) => {
     pushImg,
     pushDiaryId,
     getDiary,
+    clearCurrentDiary,
     clearViewerDiary,
     bookmarkDiary,
     patchBookmark,
     deleteDiary,
+    setEditState,
+    editDiary,
   };
 
   const loginData = {

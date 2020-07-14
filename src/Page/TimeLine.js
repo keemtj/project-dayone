@@ -25,7 +25,7 @@ const Timeline = () => {
   };
 
   return (
-    <div>
+    <main>
       <div className={cx('timelineNav')}>
         <button
           type="button"
@@ -58,7 +58,7 @@ const Timeline = () => {
           />
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 

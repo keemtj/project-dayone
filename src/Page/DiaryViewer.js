@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/DiaryViewer.module.scss';
 import { MainContext } from '../Context/MainContext';
@@ -10,8 +10,11 @@ const cx = classNames.bind(styles);
 
 const DiaryViewer = () => {
   const [viewerState, setViewerState] = useState('initial');
-  const { state, getDiary, clearViewerDiary } = React.useContext(MainContext);
+  const { state, getDiary, clearViewerDiary, setEditState } = useContext(
+    MainContext,
+  );
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getDiary(id);
@@ -22,18 +25,19 @@ const DiaryViewer = () => {
 
   if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
 
-  const onClick = () => {
-    setViewerState('Delete');
+  const clickDelete = () => setViewerState('Delete');
+
+  const clickEdit = () => {
+    setEditState();
+    history.push('/diary');
   };
 
-  const renderDiary = () => {
-    return (
-      <div
-        className={cx('content')}
-        dangerouslySetInnerHTML={{ __html: state.viewerDiary.content }}
-      />
-    );
-  };
+  const renderDiary = () => (
+    <div
+      className={cx('content')}
+      dangerouslySetInnerHTML={{ __html: state.viewerDiary.content }}
+    />
+  );
 
   return (
     <main className={cx('wrapViewer')}>
@@ -41,14 +45,17 @@ const DiaryViewer = () => {
       <h2 className={cx('title')}>{state.viewerDiary.title}</h2>
       <span className={cx('date')}>{state.viewerDiary.date}</span>
       {renderDiary()}
-      {console.log('viewer', state.viewerDiary)}
-      <button className={cx('button', 'editBtn')} type="button">
+      <button
+        className={cx('button', 'editBtn')}
+        type="button"
+        onClick={clickEdit}
+      >
         수정
       </button>
       <button
         className={cx('button', 'deleteBtn')}
         type="button"
-        onClick={onClick}
+        onClick={clickDelete}
       >
         삭제
       </button>
