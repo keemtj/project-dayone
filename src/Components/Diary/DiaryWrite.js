@@ -26,19 +26,6 @@ const DiaryWrite = () => {
         ],
       },
       // formats: [
-      //   'header',
-      //   'font',
-      //   'size',
-      //   'image',
-      //   'bold',
-      //   'italic',
-      //   'underline',
-      //   'strike',
-      //   'ordered',
-      //   'bullet',
-      //   'list',
-      //   'blockquote',
-      //   'link',
       // ],
     });
 
@@ -63,7 +50,6 @@ const DiaryWrite = () => {
         images.push(v.src);
       });
     });
-    // console.log(images);
     pushImg(images);
   };
 

@@ -35,9 +35,6 @@ $mainColor: #67BFF9;
 
   
   .button {
-    // position: absolute;
-    // top: 0px;
-    // right: 0px;
     padding: 9px 33px;
     border: 1px solid #c7c7c7;
     color: #7a7a7a;
@@ -49,6 +46,7 @@ $mainColor: #67BFF9;
     font-weight: 500;
     border-radius: 3px;
     font-size: 16px;
+    margin-bottom: 30px;
   }
   .button:hover, .button:focus {
     border: 1px solid $mainColor;
@@ -57,7 +55,6 @@ $mainColor: #67BFF9;
     font-weight: 700;
   }
   .editBtn {
-    // right: 52px;
     margin-left: calc(100% - 201px);
   }
   .deleteBtn {

@@ -4,7 +4,12 @@ const getToday = () => {
 };
 
 const initialState = {
-  userData: {},
+  userData: {
+    // id: 1,
+    // userId: '',
+    // userPw: '',
+    // active: true,
+  },
   diaries: [
     // {
     //   id: 1,
@@ -26,6 +31,16 @@ const initialState = {
     imagePaths: [],
   },
   viewerDiary: {},
+  editDiary: {
+    // editState: 'edit',
+    // id: 1,
+    // title: '',
+    // content: '',
+    // date: '',
+    // location: {},
+    // isBookmarked: false,
+    // imagePaths: [],
+  },
   error: {
     state: false,
     message: null,
