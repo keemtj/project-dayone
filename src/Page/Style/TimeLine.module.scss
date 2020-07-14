@@ -3,29 +3,31 @@ $mainColor: #67bff9;
 .timelineNav {
   text-align: end;
 
-  button {
+  a {
+    display: inline-block;
     padding: 1rem;
-    background-color: none;
-    border: none;
-    color: #d1d1d1;
-    outline: none;
-    cursor: pointer;
-
-    &:last-child {
-      margin-right: -1rem;
-    }
-
-    .icon {
-      font-size: 1.2rem;
-      text-align: center;
-    }
-
-    &:hover {
-      color: $mainColor;
-    }
+    margin-right: -1rem;
   }
 
-  .active {
+  a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #cccccc;
+  }
+
+  a:active,
+  a:hover {
+    color: $mainColor;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .active .icon {
     color: $mainColor;
   }
 }
@@ -49,6 +51,7 @@ main div a:nth-child(1) .tooltip {
   right: 206px;
   top: 100px;
 }
+
 main div a:nth-child(2) .tooltip {
   right: 176px;
   top: 100px;
