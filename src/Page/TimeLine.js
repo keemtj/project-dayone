@@ -4,16 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
-// import usePosts from '../Hook/usePosts';
 import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
+  const [timelineNav, setTimeLineNav] = useState('list'); // list, media
   const context = useContext(MainContext);
   const { state } = context;
   const { diaries } = state;
-  const [timelineNav, setTimeLineNav] = useState('list'); // list, media
 
   const onClickNav = ({ target }) => {
     if (target.classList.length === 2) return;

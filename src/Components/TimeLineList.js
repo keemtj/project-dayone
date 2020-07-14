@@ -21,18 +21,8 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
+      {/* 기본적으로 보여지는 list, media 아이템 */}
       <Link to={`/diaryViewer/${id}`}>
-        <input
-          id={id}
-          type="checkbox"
-          checked={isBookmarked ? 'checked' : ''}
-          onChange={onChangeBookmark}
-        />
-        <label htmlFor={id}>
-          <span>
-            <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
-          </span>
-        </label>
         <figure>
           <img
             className={cx('thumbnail')}
@@ -55,6 +45,18 @@ const TimeLineList = ({ diary, timelineNav }) => {
             </p>
           </figcaption>
         </figure>
+        {/* 마우스 hover시 보여지는 bookmark */}
+        <input
+          id={id}
+          type="checkbox"
+          checked={isBookmarked ? 'checked' : ''}
+          onChange={onChangeBookmark}
+        />
+        <label htmlFor={id}>
+          <span>
+            <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
+          </span>
+        </label>
       </Link>
     </li>
   );
