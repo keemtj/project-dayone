@@ -6,7 +6,7 @@ import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const ModalButtons = ({ dateState }) => {
+const ModalButtons = ({ dateState, setDateState }) => {
   const mainCtx = React.useContext(MainContext);
   const { dispatch } = mainCtx;
   const { modalState, setModalState } = React.useContext(DiaryContext);
@@ -23,6 +23,8 @@ const ModalButtons = ({ dateState }) => {
     }
   };
 
+  const closeModal = () => setModalState('initial');
+
   const mapSubmit = () => {};
 
   return (
@@ -34,11 +36,7 @@ const ModalButtons = ({ dateState }) => {
         {msgState}
       </span>
       <div className={cx('btnWrapper')}>
-        <button
-          type="button"
-          className={cx('cancelBtn')}
-          onClick={() => setModalState('initial')}
-        >
+        <button type="button" className={cx('cancelBtn')} onClick={closeModal}>
           취소
         </button>
         <button

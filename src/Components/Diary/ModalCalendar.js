@@ -117,7 +117,7 @@ const ModalCalendar = () => {
           })}
         </div>
       </div>
-      <ModalButtons dateState={dateState} />
+      <ModalButtons dateState={dateState} setDateState={setDateState} />
     </>
   );
 };
