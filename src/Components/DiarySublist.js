@@ -4,16 +4,23 @@ import classNames from 'classnames/bind';
 import styles from './Style/DiarySublist.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
 import DiaryViewer from '../Page/DiaryViewer';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const DiarySublist = ({ mapList }) => {
+  const mainCtx = React.useContext(MainContext);
+  const { dispatch } = mainCtx;
   const calCtx = React.useContext(CalendarContext);
+  const date = calCtx && calCtx.calendarState.selectedDate;
   const calendarList = calCtx && calCtx.calendarState.sublist;
   const subList = calendarList || mapList;
   const history = useHistory();
 
-  const writeDiary = () => history.push('/diary');
+  const writeDiary = () => {
+    dispatch({ type: 'CHANGE_DATE', date });
+    history.push('/diary');
+  };
 
   return (
     <>

@@ -18,6 +18,7 @@ export const calendarInitState = {
     warning: '',
   },
   sublist: [],
+  selectedDate: '',
 };
 
 export const calendarReducer = (state, action) => {
@@ -134,6 +135,7 @@ export const calendarReducer = (state, action) => {
       return {
         ...state,
         sublist: action.sublist,
+        selectedDate: action.selectedDate,
       };
     default:
       throw new Error(`${action.type}: ERROR`);
