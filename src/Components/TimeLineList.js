@@ -40,7 +40,9 @@ const TimeLineList = () => {
               />
               <figcaption>
                 <div className={cx('title')}>{diary.title}</div>
-                <div className={cx('date')}>{diary.date}</div>
+                <div className={cx('date')}>
+                  {diary.date.split('-').join('. ')}
+                </div>
                 <p className={cx('content')}>{diary.content}</p>
               </figcaption>
             </figure>

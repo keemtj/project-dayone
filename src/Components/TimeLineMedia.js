@@ -56,7 +56,9 @@ const TimeLineMedia = () => {
             >
               <div className={cx('diaryInfo')}>
                 <div className={cx('title')}>{diary.title}</div>
-                <div className={cx('date')}>{diary.date}</div>
+                <div className={cx('date')}>
+                  {diary.date.split('-').join('. ')}
+                </div>
               </div>
             </Link>
           </div>
