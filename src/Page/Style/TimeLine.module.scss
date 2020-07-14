@@ -1,13 +1,11 @@
 $mainColor: #67bff9;
 
 .timelineNav {
-  // background-color: tomato;
-  padding: 0.6rem 0 1.1rem 0;
-  font-size: 1.8rem;
   text-align: end;
 
   button {
-    margin-left: 0.6rem;
+    padding-left: 1px;
+    margin: 1rem 0 1rem 1rem;
     background-color: none;
     border: none;
     color: #d1d1d1;
@@ -19,11 +17,8 @@ $mainColor: #67bff9;
     }
 
     .icon {
+      font-size: 1.2rem;
       text-align: center;
-
-      &:last-child {
-        font-size: 1.55rem;
-      }
     }
 
     &:hover {
@@ -33,18 +28,5 @@ $mainColor: #67bff9;
 
   .active {
     color: $mainColor;
-  }
-}
-
-.timelineWrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  // background-color: yellowgreen;
-
-  &::after {
-    display: block;
-    content: '';
-    width: 24%;
   }
 }
