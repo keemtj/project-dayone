@@ -3,7 +3,6 @@ $mainColor: #67bff9;
 .header {
   position: fixed;
   width: 100%;
-  // padding: 0.4rem 0 0.4rem 0;
   background: $mainColor;
   z-index: 10;
 
@@ -21,29 +20,25 @@ $mainColor: #67bff9;
     justify-content: space-between;
     align-items: center;
     width: 25%;
+
+    a {position: relative;}
   }
 
-  .logo,
-  .icon {
-    cursor: pointer;
-  }
-  
   .logo {
     margin: 15px 0;
     font-size: 1.6rem;
     font-weight: 600;
-  }
-  
-  .logo a {
-    color: #fff;
-    text-decoration: none;
+    
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 
   .icon {
     color: #218DD3;
     font-size: 1.4rem;
   }
-
   .active .icon {
     color: #fff;
   }
@@ -53,4 +48,54 @@ $mainColor: #67bff9;
   .container {
     width: 90% !important;
   }
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  text-align: center;
+  position: absolute;
+  bottom: -32px;
+  background: #555;
+  transition: opacity 0.3s;
+  font-size: 0.7rem;
+  padding: 3px 7px 4px;
+  z-index: 10;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.nav a:nth-child(1) .tooltip {
+  left: 0;
+}
+.nav a:nth-child(2) .tooltip {
+  left: -17px;
+}
+.nav a:nth-child(3) .tooltip {
+  left: -3px;
+}
+.nav a:nth-child(4) .tooltip {
+  left: -6px;
+}
+.nav a:nth-child(5) .tooltip {
+  left: -13px;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 51%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+a:hover .tooltip {
+  transition: 0.3s;
+  transition-delay: 0.3s;
+  visibility: visible;
+  opacity: 1;
 }

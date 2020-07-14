@@ -36,13 +36,13 @@ const CustomCalendar = () => {
       e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
     const date = target.className.split(' ')[0];
     const sublist = diaries.filter((diary) => diary.date === date);
-    dispatch({ type: 'GET_SUBLIST', sublist });
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
   };
 
   const getTodaySublist = (present) => {
     const today = `${present.year}-${present.month}-${present.date}`;
     const sublist = diaries.filter((diary) => diary.date === today);
-    dispatch({ type: 'GET_SUBLIST', sublist });
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
   };
 
   useEffect(() => {
