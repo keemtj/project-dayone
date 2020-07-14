@@ -9,25 +9,23 @@ import MyPage from '../Page/MyPage';
 
 const MainRouter = () => {
   return (
-    <div>
-      <Switch>
-        <Route path={['/', '/timeline']} component={TimeLine} exact />
-        <Route path="/timeline/:nav" component={TimeLine} />
-        <Route path="/map" component={Map} />
-        <Route path="/calendar" component={Calendar} />
-        <Route path="/diary" component={Diary} />
-        <Route path="/mypage" component={MyPage} />
-        <Route path="/diaryViewer/:id" component={DiaryViewer} />
-        <Route
-          render={({ location }) => (
-            <div>
-              <h2>이 페이지는 존재하지 않습니다:</h2>
-              <p>{location.pathname}</p>
-            </div>
-          )}
-        />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path={['/', '/timeline']} component={TimeLine} exact />
+      <Route path="/timeline/:nav" component={TimeLine} />
+      <Route path="/map" component={Map} />
+      <Route path="/calendar" component={Calendar} />
+      <Route path="/diary" component={Diary} />
+      <Route path="/mypage" component={MyPage} />
+      <Route path="/diaryViewer/:id" component={DiaryViewer} />
+      <Route
+        render={({ location }) => (
+          <div>
+            <h2>이 페이지는 존재하지 않습니다:</h2>
+            <p>{location.pathname}</p>
+          </div>
+        )}
+      />
+    </Switch>
   );
 };
 

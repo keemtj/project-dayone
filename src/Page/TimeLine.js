@@ -17,7 +17,7 @@ const Timeline = () => {
   };
 
   return (
-    <div>
+    <main>
       <div className={cx('timelineNav')}>
         <Link to="/timeline/list">
           <button
@@ -42,7 +42,7 @@ const Timeline = () => {
         </Link>
         <SubRouter />
       </div>
-    </div>
+    </main>
   );
 };
 

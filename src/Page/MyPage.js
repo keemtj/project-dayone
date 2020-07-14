@@ -22,7 +22,7 @@ const MyPage = () => {
   const mm = diaries[0].date.split('-')[1];
   const dd = diaries[0].date.split('-')[2];
   const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
-  const diaryPerDay = Number((diaryTerm / diaries.length).toFixed(2));
+  const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(1));
 
   const onClickLogOut = () => {
     dispatch({ type: 'LOG_OUT' });
@@ -88,12 +88,14 @@ const MyPage = () => {
               </label>
               <Link to={`/diaryViewer/${id}`}>
                 <figure>
-                  <img
-                    src={
-                      imagePaths.length
-                        ? imagePaths[0]
-                        : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
-                    }
+                  <div
+                    style={{
+                      backgroundImage: `url(${
+                        imagePaths.length
+                          ? imagePaths[0]
+                          : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+                      })`,
+                    }}
                     className={cx('thumbnail')}
                     alt="thumbnail"
                   />

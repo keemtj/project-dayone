@@ -6,7 +6,7 @@ import { MainContext } from '../../Context/MainContext';
 const cx = classNames.bind(styles);
 
 const DiaryTitle = () => {
-  const { writeTitle } = React.useContext(MainContext);
+  const { state, writeTitle } = React.useContext(MainContext);
   const onChange = (e) => {
     writeTitle(e.target.value);
   };
@@ -14,6 +14,7 @@ const DiaryTitle = () => {
   return (
     <input
       className={cx('diaryTitle')}
+      value={state.currentDiary.title}
       type="text"
       placeholder="일기 제목"
       onChange={onChange}

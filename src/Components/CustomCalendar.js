@@ -31,18 +31,18 @@ const CustomCalendar = () => {
   const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
 
-  const getSublist = ({ target }) => {
+  const getSublist = (e) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
     const date = target.className.split(' ')[0];
-    // console.log('getSublist..date: ', date);
     const sublist = diaries.filter((diary) => diary.date === date);
-    // console.log('sublist: ', sublist);
-    dispatch({ type: 'GET_SUBLIST', sublist });
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
   };
 
-  const getTodaySublist = (now) => {
-    const today = `${now.year}-${now.month}-${now.date}`;
+  const getTodaySublist = (present) => {
+    const today = `${present.year}-${present.month}-${present.date}`;
     const sublist = diaries.filter((diary) => diary.date === today);
-    dispatch({ type: 'GET_SUBLIST', sublist });
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
   };
 
   useEffect(() => {
