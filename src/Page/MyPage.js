@@ -13,7 +13,7 @@ const MyPage = () => {
   const mainCtx = React.useContext(MainContext);
   const loginCtx = React.useContext(LoginContext);
   const { logOut } = loginCtx;
-  const { dispatch } = mainCtx;
+  const { dispatch, patchBookmark } = mainCtx;
   const { diaries, userData } = mainCtx.state;
   const { userId } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
@@ -27,6 +27,11 @@ const MyPage = () => {
   const onClickLogOut = () => {
     dispatch({ type: 'LOG_OUT' });
     logOut();
+  };
+
+  const onChangeBookmark = (e) => {
+    const id = e.target.id.split('-')[1];
+    patchBookmark(id, e.target.checked);
   };
 
   return (
@@ -67,9 +72,20 @@ const MyPage = () => {
         Bookmarked Diaries
       </h3>
       <ul className={cx('diaryList')}>
-        {bookmarked.map(({ id, title, date, imagePaths }) => {
+        {bookmarked.map(({ id, title, date, imagePaths, isBookmarked }) => {
           return (
             <li key={id} className={cx('diary')}>
+              <label htmlFor={`bookmark-${id}`} className={cx('bookmark')}>
+                <input
+                  id={`bookmark-${id}`}
+                  type="checkbox"
+                  checked={isBookmarked ? 'checked' : ''}
+                  onChange={onChangeBookmark}
+                />
+                <span>
+                  <FontAwesomeIcon icon={faBookmark} />
+                </span>
+              </label>
               <Link to={`/diaryViewer/${id}`}>
                 <figure>
                   <img

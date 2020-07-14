@@ -148,7 +148,7 @@ const diaries = [
     id: 13,
     title: 'Diary Title 13',
     content: '<p>This is diary 13</p>',
-    date: '2020-7-5',
+    date: '2020-7-9',
     location: {},
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -160,7 +160,7 @@ const diaries = [
     id: 14,
     title: 'Diary Title 14',
     content: '<p>This is diary 14</p>',
-    date: '2020-7-5',
+    date: '2020-7-13',
     location: {},
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -172,7 +172,7 @@ const diaries = [
     id: 15,
     title: 'Diary Title 15',
     content: '<p>This is diary 15</p>',
-    date: '2020-7-5',
+    date: '2020-7-13',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',

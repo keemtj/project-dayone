@@ -37,15 +37,25 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
     }
     if (viewerState === 'Delete') {
       deleteDiary(id);
-      history.goBack();
-      setViewerState('initial');
+      // history.goBack();
+      // setViewerState('initial');
+      setViewerState('Deleted');
     }
   };
 
   const changeModalState = () => {
     if (modalState === 'Submit') return 'block';
     if (viewerState === 'Delete') return 'block';
+    if (viewerState === 'Deleted') return 'block';
     return 'none';
+  };
+
+  const changeHeight = () => {
+    return viewerState === 'Deleted' ? { height: '98px' } : {};
+  };
+
+  const changeDisplay = () => {
+    return viewerState === 'Deleted' ? { display: 'none' } : {};
   };
 
   const changeText = () => {
@@ -55,6 +65,18 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
       );
     if (viewerState === 'Delete')
       return <span className={cx('message')}>일기를 삭제 하시겠습니까?</span>;
+    if (viewerState === 'Deleted') {
+      setTimeout(() => {
+        history.goBack();
+        setViewerState('initial');
+      }, 1000);
+      return (
+        <span style={{ marginTop: '26px' }} className={cx('message')}>
+          일기가 삭제 되었습니다.
+        </span>
+      );
+    }
+    // style={{ marginTop: '26px' }}
     return <></>;
   };
 
@@ -66,10 +88,20 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
     >
       <div className={cx('small')}>
         {changeText()}
-        <button className={cx('cancel')} type="button" onClick={cancelSubmit}>
+        <button
+          style={changeDisplay()}
+          className={cx('cancel')}
+          type="button"
+          onClick={cancelSubmit}
+        >
           취소
         </button>
-        <button className={cx('confirm')} type="button" onClick={confirmSubmit}>
+        <button
+          style={changeDisplay()}
+          className={cx('confirm')}
+          type="button"
+          onClick={confirmSubmit}
+        >
           확인
         </button>
       </div>
