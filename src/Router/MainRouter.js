@@ -13,7 +13,6 @@ const MainRouter = () => {
       <Switch>
         <Route path={['/', '/timeline']} component={TimeLine} exact />
         <Route path="/timeline/:nav" component={TimeLine} />
-        <Route path="/:nav" component={TimeLine} />
         <Route path="/map" component={Map} />
         <Route path="/calendar" component={Calendar} />
         <Route path="/diary" component={Diary} />
