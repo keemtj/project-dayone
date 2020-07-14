@@ -2,8 +2,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import classNames from 'classnames/bind';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/Modal.module.scss';
 import { DiaryContext } from '../Context/DiaryContext';
 import ModalMap from './Diary/ModalMap';
@@ -49,16 +47,6 @@ const Modal = () => {
         >
           <FontAwesomeIcon icon={faTimes} />
         </button> */}
-        <button
-          type="button"
-          className={cx('cancelBtn')}
-          onClick={() => setModalState('initial')}
-        >
-          취소
-        </button>
-        <button type="button" className={cx('submitBtn')}>
-          확인
-        </button>
       </div>
     </div>
   );

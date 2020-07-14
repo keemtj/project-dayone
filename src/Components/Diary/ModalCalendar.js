@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,13 +9,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/ModalCalendar.module.scss';
 import useCalendar from '../../Hook/useCalendar';
-import { MainContext } from '../../Context/MainContext';
+// import { MainContext } from '../../Context/MainContext';
+import ModalButtons from './ModalButtons';
 
 const cx = classNames.bind(styles);
 
 const ModalCalendar = () => {
-  const mainCtx = React.useContext(MainContext);
-  const { dispatch } = mainCtx;
+  // const mainCtx = React.useContext(MainContext);
+  // const { dispatch } = mainCtx;
   const hook = useCalendar();
   const {
     onClickPrevMonth,
@@ -26,12 +27,16 @@ const ModalCalendar = () => {
   const { now, calendar } = hook.calendarState;
   const { month, year, datesArray, startDay } = calendar;
 
-  const changeDate = (e) => {
-    // const target =
-    // e.target.nodeName === 'span' ? e.target.parentNode : e.target;
-    const date = e.target.className.split(' ')[0];
-    dispatch({ type: 'CHANGE_DATE', date });
+  const [dateState, setDateState] = useState('');
+
+  const onClickDate = (e) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
+    const date = target.className.split(' ')[0];
+    setDateState(date);
   };
+
+  // const onBlurDate = () => setDateState('');
 
   return (
     <>
@@ -87,7 +92,7 @@ const ModalCalendar = () => {
               <button
                 key={dd}
                 type="button"
-                onClick={changeDate}
+                onClick={onClickDate}
                 className={cx(
                   `${fullDate}`,
                   {
@@ -97,7 +102,14 @@ const ModalCalendar = () => {
                   { firstDay: dd === 1 },
                 )}
                 disabled={yy === now.year && mm === now.month && dd > now.date}
-                style={{ marginLeft: dd === 1 ? `${startDay * 3.6}rem` : 0 }}
+                style={{
+                  marginLeft: dd === 1 ? `${startDay * 3.6}rem` : 0,
+                  border:
+                    dateState === fullDate
+                      ? '2px solid rgb(255, 114, 98)'
+                      : 'none',
+                  borderRadius: dateState === fullDate ? '3px' : 'none',
+                }}
               >
                 <span className={cx('date')}>{dd}</span>
               </button>
@@ -105,6 +117,7 @@ const ModalCalendar = () => {
           })}
         </div>
       </div>
+      <ModalButtons dateState={dateState} setDateState={setDateState} />
     </>
   );
 };
