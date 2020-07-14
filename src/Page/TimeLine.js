@@ -1,11 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faThLarge,
-  faThList,
-  faSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import TimeLineList from '../Components/TimeLineList';
 // import usePosts from '../Hook/usePosts';
@@ -14,15 +10,14 @@ import { MainContext } from '../Context/MainContext';
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  // const [fetchData] = usePosts();
   const context = useContext(MainContext);
   const { state } = context;
   const { diaries } = state;
   const [timelineNav, setTimeLineNav] = useState('list'); // list, media
 
-  const onClickNav = (e) => {
-    if (e.target.classList.length === 2) return;
-    setTimeLineNav(e.target.className);
+  const onClickNav = ({ target }) => {
+    if (target.classList.length === 2) return;
+    setTimeLineNav(target.className);
   };
 
   return (
