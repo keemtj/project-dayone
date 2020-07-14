@@ -39,9 +39,21 @@ $mainColor: #67bff9;
   //   }
   // }
 
+  .warningMsg {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 25.5rem;
+    left: 0;
+    font-size: 0.8rem;
+    color: rgb(223, 0, 0);
+    text-align: center;
+    display: none;
+  }
+
   .btnWrapper {
     width: 15rem;
-    margin: 0 auto;
+    margin: 25px auto 0;
     display: flex;
     justify-content: space-between;
   }

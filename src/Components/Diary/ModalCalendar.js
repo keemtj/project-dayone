@@ -9,14 +9,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/ModalCalendar.module.scss';
 import useCalendar from '../../Hook/useCalendar';
-import { MainContext } from '../../Context/MainContext';
+// import { MainContext } from '../../Context/MainContext';
 import ModalButtons from './ModalButtons';
 
 const cx = classNames.bind(styles);
 
 const ModalCalendar = () => {
-  const mainCtx = React.useContext(MainContext);
-  const { dispatch } = mainCtx;
+  // const mainCtx = React.useContext(MainContext);
+  // const { dispatch } = mainCtx;
   const hook = useCalendar();
   const {
     onClickPrevMonth,
@@ -36,7 +36,7 @@ const ModalCalendar = () => {
     setDateState(date);
   };
 
-  const onBlurDate = () => setDateState('');
+  // const onBlurDate = () => setDateState('');
 
   return (
     <>
@@ -93,7 +93,6 @@ const ModalCalendar = () => {
                 key={dd}
                 type="button"
                 onClick={onClickDate}
-                onBlur={onBlurDate}
                 className={cx(
                   `${fullDate}`,
                   {
@@ -103,7 +102,14 @@ const ModalCalendar = () => {
                   { firstDay: dd === 1 },
                 )}
                 disabled={yy === now.year && mm === now.month && dd > now.date}
-                style={{ marginLeft: dd === 1 ? `${startDay * 3.6}rem` : 0 }}
+                style={{
+                  marginLeft: dd === 1 ? `${startDay * 3.6}rem` : 0,
+                  border:
+                    dateState === fullDate
+                      ? '2px solid rgb(255, 114, 98)'
+                      : 'none',
+                  borderRadius: dateState === fullDate ? '3px' : 'none',
+                }}
               >
                 <span className={cx('date')}>{dd}</span>
               </button>
