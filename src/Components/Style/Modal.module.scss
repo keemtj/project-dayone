@@ -39,6 +39,25 @@ $mainColor: #67bff9;
   //   }
   // }
 
+  .warningMsg {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 25.5rem;
+    left: 0;
+    font-size: 0.8rem;
+    color: rgb(223, 0, 0);
+    text-align: center;
+    display: none;
+  }
+
+  .btnWrapper {
+    width: 15rem;
+    margin: 25px auto 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .cancelBtn,
   .submitBtn {
     cursor: pointer;
@@ -50,14 +69,12 @@ $mainColor: #67bff9;
   }
 
   .cancelBtn {
-    margin: 10px 10px 10px 28%;
     border: 1px solid #ddd;
   }
 
   .submitBtn {
     background: #67bff9;
     color: #fff;
-    margin: 10px 28% 10px 10px;
   }
 }
 
