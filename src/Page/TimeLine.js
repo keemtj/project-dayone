@@ -1,22 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
-// import TimeLineList from '../Components/TimeLineList';
-import TimeLineList2 from '../Components/TimeLineList2';
-import TimeLineMedia from '../Components/TimeLineMedia';
-import { MainContext } from '../Context/MainContext';
 import SubRouter from '../Router/SubRouter';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
   const [timelineNav, setTimeLineNav] = useState('list'); // list, media
-  const context = useContext(MainContext);
-  const { state } = context;
-  const { diaries } = state;
 
   const onClickNav = ({ target }) => {
     if (target.classList.length === 2) return;
