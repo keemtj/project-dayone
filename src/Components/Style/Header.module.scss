@@ -8,11 +8,11 @@ $mainColor: #67bff9;
   z-index: 10;
 
   .container {
-    width: 100%;
-    max-width: 1000px;
-    // min-width: 800px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    min-width: 800px;
     margin: 0 auto;
   }
 
