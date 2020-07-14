@@ -22,7 +22,7 @@ const MyPage = () => {
   const mm = diaries[0].date.split('-')[1];
   const dd = diaries[0].date.split('-')[2];
   const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
-  const diaryPerDay = Number((diaryTerm / diaries.length).toFixed(2));
+  const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(1));
 
   const onClickLogOut = () => {
     dispatch({ type: 'LOG_OUT' });
