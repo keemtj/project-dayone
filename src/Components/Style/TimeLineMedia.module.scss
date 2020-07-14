@@ -4,11 +4,13 @@ $mainColor: #67bff9;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  // background-color: lightblue;
 
   .timelineMedia {
     position: relative;
     width: 24%;
     height: auto;
+    // border: 1px solid lightcoral;
 
     &:nth-child(4n + 1) {
       margin-right: 0.5rem;
