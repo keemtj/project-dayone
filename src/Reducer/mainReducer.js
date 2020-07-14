@@ -31,16 +31,7 @@ const initialState = {
     imagePaths: [],
   },
   viewerDiary: {},
-  editDiary: {
-    // editState: 'edit',
-    // id: 1,
-    // title: '',
-    // content: '',
-    // date: '',
-    // location: {},
-    // isBookmarked: false,
-    // imagePaths: [],
-  },
+  editState: '',
   error: {
     state: false,
     message: null,
@@ -79,7 +70,7 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         diaries: [...state.diaries, state.currentDiary],
-        currentDiary: initialState.currentDiary,
+        // currentDiary: initialState.currentDiary,
       };
     case 'WRITE_TITLE':
       return {
@@ -100,6 +91,11 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         viewerDiary: action.diary,
+      };
+    case 'CLEAR_CURRENTDIARY':
+      return {
+        ...state,
+        currentDiary: initialState.currentDiary,
       };
     case 'CLEAR_VIEWERDIARY':
       return {

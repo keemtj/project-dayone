@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteMatch, Link } from 'react-router-dom';
+import { useRouteMatch, Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import {
   faHome,
@@ -27,21 +27,21 @@ const Header = () => {
           <nav match={match} />
         ) : (
           <nav className={cx('nav')}>
-            <Link to="/timeline">
+            <NavLink to="/" activeClassName={cx('active')} exact>
               <FontAwesomeIcon icon={faHome} className={cx('icon')} />
-            </Link>
-            <Link to="/diary">
+            </NavLink>
+            <NavLink to="/diary" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faPen} className={cx('icon')} />
-            </Link>
-            <Link to="/map">
+            </NavLink>
+            <NavLink to="/map" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
-            </Link>
-            <Link to="/calendar">
+            </NavLink>
+            <NavLink to="/calendar" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
-            </Link>
-            <Link to="/mypage">
+            </NavLink>
+            <NavLink to="/mypage" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faUser} className={cx('icon')} />
-            </Link>
+            </NavLink>
           </nav>
         )}
       </div>

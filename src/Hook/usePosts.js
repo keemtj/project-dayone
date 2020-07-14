@@ -101,6 +101,10 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_DIARY_ID' });
   };
 
+  const clearCurrentDiary = () => {
+    dispatch({ type: 'CLEAR_CURRENTDIARY' });
+  };
+
   const clearViewerDiary = () => {
     dispatch({ type: 'CLEAR_VIEWERDIARY' });
   };
@@ -127,6 +131,7 @@ const usePosts = () => {
     pushImg,
     pushDiaryId,
     getDiary,
+    clearCurrentDiary,
     clearViewerDiary,
     bookmarkDiary,
     patchBookmark,

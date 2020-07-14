@@ -17,6 +17,10 @@ $mainColor: #67bff9;
 
   .calendarDate {
     margin-top: 3px;
+
+    &:hover, &:focus {
+      color: $mainColor;
+    }
   }
 }
 .calendarIcon {

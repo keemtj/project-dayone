@@ -25,7 +25,6 @@ $mainColor: #67bff9;
 
   .logo,
   .icon {
-    color: white;
     cursor: pointer;
   }
   
@@ -35,13 +34,18 @@ $mainColor: #67bff9;
     font-weight: 600;
   }
   
-  a {
+  .logo a {
     color: #fff;
     text-decoration: none;
   }
 
   .icon {
+    color: #218DD3;
     font-size: 1.4rem;
+  }
+
+  .active .icon {
+    color: #fff;
   }
 }
 

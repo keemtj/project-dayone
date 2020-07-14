@@ -11,17 +11,22 @@ const DiarySubmitBtn = () => {
   const { setModalState } = React.useContext(DiaryContext);
 
   const { content } = state.currentDiary;
+  const { title } = state.currentDiary;
+
+  const didWrite = () => {
+    return content && title.trim() && content !== '<p><br></p>';
+  };
 
   const onClick = (e) => {
     e.preventDefault();
-    if (!content) return;
+    if (!didWrite()) return;
     setModalState('Submit');
     pushDiaryId();
   };
 
   return (
     <button
-      style={{ backgroundColor: content ? '#67bff9' : '#cacaca' }}
+      style={{ backgroundColor: didWrite() ? '#67bff9' : '#cacaca' }}
       className={cx('submitBtn')}
       type="submit"
       onClick={onClick}

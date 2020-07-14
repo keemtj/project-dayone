@@ -56,4 +56,4 @@ const DiaryWrite = () => {
   return <div className={cx('writer')} ref={quillElement} onBlur={onBlur} />;
 };
 
-export default DiaryWrite;
+export default React.memo(DiaryWrite);
