@@ -1,16 +1,17 @@
 $mainColor: #67bff9;
+$outline: 1px solid #dbdbdb;
 
 .addBtn {
   font-size: 1.8rem;
   display: block;
   background: white;
-  color: #b0b0b0;
+  color: #bbbbbb;
   width: 40px;
   height: 40px;
   text-align: center;
   margin: 20px auto;
   border-radius: 500px;
-  border: 1px solid #b0b0b0;
+  border: 1px solid #bbbbbb;
   cursor: pointer;
   transition: 0.3s;
 
@@ -28,8 +29,11 @@ $mainColor: #67bff9;
   top: 0;
   right: 0;
   width: 30%;
+  min-height: calc(100vh - 55px);
   height: 100%;
   background: rgb(248, 248, 248);
+  border-right: $outline;
+  border-left: $outline;
   overflow: scroll;
 
   .message {
@@ -39,45 +43,56 @@ $mainColor: #67bff9;
     color: #aaa;
   }
 
-  .diary a {
-    display: flex;
-    border-bottom: 1px solid #cecece;
-    width: 95%;
-    height: 5rem;
-    margin: 0 auto;
+  .diary {
+    padding: 6px;
+    border-top: $outline;
+    border-bottom: $outline;
+    margin: -1px auto 0;
     background: #ffffff;
-    cursor: pointer;
-
+    
     &:hover {
       background: #ebebeb73;
     }
+  }
+
+  .diary a {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    margin: 0 auto;
+    background: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+
 
     .thumbnail {
-      padding: 5px;
-      width: 25%;
+      // padding: 5px;
+      // width: 25%;
       height: 5rem;
+      width: 80px;
+      margin-right: 15px;
     }
 
     .info {
       width: 75%;
-      text-align: center;
+      // text-align: center;
 
       .title {
         font-size: 1.2rem;
         font-weight: 600;
         color: #181818;
-        margin-top: 10px;
+        margin-top: 6px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         line-height: 1.5rem;
-        padding: 0 5px;
+        // padding: 0 5px;
       }
 
       .details {
         font-size: 0.9rem;
         color: #686868;
-        margin-top: 25px;
+        margin-top: 30px;
       }
     }
   }

@@ -1,6 +1,7 @@
 .calendar {
   width: 70%;
   min-width: 700px;
+  padding-top: 20px;
 
   & button {
     outline: none;
@@ -62,8 +63,8 @@
 
     & .date {
       position: relative;
-      top: -1.5rem;
-      left: -1.5rem;
+      top: -1.6rem;
+      left: -1.6rem;
     }
 
     & .today .date {
