@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import styles from './Style/TimeLineList.module.scss';
 import { MainContext } from '../Context/MainContext';
 
@@ -22,7 +23,7 @@ const TimeLineList = () => {
   return (
     <ul className={cx('timelineWrapper')}>
       {diaries.map((diary) => (
-        <li key={diary.id} className={cx('timeline-list')}>
+        <li key={diary.id} className={cx('timelineList')}>
           <Link
             to={`/diaryViewer/${diary.id}`}
             style={{ textDecoration: 'none' }}
@@ -56,6 +57,11 @@ const TimeLineList = () => {
                 icon={faBookmark}
                 className={cx('bookmarkIcon')}
               />
+              {/* {diary.isBookmarked === 'checked' ? (
+                <BsBookmarkFill className={cx('bookmarkIcon')} />
+              ) : (
+                <BsBookmark className={cx('bookmarkIcon')} />
+              )} */}
             </span>
           </label>
         </li>
