@@ -88,12 +88,14 @@ const MyPage = () => {
               </label>
               <Link to={`/diaryViewer/${id}`}>
                 <figure>
-                  <img
-                    src={
-                      imagePaths.length
-                        ? imagePaths[0]
-                        : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
-                    }
+                  <div
+                    style={{
+                      backgroundImage: `url(${
+                        imagePaths.length
+                          ? imagePaths[0]
+                          : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+                      })`,
+                    }}
                     className={cx('thumbnail')}
                     alt="thumbnail"
                   />
