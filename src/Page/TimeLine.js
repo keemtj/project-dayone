@@ -26,6 +26,7 @@ const Timeline = () => {
             className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
           >
             <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+            <span className={cx('tooltip')}>리스트</span>
           </button>
         </Link>
         <Link to="/timeline/media">
@@ -38,6 +39,7 @@ const Timeline = () => {
             )}
           >
             <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+            <span className={cx('tooltip')}>사진</span>
           </button>
         </Link>
         <SubRouter />
