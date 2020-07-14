@@ -1,11 +1,11 @@
 $mainColor: #67bff9;
 
 .timelineNav {
-  padding: 1rem 0 1rem 0;
   text-align: end;
 
   button {
-    margin-left: 0.1rem;
+    padding-left: 1px;
+    margin: 1rem 0 1rem 1rem;
     background-color: none;
     border: none;
     color: #d1d1d1;
@@ -28,17 +28,5 @@ $mainColor: #67bff9;
 
   .active {
     color: $mainColor;
-  }
-}
-
-.timelineWrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-
-  &::after {
-    display: block;
-    content: '';
-    width: 24%;
   }
 }

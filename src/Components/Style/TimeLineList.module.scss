@@ -92,44 +92,20 @@ $mainColor: #67bff9;
   }
 }
 
-// media
-@mixin timeline-media {
-  position: relative;
-  border: 1px solid #ffffff;
-  width: 24%;
-  height: 25%;
+.timelineWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 
-  &:nth-child(4n + 1) {
-    margin-right: 0.5rem;
+  // apply mixin
+  .timeline-list {
+    @include timeline-list;
+    @include timeline-bookmark;
   }
 
-  &:nth-child(4n + 2) {
-    margin-right: 0.5rem;
+  &::after {
+    display: block;
+    content: '';
+    width: 24%;
   }
-
-  &:nth-child(4n + 3) {
-    margin-right: 0.5rem;
-  }
-
-  &:nth-child(n + 5) {
-    margin-top: 0.8rem;
-  }
-
-  figure {
-    .thumbnail {
-      width: 238px;
-      height: 238px;
-    }
-  }
-}
-
-// apply mixin
-.timeline-list {
-  @include timeline-list;
-  @include timeline-bookmark;
-}
-
-.timeline-media {
-  @include timeline-media;
-  @include timeline-bookmark;
 }
