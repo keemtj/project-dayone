@@ -16,16 +16,16 @@ const DiaryMap = () => {
     setModalState('Map');
   };
 
-  const locationMsg = () => {
-    const haveLocation = !!Object.keys(state.currentDiary.location).length;
-    return haveLocation ? '장소이름...' : '위치를 선택하세요';
+  const locationName = () => {
+    const { name } = state.currentDiary.location;
+    return name || '위치를 선택하세요';
   };
 
   return (
     <>
       <button className={cx('mapButton')} type="button" onClick={onClick}>
         <FontAwesomeIcon icon={faMapMarkerAlt} className={cx('mapIcon')} />
-        <span className={cx('mapMsg')}>{locationMsg()}</span>
+        <span className={cx('mapMsg')}>{locationName()}</span>
       </button>
     </>
   );

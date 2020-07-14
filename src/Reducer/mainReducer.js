@@ -22,11 +22,15 @@ const initialState = {
     // },
   ],
   currentDiary: {
-    id: 1,
+    id: 0,
     title: '',
     content: '',
     date: getToday(),
-    location: {},
+    location: {
+      lat: 0,
+      lng: 0,
+      name: '',
+    },
     isBookmarked: false,
     imagePaths: [],
   },

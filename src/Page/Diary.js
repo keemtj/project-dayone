@@ -9,7 +9,6 @@ const Diary = () => {
   const { clearCurrentDiary } = useContext(MainContext);
   useEffect(() => {
     return () => {
-      // cleanup;
       clearCurrentDiary();
     };
   }, []);
