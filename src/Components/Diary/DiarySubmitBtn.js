@@ -21,7 +21,7 @@ const DiarySubmitBtn = () => {
     e.preventDefault();
     if (!didWrite()) return;
     setModalState('Submit');
-    pushDiaryId();
+    if (!state.editState) pushDiaryId();
   };
 
   return (

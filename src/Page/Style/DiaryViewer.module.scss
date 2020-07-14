@@ -31,6 +31,12 @@ $mainColor: #67BFF9;
       margin-top: 5px;
       padding-left: 16px;
     }
+    ol {list-style: decimal;}
+    ul {list-style: disc;}
+    ol, ul {
+      margin: 16px 0;
+      padding-left: 40px;
+    }
   }
 
   

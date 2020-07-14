@@ -23,6 +23,8 @@ const MainProvider = ({ children }) => {
     bookmarkDiary,
     patchBookmark,
     deleteDiary,
+    setEditState,
+    editDiary,
   ] = usePosts();
 
   const [
@@ -49,6 +51,8 @@ const MainProvider = ({ children }) => {
     bookmarkDiary,
     patchBookmark,
     deleteDiary,
+    setEditState,
+    editDiary,
   };
 
   const loginData = {

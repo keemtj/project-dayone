@@ -8,7 +8,7 @@ import { MainContext } from '../../Context/MainContext';
 const cx = classNames.bind(styles);
 
 const DiaryWrite = () => {
-  const { writePost, pushImg } = useContext(MainContext);
+  const { state, writePost, pushImg } = useContext(MainContext);
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -36,6 +36,16 @@ const DiaryWrite = () => {
         writePost(quill.root.innerHTML);
       }
     });
+
+    // console.log(quill, typeof quill);
+    // quill.dangerouslySetInnerHTML = { __html: state.currentDiary.content };
+    // quill.innerHTML = state.currentDiary.content;
+    console.log(quillElement.current.firstElementChild);
+    quillElement.current.firstElementChild.innerHTML =
+      state.currentDiary.content;
+    // quillElement.current.firstElementChild.dangerouslySetInnerHTML = {
+    //   __html: state.currentDiary.content,
+    // };
   }, []);
 
   const onBlur = () => {
@@ -53,7 +63,17 @@ const DiaryWrite = () => {
     pushImg(images);
   };
 
-  return <div className={cx('writer')} ref={quillElement} onBlur={onBlur} />;
+  return (
+    <>
+      <div
+        className={cx('writer')}
+        ref={quillElement}
+        onBlur={onBlur}
+        // dangerouslySetInnerHTML={{ __html: state.currentDiary.content }}
+      />
+      {/* <span>ewfwef</span> */}
+    </>
+  );
 };
 
 export default React.memo(DiaryWrite);

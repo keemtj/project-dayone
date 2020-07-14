@@ -35,7 +35,7 @@ const initialState = {
     imagePaths: [],
   },
   viewerDiary: {},
-  editState: '',
+  editState: false,
   error: {
     state: false,
     message: null,
@@ -65,16 +65,29 @@ const mainReducer = (state, action) => {
         },
         loading: false,
       };
-    case 'WRITE_POST':
+    case 'WRITE_DIARY':
       return {
         ...state,
         currentDiary: { ...state.currentDiary, content: action.write },
       };
-    case 'SUBMIT_POST':
+    case 'SUBMIT_DIARY':
       return {
         ...state,
         diaries: [...state.diaries, state.currentDiary],
         // currentDiary: initialState.currentDiary,
+      };
+    case 'EDIT_DIARY':
+      return {
+        ...state,
+        diaries: state.diaries.map((diary) =>
+          diary.id === state.currentDiary.id ? state.currentDiary : diary,
+        ),
+        editState: false,
+      };
+    case 'DELETE_DIARY':
+      return {
+        ...state,
+        diaries: state.diaries.filter((diary) => diary.id !== action.id),
       };
     case 'WRITE_TITLE':
       return {
@@ -111,11 +124,7 @@ const mainReducer = (state, action) => {
         ...state,
         userData: { ...action.data, active: true },
       };
-    case 'DELETE_DIARY':
-      return {
-        ...state,
-        diaries: state.diaries.filter((diary) => diary.id !== action.id),
-      };
+
     case 'TOGGLE_BOOKMARK':
       return {
         ...state,
@@ -139,6 +148,13 @@ const mainReducer = (state, action) => {
           date: action.date,
         },
       };
+    case 'SET_EDIT_STATE':
+      return {
+        ...state,
+        currentDiary: state.viewerDiary,
+        editState: true,
+      };
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

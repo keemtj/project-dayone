@@ -60,6 +60,17 @@ const usePosts = () => {
     }
   };
 
+  const editDiaryToServer = async () => {
+    try {
+      await Api.patchDiaries(state.currentDiary);
+    } catch (e) {
+      dispatch({
+        type: 'ERROR',
+        error: { error: { state: true, error: e.message } },
+      });
+    }
+  };
+
   const patchBookmark = async (id, isBookmarked) => {
     // id = diary.id;
     // isBookmarked = e.target.checked;
@@ -76,11 +87,11 @@ const usePosts = () => {
   };
 
   const writePost = (write) => {
-    dispatch({ type: 'WRITE_POST', write });
+    dispatch({ type: 'WRITE_DIARY', write });
   };
 
   const submitDiary = () => {
-    dispatch({ type: 'SUBMIT_POST' });
+    dispatch({ type: 'SUBMIT_DIARY' });
     submitDiaryToServer();
   };
 
@@ -88,6 +99,13 @@ const usePosts = () => {
     dispatch({ type: 'DELETE_DIARY', id });
     deleteDiaryFromServer(id);
   };
+
+  const editDiary = () => {
+    dispatch({ type: 'EDIT_DIARY' });
+    editDiaryToServer();
+  };
+
+  // 위까지 서버 통신 관련 함수
 
   const writeTitle = (write) => {
     dispatch({ type: 'WRITE_TITLE', write });
@@ -117,6 +135,10 @@ const usePosts = () => {
     });
   };
 
+  const setEditState = () => {
+    dispatch({ type: 'SET_EDIT_STATE' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -136,6 +158,8 @@ const usePosts = () => {
     bookmarkDiary,
     patchBookmark,
     deleteDiary,
+    setEditState,
+    editDiary,
   ];
 };
 
