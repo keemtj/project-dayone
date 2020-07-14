@@ -18,31 +18,6 @@ const Timeline = () => {
 
   return (
     <div>
-      {/* <div className={cx('timelineNav')}>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('media', `${timelineNav === 'media' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-        </button>
-      </div>
-      <ul className={cx('timelineWrapper')}>
-        {diaries.map((diary) => (
-          <TimeLineList
-            key={diary.id}
-            diary={diary}
-            timelineNav={timelineNav}
-          />
-        ))}
-      </ul> */}
       <div className={cx('timelineNav')}>
         <Link to="/timeline/list">
           <button
