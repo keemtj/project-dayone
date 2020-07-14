@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,6 +10,7 @@ import {
 import styles from '../Style/ModalCalendar.module.scss';
 import useCalendar from '../../Hook/useCalendar';
 import { MainContext } from '../../Context/MainContext';
+import ModalButtons from './ModalButtons';
 
 const cx = classNames.bind(styles);
 
@@ -26,12 +27,16 @@ const ModalCalendar = () => {
   const { now, calendar } = hook.calendarState;
   const { month, year, datesArray, startDay } = calendar;
 
-  const changeDate = (e) => {
-    // const target =
-    // e.target.nodeName === 'span' ? e.target.parentNode : e.target;
-    const date = e.target.className.split(' ')[0];
-    dispatch({ type: 'CHANGE_DATE', date });
+  const [dateState, setDateState] = useState('');
+
+  const onClickDate = (e) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
+    const date = target.className.split(' ')[0];
+    setDateState(date);
   };
+
+  const onBlurDate = () => setDateState('');
 
   return (
     <>
@@ -87,7 +92,8 @@ const ModalCalendar = () => {
               <button
                 key={dd}
                 type="button"
-                onClick={changeDate}
+                onClick={onClickDate}
+                onBlur={onBlurDate}
                 className={cx(
                   `${fullDate}`,
                   {
@@ -105,6 +111,7 @@ const ModalCalendar = () => {
           })}
         </div>
       </div>
+      <ModalButtons dateState={dateState} />
     </>
   );
 };
