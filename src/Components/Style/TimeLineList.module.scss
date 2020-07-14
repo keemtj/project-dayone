@@ -28,27 +28,6 @@ $mainColor: #67bff9;
   input[type='checkbox']:checked + label span {
     color: $mainColor;
   }
-
-  // .iconBtn {
-  //   border: none;
-  //   background-color: rgba($color: #000000, $alpha: 0);
-  //   position: absolute;
-  //   top: 0.5rem;
-  //   right: 0.5rem;
-  //   outline: none;
-  //   cursor: pointer;
-  // }
-
-  // .bookmarked {
-  //   // Need to fix
-  //   color: $mainColor;
-  //   font-size: 1.2rem;
-  // }
-
-  // .notBookmarked {
-  //   color: #1d1d1d;
-  //   font-size: 1.2rem;
-  // }
 }
 
 @mixin timeline-ellipsis {
@@ -59,58 +38,6 @@ $mainColor: #67bff9;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   @content;
-}
-
-// card
-@mixin timeline-card-layout {
-  position: relative;
-  border: 1px solid #d1d3d2;
-  width: 240px;
-  height: 238px;
-
-  &:nth-child(4n + 1) {
-    margin-right: 0.5rem;
-  }
-
-  &:nth-child(4n + 2) {
-    margin-right: 0.5rem;
-  }
-
-  &:nth-child(4n + 3) {
-    margin-right: 0.5rem;
-  }
-
-  &:nth-child(n + 5) {
-    margin-top: 0.8rem;
-  }
-}
-
-@mixin timeline-card-body {
-  figure {
-    .thumbnail {
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      width: 238px;
-      height: 196px;
-    }
-
-    figcaption {
-      background-color: #f0f0f0;
-      padding: 0.6rem 1rem 0.6rem 1rem;
-      border-top: 1px solid #ffffff;
-      color: #181818;
-      font-size: 1.3rem;
-      font-weight: 500;
-
-      .diaryTitle {
-        @include timeline-ellipsis;
-        text-align: center;
-        -webkit-line-clamp: 1;
-        word-break: break-all;
-      }
-    }
-  }
 }
 
 // list
@@ -211,13 +138,6 @@ $mainColor: #67bff9;
 }
 
 // apply mixin
-.timeline-card {
-  @include timeline-card-layout;
-  @include timeline-card-body;
-  @include timeline-bookmark;
-  @include timeline-hover;
-}
-
 .timeline-list {
   @include timeline-list-layout;
   @include timeline-list-body;

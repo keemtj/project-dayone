@@ -17,13 +17,10 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   const onChangeBookmark = (e) => {
     patchBookmark(id, e.target.checked);
-    // console.log('[timeline] diary.id =', id);
-    // console.log('[timeline] e.target.checked =', e.target.checked);
   };
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      {/* {console.log('current bookmark checked:', isBookmarked)} */}
       <input
         id={id}
         type="checkbox"
@@ -35,17 +32,6 @@ const TimeLineList = ({ diary, timelineNav }) => {
           <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
         </span>
       </label>
-      {/* <button
-        type="button"
-        className={cx('iconBtn')}
-        onClick={onChangeBookmark}
-      >
-        {isBookmarked ? (
-          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
-        ) : (
-          <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
-        )}
-      </button> */}
       <Link to={`/diaryViewer/${id}`}>
         <figure>
           <div
@@ -62,16 +48,13 @@ const TimeLineList = ({ diary, timelineNav }) => {
           />
           <figcaption>
             <div className={cx('diaryTitle')}>
-              {isBookmarked ? 'checked' : 'unchecked'}
               {timelineNav === 'media' ? '' : title}
             </div>
             <div className={cx('diaryDate')}>
               {timelineNav === 'list' && date}
             </div>
             <p className={cx('diaryContent')}>
-              {timelineNav === 'card' || timelineNav === 'media'
-                ? null
-                : content}
+              {timelineNav === 'list' && content}
             </p>
           </figcaption>
         </figure>

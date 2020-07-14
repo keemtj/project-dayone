@@ -1,7 +1,6 @@
 $mainColor: #67bff9;
 
 .timelineNav {
-  // background-color: tomato;
   padding: 0.6rem 0 1.1rem 0;
   font-size: 1.8rem;
   text-align: end;
@@ -40,7 +39,6 @@ $mainColor: #67bff9;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  // background-color: yellowgreen;
 
   &::after {
     display: block;

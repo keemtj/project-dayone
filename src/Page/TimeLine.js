@@ -16,8 +16,9 @@ const cx = classNames.bind(styles);
 const Timeline = () => {
   // const [fetchData] = usePosts();
   const context = useContext(MainContext);
-  const { diaries } = context.state;
-  const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
+  const { state } = context;
+  const { diaries } = state;
+  const [timelineNav, setTimeLineNav] = useState('list'); // list, media
 
   const onClickNav = (e) => {
     if (e.target.classList.length === 2) return;
@@ -30,13 +31,6 @@ const Timeline = () => {
         <button
           type="button"
           onClick={onClickNav}
-          className={cx('card', `${timelineNav === 'card' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
           className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
         >
           <FontAwesomeIcon icon={faThList} className={cx('icon')} />
@@ -46,7 +40,7 @@ const Timeline = () => {
           onClick={onClickNav}
           className={cx('media', `${timelineNav === 'media' ? 'active' : ''}`)}
         >
-          <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
+          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
         </button>
       </div>
       <ul className={cx('timelineWrapper')}>
