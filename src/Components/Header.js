@@ -29,18 +29,23 @@ const Header = () => {
           <nav className={cx('nav')}>
             <Link to="/timeline">
               <FontAwesomeIcon icon={faHome} className={cx('icon')} />
+              <span className={cx('tooltip')}>홈</span>
             </Link>
             <Link to="/diary">
               <FontAwesomeIcon icon={faPen} className={cx('icon')} />
+              <span className={cx('tooltip')}>일기 작성</span>
             </Link>
             <Link to="/map">
               <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
+              <span className={cx('tooltip')}>지도</span>
             </Link>
             <Link to="/calendar">
               <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
+              <span className={cx('tooltip')}>달력</span>
             </Link>
             <Link to="/mypage">
               <FontAwesomeIcon icon={faUser} className={cx('icon')} />
+              <span className={cx('tooltip')}>내 정보</span>
             </Link>
           </nav>
         )}
