@@ -21,30 +21,27 @@ const TimeLineList = ({ diary, timelineNav }) => {
 
   return (
     <li className={cx(`timeline-${timelineNav}`)}>
-      <input
-        id={id}
-        type="checkbox"
-        checked={isBookmarked ? 'checked' : ''}
-        onChange={onChangeBookmark}
-      />
-      <label htmlFor={id}>
-        <span>
-          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
-        </span>
-      </label>
       <Link to={`/diaryViewer/${id}`}>
+        <input
+          id={id}
+          type="checkbox"
+          checked={isBookmarked ? 'checked' : ''}
+          onChange={onChangeBookmark}
+        />
+        <label htmlFor={id}>
+          <span>
+            <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
+          </span>
+        </label>
         <figure>
-          <div
+          <img
             className={cx('thumbnail')}
-            style={{
-              backgroundImage: `url(
-                ${
-                  imagePaths.length
-                    ? imagePaths[0]
-                    : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
-                }
-                )`,
-            }}
+            src={
+              imagePaths.length
+                ? imagePaths[0]
+                : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+            }
+            alt="https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png"
           />
           <figcaption>
             <div className={cx('diaryTitle')}>
