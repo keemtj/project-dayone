@@ -18,7 +18,7 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
 
   const onClick = (e) => {
     if (
-      !e.target.className.includes('dimed') &&
+      !e.target.className.includes('dimmed') &&
       !e.target.className.includes('modalDeleteBtn')
     )
       return;
@@ -81,7 +81,7 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
   return (
     <div
       style={{ display: `${changeModalState()}` }}
-      className={cx('dimed')}
+      className={cx('dimmed')}
       onClick={onClick}
     >
       <div className={cx('small')}>
