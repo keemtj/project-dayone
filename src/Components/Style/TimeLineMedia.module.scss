@@ -6,7 +6,7 @@ $mainColor: #45c0ff;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 65%;
-  margin: 0 0 0 35%;
+  margin: 0 0 10% 35%;
 
   .timelineMedia {
     // border: 1px solid lightcoral;
@@ -23,7 +23,7 @@ $mainColor: #45c0ff;
     }
 
     &:nth-child(n + 3) {
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
     }
 
     &::before {

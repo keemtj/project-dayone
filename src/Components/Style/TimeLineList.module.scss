@@ -5,7 +5,7 @@ $mainColor: #45c0ff;
   flex-flow: row wrap;
   justify-content: space-between;
   width: 65%;
-  margin: 0 0 0 35%;
+  margin: 0 0 10% 35%;
 
   .timelineList {
     display: flex;
@@ -114,7 +114,6 @@ $mainColor: #45c0ff;
 
       input[type='checkbox'] + label span {
         transition: 0.2s;
-        color: #181818;
       }
 
       input[type='checkbox']:checked + label span {
