@@ -35,6 +35,8 @@ const TimeLineMedia = () => {
                 ${
                   diary.imagePaths.length
                     ? diary.imagePaths[0]
+                    : diary.id > 4
+                    ? images[2]
                     : images[diary.id - 1]
                 }
                 )`,

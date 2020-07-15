@@ -38,6 +38,8 @@ const TimeLineList = () => {
                 src={
                   diary.imagePaths.length
                     ? diary.imagePaths[0]
+                    : diary.id > 4
+                    ? images[2]
                     : images[diary.id - 1]
                 }
                 alt="https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png"
