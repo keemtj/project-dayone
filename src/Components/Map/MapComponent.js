@@ -1,18 +1,34 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
 /* eslint-disable no-new */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../Style/MapComponent.module.scss';
 import MapSearchForm from './MapSearchForm';
 import MapSearchList from './MapSearchList';
+import { MainContext } from '../../Context/MainContext';
+import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
 
-const MapComponent = ({ diaries, filterDiariesByLoc }) => {
-  const [places, setPlaces] = useState('');
+const MapComponent = () => {
+  const mainContext = useContext(MainContext);
+  const mapContext = useContext(MapContext);
+
+  const { state } = mainContext;
+  const { diaries } = state;
+
+  const {
+    mapState,
+    setSublist,
+    setPlaces,
+    setSearchVisible,
+    setSearchHidden,
+    setPlacesVisible,
+    setPlacesHidden,
+  } = mapContext;
 
   const searchPlaces = (inputs) => {
     console.log('your input: ', inputs);
@@ -89,7 +105,7 @@ const MapComponent = ({ diaries, filterDiariesByLoc }) => {
         marker.setImage(clickImage);
       }
       selectedMarker = marker;
-      filterDiariesByLoc(lat, lng);
+      setSublist(diaries, lat, lng);
     };
 
     const makeMarkers = (diaries) => {
@@ -151,7 +167,7 @@ const MapComponent = ({ diaries, filterDiariesByLoc }) => {
           className={cx('map-search-form')}
           searchPlaces={searchPlaces}
         />
-        <MapSearchList className={cx('map-search-list')} places={places} />
+        <MapSearchList className={cx('map-search-list')} />
       </div>
     </div>
   );
