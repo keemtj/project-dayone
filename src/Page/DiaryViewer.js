@@ -56,7 +56,11 @@ const DiaryViewer = () => {
         setViewerState={setViewerState}
         id={+id}
       />
-      <button className={cx('goBackBtn')} type="button">
+      <button
+        className={cx('goBackBtn')}
+        type="button"
+        onClick={() => history.goBack()}
+      >
         뒤로가기
       </button>
       <DiaryModalSmall
