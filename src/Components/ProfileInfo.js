@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Page/Style/MyPage.module.scss';
 
 const cx = classNames.bind(styles);
@@ -36,6 +36,13 @@ const ProfileInfo = ({ pageCtx }) => {
           </li>
         </ul>
       </div>
+      <button
+        type="button"
+        className={cx('settingBtn')}
+        style={{ left: `calc(29rem + ${userId.length * 13}px)` }}
+      >
+        <FontAwesomeIcon icon={faCog} />
+      </button>
       <button type="button" className={cx('logoutBtn')} onClick={onClickLogOut}>
         <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
         로그아웃
