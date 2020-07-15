@@ -1,11 +1,18 @@
 const loginInitialState = {
   isLoggedIn: false,
   users: [
-    { id: 1, userId: 'dorodoro', userPw: '123', active: false },
-    { id: 2, userId: 'jay', userPw: '123', active: false },
-    { id: 3, userId: 'jimmy', userPw: '123', active: false },
-    { id: 4, userId: 'haeuni', userPw: '123', active: false },
-    { id: 5, userId: 'f', userPw: 'f', active: false },
+    {
+      id: 1,
+      userId: 'dorodoro',
+      userPw: '123',
+      pic: '',
+      msg: '',
+      active: false,
+    },
+    { id: 2, userId: 'jay', userPw: '123', pic: '', msg: '', active: false },
+    { id: 3, userId: 'jimmy', userPw: '123', pic: '', msg: '', active: false },
+    { id: 4, userId: 'haeuni', userPw: '123', pic: '', msg: '', active: false },
+    { id: 5, userId: 'f', userPw: 'f', pic: '', msg: '', active: false },
   ],
   inputs: {
     id: '',

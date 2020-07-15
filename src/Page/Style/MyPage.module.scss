@@ -75,10 +75,16 @@
 
     .settingBtn {
       position: absolute;
-      top: 1.6rem;
-      left: 29rem;
-      font-size: 1rem;
+      top: 1.5rem;
+      // left: 29rem;
+      font-size: 1.2rem;
       color: #ccc;
+
+      &:hover {
+        color: #aaa;
+        transition: 0.3s;
+        transform: rotate(50deg);
+      }
     }
 
     .logoutBtn {
