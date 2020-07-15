@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,11 +10,17 @@ import SubRouter from '../Router/SubRouter';
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
+  const { pathname } = useLocation();
+
   return (
     <main>
       <div className={cx('timelineNav')}>
         <div className={cx('nav')}>
-          <NavLink to="/timeline/list" activeClassName={cx('active')}>
+          <NavLink
+            to="/timeline/list"
+            activeClassName={cx('active')}
+            className={cx(pathname.includes('/timeline/media') ? '' : 'active')}
+          >
             <FontAwesomeIcon icon={faThList} className={cx('icon')} />
             {/* <span className={cx('tooltip')}>리스트</span> */}
           </NavLink>
