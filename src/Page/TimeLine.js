@@ -1,63 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faThLarge,
-  faThList,
-  faSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
-import TimeLineList from '../Components/TimeLineList';
-// import usePosts from '../Hook/usePosts';
-import { MainContext } from '../Context/MainContext';
+import SubRouter from '../Router/SubRouter';
 
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
-  // const [fetchData] = usePosts();
-  const context = useContext(MainContext);
-  const { diaries } = context.state;
-  const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
-
-  const onClickNav = (e) => {
-    if (e.target.classList.length === 2) return;
-    setTimeLineNav(e.target.className);
-  };
-
   return (
     <main>
       <div className={cx('timelineNav')}>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('card', `${timelineNav === 'card' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('media', `${timelineNav === 'media' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
-        </button>
+        <div className={cx('nav')}>
+          <NavLink to="/timeline/list" activeClassName={cx('active')}>
+            <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+            {/* <span className={cx('tooltip')}>리스트</span> */}
+          </NavLink>
+          <NavLink to="/timeline/media" activeClassName={cx('active')}>
+            <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+            {/* <span className={cx('tooltip')}>사진</span> */}
+          </NavLink>
+        </div>
+        <SubRouter />
       </div>
-      <ul className={cx('timelineWrapper')}>
-        {diaries.map((diary) => (
-          <TimeLineList
-            key={diary.id}
-            diary={diary}
-            timelineNav={timelineNav}
-          />
-        ))}
-      </ul>
     </main>
   );
 };
