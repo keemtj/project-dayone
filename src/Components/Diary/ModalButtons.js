@@ -6,7 +6,7 @@ import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const ModalButtons = ({ dateState, setDateState }) => {
+const ModalButtons = ({ dateState }) => {
   const mainCtx = React.useContext(MainContext);
   const { dispatch } = mainCtx;
   const { modalState, setModalState } = React.useContext(DiaryContext);

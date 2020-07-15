@@ -169,6 +169,20 @@ const useCalendar = () => {
     changeCalendarState();
   };
 
+  const getSublist = (e, diaryList) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
+    const date = target.className.split(' ')[0];
+    const sublist = diaryList.filter((diary) => diary.date === date);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
+  };
+
+  const getTodaySublist = (present, diaryList) => {
+    const today = `${present.year}-${present.month}-${present.date}`;
+    const sublist = diaryList.filter((diary) => diary.date === today);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
+  };
+
   useEffect(() => {
     getNow();
   }, []);
@@ -190,6 +204,8 @@ const useCalendar = () => {
     enterInputs,
     changeYearInput,
     changeMonthInput,
+    getSublist,
+    getTodaySublist,
   };
 };
 
