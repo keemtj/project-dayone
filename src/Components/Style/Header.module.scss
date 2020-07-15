@@ -1,4 +1,4 @@
-$mainColor: #67bff9;
+$mainColor: #45c0ff;
 
 .header {
   position: fixed;
@@ -21,14 +21,16 @@ $mainColor: #67bff9;
     align-items: center;
     width: 25%;
 
-    a {position: relative;}
+    a {
+      position: relative;
+    }
   }
 
   .logo {
     margin: 15px 0;
     font-size: 1.6rem;
     font-weight: 600;
-    
+
     a {
       text-decoration: none;
       color: #fff;
@@ -36,7 +38,7 @@ $mainColor: #67bff9;
   }
 
   .icon {
-    color: #218DD3;
+    color: #218dd3;
     font-size: 1.4rem;
   }
   .active .icon {

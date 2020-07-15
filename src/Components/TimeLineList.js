@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLineList.module.scss';
 import { MainContext } from '../Context/MainContext';
+import image1 from '../Util/asset/image1.jpg';
+import image2 from '../Util/asset/image2.jpg';
+import image3 from '../Util/asset/image3.jpg';
+import image4 from '../Util/asset/image4.jpg';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +17,7 @@ const TimeLineList = () => {
   const context = useContext(MainContext);
   const { state, patchBookmark } = context;
   const { diaries } = state;
+  const images = [image1, image2, image3, image4];
 
   const onChangeBookmark = ({ target }) => {
     const id = +target.attributes.id.nodeValue;
@@ -33,7 +38,9 @@ const TimeLineList = () => {
                 src={
                   diary.imagePaths.length
                     ? diary.imagePaths[0]
-                    : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+                    : diary.id > 4
+                    ? images[2]
+                    : images[diary.id - 1]
                 }
                 alt="https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png"
               />

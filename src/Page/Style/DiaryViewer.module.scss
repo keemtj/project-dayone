@@ -1,26 +1,29 @@
-$mainColor: #67BFF9;
+$mainColor: #45C0FF;
 
 .wrapViewer {
   position: relative;
-  margin-top: 30px;
+  margin-top: 70px;
+  margin-top: 55px;
 
   .title {
     max-width: calc(100% - 105px);
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-size: 24px;
     font-weight: 500;
   }
   .date {
     display: block;
-    margin-bottom: 25px;
-    color: #a1a1a1;
-    font-size: 14px;
+    margin-bottom: 65px;
+    color: #7a7a7a;
+    font-size: 16px;
   }
 
   .content {
     margin-bottom: 30px;
-    min-height: 65vh;
-    // min-height: 550px;
+    min-height: 55vh;
+    font-size: 20px;
+    line-height: 150%;
+    word-break: keep-all;
 
     img {
       width: 100%;
@@ -40,8 +43,8 @@ $mainColor: #67BFF9;
   }
 
   
-  .button {
-    padding: 9px 33px;
+  & button {
+    padding: 9px 39px;
     border: 1px solid #c7c7c7;
     color: #7a7a7a;
     
@@ -54,14 +57,16 @@ $mainColor: #67BFF9;
     font-size: 16px;
     margin-bottom: 30px;
   }
-  .button:hover, .button:focus {
+  & button:hover, & button:focus, & .goBackBtn {
     border: 1px solid $mainColor;
     color: #fff;
     background-color: $mainColor;
-    font-weight: 700;
+    font-weight: 600;
   }
-  .editBtn {
-    margin-left: calc(100% - 201px);
+
+  .goBackBtn {
+    padding: 9px 30px;
+    margin-left: calc(100% - 342px);
   }
   .deleteBtn {
     margin-left: 9px;

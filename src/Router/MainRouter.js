@@ -22,6 +22,7 @@ const MainRouter = () => {
           <div>
             <h2>이 페이지는 존재하지 않습니다:</h2>
             <p>{location.pathname}</p>
+            <p>주소 다시 검색해 이새끼야!!!</p>
           </div>
         )}
       />

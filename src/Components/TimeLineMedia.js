@@ -6,13 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLineMedia.module.scss';
 import { MainContext } from '../Context/MainContext';
-
+import image1 from '../Util/asset/image1.jpg';
+import image2 from '../Util/asset/image2.jpg';
+import image3 from '../Util/asset/image3.jpg';
+import image4 from '../Util/asset/image4.jpg';
 const cx = classNames.bind(styles);
 
 const TimeLineMedia = () => {
   const context = useContext(MainContext);
   const { state, patchBookmark } = context;
   const { diaries } = state;
+  const images = [image1, image2, image3, image4];
 
   const onChangeBookmark = ({ target }) => {
     const id = +target.attributes.id.nodeValue;
@@ -24,14 +28,19 @@ const TimeLineMedia = () => {
       {diaries.map((diary) => (
         <li key={diary.id} className={cx('timelineMedia')}>
           <Link to={`/diaryViewer/${diary.id}`}>
-            <img
+            <div
               className={cx('thumbnail')}
-              src={
-                diary.imagePaths.length
-                  ? diary.imagePaths[0]
-                  : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
-              }
-              alt="다이어리 첫번째 사진"
+              style={{
+                backgroundImage: `url(
+                ${
+                  diary.imagePaths.length
+                    ? diary.imagePaths[0]
+                    : diary.id > 4
+                    ? images[2]
+                    : images[diary.id - 1]
+                }
+                )`,
+              }}
             />
           </Link>
           {/* 마우스 hover시 보여지는 부분 */}
