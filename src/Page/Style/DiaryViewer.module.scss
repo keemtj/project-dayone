@@ -43,7 +43,7 @@ $mainColor: #45C0FF;
   }
 
   
-  button {
+  & button {
     padding: 9px 39px;
     border: 1px solid #c7c7c7;
     color: #7a7a7a;
@@ -57,7 +57,7 @@ $mainColor: #45C0FF;
     font-size: 16px;
     margin-bottom: 30px;
   }
-  button:hover, button:focus,   .goBackBtn {
+  & button:hover, & button:focus, & .goBackBtn {
     border: 1px solid $mainColor;
     color: #fff;
     background-color: $mainColor;
