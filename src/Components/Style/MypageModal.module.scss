@@ -1,29 +1,81 @@
-.imgInputLabel,
-.msgInputLabel {
-  display: block;
-  width: 80%;
-  margin: 20px auto;
-}
+.modal {
+  position: relative;
+  margin: 210px auto 0;
+  width: 480px;
+  min-height: 150px;
+  padding: 15px 40px 20px;
+  border-radius: 7px;
+  background-color: #fff;
 
-.imgInputLabel {
-  background: lavender;
-}
+  .inputName {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 15px 0 20px;
+  }
 
-.msgInputLabel {
-  background: sienna;
-}
+  .imgPath {
+    line-height: 1.7rem;
+    color: #aaa;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    width: 220px;
+    outline: none;
+  }
 
-.imgInput,
-.msgInput {
-  width: 70%;
-  margin-left: 40px;
-}
+  .imgLabel {
+    display: inline-block;
+    width: 80px;
+    line-height: 1.8rem;
+    font-size: 0.7rem;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: 0.3s;
 
-.imgInput {
-  background: lightcyan;
-  visibility: hidden;
-}
+    &:hover,
+    &:focus {
+      background: #45c0ff;
+      transition: 0.3s;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+  }
 
-.msgInput {
-  background: violet;
+  .deleteImgBtn {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 4.75rem;
+    right: 4rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    color: #aaa;
+    transition: 0.3s;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      color: #000;
+      transition: 0.3s;
+    }
+  }
+
+  .msgInput {
+    width: 100%;
+    border: none;
+    // border-bottom: 1px solid #45c0ff;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    outline: none;
+    line-height: 1.5rem;
+  }
+
+  .imgInput {
+    background: lightcyan;
+    visibility: hidden;
+  }
 }

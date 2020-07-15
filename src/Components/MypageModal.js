@@ -20,13 +20,22 @@ const MypageModal = ({ pageCtx }) => {
     >
       <div className={cx('modal')}>
         <span className={cx('inputName')}>프로필 사진</span>
-        <label htmlFor="imgInput" className={cx('imgInputLabel')}></label>
+        <input
+          type="text"
+          readOnly
+          className={cx('imgPath')}
+          // placeholder="사진을 업로드 해주세요"
+          value="image path"
+        />
+        <label htmlFor="imgInput" className={cx('imgLabel')}>
+          사진 업로드
+        </label>
         <input type="file" id="imgInput" className={cx('imgInput')} />
         <button type="button" className={cx('deleteImgBtn')}>
           사진 삭제
         </button>
         <span className={cx('inputName')}>상태 메시지</span>
-        <label htmlFor="msgInput" className={cx('msgInputLabel')}></label>
+        <label htmlFor="msgInput" className={cx('msgLabel')}></label>
         <input type="text" id="msgInput" className={cx('msgInput')} />
         <div className={cx('btnWrapper')}>
           <button
