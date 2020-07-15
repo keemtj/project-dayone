@@ -14,7 +14,8 @@ const MypageModal = ({ pageCtx }) => {
   const [inputState, setInputState] = useState({ pic, msg });
 
   const changeInput = ({ target }) => {
-    setInputState({ ...inputState, msg: target.value });
+    const key = target.className.includes('msg') ? 'msg' : 'pic';
+    setInputState({ ...inputState, [key]: target.value });
   };
 
   const onSubmit = () => {
@@ -35,12 +36,17 @@ const MypageModal = ({ pageCtx }) => {
           readOnly
           className={cx('imgPath')}
           placeholder="사진을 업로드 해주세요"
-          // value=
+          value={inputState.pic}
         />
         <label htmlFor="imgInput" className={cx('imgLabel')}>
           사진 업로드
         </label>
-        <input type="file" id="imgInput" className={cx('imgInput')} />
+        <input
+          onChange={changeInput}
+          type="file"
+          id="imgInput"
+          className={cx('imgInput')}
+        />
         <button type="button" className={cx('deleteImgBtn')}>
           사진 삭제
         </button>
