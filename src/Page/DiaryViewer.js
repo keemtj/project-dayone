@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useLastLocation } from 'react-router-last-location';
 import classNames from 'classnames/bind';
 import styles from './Style/DiaryViewer.module.scss';
 import { MainContext } from '../Context/MainContext';
@@ -15,6 +16,7 @@ const DiaryViewer = () => {
   );
   const { id } = useParams();
   const history = useHistory();
+  const lastLocation = useLastLocation();
 
   useEffect(() => {
     getDiary(id);
@@ -23,13 +25,30 @@ const DiaryViewer = () => {
     };
   }, []);
 
-  if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
+  // console.log(History);
 
-  const clickDelete = () => setViewerState('Delete');
+  if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
 
   const clickEdit = () => {
     setEditState();
     history.push('/diary');
+  };
+
+  const clickDelete = () => setViewerState('Delete');
+
+  const clickGoBack = () => {
+    if (!lastLocation) {
+      history.goBack();
+      return;
+    }
+    if (lastLocation.pathname === '/diary') {
+      window.history.go(-2);
+    }
+    if (lastLocation.pathname.includes('/diaryViewer')) {
+      window.history.go(-3);
+    } else {
+      history.goBack();
+    }
   };
 
   const renderDiary = () => (
@@ -59,7 +78,8 @@ const DiaryViewer = () => {
       <button
         className={cx('goBackBtn')}
         type="button"
-        onClick={() => history.goBack()}
+        // onClick={() => history.goBack()}
+        onClick={clickGoBack}
       >
         뒤로가기
       </button>
