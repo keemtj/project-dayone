@@ -17,6 +17,7 @@ const ProfileInfo = ({ pageCtx }) => {
     msg,
     diaryPerDay,
     onClickLogOut,
+    onClickSetting,
   } = pageCtx;
 
   return (
@@ -58,6 +59,7 @@ const ProfileInfo = ({ pageCtx }) => {
       <button
         type="button"
         className={cx('settingBtn')}
+        onClick={onClickSetting}
         style={{
           left: `calc(29rem + ${userId.length * 13}px)`,
           top: msg ? `1.5rem` : '1.8rem',
