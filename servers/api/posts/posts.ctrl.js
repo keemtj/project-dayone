@@ -3,10 +3,9 @@ let diaryId = 15;
 const diaries = [
   {
     id: 1,
-    title:
-      'Diary Title 1, 일기를 처음으로 쓴 날인데 일기 제목이 너무 길면 어떡하지?',
+    title: '스터디룸에서 열공하는 우리들',
     content:
-      '<p>This is diary 1, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>',
+      '<p>스터디룸에서 초집중하고 있는 초록머리 조커와 뭔가 심각하게 의논을 나누고 있는 하으니랑 지미주! 이정도로 열심히 하는데 이력서 내면 당장 뽑아줘야 하는거 아닙니까?!</p>',
     date: '2020-5-14',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
     imagePaths: [],
