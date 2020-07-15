@@ -45,19 +45,19 @@ const DiaryViewer = () => {
       <h2 className={cx('title')}>{state.viewerDiary.title}</h2>
       <span className={cx('date')}>{state.viewerDiary.date}</span>
       {renderDiary()}
-      <button
-        className={cx('button', 'editBtn')}
-        type="button"
-        onClick={clickEdit}
-      >
+      <button className={cx('editBtn')} type="button" onClick={clickEdit}>
         수정
       </button>
-      <button
-        className={cx('button', 'deleteBtn')}
-        type="button"
-        onClick={clickDelete}
-      >
+      <button className={cx('deleteBtn')} type="button" onClick={clickDelete}>
         삭제
+      </button>
+      <DiaryModalSmall
+        viewerState={viewerState}
+        setViewerState={setViewerState}
+        id={+id}
+      />
+      <button className={cx('goBackBtn')} type="button">
+        뒤로가기
       </button>
       <DiaryModalSmall
         viewerState={viewerState}

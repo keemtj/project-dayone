@@ -19,7 +19,6 @@ $outline: 1px solid #dbdbdb;
   &:focus {
     background: $mainColor;
     color: #ffffff;
-    // border: #ffffff;
     border: $mainColor;
     transition: 0.3s;
   }
@@ -52,7 +51,7 @@ $outline: 1px solid #dbdbdb;
     background: #ffffff;
 
     &:hover {
-      background: #ebebeb73;
+      filter: brightness(95%);
     }
   }
 
