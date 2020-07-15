@@ -51,6 +51,7 @@ const Dates = ({ pageCtx, onClickDate, dateState }) => {
             key={dd}
             type="button"
             className={cx(
+              'dateBtn',
               `${fullDate}`,
               `${getColorByAmount(fullDate)}`,
               {
