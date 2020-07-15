@@ -3,6 +3,7 @@ export const mapInitState = {
   places: [],
   isSearchVisible: false,
   isPlacesVisible: false,
+  message: '',
 };
 
 export const mapReducer = (state, action) => {
@@ -37,6 +38,11 @@ export const mapReducer = (state, action) => {
       return {
         ...state,
         isPlacesVisible: false,
+      };
+    case 'SET_MESSAGE':
+      return {
+        ...state,
+        message: action.message,
       };
     default:
       return state;

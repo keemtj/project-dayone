@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faSearch,
-  faTimesCircle,
-  faWindowClose,
-  faAngleLeft,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/MapSearchForm.module.scss';
+import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
 const MapSearchForm = ({ searchPlaces }) => {
-  const [formVisible, setFormVisible] = useState(false);
+  const mapContext = useContext(MapContext);
+  const {
+    mapState,
+    setSearchVisible,
+    setSearchHidden,
+    setPlacesHidden,
+  } = mapContext;
+  const { isSearchVisible } = mapState;
+
   const [inputs, setInputs] = useState('');
 
   const toggleVisible = () => {
-    setFormVisible((prevVisible) => !prevVisible);
-    console.log('formVisible: ', formVisible);
+    if (isSearchVisible) {
+      setSearchHidden();
+      setPlacesHidden();
+      return;
+    }
+    setSearchVisible();
   };
 
   const handleChange = (e) => {
@@ -36,14 +45,14 @@ const MapSearchForm = ({ searchPlaces }) => {
         type="button"
         onClick={toggleVisible}
       >
-        {formVisible ? (
+        {isSearchVisible ? (
           <FontAwesomeIcon icon={faAngleLeft} />
         ) : (
           <FontAwesomeIcon icon={faSearch} />
         )}
       </button>
       <form
-        className={cx('search-form', { visible: formVisible })}
+        className={cx('search-form', { visible: isSearchVisible })}
         onSubmit={onSubmit}
       >
         <input

@@ -19,21 +19,50 @@ const MapComponent = () => {
 
   const { state } = mainContext;
   const { diaries } = state;
-
   const {
     mapState,
     setSublist,
     setPlaces,
-    setSearchVisible,
-    setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
+    setMessage,
   } = mapContext;
 
-  const searchPlaces = (inputs) => {
-    console.log('your input: ', inputs);
-    setPlaces(inputs);
+  // -----------------
+  //
+  const placesSearchCB = (data, status, pagination) => {
+    if (status === kakao.maps.services.Status.OK) {
+      // 정상적으로 검색이 완료됐으면
+      // 검색 목록과 마커를 표출합니다
+      // displayPlaces(data);
+      console.log('DATA: ', data);
+      setMessage('');
+      setPlaces(data);
+      setPlacesVisible();
+      // 페이지 번호를 표출합니다
+      // displayPagination(pagination);
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+      setMessage('검색 결과가 존재하지 않습니다.');
+      setPlaces([]);
+    } else if (status === kakao.maps.services.Status.ERROR) {
+      setMessage('검색 결과 중 오류가 발생했습니다.');
+    }
   };
+
+  const searchPlaces = (inputs) => {
+    console.log('--------');
+    console.log(new kakao.maps.services.Places());
+
+    const ps = new kakao.maps.services.Places();
+
+    console.log('your input: ', inputs);
+    if (!inputs.replace(/^\s+|\s+$/g, '')) {
+      setMessage('장소를 입력해주세요');
+      return false;
+    }
+    ps.keywordSearch(inputs, placesSearchCB);
+  };
+  //
+  // -------------
 
   const renderMap = () => {
     const container = document.getElementById('map');
@@ -163,11 +192,8 @@ const MapComponent = () => {
   return (
     <div className={cx('map')} id="map">
       <div className={cx('map-search-wrap')}>
-        <MapSearchForm
-          className={cx('map-search-form')}
-          searchPlaces={searchPlaces}
-        />
-        <MapSearchList className={cx('map-search-list')} />
+        <MapSearchForm searchPlaces={searchPlaces} />
+        <MapSearchList />
       </div>
     </div>
   );
