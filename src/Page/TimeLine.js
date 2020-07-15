@@ -15,6 +15,10 @@ const Timeline = () => {
   return (
     <main>
       <div className={cx('timelineNav')}>
+        <aside className={cx('aside')}>
+          <div className={cx('profile')}>프로필 사진 박스</div>
+          <div className={cx('tagBox')}>태그 박스</div>
+        </aside>
         <div className={cx('nav')}>
           <NavLink
             to="/timeline/list"

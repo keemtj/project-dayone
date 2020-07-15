@@ -4,6 +4,8 @@ $mainColor: #67bff9;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  width: 70%;
+  margin: 0 0 0 30%;
 
   .timelineList {
     display: flex;
@@ -11,10 +13,10 @@ $mainColor: #67bff9;
     flex-direction: row;
     position: relative;
     width: 100%;
-    height: 25%;
+    height: 250px;
 
     &:nth-child(n + 2) {
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     &::before {
@@ -44,7 +46,7 @@ $mainColor: #67bff9;
 
         .title {
           width: 400px;
-          margin: 0 auto;
+          // margin: 0 auto;
           margin-top: -0.2rem;
           font-size: 1.6rem;
           font-weight: 600;
@@ -55,7 +57,7 @@ $mainColor: #67bff9;
           text-align: justify;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          text-align: center;
+          // text-align: center;
           -webkit-line-clamp: 1;
         }
 
@@ -64,7 +66,7 @@ $mainColor: #67bff9;
           font-size: 1.2rem;
           font-weight: 500;
           color: #434548;
-          text-align: end;
+          // text-align: end;
         }
 
         .content {
@@ -130,8 +132,6 @@ $mainColor: #67bff9;
   }
 
   &::after {
-    display: block;
     content: '';
-    width: 24%;
   }
 }

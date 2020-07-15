@@ -2,7 +2,7 @@ $mainColor: #67bff9;
 
 .timelineWrapper {
   // background-color: lightblue;
-  margin: -5px;
+  margin: -10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -14,9 +14,9 @@ $mainColor: #67bff9;
   .timelineMedia {
     // border: 1px solid lightcoral;
     position: relative;
-    margin: 5px;
-    width: 24%;
-    height: 240px;
+    margin: 10px;
+    width: 23%;
+    height: auto;
 
     .thumbnail {
       width: 100%;
