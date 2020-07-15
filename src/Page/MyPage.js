@@ -15,7 +15,7 @@ const MyPage = () => {
   const { logOut } = loginCtx;
   const { dispatch, patchBookmark } = mainCtx;
   const { diaries, userData } = mainCtx.state;
-  const { userId } = userData;
+  const { userId, pic, msg } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
   const yy = diaries[0].date.split('-')[0];
@@ -38,6 +38,8 @@ const MyPage = () => {
     diaries,
     bookmarked,
     userId,
+    pic,
+    msg,
     diaryPerDay,
     onClickLogOut,
     onChangeBookmark,

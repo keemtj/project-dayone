@@ -7,11 +7,27 @@ import styles from '../Page/Style/MyPage.module.scss';
 const cx = classNames.bind(styles);
 
 const ProfileInfo = ({ pageCtx }) => {
-  const { diaries, bookmarked, userId, diaryPerDay, onClickLogOut } = pageCtx;
+  const altPic =
+    'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
+  const {
+    diaries,
+    bookmarked,
+    userId,
+    pic,
+    msg,
+    diaryPerDay,
+    onClickLogOut,
+  } = pageCtx;
 
   return (
     <div className={cx('profile')}>
-      <img className={cx('profilePic')} src="" alt={userId} />
+      <div
+        className={cx('profilePic')}
+        style={{
+          backgroundImage: pic ? `url(${pic})` : `url(${altPic})`,
+          opacity: pic ? 1 : 0.5,
+        }}
+      />
       <div className={cx('infoWrapper')}>
         <h2 className={cx('greeting')}>
           안녕하세요
@@ -20,8 +36,11 @@ const ProfileInfo = ({ pageCtx }) => {
             님!
           </span>
         </h2>
-        <h3 className={cx('profileMsg')}>상태메시지 룰루랄라</h3>
-        <ul className={cx('statistics')}>
+        <h3 className={cx('profileMsg')}>{msg}</h3>
+        <ul
+          className={cx('statistics')}
+          style={{ margin: msg ? '2rem 0 0' : '3rem 0 0' }}
+        >
           <li>
             <span className={cx('numbers')}>{diaries.length}</span>
             <span className={cx('caption')}>일기수</span>
@@ -39,7 +58,10 @@ const ProfileInfo = ({ pageCtx }) => {
       <button
         type="button"
         className={cx('settingBtn')}
-        style={{ left: `calc(29rem + ${userId.length * 13}px)` }}
+        style={{
+          left: `calc(29rem + ${userId.length * 13}px)`,
+          top: msg ? `1.5rem` : '1.8rem',
+        }}
       >
         <FontAwesomeIcon icon={faCog} />
       </button>
