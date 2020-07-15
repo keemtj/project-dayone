@@ -4,7 +4,6 @@
   padding-top: 20px;
 
   & button {
-    // outline: none;
     border: none;
   }
 
@@ -49,14 +48,13 @@
       width: 6rem;
       height: 6rem;
       border-radius: 3px;
-      // border: 1px solid gray;
 
       &:enabled {
         cursor: pointer;
       }
 
       &:focus {
-        border: 2px solid rgb(255, 114, 98);
+        border: 2px solid rgb(255, 114, 98) !important;
         border-radius: 3px;
       }
     }

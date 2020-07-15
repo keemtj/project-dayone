@@ -9,14 +9,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/ModalCalendar.module.scss';
 import useCalendar from '../../Hook/useCalendar';
-// import { MainContext } from '../../Context/MainContext';
 import ModalButtons from './ModalButtons';
 
 const cx = classNames.bind(styles);
 
 const ModalCalendar = () => {
-  // const mainCtx = React.useContext(MainContext);
-  // const { dispatch } = mainCtx;
   const hook = useCalendar();
   const {
     onClickPrevMonth,
