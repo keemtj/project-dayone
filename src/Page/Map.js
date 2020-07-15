@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Map.module.scss';
-import ReactMap from '../Components/ReactMap';
+import MapComponent from '../Components/Map/MapComponent';
 import DiarySublist from '../Components/DiarySublist';
 import { MainContext } from '../Context/MainContext';
 
@@ -21,7 +21,7 @@ const Map = () => {
   return (
     <main className={cx('main')}>
       {/* <h1>지도</h1> */}
-      <ReactMap
+      <MapComponent
         className={cx('map')}
         diaries={diaries}
         filterDiariesByLoc={filterDiariesByLoc}

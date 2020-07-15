@@ -1,16 +1,24 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
 /* eslint-disable no-new */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-
-import styles from './Style/ReactMap.module.scss';
+import styles from '../Style/MapComponent.module.scss';
+import MapSearchForm from './MapSearchForm';
+import MapSearchList from './MapSearchList';
 
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
 
-const ReactMap = ({ diaries, filterDiariesByLoc }) => {
+const MapComponent = ({ diaries, filterDiariesByLoc }) => {
+  const [places, setPlaces] = useState('');
+
+  const searchPlaces = (inputs) => {
+    console.log('your input: ', inputs);
+    setPlaces(inputs);
+  };
+
   const renderMap = () => {
     const container = document.getElementById('map');
     const options = {
@@ -87,9 +95,7 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
     const makeMarkers = (diaries) => {
       const markers = [];
       diaries.forEach((diary) => {
-        console.log('prop length: ', Object.keys(diary.location).length);
         const hasLocation = Object.keys(diary.location).length > 0;
-        console.log('hasLocation?: ', hasLocation);
         if (!hasLocation) return;
 
         const { lat, lng } = diary.location;
@@ -138,7 +144,17 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
     });
   }, []);
 
-  return <div className={cx('map')} id="map" />;
+  return (
+    <div className={cx('map')} id="map">
+      <div className={cx('map-search-wrap')}>
+        <MapSearchForm
+          className={cx('map-search-form')}
+          searchPlaces={searchPlaces}
+        />
+        <MapSearchList className={cx('map-search-list')} places={places} />
+      </div>
+    </div>
+  );
 };
 
-export default ReactMap;
+export default React.memo(MapComponent);
