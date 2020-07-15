@@ -1,37 +1,29 @@
-$mainColor: #67bff9;
+$mainColor: #45c0ff;
 
 .timelineWrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
   // background-color: lightblue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 65%;
+  margin: 0 0 10% 35%;
 
   .timelineMedia {
-    position: relative;
-    width: 24%;
-    height: auto;
     // border: 1px solid lightcoral;
-
-    &:nth-child(4n + 1) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(4n + 2) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(4n + 3) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(n + 5) {
-      margin-top: 0.8rem;
-    }
+    position: relative;
+    width: 19.5rem;
+    height: 19.5rem;
 
     .thumbnail {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
       width: 100%;
       height: 100%;
-      text-align: center;
+    }
+
+    &:nth-child(n + 3) {
+      margin-top: 1.6rem;
     }
 
     &::before {
@@ -56,6 +48,7 @@ $mainColor: #67bff9;
       .diaryInfo {
         color: #ffffff;
         position: relative;
+        width: 220px;
 
         .title {
           font-size: 1.6rem;
@@ -81,8 +74,8 @@ $mainColor: #67bff9;
 
     input[type='checkbox'] + label span {
       position: absolute;
-      top: -5rem;
-      right: -3rem;
+      top: -7rem;
+      right: -1.8rem;
       color: #ffffff;
       font-size: 1.2rem;
       cursor: pointer;
@@ -102,11 +95,5 @@ $mainColor: #67bff9;
         opacity: 1;
       }
     }
-  }
-
-  &::after {
-    display: block;
-    content: '';
-    width: 24%;
   }
 }
