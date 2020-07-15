@@ -1,6 +1,6 @@
 $mainColor: #67bff9;
 
-.dimed {
+:global .dimmed {
   display: none;
   position: fixed;
   z-index: 100;
@@ -11,7 +11,8 @@ $mainColor: #67bff9;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal {
+
+:global .modal {
   position: relative;
   margin: 115px auto 0;
   width: 580px;
@@ -38,44 +39,44 @@ $mainColor: #67bff9;
   //     transition: 0.3s;
   //   }
   // }
+}
 
-  .warningMsg {
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 29rem;
-    left: 0;
-    font-size: 0.8rem;
-    color: rgb(223, 0, 0);
-    text-align: center;
-    display: none;
-  }
+.warningMsg {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 29rem;
+  left: 0;
+  font-size: 0.8rem;
+  color: rgb(223, 0, 0);
+  text-align: center;
+  display: none;
+}
 
-  .btnWrapper {
-    width: 15rem;
-    margin: 25px auto 0;
-    display: flex;
-    justify-content: space-between;
-  }
+:global .btnWrapper {
+  width: 15rem;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
 
-  .cancelBtn,
-  .submitBtn {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 10px 40px;
-    border-radius: 3px;
-  }
+:global .cancelBtn,
+:global .submitBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 10px 40px;
+  border-radius: 3px;
+}
 
-  .cancelBtn {
-    border: 1px solid #ddd;
-  }
+:global .cancelBtn {
+  border: 1px solid #ddd;
+}
 
-  .submitBtn {
-    background: #67bff9;
-    color: #fff;
-  }
+:global .submitBtn {
+  background: #67bff9;
+  color: #fff;
 }
 
 .small {
