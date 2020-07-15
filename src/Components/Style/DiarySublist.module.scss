@@ -1,4 +1,4 @@
-$mainColor: #67bff9;
+$mainColor: #45C0FF;
 $outline: 1px solid #dbdbdb;
 
 .addBtn {
@@ -19,7 +19,6 @@ $outline: 1px solid #dbdbdb;
   &:focus {
     background: $mainColor;
     color: #ffffff;
-    // border: #ffffff;
     border: $mainColor;
     transition: 0.3s;
   }
@@ -52,7 +51,7 @@ $outline: 1px solid #dbdbdb;
     background: #ffffff;
 
     &:hover {
-      background: #ebebeb73;
+      filter: brightness(95%);
     }
   }
 
