@@ -1,32 +1,22 @@
 $mainColor: #67bff9;
 
 .timelineWrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
   // background-color: lightblue;
+  margin: -5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
+  &::after {
+    content: '';
+    flex: auto;
+  }
   .timelineMedia {
-    position: relative;
-    width: 24%;
-    height: auto;
     // border: 1px solid lightcoral;
-
-    &:nth-child(4n + 1) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(4n + 2) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(4n + 3) {
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(n + 5) {
-      margin-top: 0.8rem;
-    }
+    position: relative;
+    margin: 5px;
+    width: 24%;
+    height: 240px;
 
     .thumbnail {
       width: 100%;
@@ -102,11 +92,5 @@ $mainColor: #67bff9;
         opacity: 1;
       }
     }
-  }
-
-  &::after {
-    display: block;
-    content: '';
-    width: 24%;
   }
 }
