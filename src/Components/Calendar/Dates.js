@@ -1,19 +1,11 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from '../Style/CustomCalendar.module.scss';
-import { CalendarContext } from '../../Context/CalendarContext';
-import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const Dates = () => {
-  const calCtx = React.useContext(CalendarContext);
-  const mainCtx = React.useContext(MainContext);
-  const { state } = mainCtx;
-  const { calendarState, getSublist } = calCtx;
-  const { diaries } = state;
-  const { now, calendar } = calendarState;
-  const { datesArray, startDay } = calendar;
+const Dates = ({ pageCtx }) => {
+  const { getSublist, diaries, now, datesArray, startDay } = pageCtx;
 
   return (
     <div className={cx('dateView')}>

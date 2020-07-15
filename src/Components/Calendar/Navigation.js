@@ -8,23 +8,20 @@ import {
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/CustomCalendar.module.scss';
-import { CalendarContext } from '../../Context/CalendarContext';
 
 const cx = classNames.bind(styles);
 
-const Navigation = () => {
-  const calCtx = React.useContext(CalendarContext);
+const Navigation = ({ pageCtx }) => {
   const {
-    calendarState,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
     onClickNextYear,
     openModal,
-  } = calCtx;
-
-  const { now, calendar } = calendarState;
-  const { year, month } = calendar;
+    now,
+    year,
+    month,
+  } = pageCtx;
 
   return (
     <div className={cx('navigation')}>

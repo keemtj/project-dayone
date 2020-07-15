@@ -13,9 +13,35 @@ const CustomCalendar = () => {
   const calCtx = React.useContext(CalendarContext);
   const mainCtx = React.useContext(MainContext);
   const { state } = mainCtx;
-  const { calendarState, getTodaySublist } = calCtx;
+  const {
+    calendarState,
+    onClickPrevMonth,
+    onClickPrevYear,
+    onClickNextMonth,
+    onClickNextYear,
+    openModal,
+    getSublist,
+    getTodaySublist,
+  } = calCtx;
+
   const { diaries } = state;
-  const { now } = calendarState;
+  const { now, calendar } = calendarState;
+  const { year, month, datesArray, startDay } = calendar;
+
+  const calPageCtx = {
+    onClickPrevMonth,
+    onClickPrevYear,
+    onClickNextMonth,
+    onClickNextYear,
+    openModal,
+    getSublist,
+    diaries,
+    now,
+    year,
+    month,
+    datesArray,
+    startDay,
+  };
 
   useEffect(() => {
     getTodaySublist(now, diaries);
@@ -24,9 +50,9 @@ const CustomCalendar = () => {
   return (
     <>
       <div className={cx('calendar')}>
-        <Navigation />
-        <Days />
-        <Dates />
+        <Navigation pageCtx={calPageCtx} />
+        <Days pageCtx={calPageCtx} />
+        <Dates pageCtx={calPageCtx} />
       </div>
     </>
   );
