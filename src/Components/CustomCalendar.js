@@ -18,35 +18,22 @@ const CustomCalendar = () => {
   const mainCtx = React.useContext(MainContext);
   const { state } = mainCtx;
   const {
-    dispatch,
     calendarState,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
     onClickNextYear,
     openModal,
+    getSublist,
+    getTodaySublist,
   } = calCtx;
 
   const { diaries } = state;
   const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
 
-  const getSublist = (e) => {
-    const target =
-      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
-    const date = target.className.split(' ')[0];
-    const sublist = diaries.filter((diary) => diary.date === date);
-    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
-  };
-
-  const getTodaySublist = (present) => {
-    const today = `${present.year}-${present.month}-${present.date}`;
-    const sublist = diaries.filter((diary) => diary.date === today);
-    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
-  };
-
   useEffect(() => {
-    getTodaySublist(now);
+    getTodaySublist(now, diaries);
   }, [now]);
 
   return (
@@ -134,7 +121,7 @@ const CustomCalendar = () => {
                 )}
                 disabled={yy === now.year && mm === now.month && dd > now.date}
                 style={{ marginLeft: dd === 1 ? `${startDay * 6}rem` : 0 }}
-                onClick={getSublist}
+                onClick={(e) => getSublist(e, diaries)}
               >
                 <span className={cx('date')}>{dd}</span>
               </button>
