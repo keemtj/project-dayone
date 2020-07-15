@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -6,17 +6,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import SubRouter from '../Router/SubRouter';
-
+import { MainContext } from '../Context/MainContext';
 const cx = classNames.bind(styles);
 
 const Timeline = () => {
   const { pathname } = useLocation();
+  const context = useContext(MainContext);
+  const { state } = context;
+  const { userData } = state;
+  const { userId, pic, msg } = userData;
 
   return (
     <main>
       <div className={cx('timelineNav')}>
         <aside className={cx('aside')}>
-          <div className={cx('profile')}>프로필 사진 박스</div>
+          <div className={cx('profile')}>
+            <div
+              className={cx('profilePhoto')}
+              style={{
+                backgroundImage: `url(
+                ${pic})`,
+              }}
+            />
+            <div className={cx('profileUserId')}>{userId}</div>
+            <div className={cx('profileMsg')}>{msg}</div>
+          </div>
           <div className={cx('tagBox')}>태그 박스</div>
         </aside>
         <div className={cx('nav')}>
