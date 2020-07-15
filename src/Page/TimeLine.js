@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThLarge, faThList } from '@fortawesome/free-solid-svg-icons';
+import { faThLarge, faThList, faTags } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import SubRouter from '../Router/SubRouter';
 import { MainContext } from '../Context/MainContext';
@@ -31,7 +31,10 @@ const Timeline = () => {
             <div className={cx('profileUserId')}>{userId}</div>
             <div className={cx('profileMsg')}>{msg}</div>
           </div>
-          <div className={cx('tagBox')}>태그 박스</div>
+          <div className={cx('tagBox')}>
+            <FontAwesomeIcon icon={faTags} className={cx('icon')} />
+            <span className={cx('tagBoxTitle')}>TAG</span>
+          </div>
         </aside>
         <div className={cx('nav')}>
           <NavLink
