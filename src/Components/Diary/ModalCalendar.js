@@ -50,7 +50,11 @@ const ModalCalendar = () => {
       <div className={cx('calendar')}>
         <Navigation pageCtx={diaryPageCtx} />
         <Days pageCtx={diaryPageCtx} />
-        <Dates pageCtx={diaryPageCtx} onClickDate={onClickDate} />
+        <Dates
+          pageCtx={diaryPageCtx}
+          onClickDate={onClickDate}
+          dateState={dateState}
+        />
       </div>
       <ModalButtons dateState={dateState} setDateState={setDateState} />
     </>
