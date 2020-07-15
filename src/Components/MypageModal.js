@@ -10,7 +10,7 @@ import styles from './Style/MypageModal.module.scss';
 const cx = classNames.bind(styles);
 
 const MypageModal = ({ pageCtx }) => {
-  const { closeModal, onClickDimmed, editProfileMsg, pic, msg } = pageCtx;
+  const { closeModal, onClickDimmed, editProfile, pic, msg } = pageCtx;
   const [inputState, setInputState] = useState({ pic, msg });
 
   const changeInput = ({ target }) => {
@@ -18,8 +18,12 @@ const MypageModal = ({ pageCtx }) => {
     setInputState({ ...inputState, [key]: target.value });
   };
 
+  const deleteImg = () => {
+    setInputState({ ...inputState, pic: '' });
+  };
+
   const onSubmit = () => {
-    editProfileMsg(inputState.msg);
+    editProfile(inputState.msg, inputState.pic);
     closeModal();
   };
 
@@ -46,8 +50,14 @@ const MypageModal = ({ pageCtx }) => {
           type="file"
           id="imgInput"
           className={cx('imgInput')}
+          accept="image/*"
+          required
         />
-        <button type="button" className={cx('deleteImgBtn')}>
+        <button
+          type="button"
+          className={cx('deleteImgBtn')}
+          onClick={deleteImg}
+        >
           사진 삭제
         </button>
         <span className={cx('inputName')}>상태 메시지</span>

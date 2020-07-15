@@ -139,8 +139,8 @@ const usePosts = () => {
     dispatch({ type: 'SET_EDIT_STATE' });
   };
 
-  const editProfileMsg = (msg) => {
-    dispatch({ type: 'EDIT_PROFILE_MSG', msg });
+  const editProfile = (msg, pic) => {
+    dispatch({ type: 'EDIT_PROFILE', msg, pic });
   };
 
   useEffect(() => {
@@ -164,7 +164,7 @@ const usePosts = () => {
     deleteDiary,
     setEditState,
     editDiary,
-    editProfileMsg,
+    editProfile,
   ];
 };
 
