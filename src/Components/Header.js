@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouteMatch, Link, NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import classNames from 'classnames/bind';
 import {
   faHome,
@@ -14,9 +15,11 @@ import styles from './Style/Header.module.scss';
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const { pathname } = useLocation();
   const match = useRouteMatch({
     path: '/diary',
   });
+
   return (
     <header className={cx('header')}>
       <div className={cx('container')}>
@@ -27,7 +30,12 @@ const Header = () => {
           <nav match={match} />
         ) : (
           <nav className={cx('nav')}>
-            <NavLink to="/" activeClassName={cx('active')} exact>
+            <NavLink
+              to="/"
+              activeClassName={cx('active')}
+              exact
+              className={cx({ active: pathname.includes('/timeline') })}
+            >
               <FontAwesomeIcon icon={faHome} className={cx('icon')} />
               <span className={cx('tooltip')}>홈</span>
             </NavLink>
