@@ -29,6 +29,7 @@ const CustomCalendar = () => {
   const { year, month, datesArray, startDay } = calendar;
 
   const calPageCtx = {
+    page: 'calendar',
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,

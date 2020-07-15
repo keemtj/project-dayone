@@ -1,10 +1,12 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from '../Style/CustomCalendar.module.scss';
+import calendarStyles from '../Style/CustomCalendar.module.scss';
+import diaryStyles from '../Style/ModalCalendar.module.scss';
 
-const cx = classNames.bind(styles);
+const Days = ({ pageCtx }) => {
+  const { page } = pageCtx;
+  const cx = classNames.bind(page === 'diary' ? diaryStyles : calendarStyles);
 
-const Days = () => {
   return (
     <ul className={cx('days')}>
       <li>SUN</li>

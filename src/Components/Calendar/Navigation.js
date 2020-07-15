@@ -7,11 +7,12 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import styles from '../Style/CustomCalendar.module.scss';
-
-const cx = classNames.bind(styles);
+import calendarStyles from '../Style/CustomCalendar.module.scss';
+import diaryStyles from '../Style/ModalCalendar.module.scss';
 
 const Navigation = ({ pageCtx }) => {
+  const { page } = pageCtx;
+  const cx = classNames.bind(page === 'diary' ? diaryStyles : calendarStyles);
   const {
     onClickPrevMonth,
     onClickPrevYear,
