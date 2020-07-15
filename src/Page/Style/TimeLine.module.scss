@@ -6,8 +6,7 @@ $mainColor: #45c0ff;
   .aside {
     position: fixed;
     top: 6.6rem;
-    width: 23%;
-    z-index: 1;
+    width: calc(350px - 1.5rem);
 
     .profile {
       border: 1px solid #dbdbdb;
@@ -45,7 +44,7 @@ $mainColor: #45c0ff;
     .tagBox {
       border: 1px solid #dbdbdb;
       // border-radius: 4px;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       padding: 2rem;
       width: 100%;
       height: auto;
