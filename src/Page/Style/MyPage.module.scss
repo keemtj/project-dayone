@@ -6,36 +6,56 @@
   .profile {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0 0;
-    border-bottom: 1px solid #dbdbdb;
+    align-items: center;
     position: relative;
-    padding: 1rem 1rem 2rem;
+    margin: 2rem 0;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0 0 2rem;
+
+    .profilePic {
+      background: yellow;
+      width: 9rem;
+      height: 9rem;
+      border-radius: 500px;
+      overflow: hidden;
+      margin-left: 2.5rem;
+    }
+
+    .infoWrapper {
+      width: 50%;
+      // background: wheat;
+    }
 
     .greeting,
     .greeting span {
-      font-size: 1.2rem;
-      text-align: center;
-      display: block;
-      line-height: 1.7rem;
-      margin-left: 3rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 10px;
+      // background: coral;
     }
 
     .greeting span {
       font-weight: 700;
-      margin: 0;
+      margin: 0 20px;
+    }
+
+    .profileMsg {
+      // background: skyblue;
     }
 
     .statistics {
       display: flex;
       justify-content: space-between;
-      width: 30%;
-      margin: 1rem 3rem 0;
+      width: 80%;
+      margin: 2rem 0 0;
+      // background: lime;
 
       & li {
         text-align: center;
 
-        span {
-          font-size: 1rem;
+        .numbers,
+        .caption {
+          font-size: 1.1rem;
           padding: 0 3px;
         }
 
@@ -50,7 +70,7 @@
       cursor: pointer;
       border-radius: 5px;
       // position: absolute;
-      // top: 1.5rem;
+      // top: 3rem;
       // right: 0;
       margin: 0.5rem 0 0;
       color: #aaa;
