@@ -9,10 +9,7 @@ const diaries = [
       '<p>This is diary 1, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>',
     date: '2020-5-14',
     location: { lat: 37.62197524055062, lng: 127.16017523675508 },
-    imagePaths: [
-      'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
-      'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
-    ],
+    imagePaths: [],
     isBookmarked: true,
   },
   {
@@ -30,10 +27,7 @@ const diaries = [
     content: '<p>This is diary 3</p>',
     date: '2020-5-21',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
-    imagePaths: [
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5TgAiOTKorndQ1qt21VR9IVpItkvJi3-wjQ&usqp=CAU',
-      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
-    ],
+    imagePaths: [],
     isBookmarked: true,
   },
   {
@@ -42,10 +36,7 @@ const diaries = [
     content: '<p>This is diary 4</p>',
     date: '2020-6-2',
     location: { lat: 37.624915253753194, lng: 127.15122688059974 },
-    imagePaths: [
-      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
-      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
-    ],
+    imagePaths: [],
     isBookmarked: false,
   },
   {
