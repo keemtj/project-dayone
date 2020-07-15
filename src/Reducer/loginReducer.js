@@ -16,7 +16,7 @@ const loginInitialState = {
       userPw: '123',
       pic:
         'https://i.pinimg.com/564x/d7/2d/eb/d72deb6ea7c83283ebaf2c7e36e70714.jpg',
-      msg: 'ㅇㅅㅇ',
+      msg: '🐹뀨🧀',
       active: false,
     },
     {

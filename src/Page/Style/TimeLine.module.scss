@@ -10,16 +10,74 @@ $mainColor: #45c0ff;
     z-index: 1;
 
     .profile {
-      border: 1px solid red;
+      border: 1px solid #dbdbdb;
+      // border-radius: 4px;
+      padding: 2rem 2rem;
       width: 100%;
-      height: 400px;
+      height: 100%;
+
+      .profilePhoto {
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+      }
+
+      .profileUserId {
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .profileMsg {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+      }
     }
 
     .tagBox {
-      border: 1px solid green;
+      border: 1px solid #dbdbdb;
+      // border-radius: 4px;
       margin-top: 2rem;
+      padding: 2rem;
       width: 100%;
-      height: 200px;
+      height: auto;
+
+      .icon {
+        color: $mainColor;
+      }
+      .tagBoxTitle {
+        color: $mainColor;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-left: 0.5rem;
+      }
+
+      .tagListWrapper {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+
+        .icon {
+          font-size: 1rem;
+        }
+        .tag {
+          padding-left: 0.5rem;
+
+          &:first-child {
+            padding-left: 0;
+          }
+        }
+      }
     }
   }
 
