@@ -3,14 +3,24 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/MypageModal.module.scss';
 
 const cx = classNames.bind(styles);
 
 const MypageModal = ({ pageCtx }) => {
-  const { closeModal, onClickDimmed } = pageCtx;
+  const { closeModal, onClickDimmed, editProfileMsg, pic, msg } = pageCtx;
+  const [inputState, setInputState] = useState({ pic, msg });
+
+  const changeInput = ({ target }) => {
+    setInputState({ ...inputState, msg: target.value });
+  };
+
+  const onSubmit = () => {
+    editProfileMsg(inputState.msg);
+    closeModal();
+  };
 
   return (
     <div
@@ -24,8 +34,8 @@ const MypageModal = ({ pageCtx }) => {
           type="text"
           readOnly
           className={cx('imgPath')}
-          // placeholder="사진을 업로드 해주세요"
-          value="image path"
+          placeholder="사진을 업로드 해주세요"
+          // value=
         />
         <label htmlFor="imgInput" className={cx('imgLabel')}>
           사진 업로드
@@ -35,8 +45,13 @@ const MypageModal = ({ pageCtx }) => {
           사진 삭제
         </button>
         <span className={cx('inputName')}>상태 메시지</span>
-        <label htmlFor="msgInput" className={cx('msgLabel')}></label>
-        <input type="text" id="msgInput" className={cx('msgInput')} />
+        <input
+          type="text"
+          id="msgInput"
+          className={cx('msgInput')}
+          onChange={changeInput}
+          value={inputState.msg}
+        />
         <div className={cx('btnWrapper')}>
           <button
             type="button"
@@ -45,7 +60,7 @@ const MypageModal = ({ pageCtx }) => {
           >
             취소
           </button>
-          <button type="button" className={cx('submitBtn')}>
+          <button type="button" className={cx('submitBtn')} onClick={onSubmit}>
             확인
           </button>
         </div>

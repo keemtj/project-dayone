@@ -154,7 +154,11 @@ const mainReducer = (state, action) => {
         currentDiary: state.viewerDiary,
         editState: true,
       };
-
+    case 'EDIT_PROFILE_MSG':
+      return {
+        ...state,
+        userData: { ...state.userData, msg: action.msg },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
