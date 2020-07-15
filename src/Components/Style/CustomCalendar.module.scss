@@ -54,7 +54,7 @@
       }
 
       &:focus {
-        border: 2px solid rgb(255, 114, 98) !important;
+        outline: 2px solid rgb(255, 114, 98);
         border-radius: 3px;
       }
     }
