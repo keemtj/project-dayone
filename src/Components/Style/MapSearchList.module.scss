@@ -34,7 +34,8 @@
       margin: 0 10px;
       color: #525151;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: #afafaf91;
       }
     }
@@ -58,7 +59,8 @@
       overflow: hidden;
       border-bottom: 1px solid #727272b6;
       padding: 10px;
-      &:hover {
+      &:hover,
+      &:focus {
         background: #e0e0e09a;
       }
 
