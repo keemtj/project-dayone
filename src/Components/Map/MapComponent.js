@@ -47,6 +47,8 @@ const MapComponent = () => {
       setMessage('검색 결과 중 오류가 발생했습니다.');
     }
   };
+  // 37.5399238
+  // 127.05075719999999
 
   const searchPlaces = (inputs) => {
     console.log('--------');
@@ -67,20 +69,33 @@ const MapComponent = () => {
   const renderMap = () => {
     const container = document.getElementById('map');
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 5,
+      center: new kakao.maps.LatLng(0, 0),
+      level: 6,
     };
     const map = new kakao.maps.Map(container, options);
 
+    const locOptions = {
+      enableHighAccuracy: true,
+      maximumAge: 0,
+      timeout: 5000,
+    };
+
+    const handleError = (err) => {
+      console.warn('ERROR!');
+    };
     // 현재위치
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-        const locPosition = new kakao.maps.LatLng(lat, lng);
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+          const locPosition = new kakao.maps.LatLng(lat, lng);
 
-        map.setCenter(locPosition);
-      });
+          map.setCenter(locPosition);
+        },
+        handleError,
+        locOptions,
+      );
     }
 
     const zoomControl = new kakao.maps.ZoomControl();
