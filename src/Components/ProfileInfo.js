@@ -25,8 +25,8 @@ const ProfileInfo = ({ pageCtx }) => {
       <div
         className={cx('profilePic')}
         style={{
-          backgroundImage: pic ? `url(${pic})` : `url(${altPic})`,
-          opacity: pic ? 1 : 0.5,
+          backgroundImage: `url(${pic || altPic})`,
+          opacity: pic ? 1 : 0.3,
         }}
       />
       <div className={cx('infoWrapper')}>

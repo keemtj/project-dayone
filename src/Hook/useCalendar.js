@@ -73,7 +73,6 @@ const useCalendar = () => {
   };
 
   const onClickNextYear = () => {
-    if (year >= now.year) return;
     dispatch({ type: 'GET_NEW_CALENDAR', year: year + 1, month });
     getDatesArray(year + 1, month);
   };
@@ -89,7 +88,6 @@ const useCalendar = () => {
   };
 
   const onClickNextMonth = () => {
-    if (year === now.year && month === now.month) return;
     if (month >= 12) {
       dispatch({ type: 'GET_NEW_CALENDAR', year: year + 1, month: 1 });
       getDatesArray(year + 1, 1);
@@ -135,10 +133,10 @@ const useCalendar = () => {
 
     if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
-    } else if (modal.inputs.year === now.year && numberValue > now.month) {
+    } else if (modal.inputs.year > now.year + 100) {
       dispatch({
         type: 'SHOW_WARNING',
-        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+        msg: '100년 이후의 달력은 볼 수 없습니다.',
       });
     } else {
       dispatch({ type: 'REMOVE_WARNING' });
@@ -151,13 +149,10 @@ const useCalendar = () => {
 
     dispatch({ type: 'CHANGE_YEAR_INPUT', value: numberValue });
 
-    if (
-      numberValue > now.year ||
-      (numberValue === now.year && modal.inputs.month > now.month)
-    ) {
+    if (numberValue > now.year + 100) {
       dispatch({
         type: 'SHOW_WARNING',
-        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+        msg: '100년 이후의 달력은 볼 수 없습니다.',
       });
     } else {
       dispatch({ type: 'REMOVE_WARNING' });

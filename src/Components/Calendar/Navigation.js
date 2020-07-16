@@ -47,7 +47,7 @@ const Navigation = ({ pageCtx }) => {
         className={cx('nextMonthBtn')}
         type="button"
         onClick={onClickNextMonth}
-        disabled={month === now.month && year === now.year}
+        disabled={month === 12 && year === now.year + 100}
       >
         <FontAwesomeIcon icon={faAngleRight} className={cx('icon')} />
       </button>
@@ -55,7 +55,7 @@ const Navigation = ({ pageCtx }) => {
         className={cx('nextYearBtn')}
         type="button"
         onClick={onClickNextYear}
-        disabled={year === now.year}
+        disabled={year === now.year + 100}
       >
         <FontAwesomeIcon icon={faAngleDoubleRight} className={cx('icon')} />
       </button>
