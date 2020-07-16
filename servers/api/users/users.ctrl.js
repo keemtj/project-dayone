@@ -1,16 +1,46 @@
 const users = [
   {
-    id: 1,
+    _id: 1,
     userId: 'dorodoro',
     userPw: '123',
     isLoggedIn: false,
     pic:
       'https://cdn.dribbble.com/users/1514929/screenshots/4817580/cute-cat-illustration.jpg',
     msg: '',
-    diaries: [],
+    diaries: [
+      {
+        id: 1,
+        title: '스터디룸에서 열공하는 우리들들들들',
+        content:
+          '<p>스터디룸에서 초집중하고 있는 초록머리 조커와 뭔가 심각하게 의논을 나누고 있는 하으니랑 지미주! 이정도로 열심히 하는데 이력서 내면 당장 뽑아줘야 하는거 아닙니까?!</p>',
+        date: '2020-5-14',
+        location: {
+          lat: 37.62197524055062,
+          lng: 127.16017523675508,
+          name: '서울 성동구 성수동 2가',
+        },
+        imagePaths: [
+          'https://dictionary.cambridge.org/ko/images/thumb/diary_noun_002_10619.jpg?version=5.0.102',
+        ],
+        isBookmarked: true,
+      },
+      {
+        id: 2,
+        title: 'Diary Title 22222',
+        content: 'This is diary 2',
+        date: '2020-5-21',
+        location: {
+          lat: 37.620842424005616,
+          lng: 127.1583774403176,
+          name: '서울 성동구 성수동 2가',
+        },
+        imagePaths: [],
+        isBookmarked: false,
+      },
+    ],
   },
   {
-    id: 2,
+    _id: 2,
     userId: 'jay',
     userPw: '123',
     isLoggedIn: false,
@@ -223,7 +253,7 @@ const users = [
     ],
   },
   {
-    id: 3,
+    _id: 3,
     userId: 'jimmy',
     userPw: '123',
     isLoggedIn: false,
@@ -233,7 +263,7 @@ const users = [
     diaries: [],
   },
   {
-    id: 4,
+    _id: 4,
     userId: 'haeuni',
     userPw: '123',
     isLoggedIn: false,
@@ -244,7 +274,7 @@ const users = [
     active: false,
   },
   {
-    id: 5,
+    _id: 5,
     userId: 'helloWorldBeautifulDay',
     userPw: 'f',
     isLoggedIn: false,
@@ -284,14 +314,28 @@ exports.diaries = (ctx) => {
   const { id } = ctx.params;
   // eslint-disable-next-line no-underscore-dangle
   const user = users.find((u) => u._id.toString() === id);
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = {
+      message: '다이어리 목록이 존재하지 않습니다.',
+    };
+    return;
+  }
   ctx.body = user.diaries;
 };
 
 exports.diary = (ctx) => {
   const { id } = ctx.params;
   // eslint-disable-next-line no-underscore-dangle
-  const diaries = users.map((user) => user.diaries);
-  const diary = diaries.find((d) => d.id.toString() === id);
+  const user = users.find((u) => u._id.toString() === id);
+  const diary = user.diaries.find((d) => d.id.toString() === id);
+  if (!diary) {
+    ctx.status = 404;
+    ctx.body = {
+      message: '일기가 존재하지 않습니다.',
+    };
+    return;
+  }
   ctx.body = diary;
 };
 
