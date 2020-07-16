@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark as faBookmarkLine } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLineMedia.module.scss';
 import { MainContext } from '../Context/MainContext';
@@ -57,7 +58,7 @@ const TimeLineMedia = () => {
             <label htmlFor={diary.id}>
               <span>
                 <FontAwesomeIcon
-                  icon={faBookmark}
+                  icon={diary.isBookmarked ? faBookmark : faBookmarkLine}
                   className={cx('bookmarkIcon')}
                 />
               </span>

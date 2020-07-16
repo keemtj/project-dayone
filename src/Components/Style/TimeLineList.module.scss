@@ -86,7 +86,7 @@ $mainColor: #45c0ff;
       display: none;
     }
 
-    input[type='checkbox'] + label span {
+    input[type='checkbox'] + label {
       display: inline-block;
       vertical-align: middle;
       position: absolute;
@@ -98,7 +98,7 @@ $mainColor: #45c0ff;
       cursor: pointer;
     }
 
-    input[type='checkbox']:checked + label span {
+    input[type='checkbox']:checked + label {
       color: $mainColor;
     }
 
@@ -112,13 +112,13 @@ $mainColor: #45c0ff;
         pointer-events: none;
       }
 
-      input[type='checkbox'] + label span {
-        transition: 0.2s;
-      }
+      // input[type='checkbox'] + label {
+      //   transition: 0.2s;
+      // }
 
-      input[type='checkbox']:checked + label span {
-        color: $mainColor;
-      }
+      // input[type='checkbox']:checked + label {
+      //   color: $mainColor;
+      // }
     }
   }
 

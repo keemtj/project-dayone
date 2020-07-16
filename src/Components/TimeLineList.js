@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as faBookmarkLine } from '@fortawesome/free-regular-svg-icons';
 import styles from './Style/TimeLineList.module.scss';
 import { MainContext } from '../Context/MainContext';
 import image1 from '../Util/asset/image1.jpg';
@@ -62,12 +63,9 @@ const TimeLineList = () => {
             onChange={onChangeBookmark}
           />
           <label htmlFor={diary.id}>
-            <span>
-              <FontAwesomeIcon
-                icon={faBookmark}
-                className={cx('bookmarkIcon')}
-              />
-            </span>
+            <FontAwesomeIcon
+              icon={diary.isBookmarked ? faBookmark : faBookmarkLine}
+            />
           </label>
         </li>
       ))}
