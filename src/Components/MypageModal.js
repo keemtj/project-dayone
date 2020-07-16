@@ -29,6 +29,11 @@ const MypageModal = ({ pageCtx }) => {
     closeModal();
   };
 
+  const onEnter = (e) => {
+    if (e.keyCode !== 13) return;
+    onSubmit();
+  };
+
   return (
     <div
       className={cx('dimmed')}
@@ -65,10 +70,11 @@ const MypageModal = ({ pageCtx }) => {
         <span className={cx('inputName')}>상태 메시지</span>
         <input
           type="text"
-          id="msgInput"
           className={cx('msgInput')}
           onChange={changeInput}
+          onKeyUp={onEnter}
           value={inputState.msg}
+          placeholder="상태 메시지를 입력해 주세요"
         />
         <div className={cx('btnWrapper')}>
           <button
