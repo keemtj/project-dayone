@@ -16,6 +16,7 @@ export const MapProvider = ({ children }) => {
     setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
   } = useMap();
 
   const mapContextValue = {
@@ -30,6 +31,7 @@ export const MapProvider = ({ children }) => {
     setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
   };
 
   return (

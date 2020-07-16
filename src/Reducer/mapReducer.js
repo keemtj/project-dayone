@@ -8,6 +8,7 @@ export const mapInitState = {
   isSearchVisible: false,
   isPlacesVisible: false,
   message: '',
+  clickPosition: {},
 };
 
 export const mapReducer = (state, action) => {
@@ -82,6 +83,11 @@ export const mapReducer = (state, action) => {
         isSearchVisible,
         isPlacesVisible,
         message,
+      };
+    case 'SET_CLICK_POSITION':
+      return {
+        ...state,
+        clickPosition: action.clickPosition,
       };
 
     default:

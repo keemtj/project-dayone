@@ -20,7 +20,14 @@ const MapComponent = () => {
 
   const { state } = mainContext;
   const { diaries } = state;
-  const { mapState, setMap, setSublist, setMessage, updatePlace } = mapContext;
+  const {
+    mapState,
+    setMap,
+    setSublist,
+    setMessage,
+    updatePlace,
+    setClickPosition,
+  } = mapContext;
 
   const { map, placeMarkers } = mapState;
 
@@ -144,6 +151,16 @@ const MapComponent = () => {
   }, [map, mapState]);
 
   const renderMap = () => {
+    console.log('renderMap');
+    const geocoder = new kakao.maps.services.Geocoder();
+    const clickMarker = new kakao.maps.Marker();
+    const infoWindow = new kakao.maps.InfoWindow({ zindex: 999 });
+
+    const searchDetailAddrFromCoords = (coords, callback) => {
+      // 좌표로 법정동 상세 주소 정보를 요청합니다
+      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    };
+
     let selectedMarker = null;
 
     const normalImageSrc =
@@ -197,13 +214,28 @@ const MapComponent = () => {
       }
     };
 
-    const makeClickListener = (marker, lat, lng) => () => {
+    const makeMarkerClickListener = (marker, lat, lng) => () => {
       if (!selectedMarker || marker !== selectedMarker) {
         !!selectedMarker && selectedMarker.setImage(normalImage);
         marker.setImage(clickImage);
       }
       selectedMarker = marker;
       setSublist(diaries, lat, lng);
+    };
+
+    const makeMapClickListener = (mouseEvent) => {
+      searchDetailAddrFromCoords(mouseEvent.latLng, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          const content = result[0].road_address
+            ? `${result[0].road_address.address_name}`
+            : `${result[0].address.address_name}`;
+
+          clickMarker.setPosition(mouseEvent.latLng);
+          clickMarker.setMap(map);
+          infoWindow.setContent(content);
+          infoWindow.open(map, clickMarker);
+        }
+      });
     };
 
     const makeDiaryMarkers = (diaries) => {
@@ -222,8 +254,12 @@ const MapComponent = () => {
         kakao.maps.event.addListener(
           marker,
           'click',
-          makeClickListener(marker, lat, lng),
+          makeMarkerClickListener(marker, lat, lng),
         );
+
+        kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
+          makeMapClickListener(mouseEvent);
+        });
 
         kakao.maps.event.addListener(
           marker,

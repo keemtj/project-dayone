@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable camelcase */
 import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
@@ -8,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const MapSearchList = ({ removePrevMarkers }) => {
   const mapContext = useContext(MapContext);
-  const { mapState } = mapContext;
+  const { mapState, setClickPosition } = mapContext;
   const {
     places,
     message,
@@ -22,6 +24,16 @@ const MapSearchList = ({ removePrevMarkers }) => {
     pagination.gotoPage(page);
   };
 
+  const changeClickPosition = (name, x, y) => {
+    const clickPosition = {
+      lat: parseFloat(y),
+      lng: parseFloat(x),
+      name,
+    };
+    console.log('clickPosition', clickPosition);
+    setClickPosition(clickPosition);
+  };
+
   return (
     <>
       {message && <p className={cx('mapSearchMsg')}>{message}</p>}
@@ -30,11 +42,29 @@ const MapSearchList = ({ removePrevMarkers }) => {
           <ul className={cx('mapSearchList')}>
             {places.map(
               (
-                { id, place_name, road_address_name, address_name, phone },
+                {
+                  id,
+                  place_name,
+                  road_address_name,
+                  address_name,
+                  phone,
+                  x,
+                  y,
+                },
                 index,
               ) => {
                 return (
-                  <li key={id} className={cx('mapSearchItem')}>
+                  <li
+                    key={id}
+                    className={cx('mapSearchItem')}
+                    onClick={() => {
+                      changeClickPosition(
+                        road_address_name || address_name,
+                        x,
+                        y,
+                      );
+                    }}
+                  >
                     <span className={cx('markerBg', `marker${index + 1}`)} />
                     <div className={cx('info')}>
                       <h5 className={cx('placeName')}>{place_name}</h5>

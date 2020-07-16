@@ -15,9 +15,11 @@ const DiarySublist = () => {
 
   const calCtx = useContext(CalendarContext);
   const date = calCtx && calCtx.calendarState.selectedDate;
+  console.log('date: ', date);
   const calendarList = calCtx && calCtx.calendarState.sublist;
 
   const mapCtx = useContext(MapContext);
+  const clickPosition = mapCtx && mapCtx.mapState.clickPosition;
   const mapList = mapCtx && mapCtx.mapState.sublist;
 
   const currentPage = useLocation().pathname;
@@ -25,7 +27,17 @@ const DiarySublist = () => {
   const history = useHistory();
 
   const writeDiary = () => {
-    dispatch({ type: 'CHANGE_DATE', date });
+    if (currentPage === '/calendar') {
+      dispatch({ type: 'CHANGE_DATE', date });
+    } else {
+      const today = new Date();
+      const yy = today.getFullYear();
+      const mm = today.getMonth() + 1;
+      const dd = today.getDate();
+      const todayDate = `${yy}-${mm}-${dd}`;
+      dispatch({ type: 'CHANGE_DATE', date: todayDate });
+      // dispatch({ type: 'CHANGE_LOCATION', clickPosition });
+    }
     history.push('/diary');
   };
 

@@ -47,6 +47,10 @@ const useMap = () => {
     dispatch({ type: 'UPDATE_PLACE', payload });
   };
 
+  const setClickPosition = (clickPosition) => {
+    dispatch({ type: 'SET_CLICK_POSITION', clickPosition });
+  };
+
   return {
     mapState,
     setMap,
@@ -59,6 +63,7 @@ const useMap = () => {
     setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
   };
 };
 
