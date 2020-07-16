@@ -30,7 +30,6 @@ const TimeLineList = () => {
     <ul className={cx('timelineWrapper')}>
       {sortDiaries.map((diary) => (
         <li key={diary.id} className={cx('timelineList')}>
-          {console.log(typeof diary.id)}
           <Link
             to={`/diaryViewer/${diary.id}`}
             style={{ textDecoration: 'none' }}
