@@ -1,4 +1,4 @@
-.map-search-msg {
+.mapSearchMsg {
   width: 290px;
   height: 40px;
   margin-top: 10px;
@@ -11,7 +11,7 @@
   border-radius: 4px;
 }
 
-.map-search-menu {
+.mapSearchMenu {
   width: 290px;
   height: 85%;
   overflow: scroll;
@@ -19,7 +19,7 @@
   border-radius: 3px;
   background: #ffffffb6;
 
-  .map-pagination {
+  .mapPagination {
     width: 290px;
     margin: 10px 0;
     display: flex;
@@ -34,7 +34,8 @@
       margin: 0 10px;
       color: #525151;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: #afafaf91;
       }
     }
@@ -50,19 +51,20 @@
     }
   }
 
-  .map-search-list {
-    .map-search-item {
+  .mapSearchList {
+    .mapSearchItem {
       cursor: pointer;
       width: 290px;
       clear: both;
       overflow: hidden;
       border-bottom: 1px solid #727272b6;
       padding: 10px;
-      &:hover {
+      &:hover,
+      &:focus {
         background: #e0e0e09a;
       }
 
-      .markerbg {
+      .markerBg {
         float: left;
         width: 36px;
         height: 37px;
@@ -71,49 +73,49 @@
           no-repeat;
       }
 
-      .marker_1 {
+      .marker1 {
         background-position: 0 -10px;
       }
-      .marker_2 {
+      .marker2 {
         background-position: 0 -56px;
       }
-      .marker_3 {
+      .marker3 {
         background-position: 0 -102px;
       }
-      .marker_4 {
+      .marker4 {
         background-position: 0 -148px;
       }
-      .marker_5 {
+      .marker5 {
         background-position: 0 -194px;
       }
-      .marker_6 {
+      .marker6 {
         background-position: 0 -240px;
       }
-      .marker_7 {
+      .marker7 {
         background-position: 0 -286px;
       }
-      .marker_8 {
+      .marker8 {
         background-position: 0 -332px;
       }
-      .marker_9 {
+      .marker9 {
         background-position: 0 -378px;
       }
-      .marker_10 {
+      .marker10 {
         background-position: 0 -423px;
       }
-      .marker_11 {
+      .marker11 {
         background-position: 0 -470px;
       }
-      .marker_12 {
+      .marker12 {
         background-position: 0 -516px;
       }
-      .marker_13 {
+      .marker13 {
         background-position: 0 -562px;
       }
-      .marker_14 {
+      .marker14 {
         background-position: 0 -608px;
       }
-      .marker_15 {
+      .marker15 {
         background-position: 0 -654px;
       }
 
@@ -124,20 +126,20 @@
         font-weight: 400;
         line-height: 1.3rem;
 
-        .place-name {
+        .placeName {
           font-weight: 600;
           font-size: 1rem;
           line-height: 1.5rem;
           margin-bottom: 5px;
         }
 
-        .road-address-name {
+        .roadAddressName {
           font-size: 0.8rem;
           font-weight: 500;
           margin-bottom: 2px;
         }
 
-        .address-name {
+        .addressName {
           font-size: 0.8rem;
           color: #444343;
           padding-left: 26px;

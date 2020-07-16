@@ -22,7 +22,6 @@ const DiarySublist = () => {
 
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
-  console.log('sublist: ', subList);
   const history = useHistory();
 
   const writeDiary = () => {
