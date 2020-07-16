@@ -53,7 +53,7 @@ const mainReducer = (state, action) => {
     case 'SUCCESS':
       return {
         ...state,
-        diaries: action.diaries,
+        diaries: action.diaries.sort((a, b) => b.id - a.id),
         loading: false,
       };
     case 'ERROR':

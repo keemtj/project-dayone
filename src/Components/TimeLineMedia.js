@@ -16,6 +16,9 @@ const TimeLineMedia = () => {
   const context = useContext(MainContext);
   const { state, patchBookmark } = context;
   const { diaries } = state;
+
+  const sortDiaries = diaries.sort((a, b) => b.id - a.id);
+
   const images = [image1, image2, image3, image4];
 
   const onChangeBookmark = ({ target }) => {
@@ -25,7 +28,7 @@ const TimeLineMedia = () => {
 
   return (
     <ul className={cx('timelineWrapper')}>
-      {diaries.map((diary) => (
+      {sortDiaries.map((diary) => (
         <li key={diary.id} className={cx('timelineMedia')}>
           <Link to={`/diaryViewer/${diary.id}`}>
             <div
