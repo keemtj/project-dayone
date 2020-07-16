@@ -39,6 +39,14 @@ const loginInitialState = {
     },
     {
       id: 5,
+      userId: 'helloWorldBeautifulDay',
+      userPw: 'f',
+      pic: '',
+      msg: '',
+      active: false,
+    },
+    {
+      id: 6,
       userId: 'f',
       userPw: 'f',
       pic: '',

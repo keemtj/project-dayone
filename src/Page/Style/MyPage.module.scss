@@ -10,7 +10,7 @@ $mainColor: #45c0ff;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin: 2rem 0;
+    margin: 2rem 0 0;
     border-bottom: 1px solid #dbdbdb;
     padding: 0 0 2rem;
 
@@ -53,7 +53,7 @@ $mainColor: #45c0ff;
       display: flex;
       justify-content: space-between;
       width: 80%;
-      // margin: 2rem 0 0;
+      margin: 2rem 0 0;
 
       & li {
         text-align: center;
@@ -116,6 +116,7 @@ $mainColor: #45c0ff;
 
   .listTitle {
     font-size: 1.3rem;
+    font-weight: 650;
     color: $mainColor;
     padding: 20px 10px 5px;
 

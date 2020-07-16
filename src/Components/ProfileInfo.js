@@ -44,7 +44,7 @@ const ProfileInfo = ({ pageCtx }) => {
         <h3 className={cx('profileMsg')}>{msg}</h3>
         <ul
           className={cx('statistics')}
-          style={{ margin: msg ? '2rem 0 0' : '3rem 0 0' }}
+          style={{ margin: msg ? '2rem 0 0' : '3.6rem 0 0' }}
         >
           <li>
             <span className={cx('numbers')}>{diaries.length}</span>
@@ -65,8 +65,7 @@ const ProfileInfo = ({ pageCtx }) => {
         className={cx('settingBtn')}
         onClick={onClickSetting}
         style={{
-          left: `calc(29rem + ${userId.length * 13}px)`,
-          top: msg ? `1.5rem` : '1.8rem',
+          left: `calc(29rem + ${userId.length * 12}px)`,
         }}
       >
         <FontAwesomeIcon icon={faCog} />

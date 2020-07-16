@@ -169,7 +169,6 @@ const useCalendar = () => {
       e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
     const date = target.className.split(' ')[1];
     const sublist = diaryList.filter((diary) => diary.date === date);
-    console.log(target, sublist);
     dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
   };
 
