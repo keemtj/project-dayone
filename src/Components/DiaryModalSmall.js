@@ -12,11 +12,13 @@ const cx = classNames.bind(styles);
 const ModalSmall = ({ viewerState, setViewerState, id }) => {
   const history = useHistory();
   const { modalState, setModalState } = React.useContext(DiaryContext);
-  const { state, submitDiary, deleteDiary } = React.useContext(MainContext);
+  const { state, submitDiary, deleteDiary, editDiary } = React.useContext(
+    MainContext,
+  );
 
   const onClick = (e) => {
     if (
-      !e.target.className.includes('dimed') &&
+      !e.target.className.includes('dimmed') &&
       !e.target.className.includes('modalDeleteBtn')
     )
       return;
@@ -24,28 +26,35 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
     if (viewerState === 'Delete') setViewerState('initial');
   };
 
-  const cancelSubmit = () => {
+  const clickCancel = () => {
     if (modalState === 'Submit') setModalState('initial');
     if (viewerState === 'Delete') setViewerState('initial');
   };
 
-  const confirmSubmit = () => {
+  const clickConfirm = () => {
     if (modalState === 'Submit') {
-      submitDiary();
+      if (!state.editState) submitDiary();
       history.push(`/diaryViewer/${state.currentDiary.id}`);
       setModalState('initial');
     }
+    if (state.editState) {
+      editDiary();
+    }
     if (viewerState === 'Delete') {
       deleteDiary(id);
-      history.goBack();
-      setViewerState('initial');
+      setViewerState('Deleted');
     }
   };
 
   const changeModalState = () => {
     if (modalState === 'Submit') return 'block';
     if (viewerState === 'Delete') return 'block';
+    if (viewerState === 'Deleted') return 'block';
     return 'none';
+  };
+
+  const changeDisplay = () => {
+    return viewerState === 'Deleted' ? { display: 'none' } : {};
   };
 
   const changeText = () => {
@@ -55,21 +64,42 @@ const ModalSmall = ({ viewerState, setViewerState, id }) => {
       );
     if (viewerState === 'Delete')
       return <span className={cx('message')}>일기를 삭제 하시겠습니까?</span>;
+    if (viewerState === 'Deleted') {
+      setTimeout(() => {
+        history.goBack();
+        setViewerState('initial');
+      }, 1000);
+      return (
+        <span style={{ marginTop: '26px' }} className={cx('message')}>
+          일기가 삭제 되었습니다.
+        </span>
+      );
+    }
     return <></>;
   };
 
   return (
     <div
       style={{ display: `${changeModalState()}` }}
-      className={cx('dimed')}
+      className={cx('dimmed')}
       onClick={onClick}
     >
       <div className={cx('small')}>
         {changeText()}
-        <button className={cx('cancel')} type="button" onClick={cancelSubmit}>
+        <button
+          style={changeDisplay()}
+          className={cx('cancel')}
+          type="button"
+          onClick={clickCancel}
+        >
           취소
         </button>
-        <button className={cx('confirm')} type="button" onClick={confirmSubmit}>
+        <button
+          style={changeDisplay()}
+          className={cx('confirm')}
+          type="button"
+          onClick={clickConfirm}
+        >
           확인
         </button>
       </div>

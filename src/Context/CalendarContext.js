@@ -21,6 +21,8 @@ export const CalendarProvider = ({ children }) => {
     enterInputs,
     changeMonthInput,
     changeYearInput,
+    getSublist,
+    getTodaySublist,
   } = useCalendar();
 
   const contextValue = {
@@ -40,6 +42,8 @@ export const CalendarProvider = ({ children }) => {
     enterInputs,
     changeMonthInput,
     changeYearInput,
+    getSublist,
+    getTodaySublist,
   };
 
   return (

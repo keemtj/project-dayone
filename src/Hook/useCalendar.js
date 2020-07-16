@@ -131,8 +131,7 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
-    console.log(numberValue);
+    dispatch({ type: 'CHANGE_MONTH_INPUT', value: numberValue });
 
     if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
@@ -150,8 +149,7 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_YEAR_INPUT', numberValue });
-    console.log('modal', modal.inputs, 'now', now);
+    dispatch({ type: 'CHANGE_YEAR_INPUT', value: numberValue });
 
     if (
       numberValue > now.year ||
@@ -169,6 +167,20 @@ const useCalendar = () => {
   const enterInputs = (e) => {
     if (e.keyCode !== 13) return;
     changeCalendarState();
+  };
+
+  const getSublist = (e, diaryList) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
+    const date = target.className.split(' ')[0];
+    const sublist = diaryList.filter((diary) => diary.date === date);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
+  };
+
+  const getTodaySublist = (present, diaryList) => {
+    const today = `${present.year}-${present.month}-${present.date}`;
+    const sublist = diaryList.filter((diary) => diary.date === today);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
   };
 
   useEffect(() => {
@@ -192,6 +204,8 @@ const useCalendar = () => {
     enterInputs,
     changeYearInput,
     changeMonthInput,
+    getSublist,
+    getTodaySublist,
   };
 };
 

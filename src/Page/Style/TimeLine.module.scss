@@ -1,50 +1,150 @@
-$mainColor: #67bff9;
+$mainColor: #45c0ff;
 
 .timelineNav {
-  // background-color: tomato;
-  padding: 0.6rem 0 1.1rem 0;
-  font-size: 1.8rem;
-  text-align: end;
+  position: relative;
 
-  button {
-    margin-left: 1rem;
-    background-color: none;
-    border: none;
-    color: #d1d1d1;
-    outline: none;
-    cursor: pointer;
+  .aside {
+    position: fixed;
+    top: 6.6rem;
+    width: calc(350px - 1.5rem);
 
-    &:last-child {
-      margin-right: -0.4rem;
-    }
+    .profile {
+      border: 1px solid #dbdbdb;
+      // border-radius: 4px;
+      padding: 2rem 2rem;
+      width: 100%;
+      height: 100%;
 
-    .icon {
-      text-align: center;
+      .profilePhoto {
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+      }
 
-      &:last-child {
-        font-size: 1.9rem;
+      .profileUserId {
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .profileMsg {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
       }
     }
 
-    &:hover {
-      color: $mainColor;
+    .tagBox {
+      border: 1px solid #dbdbdb;
+      // border-radius: 4px;
+      margin-top: 1.5rem;
+      padding: 2rem;
+      width: 100%;
+      height: auto;
+
+      .icon {
+        color: $mainColor;
+      }
+      .tagBoxTitle {
+        color: $mainColor;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-left: 0.5rem;
+      }
+
+      .tagListWrapper {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+
+        .icon {
+          font-size: 1rem;
+        }
+        .tag {
+          padding-left: 0.5rem;
+
+          &:first-child {
+            padding-left: 0;
+          }
+        }
+      }
     }
   }
 
-  .active {
+  .nav {
+    text-align: end;
+    padding: 1rem 0 1rem 0;
+    margin-right: -0.5rem;
+    a {
+      padding: 0.5rem;
+    }
+  }
+
+  a:visited {
+    color: #cccccc;
+  }
+
+  a:active,
+  a:hover {
     color: $mainColor;
   }
-}
 
-.timelineWrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  // background-color: yellowgreen;
-
-  &::after {
-    display: block;
-    content: '';
-    width: 24%;
+  .icon {
+    font-size: 1.2rem;
+    text-align: center;
   }
+
+  .active .icon {
+    color: $mainColor;
+  }
+
+  // .tooltip {
+  //   visibility: hidden;
+  //   opacity: 0;
+  //   width: max-content;
+  //   text-align: center;
+  //   position: absolute;
+  //   background: #555;
+  //   transition: opacity 0.3s;
+  //   font-size: 0.7rem;
+  //   padding: 3px 7px 4px;
+  //   z-index: 10;
+  //   border-radius: 5px;
+  //   color: #fff;
+  // }
+
+  // main div a:nth-child(1) .tooltip {
+  //   right: 10px;
+  // }
+
+  // main div a:nth-child(2) .tooltip {
+  //   right: 10px;
+  // }
+
+  // .tooltip::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: -10px;
+  //   left: 51%;
+  //   margin-left: -5px;
+  //   border-width: 5px;
+  //   border-style: solid;
+  //   border-color: transparent transparent #555 transparent;
+  // }
+
+  // a:hover .tooltip {
+  //   transition: 0.3s;
+  //   transition-delay: 0.3s;
+  //   visibility: visible;
+  //   opacity: 1;
+  // }
 }

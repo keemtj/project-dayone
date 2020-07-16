@@ -6,21 +6,30 @@ import styles from './Style/DiarySublist.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
 import { MapContext } from '../Context/MapContext';
 import DiaryViewer from '../Page/DiaryViewer';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
 const DiarySublist = () => {
-  const calCtx = useContext(CalendarContext);
-  const mapCtx = useContext(MapContext);
+  const mainCtx = useContext(MainContext);
+  const { dispatch } = mainCtx;
 
+  const calCtx = useContext(CalendarContext);
+  const date = calCtx && calCtx.calendarState.selectedDate;
   const calendarList = calCtx && calCtx.calendarState.sublist;
+
+  const mapCtx = useContext(MapContext);
   const mapList = mapCtx && mapCtx.mapState.sublist;
 
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
+  console.log('sublist: ', subList);
   const history = useHistory();
 
-  const writeDiary = () => history.push('/diary');
+  const writeDiary = () => {
+    dispatch({ type: 'CHANGE_DATE', date });
+    history.push('/diary');
+  };
 
   return (
     <>
@@ -28,8 +37,11 @@ const DiarySublist = () => {
         <button type="button" className={cx('addBtn')} onClick={writeDiary}>
           +
         </button>
-        <li className={cx('message')}>
-          {subList.length ? null : '일기를 작성해 주세요'}
+        <li
+          style={{ display: subList.length ? 'none' : 'block' }}
+          className={cx('message')}
+        >
+          일기를 작성해 주세요
         </li>
         {subList.map(({ id, title, date, location, imagePaths }) => {
           return (

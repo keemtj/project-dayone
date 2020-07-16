@@ -1,41 +1,62 @@
 .main {
   margin-top: 30px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 
   .profile {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0 0;
-    border-bottom: 1px solid #ddd;
+    align-items: center;
     position: relative;
-    padding: 1rem 1rem 2rem;
+    margin: 2rem 0;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0 0 2rem;
+
+    .profilePic {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 500px;
+      overflow: hidden;
+      margin-left: 2.5rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .infoWrapper {
+      position: relative;
+      width: 50%;
+    }
 
     .greeting,
     .greeting span {
-      font-size: 1.2rem;
-      text-align: center;
-      display: block;
-      line-height: 1.7rem;
-      margin-left: 3rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 10px;
     }
 
     .greeting span {
       font-weight: 700;
-      margin: 0;
+      margin: 0 20px;
+    }
+
+    .profileMsg {
+      // background: skyblue;
+      // color: white;
     }
 
     .statistics {
       display: flex;
       justify-content: space-between;
-      width: 45%;
-      margin: 1rem 3rem 0;
+      width: 80%;
+      // margin: 2rem 0 0;
 
       & li {
         text-align: center;
 
-        span {
-          font-size: 1rem;
+        .numbers,
+        .caption {
+          font-size: 1.1rem;
           padding: 0 3px;
         }
 
@@ -45,26 +66,43 @@
       }
     }
 
+    .settingBtn,
     .logoutBtn {
       border: none;
       cursor: pointer;
+      transition: 0.3s;
+      outline: none;
+    }
+
+    .settingBtn {
+      position: absolute;
+      top: 1.5rem;
+      // left: 29rem;
+      font-size: 1.2rem;
+      color: #ccc;
+
+      &:hover,
+      &:focus {
+        color: #aaa;
+        transition: 0.3s;
+        transform: rotate(50deg);
+      }
+    }
+
+    .logoutBtn {
       border-radius: 5px;
-      // position: absolute;
-      // top: 1.5rem;
-      // right: 0;
       margin: 0.5rem 0 0;
       color: #aaa;
       background: #eee;
       width: 80px;
       height: 2rem;
-      transition: 0.3s;
-      outline: none;
 
       .icon {
         margin-right: 3px;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: #fff;
         background: #aaa;
         transition: 0.3s;
@@ -86,16 +124,21 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto 20px;
+
+    & li:nth-child(4n) {
+      margin-right: 0;
+    }
 
     li {
       position: relative;
-      width: 11rem;
-      height: 11rem;
-      margin: 20px 0.43rem 0;
+      width: 14.4rem;
+      height: 14.4rem;
+      margin: 20px 26px 8px 0;
 
-      &:hover {
+      &:hover,
+      & a:focus {
         & figure .thumbnail {
           filter: brightness(55%);
           transition: 0.3s;
@@ -112,10 +155,15 @@
 
     .diary figure {
       position: relative;
+      width: 100%;
+      height: 100%;
 
       .thumbnail {
-        width: 11rem;
-        height: 11rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
         transition: 0.3s;
       }
 
@@ -124,7 +172,7 @@
         top: calc(50% - 2rem);
         left: 0;
         width: 100%;
-        padding: 7px 10px 0;
+        padding: 7px 40px 0;
         overflow: hidden;
         text-overflow: ellipsis;
         text-align: center;

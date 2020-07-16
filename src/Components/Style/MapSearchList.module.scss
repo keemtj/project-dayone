@@ -80,5 +80,16 @@
     .marker_15 {
       background-position: 0 -654px;
     }
+
+    .info {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: 300;
+
+      .place-name {
+        font-weight: 600;
+      }
+    }
   }
 }

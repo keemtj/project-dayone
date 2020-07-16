@@ -4,16 +4,15 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import styles from './Style/TimeLineList.module.scss';
+import styles from './Style/TimeLineMedia.module.scss';
 import { MainContext } from '../Context/MainContext';
 import image1 from '../Util/asset/image1.jpg';
 import image2 from '../Util/asset/image2.jpg';
 import image3 from '../Util/asset/image3.jpg';
 import image4 from '../Util/asset/image4.jpg';
-
 const cx = classNames.bind(styles);
 
-const TimeLineList = () => {
+const TimeLineMedia = () => {
   const context = useContext(MainContext);
   const { state, patchBookmark } = context;
   const { diaries } = state;
@@ -27,50 +26,55 @@ const TimeLineList = () => {
   return (
     <ul className={cx('timelineWrapper')}>
       {diaries.map((diary) => (
-        <li key={diary.id} className={cx('timelineList')}>
-          <Link
-            to={`/diaryViewer/${diary.id}`}
-            style={{ textDecoration: 'none' }}
-          >
-            <figure>
-              <img
-                className={cx('thumbnail')}
-                src={
+        <li key={diary.id} className={cx('timelineMedia')}>
+          <Link to={`/diaryViewer/${diary.id}`}>
+            <div
+              className={cx('thumbnail')}
+              style={{
+                backgroundImage: `url(
+                ${
                   diary.imagePaths.length
                     ? diary.imagePaths[0]
                     : diary.id > 4
                     ? images[2]
                     : images[diary.id - 1]
                 }
-                alt="https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png"
-              />
-              <figcaption>
+                )`,
+              }}
+            />
+          </Link>
+          {/* 마우스 hover시 보여지는 부분 */}
+          <div className={cx('overwrap')}>
+            <input
+              id={diary.id}
+              type="checkbox"
+              checked={diary.isBookmarked ? 'checked' : ''}
+              onChange={onChangeBookmark}
+            />
+            <label htmlFor={diary.id}>
+              <span>
+                <FontAwesomeIcon
+                  icon={faBookmark}
+                  className={cx('bookmarkIcon')}
+                />
+              </span>
+            </label>
+            <Link
+              to={`/diaryViewer/${diary.id}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <div className={cx('diaryInfo')}>
                 <div className={cx('title')}>{diary.title}</div>
                 <div className={cx('date')}>
                   {diary.date.split('-').join('. ')}
                 </div>
-                <p className={cx('content')}>{diary.content}</p>
-              </figcaption>
-            </figure>
-          </Link>
-          <input
-            id={diary.id}
-            type="checkbox"
-            checked={diary.isBookmarked ? 'checked' : ''}
-            onChange={onChangeBookmark}
-          />
-          <label htmlFor={diary.id}>
-            <span>
-              <FontAwesomeIcon
-                icon={faBookmark}
-                className={cx('bookmarkIcon')}
-              />
-            </span>
-          </label>
+              </div>
+            </Link>
+          </div>
         </li>
       ))}
     </ul>
   );
 };
 
-export default TimeLineList;
+export default TimeLineMedia;

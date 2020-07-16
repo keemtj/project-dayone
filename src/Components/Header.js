@@ -1,5 +1,6 @@
 import React from 'react';
-import { useRouteMatch, Link } from 'react-router-dom';
+import { useRouteMatch, Link, NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import classNames from 'classnames/bind';
 import {
   faHome,
@@ -14,9 +15,11 @@ import styles from './Style/Header.module.scss';
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const { pathname } = useLocation();
   const match = useRouteMatch({
     path: '/diary',
   });
+
   return (
     <header className={cx('header')}>
       <div className={cx('container')}>
@@ -27,21 +30,31 @@ const Header = () => {
           <nav match={match} />
         ) : (
           <nav className={cx('nav')}>
-            <Link to="/timeline">
+            <NavLink
+              to="/"
+              activeClassName={cx('active')}
+              exact
+              className={cx({ active: pathname.includes('/timeline') })}
+            >
               <FontAwesomeIcon icon={faHome} className={cx('icon')} />
-            </Link>
-            <Link to="/diary">
+              <span className={cx('tooltip')}>홈</span>
+            </NavLink>
+            <NavLink to="/diary" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faPen} className={cx('icon')} />
-            </Link>
-            <Link to="/map">
+              <span className={cx('tooltip')}>일기 작성</span>
+            </NavLink>
+            <NavLink to="/map" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
-            </Link>
-            <Link to="/calendar">
+              <span className={cx('tooltip')}>지도</span>
+            </NavLink>
+            <NavLink to="/calendar" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
-            </Link>
-            <Link to="/mypage">
+              <span className={cx('tooltip')}>달력</span>
+            </NavLink>
+            <NavLink to="/mypage" activeClassName={cx('active')}>
               <FontAwesomeIcon icon={faUser} className={cx('icon')} />
-            </Link>
+              <span className={cx('tooltip')}>내 정보</span>
+            </NavLink>
           </nav>
         )}
       </div>

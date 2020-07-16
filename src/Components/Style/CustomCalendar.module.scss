@@ -1,11 +1,7 @@
 .calendar {
   width: 70%;
   min-width: 700px;
-
-  & button {
-    outline: none;
-    border: none;
-  }
+  padding-top: 20px;
 
   & .navigation {
     display: flex;
@@ -16,11 +12,12 @@
       width: 80%;
       text-align: center;
       font-size: 1.1rem;
-      padding-top: 0.5rem;
+      padding-top: 0.2rem;
     }
 
     & button {
       padding: 0 10px;
+      border: none;
 
       &:enabled {
         cursor: pointer;
@@ -43,12 +40,11 @@
   & .dateView {
     padding: 0.8rem;
 
-    & button {
+    & .dateBtn {
       font-size: 1rem;
       width: 6rem;
       height: 6rem;
-      border-radius: 3px;
-      // border: 1px solid gray;
+      border-radius: 3px !important;
 
       &:enabled {
         cursor: pointer;
@@ -56,14 +52,14 @@
 
       &:focus {
         border: 2px solid rgb(255, 114, 98);
-        border-radius: 3px;
+        border-radius: 3px !important;
       }
     }
 
     & .date {
       position: relative;
-      top: -1.5rem;
-      left: -1.5rem;
+      top: -1.6rem;
+      left: -1.6rem;
     }
 
     & .today .date {
@@ -86,6 +82,7 @@
 
     & .manyDiaries {
       background: #67bff9;
+      background: #45C0FF;
     }
   }
 }

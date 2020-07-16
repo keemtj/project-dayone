@@ -35,7 +35,7 @@ const MapSearchList = () => {
                 <li key={id} className={cx('map-search-item')}>
                   <span className={cx('markerbg', `marker_${index + 1}`)} />
                   <div className={cx('info')}>
-                    <h5>{place_name}</h5>
+                    <h5 className={cx('place-name')}>{place_name}</h5>
                     {road_address_name && <p>{road_address_name}</p>}
                     {address_name && <p>{address_name}</p>}
                     {phone && <p>{phone}</p>}

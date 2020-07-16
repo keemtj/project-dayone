@@ -1,0 +1,29 @@
+.imgInputLabel,
+.msgInputLabel {
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.imgInputLabel {
+  background: lavender;
+}
+
+.msgInputLabel {
+  background: sienna;
+}
+
+.imgInput,
+.msgInput {
+  width: 70%;
+  margin-left: 40px;
+}
+
+.imgInput {
+  background: lightcyan;
+  visibility: hidden;
+}
+
+.msgInput {
+  background: violet;
+}

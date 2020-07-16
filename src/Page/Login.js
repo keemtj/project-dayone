@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div className={cx('loginWrapper')}>
+    <main className={cx('loginWrapper')}>
       <h1>DAY ONE</h1>
       <form onSubmit={onSubmit}>
         <input
@@ -66,7 +66,7 @@ const Login = () => {
         <span className={cx('message')}>{message}</span>
         <button type="submit">로그인</button>
       </form>
-    </div>
+    </main>
   );
 };
 
