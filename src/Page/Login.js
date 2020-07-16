@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
 import { LoginContext } from '../Context/MainContext';
@@ -44,6 +44,10 @@ const Login = () => {
     idInputFocus.current.focus();
   };
 
+  useEffect(() => {
+    idInputFocus.current.focus();
+  }, []);
+
   return (
     <main className={cx('loginWrapper')}>
       <h1>DAY ONE</h1>
@@ -64,7 +68,9 @@ const Login = () => {
           onChange={onChange}
         />
         <span className={cx('message')}>{message}</span>
-        <button type="submit">로그인</button>
+        <button type="submit" className={cx('loginBtn')}>
+          로그인
+        </button>
       </form>
     </main>
   );
