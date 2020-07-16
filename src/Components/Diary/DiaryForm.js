@@ -4,6 +4,7 @@ import DiaryTitle from './DiaryTitle';
 import DiaryCalender from './DiaryCalender';
 import DiaryMap from './DiaryMap';
 import DiarySubmitBtn from './DiarySubmitBtn';
+import DiaryTagBox from './DiaryTagBox';
 
 const DiaryForm = () => {
   return (
@@ -12,6 +13,7 @@ const DiaryForm = () => {
       <DiaryCalender />
       <DiaryWrite />
       <DiaryMap />
+      <DiaryTagBox />
       <DiarySubmitBtn />
     </form>
   );

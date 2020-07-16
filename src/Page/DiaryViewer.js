@@ -42,12 +42,13 @@ const DiaryViewer = () => {
     }
     if (lastLocation.pathname === '/diary') {
       window.history.go(-2);
+      return;
     }
     if (lastLocation.pathname.includes('/diaryViewer')) {
       window.history.go(-3);
-    } else {
-      history.goBack();
+      return;
     }
+    history.goBack();
   };
 
   const renderDiary = () => (
@@ -74,12 +75,7 @@ const DiaryViewer = () => {
         setViewerState={setViewerState}
         id={+id}
       />
-      <button
-        className={cx('goBackBtn')}
-        type="button"
-        // onClick={() => history.goBack()}
-        onClick={clickGoBack}
-      >
+      <button className={cx('goBackBtn')} type="button" onClick={clickGoBack}>
         뒤로가기
       </button>
       <DiaryModalSmall
