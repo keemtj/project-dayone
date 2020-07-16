@@ -6,22 +6,22 @@ import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
-const MapSearchList = () => {
+const MapSearchList = ({ removePrevMarkers }) => {
   const mapContext = useContext(MapContext);
-  const { mapState, setPlacesVisible, setPlacesHidden } = mapContext;
+  const { mapState } = mapContext;
   const {
     places,
     message,
     pagination,
-    pageList,
-    currentPage,
-    isSearchVisible,
+    placeMarkers,
     isPlacesVisible,
   } = mapState;
 
-  const togglePlacesVisible = () => {
-    isPlacesVisible ? setPlacesHidden() : setPlacesVisible();
+  const changePage = (page) => {
+    removePrevMarkers(placeMarkers);
+    pagination.gotoPage(page);
   };
+
   return (
     <>
       {message && <p className={cx('map-search-msg')}>{message}</p>}
@@ -64,7 +64,7 @@ const MapSearchList = () => {
                       current: pagination.current === page,
                     })}
                     onClick={() => {
-                      pagination.gotoPage(page);
+                      changePage(page);
                     }}
                   >
                     {page}

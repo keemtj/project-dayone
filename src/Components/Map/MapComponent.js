@@ -61,7 +61,6 @@ const MapComponent = () => {
     console.log(placeMarkers);
     pMarkers.forEach((marker) => {
       marker.setMap(map);
-      console.log(marker.setMap(map));
     });
   };
 
@@ -268,7 +267,7 @@ const MapComponent = () => {
     <div className={cx('map')} id="map">
       <div className={cx('map-search-wrap')}>
         <MapSearchForm searchPlaces={searchPlaces} />
-        <MapSearchList />
+        <MapSearchList removePrevMarkers={removePrevMarkers} />
       </div>
     </div>
   );
