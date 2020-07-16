@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouteMatch, Link, NavLink } from 'react-router-dom';
+import { useLastLocation } from 'react-router-last-location';
 import { useLocation } from 'react-router';
 import classNames from 'classnames/bind';
 import {
@@ -16,6 +17,9 @@ const cx = classNames.bind(styles);
 
 const Header = () => {
   const { pathname } = useLocation();
+  const lastLocation = useLastLocation();
+  const pastPathname = lastLocation && lastLocation.pathname;
+  const pastActive = pathname.includes('/diaryViewer') && pastPathname;
   const match = useRouteMatch({
     path: '/diary',
   });
@@ -34,7 +38,10 @@ const Header = () => {
               to="/"
               activeClassName={cx('active')}
               exact
-              className={cx({ active: pathname.includes('/timeline') })}
+              className={cx(
+                { active: pathname.includes('/timeline') },
+                { active: pastActive === '/' },
+              )}
             >
               <FontAwesomeIcon icon={faHome} className={cx('icon')} />
               <span className={cx('tooltip')}>홈</span>
@@ -43,15 +50,27 @@ const Header = () => {
               <FontAwesomeIcon icon={faPen} className={cx('icon')} />
               <span className={cx('tooltip')}>일기 작성</span>
             </NavLink>
-            <NavLink to="/map" activeClassName={cx('active')}>
+            <NavLink
+              to="/map"
+              activeClassName={cx('active')}
+              className={cx({ active: pastActive === '/map' })}
+            >
               <FontAwesomeIcon icon={faMapMarkedAlt} className={cx('icon')} />
               <span className={cx('tooltip')}>지도</span>
             </NavLink>
-            <NavLink to="/calendar" activeClassName={cx('active')}>
+            <NavLink
+              to="/calendar"
+              activeClassName={cx('active')}
+              className={cx({ active: pastActive === '/calendar' })}
+            >
               <FontAwesomeIcon icon={faCalendar} className={cx('icon')} />
               <span className={cx('tooltip')}>달력</span>
             </NavLink>
-            <NavLink to="/mypage" activeClassName={cx('active')}>
+            <NavLink
+              to="/mypage"
+              activeClassName={cx('active')}
+              className={cx({ active: pastActive === '/mypage' })}
+            >
               <FontAwesomeIcon icon={faUser} className={cx('icon')} />
               <span className={cx('tooltip')}>내 정보</span>
             </NavLink>
