@@ -12,7 +12,6 @@ const useMap = () => {
     const sublist = diaries.filter(
       ({ location }) => location.lat === lat && location.lng === lng,
     );
-    // console.log('setSublist');
     dispatch({ type: 'SET_SUBLIST', sublist });
   };
 
@@ -24,14 +23,6 @@ const useMap = () => {
   const setPagination = (pagination) => {
     console.log('setPagination: ', pagination);
     dispatch({ type: 'SET_PAGINATION', pagination });
-  };
-
-  const setPageList = (pageList) => {
-    dispatch({ type: 'SET_PAGELIST', pageList });
-  };
-
-  const setCurrentPage = (currentPage) => {
-    dispatch({ type: 'SET_CURRENT_PAGE', currentPage });
   };
 
   const setSearchVisible = () => {
@@ -59,19 +50,24 @@ const useMap = () => {
     dispatch({ type: 'SET_MESSAGE', message });
   };
 
+  const updatePlace = (payload) => {
+    console.log('updatePlace...payload: ', payload);
+
+    dispatch({ type: 'UPDATE_PLACE', payload });
+  };
+
   return {
     mapState,
     setMap,
     setSublist,
     setPlaces,
     setPagination,
-    setPageList,
-    setCurrentPage,
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
     setPlacesHidden,
     setMessage,
+    updatePlace,
   };
 };
 

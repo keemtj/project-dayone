@@ -55,17 +55,22 @@ const MapSearchList = () => {
           </ul>
           <div className={cx('map-pagination')}>
             {pagination &&
-              pageList.map((page) => (
-                <a
-                  key={page}
-                  className={cx('page', { current: currentPage === page })}
-                  onClick={() => {
-                    pagination.gotoPage(page);
-                  }}
-                >
-                  {page}
-                </a>
-              ))}
+              Array.from({ length: pagination.last }, (v, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    className={cx('page', {
+                      current: pagination.current === page,
+                    })}
+                    onClick={() => {
+                      pagination.gotoPage(page);
+                    }}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
           </div>
         </div>
       )}

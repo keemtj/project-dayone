@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
@@ -13,34 +14,30 @@ import { MapContext } from '../../Context/MapContext';
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
-
+let renderCount = 0;
 const MapComponent = () => {
+  renderCount += 1;
+  console.log(renderCount);
   const mainContext = useContext(MainContext);
   const mapContext = useContext(MapContext);
 
   const { state } = mainContext;
   const { diaries } = state;
-  const {
-    mapState,
-    setMap,
-    setSublist,
-    setPlaces,
-    setPagination,
-    setPageList,
-    setCurrentPage,
-    setPlacesVisible,
-    setMessage,
-  } = mapContext;
+  const { mapState, setMap, setSublist, setMessage, updatePlace } = mapContext;
 
-  const { map } = mapState;
+  const { map, placeMarkers } = mapState;
+  console.log('mapState: ', mapState);
+  console.log('placeMarkers: ', placeMarkers);
 
-  const displayPlaceMarkers = (places) => {
+  const makePlaceMarkers = (places) => {
+    const placeMarkers = [];
+
+    const imgSrc =
+      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
+    const imgSize = new kakao.maps.Size(36, 37);
     const bounds = new kakao.maps.LatLngBounds();
+
     places.forEach((place, i) => {
-      console.log('place:', place);
-      const imgSrc =
-        'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
-      const imgSize = new kakao.maps.Size(36, 37);
       const imgOptions = {
         spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
         spriteOrigin: new kakao.maps.Point(0, i * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
@@ -53,31 +50,53 @@ const MapComponent = () => {
         position: placePosition,
         image: markerImg,
       });
-
-      placeMarker.setMap(map);
       bounds.extend(placePosition);
+      placeMarkers.push(placeMarker);
     });
     map.setBounds(bounds);
+    return placeMarkers;
   };
-  // -----------------
-  //
+
+  const displayPlaceMarkers = (pMarkers) => {
+    console.log(placeMarkers);
+    pMarkers.forEach((marker) => {
+      marker.setMap(map);
+      console.log(marker.setMap(map));
+    });
+  };
+
+  const removePrevMarkers = (pMarkers) => {
+    pMarkers.forEach((pMarker) => {
+      pMarker.setMap(null);
+    });
+  };
   const placesSearchCB = (data, status, pagination) => {
+    removePrevMarkers(placeMarkers);
+
     if (status === kakao.maps.services.Status.OK) {
-      const pageList = Array.from({ length: pagination.last }, (v, i) => i + 1);
-      const currentPage = pagination.current;
-      setMessage('');
-      setPlaces(data);
-      setPagination(pagination);
-      setPageList(pageList);
-      setCurrentPage(currentPage);
-      setPlacesVisible();
-      displayPlaceMarkers(data);
+      // if (placeMarkers.length) {
+      // }
+      const pMarkers = makePlaceMarkers(data);
+      const payload = {
+        places: data,
+        pagination,
+        placeMarkers: pMarkers,
+        isSearchVisible: true,
+        isPlacesVisible: true,
+        message: '',
+      };
+      displayPlaceMarkers(pMarkers);
+      updatePlace(payload);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-      setMessage('검색 결과가 존재하지 않습니다.');
-      setPlaces([]);
-      setPagination({});
-      setPageList([]);
-      setCurrentPage(0);
+      const payload = {
+        places: [],
+        pagination: {},
+        placeMarkers: [],
+        isSearchVisible: true,
+        isPlacesVisible: false,
+        message: '검색 결과가 존재하지 않습니다.',
+      };
+      updatePlace(payload);
     } else if (status === kakao.maps.services.Status.ERROR) {
       setMessage('검색 결과 중 오류가 발생했습니다.');
     }
@@ -93,6 +112,7 @@ const MapComponent = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect');
     kakao.maps.load(() => {
       if (Object.keys(map).length) {
         renderMap();
@@ -103,39 +123,38 @@ const MapComponent = () => {
           level: 6,
         };
         const mapContainer = new kakao.maps.Map(container, options);
+        const zoomControl = new kakao.maps.ZoomControl();
+        mapContainer.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        const locOptions = {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 5000,
+        };
 
+        const handleError = () => {
+          console.warn('ERROR!');
+        };
+        // 현재위치
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              const lat = pos.coords.latitude;
+              const lng = pos.coords.longitude;
+              const locPosition = new kakao.maps.LatLng(lat, lng);
+
+              mapContainer.setCenter(locPosition);
+            },
+            handleError,
+            locOptions,
+          );
+        }
         setMap(mapContainer);
       }
     });
-  }, [map]);
+  }, [map, mapState]);
 
   const renderMap = () => {
-    const zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-    const locOptions = {
-      enableHighAccuracy: true,
-      maximumAge: 0,
-      timeout: 5000,
-    };
-
-    const handleError = () => {
-      console.warn('ERROR!');
-    };
-    // 현재위치
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = pos.coords.latitude;
-          const lng = pos.coords.longitude;
-          const locPosition = new kakao.maps.LatLng(lat, lng);
-
-          map.setCenter(locPosition);
-        },
-        handleError,
-        locOptions,
-      );
-    }
+    console.log('renderMap');
 
     let selectedMarker = null;
 

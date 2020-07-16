@@ -10,13 +10,12 @@ export const MapProvider = ({ children }) => {
     setSublist,
     setPlaces,
     setPagination,
-    setPageList,
-    setCurrentPage,
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
     setPlacesHidden,
     setMessage,
+    updatePlace,
   } = useMap();
 
   const mapContextValue = {
@@ -25,13 +24,12 @@ export const MapProvider = ({ children }) => {
     setSublist,
     setPlaces,
     setPagination,
-    setPageList,
-    setCurrentPage,
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
     setPlacesHidden,
     setMessage,
+    updatePlace,
   };
 
   return (
