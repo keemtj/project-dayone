@@ -4,6 +4,7 @@ $mainColor: #45C0FF;
   position: relative;
   margin-top: 70px;
   margin-top: 55px;
+  // background-color: yellowgreen;
 
   .title {
     max-width: calc(100% - 105px);
@@ -41,7 +42,6 @@ $mainColor: #45C0FF;
       padding-left: 40px;
     }
   }
-
   
   & button {
     padding: 10px 39px;
@@ -57,7 +57,10 @@ $mainColor: #45C0FF;
     font-size: 16px;
     margin-bottom: 30px;
   }
-  & button:hover, & button:focus, & .goBackBtn {
+
+  & button:not(.bookmarkBtn):hover, 
+  & button:not(.bookmarkBtn):focus, 
+  .goBackBtn {
     border: 1px solid $mainColor;
     color: #fff;
     background-color: $mainColor;
@@ -70,6 +73,21 @@ $mainColor: #45C0FF;
   }
   .deleteBtn {
     margin-left: 9px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  .bookmarkIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    
+    &.active {
+      color: $mainColor;
+    }
   }
 }
 
