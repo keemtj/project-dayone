@@ -25,8 +25,6 @@ const DiaryViewer = () => {
     };
   }, []);
 
-  // console.log(History);
-
   if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
 
   const clickEdit = () => {

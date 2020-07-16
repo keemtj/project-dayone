@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/MyPage.module.scss';
-import DiaryViewer from './DiaryViewer';
 import { MainContext, LoginContext } from '../Context/MainContext';
 import ProfileInfo from '../Components/ProfileInfo';
 import BookmarkDiaries from '../Components/BookmarkDiaries';
@@ -15,7 +13,7 @@ const MyPage = () => {
   const mainCtx = React.useContext(MainContext);
   const loginCtx = React.useContext(LoginContext);
   const { logOut } = loginCtx;
-  const { dispatch, patchBookmark } = mainCtx;
+  const { dispatch, patchBookmark, editProfile } = mainCtx;
   const { diaries, userData } = mainCtx.state;
   const { userId, pic, msg } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
@@ -55,6 +53,7 @@ const MyPage = () => {
     onClickSetting,
     closeModal,
     onClickDimmed,
+    editProfile,
   };
 
   return (
@@ -62,7 +61,6 @@ const MyPage = () => {
       <ProfileInfo pageCtx={pageCtx} />
       <BookmarkDiaries pageCtx={pageCtx} />
       {modalState ? <MypageModal pageCtx={pageCtx} /> : null}
-      <Route path="/diaryViewer/:id" component={DiaryViewer} />
     </main>
   );
 };
