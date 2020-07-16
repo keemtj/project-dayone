@@ -7,8 +7,6 @@ import DiarySubmitBtn from './DiarySubmitBtn';
 import DiaryTagBox from './DiaryTagBox';
 
 const DiaryForm = () => {
-  console.log('render');
-
   return (
     <form style={{ marginBottom: '60px' }}>
       <DiaryTitle />

@@ -8,17 +8,24 @@ const initialState = {
     // id: 1,
     // userId: '',
     // userPw: '',
+    // pic: '',
+    // msg: '',
     // active: true,
   },
   diaries: [
     // {
-    //   id: 1,
-    //   title: '',
-    //   content: '',
-    //   date: '',
-    //   location: {},
-    //   isBookmarked: false,
-    //   imagePaths: [],
+    // id: 0,
+    // title: '',
+    // content: '',
+    // date: getToday(),
+    // location: {
+    //   lat: 0,
+    //   lng: 0,
+    //   name: '',
+    // },
+    // isBookmarked: false,
+    // tags: []
+    // imagePaths: [],
     // },
   ],
   currentDiary: {
@@ -32,6 +39,7 @@ const initialState = {
       name: '',
     },
     isBookmarked: false,
+    tags: [],
     imagePaths: [],
   },
   viewerDiary: {},
@@ -161,6 +169,14 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         userData: { ...state.userData, msg: action.msg, pic: action.pic },
+      };
+    case 'PUSH_TAG':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          tags: state.currentDiary.tags.concat(action.tag),
+        },
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
