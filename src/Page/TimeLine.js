@@ -20,6 +20,8 @@ const Timeline = () => {
   const { state } = context;
   const { userData } = state;
   const { userId, pic, msg } = userData;
+  const altPic =
+    'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
 
   return (
     <main>
@@ -29,8 +31,8 @@ const Timeline = () => {
             <div
               className={cx('profilePhoto')}
               style={{
-                backgroundImage: `url(
-                ${pic})`,
+                backgroundImage: `url(${pic || altPic})`,
+                opacity: `${pic ? 1.0 : 0.3}`,
               }}
             />
             <div className={cx('profileUserId')}>{userId}</div>
