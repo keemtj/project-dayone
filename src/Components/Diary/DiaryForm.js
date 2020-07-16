@@ -7,12 +7,14 @@ import DiarySubmitBtn from './DiarySubmitBtn';
 import DiaryTagBox from './DiaryTagBox';
 
 const DiaryForm = () => {
+  console.log('render');
+
   return (
-    <form>
+    <form style={{ marginBottom: '60px' }}>
       <DiaryTitle />
       <DiaryCalender />
-      <DiaryWrite />
       <DiaryMap />
+      <DiaryWrite />
       <DiaryTagBox />
       <DiarySubmitBtn />
     </form>
