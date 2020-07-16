@@ -51,8 +51,10 @@
       }
 
       &:focus {
-        border: 2px solid rgb(255, 114, 98);
-        border-radius: 3px !important;
+        outline: none;
+        // border: 2px solid rgb(255, 114, 98);
+        border: 2px solid rgb(255, 114, 98) !important;
+        border-radius: 3px;
       }
     }
 
@@ -82,7 +84,7 @@
 
     & .manyDiaries {
       background: #67bff9;
-      background: #45C0FF;
+      background: #45c0ff;
     }
   }
 }

@@ -23,6 +23,7 @@ $mainColor: #45c0ff;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+      cursor: pointer;
     }
 
     .infoWrapper {
@@ -35,6 +36,7 @@ $mainColor: #45c0ff;
       font-size: 1.5rem;
       line-height: 2rem;
       margin-bottom: 10px;
+      transition: 0.3s;
     }
 
     .greeting span {
