@@ -71,16 +71,10 @@ const ProfileInfo = ({ pageCtx }) => {
       >
         <FontAwesomeIcon icon={faCog} />
       </button>
-      <Link to="/">
-        <button
-          type="button"
-          className={cx('logoutBtn')}
-          onClick={onClickLogOut}
-        >
-          <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
-          로그아웃
-        </button>
-      </Link>
+      <button type="button" className={cx('logoutBtn')} onClick={onClickLogOut}>
+        <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
+        로그아웃
+      </button>
     </div>
   );
 };

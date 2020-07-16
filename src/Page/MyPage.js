@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/MyPage.module.scss';
 import { MainContext, LoginContext } from '../Context/MainContext';
@@ -24,9 +25,12 @@ const MyPage = () => {
   const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
   const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(1));
 
+  const history = useHistory();
+
   const onClickLogOut = () => {
     dispatch({ type: 'LOG_OUT' });
     logOut();
+    history.push('/');
   };
 
   const onClickSetting = () => setModalState(true);
