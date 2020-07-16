@@ -20,11 +20,14 @@ const DiaryTagBox = () => {
           <li className={cx('tag')}>#태그2</li>
         </>
       );
-    return tags.map((tag, i) => (
-      <li className={cx('tag')} key={i}>
-        {tag}
-      </li>
-    ));
+    return tags.map((tag, i) => {
+      if (i > 4) return '';
+      return (
+        <li className={cx('tag')} key={i}>
+          {i === 4 ? '...' : `#${tag}`}
+        </li>
+      );
+    });
   };
 
   return (
