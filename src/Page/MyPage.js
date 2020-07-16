@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/MyPage.module.scss';
-import DiaryViewer from './DiaryViewer';
+// import DiaryViewer from './DiaryViewer';
 import { MainContext, LoginContext } from '../Context/MainContext';
 import ProfileInfo from '../Components/ProfileInfo';
 import BookmarkDiaries from '../Components/BookmarkDiaries';
@@ -63,7 +63,7 @@ const MyPage = () => {
       <ProfileInfo pageCtx={pageCtx} />
       <BookmarkDiaries pageCtx={pageCtx} />
       {modalState ? <MypageModal pageCtx={pageCtx} /> : null}
-      <Route path="/diaryViewer/:id" component={DiaryViewer} />
+      {/* <Route path="/diaryViewer/:id" component={DiaryViewer} /> */}
     </main>
   );
 };

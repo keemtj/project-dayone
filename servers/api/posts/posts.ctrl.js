@@ -7,7 +7,11 @@ const diaries = [
     content:
       '<p>스터디룸에서 초집중하고 있는 초록머리 조커와 뭔가 심각하게 의논을 나누고 있는 하으니랑 지미주! 이정도로 열심히 하는데 이력서 내면 당장 뽑아줘야 하는거 아닙니까?!</p>',
     date: '2020-5-14',
-    location: { lat: 37.62197524055062, lng: 127.16017523675508 },
+    location: {
+      lat: 37.62197524055062,
+      lng: 127.16017523675508,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [],
     isBookmarked: true,
   },
@@ -16,7 +20,11 @@ const diaries = [
     title: 'Diary Title 2',
     content: '<p>This is diary 2</p>',
     date: '2020-5-21',
-    location: { lat: 37.620842424005616, lng: 127.1583774403176 },
+    location: {
+      lat: 37.620842424005616,
+      lng: 127.1583774403176,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [],
     isBookmarked: false,
   },
@@ -25,7 +33,11 @@ const diaries = [
     title: 'Diary Title 3',
     content: '<p>This is diary 3</p>',
     date: '2020-5-21',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [],
     isBookmarked: true,
   },
@@ -34,7 +46,11 @@ const diaries = [
     title: 'Diary Title 4',
     content: '<p>This is diary 4</p>',
     date: '2020-6-2',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [],
     isBookmarked: false,
   },
@@ -43,7 +59,11 @@ const diaries = [
     title: 'Diary Title 5',
     content: '<p>This is diary 5</p>',
     date: '2020-6-6',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -55,7 +75,11 @@ const diaries = [
     title: 'Diary Title 6',
     content: '<p>This is diary 6</p>',
     date: '2020-6-15',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -67,7 +91,11 @@ const diaries = [
     title: 'Diary Title 7',
     content: '<p>This is diary 7</p>',
     date: '2020-6-19',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -79,7 +107,11 @@ const diaries = [
     title: 'Diary Title 8',
     content: '<p>This is diary 8</p>',
     date: '2020-6-19',
-    location: { lat: 37.524915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.524915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -91,7 +123,11 @@ const diaries = [
     title: 'Diary Title 9',
     content: '<p>This is diary 9</p>',
     date: '2020-7-1',
-    location: { lat: 37.444915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.444915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -103,7 +139,11 @@ const diaries = [
     title: 'Diary Title 10',
     content: '<p>This is diary 10</p>',
     date: '2020-7-4',
-    location: { lat: 37.444915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.444915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -115,7 +155,11 @@ const diaries = [
     title: 'Diary Title 11',
     content: '<p>This is diary 11</p>',
     date: '2020-7-4',
-    location: { lat: 37.624915253753194, lng: 127.15122688059974 },
+    location: {
+      lat: 37.624915253753194,
+      lng: 127.15122688059974,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -127,7 +171,11 @@ const diaries = [
     title: 'Diary Title 12',
     content: '<p>This is diary 12</p>',
     date: '2020-7-5',
-    location: { lat: 37.62197524055062, lng: 127.16017523675508 },
+    location: {
+      lat: 37.62197524055062,
+      lng: 127.16017523675508,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
@@ -163,7 +211,11 @@ const diaries = [
     title: 'Diary Title 15',
     content: '<p>This is diary 15</p>',
     date: '2020-7-13',
-    location: { lat: 37.62197524055062, lng: 127.16017523675508 },
+    location: {
+      lat: 37.62197524055062,
+      lng: 127.16017523675508,
+      name: '서울 성동구 성수동 2가',
+    },
     imagePaths: [
       'https://images3.alphacoders.com/105/1052299.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
