@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/MypageModal.module.scss';
 
@@ -15,7 +15,9 @@ const MypageModal = ({ pageCtx }) => {
 
   const changeInput = ({ target }) => {
     const key = target.className.includes('msg') ? 'msg' : 'pic';
-    setInputState({ ...inputState, [key]: target.value });
+    const value =
+      key === 'msg' ? target.value : URL.createObjectURL(target.files[0]);
+    setInputState({ ...inputState, [key]: value });
   };
 
   const deleteImg = () => {
