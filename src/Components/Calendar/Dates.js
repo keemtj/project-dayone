@@ -41,6 +41,14 @@ const Dates = ({ pageCtx, onClickDate, dateState }) => {
     return { marginLeft, border, borderRadius };
   };
 
+  const disableBtn = (yy, mm, dd) => {
+    let disable = false;
+    if (yy === now.year && mm === now.month && dd > now.date) disable = true;
+    if (yy === now.year && mm > now.month) disable = true;
+    if (yy > now.year) disable = true;
+    return disable;
+  };
+
   return (
     <div className={cx('dateView')}>
       {datesArray.map(({ yy, mm, dd }) => {
@@ -59,7 +67,7 @@ const Dates = ({ pageCtx, onClickDate, dateState }) => {
               },
               { firstDay: dd === 1 },
             )}
-            disabled={yy === now.year && mm === now.month && dd > now.date}
+            disabled={disableBtn(yy, mm, dd)}
             style={getStyle(dd, dateState, fullDate)}
             onClick={onClick}
           >
