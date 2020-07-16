@@ -9,6 +9,7 @@ const DiaryTagBox = () => {
     <div className={cx('tagBox')}>
       <input type="text" placeholder="태그를 입력하세요" />
       <button type="button">추가</button>
+      <ul className={cx('tagList')}></ul>
     </div>
   );
 };
