@@ -1,24 +1,116 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
 /* eslint-disable no-new */
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
-
-import styles from './Style/ReactMap.module.scss';
+import styles from '../Style/MapComponent.module.scss';
+import MapSearchForm from './MapSearchForm';
+import MapSearchList from './MapSearchList';
+import { MainContext } from '../../Context/MainContext';
+import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
 
-const ReactMap = ({ diaries, filterDiariesByLoc }) => {
+const MapComponent = () => {
+  const mainContext = useContext(MainContext);
+  const mapContext = useContext(MapContext);
+
+  const { state } = mainContext;
+  const { diaries } = state;
+  const {
+    mapState,
+    setSublist,
+    setPlaces,
+    setPagination,
+    setPageList,
+    setCurrentPage,
+    setPlacesVisible,
+    setMessage,
+  } = mapContext;
+
+  // -----------------
+  //
+  const placesSearchCB = (data, status, pagination) => {
+    if (status === kakao.maps.services.Status.OK) {
+      // 정상적으로 검색이 완료됐으면
+      // 검색 목록과 마커를 표출합니다
+      // displayPlaces(data);
+      console.log('DATA: ', data);
+      console.log('Pagination: ', pagination);
+      const pageList = Array.from({ length: pagination.last }, (v, i) => i + 1);
+      const currentPage = pagination.current;
+      console.log('pageList: ', pageList);
+      console.log('currentPage: ', currentPage);
+      setMessage('');
+      setPlaces(data);
+      setPagination(pagination);
+      setPageList(pageList);
+      setCurrentPage(currentPage);
+      // changePage = pagination.gotoPage;
+      // pagination.gotoPage(currentPage + 1);
+      setPlacesVisible();
+      // 페이지 번호를 표출합니다
+      // displayPagination(pagination);
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+      setMessage('검색 결과가 존재하지 않습니다.');
+      setPlaces([]);
+    } else if (status === kakao.maps.services.Status.ERROR) {
+      setMessage('검색 결과 중 오류가 발생했습니다.');
+    }
+  };
+  // 37.5399238
+  // 127.05075719999999
+
+  const searchPlaces = (inputs) => {
+    console.log('--------');
+    console.log(new kakao.maps.services.Places());
+
+    const ps = new kakao.maps.services.Places();
+
+    console.log('your input: ', inputs);
+    if (!inputs.replace(/^\s+|\s+$/g, '')) {
+      setMessage('장소를 입력해주세요');
+      return false;
+    }
+    ps.keywordSearch(inputs, placesSearchCB);
+  };
+  //
+  // -------------
+
   const renderMap = () => {
     const container = document.getElementById('map');
     const options = {
-      center: new kakao.maps.LatLng(37.62197524055062, 127.16017523675508),
-      level: 5,
+      center: new kakao.maps.LatLng(0, 0),
+      level: 6,
+    };
+    const map = new kakao.maps.Map(container, options);
+
+    const locOptions = {
+      enableHighAccuracy: true,
+      maximumAge: 0,
+      timeout: 5000,
     };
 
-    const map = new kakao.maps.Map(container, options);
+    const handleError = (err) => {
+      console.warn('ERROR!');
+    };
+    // 현재위치
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+          const locPosition = new kakao.maps.LatLng(lat, lng);
+
+          map.setCenter(locPosition);
+        },
+        handleError,
+        locOptions,
+      );
+    }
+
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
@@ -81,15 +173,13 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
         marker.setImage(clickImage);
       }
       selectedMarker = marker;
-      filterDiariesByLoc(lat, lng);
+      setSublist(diaries, lat, lng);
     };
 
     const makeMarkers = (diaries) => {
       const markers = [];
       diaries.forEach((diary) => {
-        console.log('prop length: ', Object.keys(diary.location).length);
         const hasLocation = Object.keys(diary.location).length > 0;
-        console.log('hasLocation?: ', hasLocation);
         if (!hasLocation) return;
 
         const { lat, lng } = diary.location;
@@ -138,7 +228,14 @@ const ReactMap = ({ diaries, filterDiariesByLoc }) => {
     });
   }, []);
 
-  return <div className={cx('map')} id="map" />;
+  return (
+    <div className={cx('map')} id="map">
+      <div className={cx('map-search-wrap')}>
+        <MapSearchForm searchPlaces={searchPlaces} />
+        <MapSearchList />
+      </div>
+    </div>
+  );
 };
 
-export default ReactMap;
+export default React.memo(MapComponent);

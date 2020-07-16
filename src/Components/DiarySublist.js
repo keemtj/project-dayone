@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router';
 import { useHistory, Link, Route } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/DiarySublist.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
+import { MapContext } from '../Context/MapContext';
 import DiaryViewer from '../Page/DiaryViewer';
 import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const DiarySublist = ({ mapList }) => {
-  const mainCtx = React.useContext(MainContext);
+const DiarySublist = () => {
+  const mainCtx = useContext(MainContext);
   const { dispatch } = mainCtx;
-  const calCtx = React.useContext(CalendarContext);
+
+  const calCtx = useContext(CalendarContext);
   const date = calCtx && calCtx.calendarState.selectedDate;
   const calendarList = calCtx && calCtx.calendarState.sublist;
-  const subList = calendarList || mapList;
+
+  const mapCtx = useContext(MapContext);
+  const mapList = mapCtx && mapCtx.mapState.sublist;
+
+  const currentPage = useLocation().pathname;
+  const subList = currentPage === '/calendar' ? calendarList : mapList;
+  console.log('sublist: ', subList);
   const history = useHistory();
 
   const writeDiary = () => {
