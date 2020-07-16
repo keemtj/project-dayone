@@ -4,6 +4,10 @@ import { mapInitState, mapReducer } from '../Reducer/mapReducer';
 const useMap = () => {
   const [mapState, dispatch] = useReducer(mapReducer, mapInitState);
 
+  const setMap = (map) => {
+    dispatch({ type: 'SET_MAP', map });
+  };
+
   const setSublist = (diaries, lat, lng) => {
     const sublist = diaries.filter(
       ({ location }) => location.lat === lat && location.lng === lng,
@@ -57,6 +61,7 @@ const useMap = () => {
 
   return {
     mapState,
+    setMap,
     setSublist,
     setPlaces,
     setPagination,

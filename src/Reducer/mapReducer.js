@@ -1,4 +1,5 @@
 export const mapInitState = {
+  map: {},
   sublist: [],
   places: [],
   pagination: {},
@@ -11,6 +12,11 @@ export const mapInitState = {
 
 export const mapReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_MAP':
+      return {
+        ...state,
+        map: action.map,
+      };
     case 'SET_SUBLIST':
       return {
         ...state,

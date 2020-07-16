@@ -6,6 +6,7 @@ export const MapContext = React.createContext(null);
 export const MapProvider = ({ children }) => {
   const {
     mapState,
+    setMap,
     setSublist,
     setPlaces,
     setPagination,
@@ -20,6 +21,7 @@ export const MapProvider = ({ children }) => {
 
   const mapContextValue = {
     mapState,
+    setMap,
     setSublist,
     setPlaces,
     setPagination,

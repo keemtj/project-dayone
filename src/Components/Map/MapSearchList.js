@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Style/MapSearchList.module.scss';
 import { MapContext } from '../../Context/MapContext';
 
@@ -24,14 +22,6 @@ const MapSearchList = () => {
   const togglePlacesVisible = () => {
     isPlacesVisible ? setPlacesHidden() : setPlacesVisible();
   };
-  console.log('===== MapSearchList ====');
-  console.log('places: ', places);
-  console.log('pagination: ', pagination);
-  console.log('pageList: ', pageList);
-  console.log('currentPage: ', currentPage);
-  console.log('[isSearchVisible]: ', isSearchVisible);
-  console.log('[isPlacesVisible]: ', isPlacesVisible);
-  console.log('[result]: ', isSearchVisible && isPlacesVisible);
   return (
     <>
       {message && <p className={cx('map-search-msg')}>{message}</p>}
