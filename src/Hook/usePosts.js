@@ -138,6 +138,10 @@ const usePosts = () => {
     dispatch({ type: 'SET_EDIT_STATE' });
   };
 
+  const editProfile = (msg, pic) => {
+    dispatch({ type: 'EDIT_PROFILE', msg, pic });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -159,6 +163,7 @@ const usePosts = () => {
     deleteDiary,
     setEditState,
     editDiary,
+    editProfile,
   ];
 };
 

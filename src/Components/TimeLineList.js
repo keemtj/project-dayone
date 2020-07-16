@@ -19,6 +19,8 @@ const TimeLineList = () => {
   const { diaries } = state;
   const images = [image1, image2, image3, image4];
 
+  const sortDiaries = diaries.sort((a, b) => b.id - a.id);
+
   const onChangeBookmark = ({ target }) => {
     const id = +target.attributes.id.nodeValue;
     patchBookmark(id, target.checked);
@@ -26,8 +28,9 @@ const TimeLineList = () => {
 
   return (
     <ul className={cx('timelineWrapper')}>
-      {diaries.map((diary) => (
+      {sortDiaries.map((diary) => (
         <li key={diary.id} className={cx('timelineList')}>
+          {console.log(typeof diary.id)}
           <Link
             to={`/diaryViewer/${diary.id}`}
             style={{ textDecoration: 'none' }}

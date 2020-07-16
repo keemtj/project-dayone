@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
-import { useHistory, Link, Route } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/DiarySublist.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
 import { MapContext } from '../Context/MapContext';
-import DiaryViewer from '../Page/DiaryViewer';
 import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
@@ -23,7 +22,6 @@ const DiarySublist = () => {
 
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
-  console.log('sublist: ', subList);
   const history = useHistory();
 
   const writeDiary = () => {
@@ -65,7 +63,6 @@ const DiarySublist = () => {
           );
         })}
       </ul>
-      <Route path="/diaryViewer/:id" component={DiaryViewer} />
     </>
   );
 };

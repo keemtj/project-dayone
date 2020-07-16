@@ -23,27 +23,6 @@ export const calendarInitState = {
 
 export const calendarReducer = (state, action) => {
   switch (action.type) {
-    case 'LOADING':
-      return {
-        loading: true,
-        error: null,
-        date: state.date,
-        diaries: state.diaries,
-      };
-    case 'ERROR':
-      return {
-        loading: false,
-        error: action.error,
-        date: '',
-        diaries: null,
-      };
-    case 'SUCCESS':
-      return {
-        loading: false,
-        error: null,
-        date: action.date,
-        diaries: action.diaries,
-      };
     case 'GET_NOW':
       return {
         ...state,

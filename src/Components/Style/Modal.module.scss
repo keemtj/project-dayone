@@ -45,7 +45,7 @@ $mainColor: #45c0ff;
   display: block;
   width: 100%;
   position: absolute;
-  top: 29rem;
+  bottom: 4.5rem;
   left: 0;
   font-size: 0.8rem;
   color: rgb(223, 0, 0);
@@ -75,7 +75,7 @@ $mainColor: #45c0ff;
 }
 
 :global .submitBtn {
-  background: #67bff9;
+  background: #45c0ff;
   color: #fff;
 }
 
