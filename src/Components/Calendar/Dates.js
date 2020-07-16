@@ -34,11 +34,24 @@ const Dates = ({ pageCtx, onClickDate, dateState }) => {
 
   const getStyle = (dd, clickedDate, fullDate) => {
     const maintain = clickedDate === fullDate && page === 'diary';
-    const marginLeft = dd === 1 ? `${startDay * 6}rem` : 0;
+    const diaryML = dd === 1 ? `${startDay * 3.6}rem` : 0;
+    const calML = dd === 1 ? `${startDay * 6}rem` : 0;
     const border = maintain ? '2px solid rgb(255, 114, 98)' : 'none';
     const borderRadius = maintain ? '3px' : 0;
 
-    return { marginLeft, border, borderRadius };
+    return {
+      marginLeft: page === 'diary' ? diaryML : calML,
+      border,
+      borderRadius,
+    };
+  };
+
+  const disableBtn = (yy, mm, dd) => {
+    let disable = false;
+    if (yy === now.year && mm === now.month && dd > now.date) disable = true;
+    if (yy === now.year && mm > now.month) disable = true;
+    if (yy > now.year) disable = true;
+    return disable;
   };
 
   return (
@@ -59,7 +72,7 @@ const Dates = ({ pageCtx, onClickDate, dateState }) => {
               },
               { firstDay: dd === 1 },
             )}
-            disabled={yy === now.year && mm === now.month && dd > now.date}
+            disabled={disableBtn(yy, mm, dd)}
             style={getStyle(dd, dateState, fullDate)}
             onClick={onClick}
           >

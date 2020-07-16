@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,9 +27,10 @@ const ProfileInfo = ({ pageCtx }) => {
       <div
         className={cx('profilePic')}
         style={{
-          backgroundImage: pic ? `url(${pic})` : `url(${altPic})`,
-          opacity: pic ? 1 : 0.5,
+          backgroundImage: `url(${pic || altPic})`,
+          opacity: pic ? 1 : 0.3,
         }}
+        onClick={onClickSetting}
       />
       <div className={cx('infoWrapper')}>
         <h2 className={cx('greeting')}>
