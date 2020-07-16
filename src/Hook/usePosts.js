@@ -130,6 +130,10 @@ const usePosts = () => {
     dispatch({ type: 'EDIT_PROFILE', msg, pic });
   };
 
+  const pushTag = (tag) => {
+    dispatch({ type: 'PUSH_TAG', tag });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -152,6 +156,7 @@ const usePosts = () => {
     setEditState,
     editDiary,
     editProfile,
+    pushTag,
   ];
 };
 

@@ -170,6 +170,14 @@ const mainReducer = (state, action) => {
         ...state,
         userData: { ...state.userData, msg: action.msg, pic: action.pic },
       };
+    case 'PUSH_TAG':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          tags: state.currentDiary.tags.concat(action.tag),
+        },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
