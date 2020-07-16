@@ -10,12 +10,7 @@ const cx = classNames.bind(styles);
 
 const MapSearchForm = ({ searchPlaces }) => {
   const mapContext = useContext(MapContext);
-  const {
-    mapState,
-    setSearchVisible,
-    setSearchHidden,
-    setPlacesHidden,
-  } = mapContext;
+  const { mapState, setSearchVisible, setSearchHidden } = mapContext;
   const { isSearchVisible } = mapState;
 
   const [inputs, setInputs] = useState('');
@@ -23,7 +18,6 @@ const MapSearchForm = ({ searchPlaces }) => {
   const toggleVisible = () => {
     if (isSearchVisible) {
       setSearchHidden();
-      setPlacesHidden();
       return;
     }
     setSearchVisible();

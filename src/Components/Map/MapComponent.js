@@ -14,10 +14,7 @@ import { MapContext } from '../../Context/MapContext';
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
-let renderCount = 0;
 const MapComponent = () => {
-  renderCount += 1;
-  console.log(renderCount);
   const mainContext = useContext(MainContext);
   const mapContext = useContext(MapContext);
 
@@ -26,8 +23,6 @@ const MapComponent = () => {
   const { mapState, setMap, setSublist, setMessage, updatePlace } = mapContext;
 
   const { map, placeMarkers } = mapState;
-  console.log('mapState: ', mapState);
-  console.log('placeMarkers: ', placeMarkers);
 
   const makePlaceMarkers = (places) => {
     const placeMarkers = [];
@@ -72,8 +67,6 @@ const MapComponent = () => {
     removePrevMarkers(placeMarkers);
 
     if (status === kakao.maps.services.Status.OK) {
-      // if (placeMarkers.length) {
-      // }
       const pMarkers = makePlaceMarkers(data);
       const payload = {
         places: data,
@@ -110,7 +103,6 @@ const MapComponent = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect');
     kakao.maps.load(() => {
       if (Object.keys(map).length) {
         renderMap();
@@ -152,8 +144,6 @@ const MapComponent = () => {
   }, [map, mapState]);
 
   const renderMap = () => {
-    console.log('renderMap');
-
     let selectedMarker = null;
 
     const normalImageSrc =
