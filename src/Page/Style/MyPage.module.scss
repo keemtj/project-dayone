@@ -1,3 +1,5 @@
+$mainColor: #45c0ff;
+
 .main {
   margin-top: 30px;
   width: 100%;
@@ -83,8 +85,8 @@
 
       &:hover,
       &:focus {
-        color: #aaa;
-        transition: 0.3s;
+        color: $mainColor;
+        transition: 0.25s;
         transform: rotate(50deg);
       }
     }
@@ -104,7 +106,7 @@
       &:hover,
       &:focus {
         color: #fff;
-        background: #aaa;
+        background: $mainColor;
         transition: 0.3s;
       }
     }
@@ -112,7 +114,7 @@
 
   .listTitle {
     font-size: 1.3rem;
-    color: #67bff9;
+    color: $mainColor;
     padding: 20px 10px 5px;
 
     & .icon {
