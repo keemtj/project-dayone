@@ -121,9 +121,34 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        font-weight: 300;
+        font-weight: 400;
+        line-height: 1.3rem;
 
         .place-name {
+          font-weight: 600;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          margin-bottom: 5px;
+        }
+
+        .road-address-name {
+          font-size: 0.8rem;
+          font-weight: 500;
+          margin-bottom: 2px;
+        }
+
+        .address-name {
+          font-size: 0.8rem;
+          color: #444343;
+          padding-left: 26px;
+          margin-bottom: 2px;
+          background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+            no-repeat;
+        }
+
+        .phone {
+          font-size: 0.7rem;
+          color: #009900;
           font-weight: 600;
         }
       }
