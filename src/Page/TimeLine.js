@@ -20,6 +20,8 @@ const Timeline = () => {
   const { state } = context;
   const { userData } = state;
   const { userId, pic, msg } = userData;
+  const altPic =
+    'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
 
   return (
     <main>
@@ -29,8 +31,8 @@ const Timeline = () => {
             <div
               className={cx('profilePhoto')}
               style={{
-                backgroundImage: `url(
-                ${pic})`,
+                backgroundImage: `url(${pic || altPic})`,
+                opacity: `${pic ? 1.0 : 0.3}`,
               }}
             />
             <div className={cx('profileUserId')}>{userId}</div>
@@ -55,20 +57,20 @@ const Timeline = () => {
             </ul>
           </div>
         </aside>
-        <div className={cx('nav')}>
+        <nav className={cx('nav')}>
           <NavLink
             to="/timeline/list"
             activeClassName={cx('active')}
             className={cx(pathname.includes('/timeline/media') ? '' : 'active')}
           >
             <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-            {/* <span className={cx('tooltip')}>리스트</span> */}
+            <div className={cx('tooltip')}>리스트</div>
           </NavLink>
           <NavLink to="/timeline/media" activeClassName={cx('active')}>
             <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-            {/* <span className={cx('tooltip')}>사진</span> */}
+            <div className={cx('tooltip')}>사진</div>
           </NavLink>
-        </div>
+        </nav>
         <SubRouter />
       </div>
     </main>
