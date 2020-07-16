@@ -1,6 +1,9 @@
 export const mapInitState = {
   sublist: [],
   places: [],
+  pagination: {},
+  pageList: [],
+  currentPage: 0,
   isSearchVisible: false,
   isPlacesVisible: false,
   message: '',
@@ -17,6 +20,21 @@ export const mapReducer = (state, action) => {
       return {
         ...state,
         places: action.places,
+      };
+    case 'SET_PAGINATION':
+      return {
+        ...state,
+        pagination: action.pagination,
+      };
+    case 'SET_PAGELIST':
+      return {
+        ...state,
+        pageList: action.pageList,
+      };
+    case 'SET_CURRENT_PAGE':
+      return {
+        ...state,
+        currentPage: action.currentPage,
       };
     case 'SET_SEARCH_VISIBLE':
       return {

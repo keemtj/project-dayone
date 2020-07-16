@@ -23,6 +23,9 @@ const MapComponent = () => {
     mapState,
     setSublist,
     setPlaces,
+    setPagination,
+    setPageList,
+    setCurrentPage,
     setPlacesVisible,
     setMessage,
   } = mapContext;
@@ -35,8 +38,18 @@ const MapComponent = () => {
       // 검색 목록과 마커를 표출합니다
       // displayPlaces(data);
       console.log('DATA: ', data);
+      console.log('Pagination: ', pagination);
+      const pageList = Array.from({ length: pagination.last }, (v, i) => i + 1);
+      const currentPage = pagination.current;
+      console.log('pageList: ', pageList);
+      console.log('currentPage: ', currentPage);
       setMessage('');
       setPlaces(data);
+      setPagination(pagination);
+      setPageList(pageList);
+      setCurrentPage(currentPage);
+      // changePage = pagination.gotoPage;
+      // pagination.gotoPage(currentPage + 1);
       setPlacesVisible();
       // 페이지 번호를 표출합니다
       // displayPagination(pagination);
