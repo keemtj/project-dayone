@@ -24,27 +24,27 @@ const MapSearchList = ({ removePrevMarkers }) => {
 
   return (
     <>
-      {message && <p className={cx('map-search-msg')}>{message}</p>}
+      {message && <p className={cx('mapSearchMsg')}>{message}</p>}
       {isPlacesVisible && (
-        <div className={cx('map-search-menu')}>
-          <ul className={cx('map-search-list')}>
+        <div className={cx('mapSearchMenu')}>
+          <ul className={cx('mapSearchList')}>
             {places.map(
               (
                 { id, place_name, road_address_name, address_name, phone },
                 index,
               ) => {
                 return (
-                  <li key={id} className={cx('map-search-item')}>
-                    <span className={cx('markerbg', `marker_${index + 1}`)} />
+                  <li key={id} className={cx('mapSearchItem')}>
+                    <span className={cx('markerBg', `marker${index + 1}`)} />
                     <div className={cx('info')}>
-                      <h5 className={cx('place-name')}>{place_name}</h5>
+                      <h5 className={cx('placeName')}>{place_name}</h5>
                       {road_address_name && (
-                        <p className={cx('road-address-name')}>
+                        <p className={cx('roadAddressName')}>
                           {road_address_name}
                         </p>
                       )}
                       {address_name && (
-                        <p className={cx('address-name')}>{address_name}</p>
+                        <p className={cx('addressName')}>{address_name}</p>
                       )}
                       {phone && <p className={cx('phone')}>{phone}</p>}
                     </div>
@@ -53,7 +53,7 @@ const MapSearchList = ({ removePrevMarkers }) => {
               },
             )}
           </ul>
-          <div className={cx('map-pagination')}>
+          <div className={cx('mapPagination')}>
             {pagination &&
               Array.from({ length: pagination.last }, (v, i) => i + 1).map(
                 (page) => (

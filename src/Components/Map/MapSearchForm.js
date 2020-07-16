@@ -39,9 +39,9 @@ const MapSearchForm = ({ searchPlaces }) => {
   };
 
   return (
-    <div className={cx('search-form-wrapper')}>
+    <div className={cx('searchFormWrapper')}>
       <button
-        className={cx('search-icon-btn')}
+        className={cx('searchIconBtn')}
         type="button"
         onClick={toggleVisible}
       >
@@ -52,16 +52,16 @@ const MapSearchForm = ({ searchPlaces }) => {
         )}
       </button>
       <form
-        className={cx('search-form', { visible: isSearchVisible })}
+        className={cx('searchForm', { visible: isSearchVisible })}
         onSubmit={onSubmit}
       >
         <input
-          className={cx('search-input')}
+          className={cx('searchInput')}
           type="text"
           value={inputs}
           onChange={handleChange}
         />
-        <button className={cx('search-btn')} type="submit">
+        <button className={cx('searchBtn')} type="submit">
           검색
         </button>
       </form>
