@@ -81,10 +81,6 @@ $mainColor: #45c0ff;
       cursor: pointer;
     }
 
-    input[type='checkbox']:checked + label span {
-      color: $mainColor;
-    }
-
     &:hover {
       &::before {
         opacity: 1;
