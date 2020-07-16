@@ -61,6 +61,7 @@ $mainColor: #45C0FF;
   & button:not(.bookmarkBtn):hover, 
   & button:not(.bookmarkBtn):focus, 
   .goBackBtn {
+    transition: 0.3s;
     border: 1px solid $mainColor;
     color: #fff;
     background-color: $mainColor;
