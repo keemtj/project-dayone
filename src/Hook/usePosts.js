@@ -9,7 +9,6 @@ const usePosts = () => {
     dispatch({ type: 'LOADING' });
     try {
       const diaries = await Api.getDiaries();
-      // console.log('diaries:', diaries);
       dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({

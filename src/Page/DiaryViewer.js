@@ -25,7 +25,8 @@ const DiaryViewer = () => {
     };
   }, []);
 
-  if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
+  if (!state.viewerDiary)
+    return <p className={cx('errorMsg')}>다이어리가 존재하지 않습니다.</p>;
 
   const clickEdit = () => {
     setEditState();
@@ -41,12 +42,13 @@ const DiaryViewer = () => {
     }
     if (lastLocation.pathname === '/diary') {
       window.history.go(-2);
+      return;
     }
     if (lastLocation.pathname.includes('/diaryViewer')) {
       window.history.go(-3);
-    } else {
-      history.goBack();
+      return;
     }
+    history.goBack();
   };
 
   const renderDiary = () => (
@@ -73,12 +75,7 @@ const DiaryViewer = () => {
         setViewerState={setViewerState}
         id={+id}
       />
-      <button
-        className={cx('goBackBtn')}
-        type="button"
-        // onClick={() => history.goBack()}
-        onClick={clickGoBack}
-      >
+      <button className={cx('goBackBtn')} type="button" onClick={clickGoBack}>
         뒤로가기
       </button>
       <DiaryModalSmall

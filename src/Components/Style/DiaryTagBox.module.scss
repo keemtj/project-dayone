@@ -1,0 +1,27 @@
+$mainColor: #45C0FF;
+
+.tagBox {
+  display: inline-block;
+
+ & input {
+   width: 185px;
+   height: 41px;
+   padding: 10px 15px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   vertical-align: top;
+ }
+ & input::placeholder {
+  color: #7a7a7a;
+ }
+
+ & button {
+  border: 1px solid #ccc;
+  padding: 10px 10px;
+  font-size: 16px;
+  margin-left: -1px;
+  vertical-align: top;
+  color: #45C0FF;
+  color: #7a7a7a;
+ }
+}

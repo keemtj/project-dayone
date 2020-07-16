@@ -105,6 +105,12 @@ $mainColor: #45c0ff;
     color: #fff;
   }
 
+  a:active,
+  a:hover,
+  a:focus {
+    color: $mainColor;
+  }
+  
   a:nth-child(1) .tooltip {
     right: 23px;
     top: 45px;

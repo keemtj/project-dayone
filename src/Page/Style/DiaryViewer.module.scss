@@ -44,7 +44,7 @@ $mainColor: #45C0FF;
 
   
   & button {
-    padding: 9px 39px;
+    padding: 10px 39px;
     border: 1px solid #c7c7c7;
     color: #7a7a7a;
     
@@ -65,12 +65,17 @@ $mainColor: #45C0FF;
   }
 
   .goBackBtn {
-    padding: 9px 30px;
+    padding: 10px 30px;
     margin-left: calc(100% - 342px);
   }
   .deleteBtn {
     margin-left: 9px;
   }
+}
+
+.errorMsg {
+  margin-top: 40px;
+  font-size: 17px;
 }
 
 
