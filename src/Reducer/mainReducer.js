@@ -133,6 +133,9 @@ const mainReducer = (state, action) => {
             ? { ...diary, isBookmarked: !diary.isBookmarked }
             : diary;
         }),
+        viewerDiary: !state.viewerDiary.id
+          ? {}
+          : { ...state.viewerDiary, isBookmarked: action.isBookmarked },
       };
     case 'LOG_OUT':
       // return initialState;
