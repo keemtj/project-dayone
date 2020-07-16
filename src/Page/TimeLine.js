@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
@@ -19,8 +20,8 @@ const cx = classNames.bind(styles);
 const TimeLine = () => {
   const { pathname } = useLocation();
   const context = useContext(MainContext);
-  const { state } = context;
-  const { userData } = state;
+  const { state, getAllTags } = context;
+  const { userData, diaries } = state;
   const { userId, pic, msg } = userData;
   const altPic =
     'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
@@ -36,6 +37,23 @@ const TimeLine = () => {
 
   const backToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const tagArr = [];
+  diaries.forEach((diary) => {
+    diary.tags.forEach((tag) => {
+      if (tagArr.includes(tag)) return;
+      tagArr.push(tag);
+    });
+  });
+
+  const renderTags = () => {
+    return tagArr.map((tag, i) => (
+      <li key={i} className={cx('tag')}>
+        <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
+        {tag}
+      </li>
+    ));
   };
 
   return (
@@ -56,20 +74,7 @@ const TimeLine = () => {
           <div className={cx('tagBox')}>
             <FontAwesomeIcon icon={faTags} className={cx('icon')} />
             <span className={cx('tagBoxTitle')}>TAG</span>
-            <ul className={cx('tagListWrapper')}>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>스터디</span>
-              </li>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>프론트엔드</span>
-              </li>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>리액트</span>
-              </li>
-            </ul>
+            <ul className={cx('tagListWrapper')}>{renderTags()}</ul>
           </div>
         </aside>
         <nav className={cx('nav')}>

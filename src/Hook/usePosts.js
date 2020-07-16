@@ -134,6 +134,10 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_TAG', tag });
   };
 
+  const getAllTags = () => {
+    dispatch({ type: 'GET_ALL_TAGS' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -157,6 +161,7 @@ const usePosts = () => {
     editDiary,
     editProfile,
     pushTag,
+    getAllTags,
   ];
 };
 
