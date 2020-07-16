@@ -12,8 +12,9 @@ const diaries = [
       lng: 127.16017523675508,
       name: '서울 성동구 성수동 2가',
     },
-    imagePaths: [],
     isBookmarked: true,
+    tags: [],
+    imagePaths: [],
   },
   {
     id: 2,
@@ -25,8 +26,9 @@ const diaries = [
       lng: 127.1583774403176,
       name: '서울 성동구 성수동 2가',
     },
-    imagePaths: [],
     isBookmarked: false,
+    tags: [],
+    imagePaths: [],
   },
   {
     id: 3,
@@ -38,8 +40,9 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
-    imagePaths: [],
     isBookmarked: true,
+    tags: [],
+    imagePaths: [],
   },
   {
     id: 4,
@@ -51,8 +54,9 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
-    imagePaths: [],
     isBookmarked: false,
+    tags: [],
+    imagePaths: [],
   },
   {
     id: 5,
@@ -64,11 +68,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: true,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: true,
   },
   {
     id: 6,
@@ -80,11 +85,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: true,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: true,
   },
   {
     id: 7,
@@ -96,11 +102,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 8,
@@ -112,11 +119,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: true,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: true,
   },
   {
     id: 9,
@@ -128,11 +136,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 10,
@@ -144,11 +153,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 11,
@@ -160,11 +170,12 @@ const diaries = [
       lng: 127.15122688059974,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 12,
@@ -176,11 +187,12 @@ const diaries = [
       lng: 127.16017523675508,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 13,
@@ -188,11 +200,12 @@ const diaries = [
     content: '<p>This is diary 13</p>',
     date: '2020-7-9',
     location: {},
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://cdn1.byjus.com/wp-content/uploads/2018/11/maths/2016/06/10054036/1st-300x198.png',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 14,
@@ -200,11 +213,12 @@ const diaries = [
     content: '<p>This is diary 14</p>',
     date: '2020-7-13',
     location: {},
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'data:image/png;base64,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',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
   {
     id: 15,
@@ -216,11 +230,12 @@ const diaries = [
       lng: 127.16017523675508,
       name: '서울 성동구 성수동 2가',
     },
+    isBookmarked: false,
+    tags: [],
     imagePaths: [
       'https://images3.alphacoders.com/105/1052299.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
-    isBookmarked: false,
   },
 ];
 
