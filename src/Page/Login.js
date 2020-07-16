@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
 import { LoginContext } from '../Context/MainContext';
@@ -43,6 +43,10 @@ const Login = () => {
     fetchReset(); // dispatch({ type: 'RESET_INPUT' });
     idInputFocus.current.focus();
   };
+
+  useEffect(() => {
+    idInputFocus.current.focus();
+  }, []);
 
   return (
     <main className={cx('loginWrapper')}>
