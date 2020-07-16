@@ -46,8 +46,11 @@ $mainColor: #45c0ff;
       // border-radius: 4px;
       margin-top: 1.5rem;
       padding: 2rem;
+      padding-bottom: 1.3rem;
       width: 100%;
       height: auto;
+      max-height: 300px;
+      overflow: scroll;
 
       .icon {
         color: $mainColor;
@@ -61,8 +64,9 @@ $mainColor: #45c0ff;
 
       .tagListWrapper {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
-        margin-top: 1rem;
+        margin-top: 1.4rem;
         font-size: 1rem;
         font-weight: 500;
 
@@ -70,7 +74,8 @@ $mainColor: #45c0ff;
           font-size: 1rem;
         }
         .tag {
-          padding-left: 0.5rem;
+          margin-right: 0.7rem;
+          margin-bottom: 1rem;
 
           &:first-child {
             padding-left: 0;

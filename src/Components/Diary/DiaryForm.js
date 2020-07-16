@@ -8,7 +8,7 @@ import DiaryTagBox from './DiaryTagBox';
 
 const DiaryForm = () => {
   return (
-    <form style={{ marginBottom: '60px' }}>
+    <form style={{ marginBottom: '60px' }} onSubmit={(e) => e.preventDefault()}>
       <DiaryTitle />
       <DiaryCalender />
       <DiaryMap />

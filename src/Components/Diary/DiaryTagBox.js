@@ -17,6 +17,7 @@ const DiaryTagBox = () => {
   };
 
   const onPushTag = (e) => {
+    e.preventDefault();
     const writeInput = e.target.type === 'text' && e.keyCode !== 13;
     if (inputState.trim() === '') {
       if (writeInput) return;
