@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import styles from '../Page/Style/MyPage.module.scss';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -70,10 +71,16 @@ const ProfileInfo = ({ pageCtx }) => {
       >
         <FontAwesomeIcon icon={faCog} />
       </button>
-      <button type="button" className={cx('logoutBtn')} onClick={onClickLogOut}>
-        <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
-        로그아웃
-      </button>
+      <Link to="/">
+        <button
+          type="button"
+          className={cx('logoutBtn')}
+          onClick={onClickLogOut}
+        >
+          <FontAwesomeIcon icon={faSignOutAlt} className={cx('icon')} />
+          로그아웃
+        </button>
+      </Link>
     </div>
   );
 };

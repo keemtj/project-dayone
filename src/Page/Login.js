@@ -68,7 +68,9 @@ const Login = () => {
           onChange={onChange}
         />
         <span className={cx('message')}>{message}</span>
-        <button type="submit">로그인</button>
+        <button type="submit" className={cx('loginBtn')}>
+          로그인
+        </button>
       </form>
     </main>
   );
