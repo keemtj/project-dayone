@@ -92,9 +92,6 @@ const DiaryViewer = () => {
       >
         <FontAwesomeIcon
           icon={viewerDiary.isBookmarked ? faBookmark : faBookmarkLine}
-          // className={cx('bookmarkIcon', {
-          //   active: viewerDiary.isBookmarked,
-          // })}
         />
       </label>
       <button className={cx('editBtn')} type="button" onClick={clickEdit}>
