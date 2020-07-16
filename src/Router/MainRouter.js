@@ -19,7 +19,6 @@ const MainRouter = () => {
       <Route path="/diary" component={Diary} />
       <Route path="/mypage" component={MyPage} />
       <Route path="/diaryViewer/:id" component={DiaryViewer} />
-      <Route path="/login" component={Login} />
       <Route
         render={({ location }) => (
           <div>
