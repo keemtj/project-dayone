@@ -1,7 +1,7 @@
 .map {
   box-sizing: border-box;
   width: 70%;
-  height: 100%;
+  height: calc(100vh - 55px);
   font-size: 1rem;
 
   .map-search-wrap {
