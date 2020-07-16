@@ -231,7 +231,7 @@ const diaries = [
       name: '서울 성동구 성수동 2가',
     },
     isBookmarked: false,
-    tags: [],
+    tags: ['태그를', '달자'],
     imagePaths: [
       'https://images3.alphacoders.com/105/1052299.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
