@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-danger */
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useLastLocation } from 'react-router-last-location';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as faBookmarkLine } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './Style/DiaryViewer.module.scss';
 import { MainContext } from '../Context/MainContext';
@@ -11,9 +15,14 @@ const cx = classNames.bind(styles);
 
 const DiaryViewer = () => {
   const [viewerState, setViewerState] = useState('initial');
-  const { state, getDiary, clearViewerDiary, setEditState } = useContext(
-    MainContext,
-  );
+  const {
+    state,
+    getDiary,
+    clearViewerDiary,
+    setEditState,
+    patchBookmark,
+  } = useContext(MainContext);
+  const { viewerDiary } = state;
   const { id } = useParams();
   const history = useHistory();
   const lastLocation = useLastLocation();
@@ -25,7 +34,7 @@ const DiaryViewer = () => {
     };
   }, []);
 
-  if (!state.viewerDiary)
+  if (!viewerDiary)
     return <p className={cx('errorMsg')}>다이어리가 존재하지 않습니다.</p>;
 
   const clickEdit = () => {
@@ -51,19 +60,43 @@ const DiaryViewer = () => {
     history.goBack();
   };
 
+  const clickBookmark = (e) => {
+    console.log(e.target.checked);
+
+    patchBookmark(viewerDiary.id, e.target.checked);
+  };
+
   const renderDiary = () => (
     <div
       className={cx('content')}
-      dangerouslySetInnerHTML={{ __html: state.viewerDiary.content }}
+      dangerouslySetInnerHTML={{ __html: viewerDiary.content }}
     />
   );
 
   return (
     <main className={cx('wrapViewer')}>
-      <h1 className={cx('a11yHidden')}>다이어리 보기</h1>
-      <h2 className={cx('title')}>{state.viewerDiary.title}</h2>
-      <span className={cx('date')}>{state.viewerDiary.date}</span>
+      <h2 className={cx('a11yHidden')}>다이어리 보기</h2>
+      <h2 className={cx('title')}>{viewerDiary.title}</h2>
+      <span className={cx('date')}>{viewerDiary.date}</span>
       {renderDiary()}
+      <input
+        id="viewerBookmark"
+        className={cx('bookmarkInput')}
+        type="checkbox"
+        checked={viewerDiary.isBookmarked ? 'checked' : ''}
+        onChange={clickBookmark}
+      />
+      <label
+        htmlFor="viewerBookmark"
+        className={cx('bookmarkIcon', { active: viewerDiary.isBookmarked })}
+      >
+        <FontAwesomeIcon
+          icon={viewerDiary.isBookmarked ? faBookmark : faBookmarkLine}
+          // className={cx('bookmarkIcon', {
+          //   active: viewerDiary.isBookmarked,
+          // })}
+        />
+      </label>
       <button className={cx('editBtn')} type="button" onClick={clickEdit}>
         수정
       </button>
