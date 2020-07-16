@@ -55,20 +55,20 @@ const Timeline = () => {
             </ul>
           </div>
         </aside>
-        <div className={cx('nav')}>
+        <nav className={cx('nav')}>
           <NavLink
             to="/timeline/list"
             activeClassName={cx('active')}
             className={cx(pathname.includes('/timeline/media') ? '' : 'active')}
           >
             <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-            {/* <span className={cx('tooltip')}>리스트</span> */}
+            <div className={cx('tooltip')}>리스트</div>
           </NavLink>
           <NavLink to="/timeline/media" activeClassName={cx('active')}>
             <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-            {/* <span className={cx('tooltip')}>사진</span> */}
+            <div className={cx('tooltip')}>사진</div>
           </NavLink>
-        </div>
+        </nav>
         <SubRouter />
       </div>
     </main>
