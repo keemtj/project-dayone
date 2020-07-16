@@ -1,14 +1,35 @@
-$mainColor: #67bff9;
+$mainColor: #45C0FF;
 
 .calendarButton {
-  width: 52px;
-  height: 52px;
+  // background-color: rgb(235, 235, 235);
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding: 10px;
+  padding-left: 10px;
   margin-left: -1px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: none;
+  
+  .calendarDate {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-right: 30px;
+
+  }
+  .calendarIcon {
+    font-size: 16px;
+    margin-right: 13px;
+    color: $mainColor;
+    
+    &:hover {
+      color: red;
+    }
+  }
+
 }
-.calendarIcon {
-  color: #444;
-  color: $mainColor;
-  font-size: 18px;
+
+.calendarButton:hover {
+  .calendarIcon, .calendarDate {
+    color: $mainColor;
+  }
 }

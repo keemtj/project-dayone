@@ -1,13 +1,38 @@
-.submitBtn {
+$mainColor: #45C0FF;
+
+.wrapBtn {
   float: right;
-  margin-top: 5px;
-  padding: 9px 40px;
-  // margin-left: calc(100% );
-  background-color: #67bff9;
-  border: none;
-  border-radius: 3px;
-  color: #fff;
+}
+
+.submitBtn, .goBackBtn {
+  padding: 10px 39px;
+  // margin-top: 5px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.goBackBtn {
+  border: 1px solid #ccc;
+  color: #7a7a7a;
+
+  &:hover {
+    transition: 0.3s;
+    background-color: $mainColor;
+    border: 1px solid $mainColor;
+    color: #fff;
+  }
+}
+
+.submitBtn {
+  padding: 11px 40px;
+  background-color: #cacaca;
+  border: none;
+  color: #fff;
+  margin-left: 10px;
+  outline-style: none;
+}
+.submitBtn.active {
+  background-color: $mainColor;
 }

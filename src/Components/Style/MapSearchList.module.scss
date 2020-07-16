@@ -1,0 +1,159 @@
+.mapSearchMsg {
+  width: 290px;
+  height: 40px;
+  margin-top: 10px;
+  background: #ffffffb6;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.8rem 0.8rem 0.8rem 1.2rem;
+  line-height: 0.8rem;
+  color: rgb(245, 104, 104);
+  border-radius: 4px;
+}
+
+.mapSearchMenu {
+  width: 290px;
+  height: 85%;
+  overflow: scroll;
+  margin-top: 10px;
+  border-radius: 3px;
+  background: #ffffffb6;
+
+  .mapPagination {
+    width: 290px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .page {
+      cursor: pointer;
+      border: 1px solid #727272b6;
+      border-radius: 3px;
+      padding: 3px 5px;
+      margin: 0 10px;
+      color: #525151;
+
+      &:hover,
+      &:focus {
+        background: #afafaf91;
+      }
+    }
+    .page.current {
+      cursor: pointer;
+      border: 1px solid #727272b6;
+      border-radius: 3px;
+      padding: 3px 7px;
+      margin: 0 10px;
+      color: white;
+      font-weight: 600;
+      background: #727272b6;
+    }
+  }
+
+  .mapSearchList {
+    .mapSearchItem {
+      cursor: pointer;
+      width: 290px;
+      clear: both;
+      overflow: hidden;
+      border-bottom: 1px solid #727272b6;
+      padding: 10px;
+      &:hover,
+      &:focus {
+        background: #e0e0e09a;
+      }
+
+      .markerBg {
+        float: left;
+        width: 36px;
+        height: 37px;
+        margin: 10px 10px 20px 10px;
+        background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+          no-repeat;
+      }
+
+      .marker1 {
+        background-position: 0 -10px;
+      }
+      .marker2 {
+        background-position: 0 -56px;
+      }
+      .marker3 {
+        background-position: 0 -102px;
+      }
+      .marker4 {
+        background-position: 0 -148px;
+      }
+      .marker5 {
+        background-position: 0 -194px;
+      }
+      .marker6 {
+        background-position: 0 -240px;
+      }
+      .marker7 {
+        background-position: 0 -286px;
+      }
+      .marker8 {
+        background-position: 0 -332px;
+      }
+      .marker9 {
+        background-position: 0 -378px;
+      }
+      .marker10 {
+        background-position: 0 -423px;
+      }
+      .marker11 {
+        background-position: 0 -470px;
+      }
+      .marker12 {
+        background-position: 0 -516px;
+      }
+      .marker13 {
+        background-position: 0 -562px;
+      }
+      .marker14 {
+        background-position: 0 -608px;
+      }
+      .marker15 {
+        background-position: 0 -654px;
+      }
+
+      .info {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-weight: 400;
+        line-height: 1.3rem;
+
+        .placeName {
+          font-weight: 600;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          margin-bottom: 5px;
+        }
+
+        .roadAddressName {
+          font-size: 0.8rem;
+          font-weight: 500;
+          margin-bottom: 2px;
+        }
+
+        .addressName {
+          font-size: 0.8rem;
+          color: #444343;
+          padding-left: 26px;
+          margin-bottom: 2px;
+          background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+            no-repeat;
+        }
+
+        .phone {
+          font-size: 0.7rem;
+          color: #009900;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

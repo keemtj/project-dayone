@@ -16,7 +16,16 @@ const MainProvider = ({ children }) => {
     submitDiary,
     writeTitle,
     pushImg,
+    pushDiaryId,
+    getDiary,
+    clearCurrentDiary,
+    clearViewerDiary,
+    bookmarkDiary,
     patchBookmark,
+    deleteDiary,
+    setEditState,
+    editDiary,
+    editProfile,
   ] = usePosts();
 
   const [
@@ -30,13 +39,22 @@ const MainProvider = ({ children }) => {
 
   const mainData = {
     state,
+    dispatch,
     fetchData,
     writePost,
     submitDiary,
     writeTitle,
     pushImg,
+    pushDiaryId,
+    getDiary,
+    clearCurrentDiary,
+    clearViewerDiary,
+    bookmarkDiary,
     patchBookmark,
-    dispatch,
+    deleteDiary,
+    setEditState,
+    editDiary,
+    editProfile,
   };
 
   const loginData = {

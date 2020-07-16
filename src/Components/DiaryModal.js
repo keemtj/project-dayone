@@ -13,7 +13,7 @@ const Modal = () => {
   const { modalState, setModalState } = React.useContext(DiaryContext);
   const onClick = (e) => {
     if (
-      !e.target.className.includes('dimed') &&
+      !e.target.className.includes('dimmed') &&
       !e.target.className.includes('modalDeleteBtn')
     )
       return;
@@ -35,18 +35,18 @@ const Modal = () => {
   return (
     <div
       style={{ display: `${changeModalState()}` }}
-      className={cx('dimed')}
+      className={cx('dimmed')}
       onClick={onClick}
     >
       <div className={cx('modal')}>
         {changeModal()}
-        <button
+        {/* <button
           className={cx('modalDeleteBtn')}
           type="button"
           onClick={onClick}
         >
-          X
-        </button>
+          <FontAwesomeIcon icon={faTimes} />
+        </button> */}
       </div>
     </div>
   );

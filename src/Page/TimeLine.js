@@ -1,65 +1,103 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { useLocation } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faThLarge,
   faThList,
-  faSquare,
+  faTags,
+  faHashtag,
+  faChevronUp,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
-import TimeLineList from '../Components/TimeLineList';
-// import usePosts from '../Hook/usePosts';
+import SubRouter from '../Router/SubRouter';
 import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const Timeline = () => {
-  // const [fetchData] = usePosts();
+const TimeLine = () => {
+  const { pathname } = useLocation();
   const context = useContext(MainContext);
-  const { diaries } = context.state;
-  const [timelineNav, setTimeLineNav] = useState('card'); // card, list, media
+  const { state } = context;
+  const { userData } = state;
+  const { userId, pic, msg } = userData;
+  const altPic =
+    'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
 
-  const onClickNav = (e) => {
-    if (e.target.classList.length === 2) return;
-    setTimeLineNav(e.target.className);
+  const [scroll, setScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    !scroll && window.pageYOffset > 200 && setScroll(true);
+    scroll && window.pageYOffset <= 200 && setScroll(false);
+  };
+
+  window.addEventListener('scroll', checkScrollTop);
+
+  const backToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div>
+    <main>
       <div className={cx('timelineNav')}>
+        <aside className={cx('aside')}>
+          <div className={cx('profile')}>
+            <div
+              className={cx('profilePhoto')}
+              style={{
+                backgroundImage: `url(${pic || altPic})`,
+                opacity: `${pic ? 1.0 : 0.3}`,
+              }}
+            />
+            <div className={cx('profileUserId')}>{userId}</div>
+            <div className={cx('profileMsg')}>{msg}</div>
+          </div>
+          <div className={cx('tagBox')}>
+            <FontAwesomeIcon icon={faTags} className={cx('icon')} />
+            <span className={cx('tagBoxTitle')}>TAG</span>
+            <ul className={cx('tagListWrapper')}>
+              <li className={cx('tag')}>
+                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
+                <span>스터디</span>
+              </li>
+              <li className={cx('tag')}>
+                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
+                <span>프론트엔드</span>
+              </li>
+              <li className={cx('tag')}>
+                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
+                <span>리액트</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <nav className={cx('nav')}>
+          <NavLink
+            to="/timeline/list"
+            activeClassName={cx('active')}
+            className={cx(pathname.includes('/timeline/media') ? '' : 'active')}
+          >
+            <FontAwesomeIcon icon={faThList} className={cx('icon')} />
+            <div className={cx('tooltip')}>리스트</div>
+          </NavLink>
+          <NavLink to="/timeline/media" activeClassName={cx('active')}>
+            <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
+            <div className={cx('tooltip')}>사진</div>
+          </NavLink>
+        </nav>
+        <SubRouter />
         <button
           type="button"
-          onClick={onClickNav}
-          className={cx('card', `${timelineNav === 'card' ? 'active' : ''}`)}
+          className={cx('backToTop')}
+          onClick={backToTop}
+          style={{ display: scroll ? 'block' : 'none' }}
         >
-          <FontAwesomeIcon icon={faThLarge} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('list', `${timelineNav === 'list' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faThList} className={cx('icon')} />
-        </button>
-        <button
-          type="button"
-          onClick={onClickNav}
-          className={cx('media', `${timelineNav === 'media' ? 'active' : ''}`)}
-        >
-          <FontAwesomeIcon icon={faSquare} className={cx('icon')} />
+          <FontAwesomeIcon icon={faChevronUp} className={cx('icon')} />
         </button>
       </div>
-      <ul className={cx('timelineWrapper')}>
-        {diaries.map((diary) => (
-          <TimeLineList
-            key={diary.id}
-            diary={diary}
-            timelineNav={timelineNav}
-          />
-        ))}
-      </ul>
-    </div>
+    </main>
   );
 };
 
-export default Timeline;
+export default TimeLine;

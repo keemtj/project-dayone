@@ -32,7 +32,7 @@ cite,
 code,
 del,
 dfn,
-em,
+/* em, */
 img,
 ins,
 kbd,
@@ -41,7 +41,7 @@ s,
 samp,
 small,
 strike,
-strong,
+/* strong, */
 sub,
 sup,
 tt,
@@ -131,10 +131,6 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-a {
-  text-decoration: none;
-  color: #181818;
 }
 button {
   background-color: #fff;

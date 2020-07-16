@@ -1,0 +1,15 @@
+.map {
+  box-sizing: border-box;
+  width: 70%;
+  height: calc(100vh - 55px);
+  font-size: 1rem;
+
+  .mapSearchWrap {
+    border-radius: 1rem;
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+  }
+}

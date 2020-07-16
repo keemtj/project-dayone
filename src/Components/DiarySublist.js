@@ -1,19 +1,33 @@
-import React from 'react';
-import { useHistory, Link, Route } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/DiarySublist.module.scss';
 import { CalendarContext } from '../Context/CalendarContext';
-import DiaryViewer from '../Page/DiaryViewer';
+import { MapContext } from '../Context/MapContext';
+import { MainContext } from '../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const DiarySublist = ({ mapList }) => {
-  const calCtx = React.useContext(CalendarContext);
+const DiarySublist = () => {
+  const mainCtx = useContext(MainContext);
+  const { dispatch } = mainCtx;
+
+  const calCtx = useContext(CalendarContext);
+  const date = calCtx && calCtx.calendarState.selectedDate;
   const calendarList = calCtx && calCtx.calendarState.sublist;
-  const subList = calendarList || mapList;
+
+  const mapCtx = useContext(MapContext);
+  const mapList = mapCtx && mapCtx.mapState.sublist;
+
+  const currentPage = useLocation().pathname;
+  const subList = currentPage === '/calendar' ? calendarList : mapList;
   const history = useHistory();
 
-  const writeDiary = () => history.push('/diary');
+  const writeDiary = () => {
+    dispatch({ type: 'CHANGE_DATE', date });
+    history.push('/diary');
+  };
 
   return (
     <>
@@ -21,7 +35,12 @@ const DiarySublist = ({ mapList }) => {
         <button type="button" className={cx('addBtn')} onClick={writeDiary}>
           +
         </button>
-        <li>{subList.length ? null : 'blabla'}</li>
+        <li
+          style={{ display: subList.length ? 'none' : 'block' }}
+          className={cx('message')}
+        >
+          일기를 작성해 주세요
+        </li>
         {subList.map(({ id, title, date, location, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
@@ -44,7 +63,6 @@ const DiarySublist = ({ mapList }) => {
           );
         })}
       </ul>
-      <Route path="/diaryViewer/:id" component={DiaryViewer} />
     </>
   );
 };

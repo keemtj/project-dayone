@@ -73,7 +73,6 @@ const useCalendar = () => {
   };
 
   const onClickNextYear = () => {
-    if (year >= now.year) return;
     dispatch({ type: 'GET_NEW_CALENDAR', year: year + 1, month });
     getDatesArray(year + 1, month);
   };
@@ -89,7 +88,6 @@ const useCalendar = () => {
   };
 
   const onClickNextMonth = () => {
-    if (year === now.year && month === now.month) return;
     if (month >= 12) {
       dispatch({ type: 'GET_NEW_CALENDAR', year: year + 1, month: 1 });
       getDatesArray(year + 1, 1);
@@ -131,15 +129,14 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_MONTH_INPUT', numberValue });
-    console.log('modal', modal.inputs, 'now', now);
+    dispatch({ type: 'CHANGE_MONTH_INPUT', value: numberValue });
 
     if ((value !== '' && numberValue < 1) || numberValue > 12) {
       dispatch({ type: 'SHOW_WARNING', msg: '월 선택은 1 ~ 12만 가능합니다.' });
-    } else if (modal.inputs.year === now.year && numberValue > now.month) {
+    } else if (modal.inputs.year > now.year + 100) {
       dispatch({
         type: 'SHOW_WARNING',
-        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+        msg: '100년 이후의 달력은 볼 수 없습니다.',
       });
     } else {
       dispatch({ type: 'REMOVE_WARNING' });
@@ -150,16 +147,12 @@ const useCalendar = () => {
     const { value } = target;
     const numberValue = parseInt(value, 10);
 
-    dispatch({ type: 'CHANGE_YEAR_INPUT', numberValue });
-    console.log('modal', modal.inputs, 'now', now);
+    dispatch({ type: 'CHANGE_YEAR_INPUT', value: numberValue });
 
-    if (
-      numberValue > now.year ||
-      (numberValue === now.year && modal.inputs.month > now.month)
-    ) {
+    if (numberValue > now.year + 100) {
       dispatch({
         type: 'SHOW_WARNING',
-        msg: '오늘 날짜 이후의 달력은 볼 수 없습니다.',
+        msg: '100년 이후의 달력은 볼 수 없습니다.',
       });
     } else {
       dispatch({ type: 'REMOVE_WARNING' });
@@ -171,6 +164,20 @@ const useCalendar = () => {
     changeCalendarState();
   };
 
+  const getSublist = (e, diaryList) => {
+    const target =
+      e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
+    const date = target.className.split(' ')[1];
+    const sublist = diaryList.filter((diary) => diary.date === date);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: date });
+  };
+
+  const getTodaySublist = (present, diaryList) => {
+    const today = `${present.year}-${present.month}-${present.date}`;
+    const sublist = diaryList.filter((diary) => diary.date === today);
+    dispatch({ type: 'GET_SUBLIST', sublist, selectedDate: today });
+  };
+
   useEffect(() => {
     getNow();
   }, []);
@@ -180,7 +187,6 @@ const useCalendar = () => {
     dispatch,
     getFirstDay,
     getDatesArray,
-    getNow,
     onClickPrevMonth,
     onClickPrevYear,
     onClickNextMonth,
@@ -192,6 +198,8 @@ const useCalendar = () => {
     enterInputs,
     changeYearInput,
     changeMonthInput,
+    getSublist,
+    getTodaySublist,
   };
 };
 

@@ -1,6 +1,6 @@
-$mainColor: #67bff9;
+$mainColor: #45c0ff;
 
-.dimed {
+:global .dimmed {
   display: none;
   position: fixed;
   z-index: 100;
@@ -11,25 +11,72 @@ $mainColor: #67bff9;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal {
+
+:global .modal {
   position: relative;
-  margin: 160px auto 0;
-  width: 80%;
-  max-width: 580px;
+  margin: 115px auto 0;
+  width: 580px;
+  // width: 80%;
+  // max-width: 580px;
   min-height: 150px;
   padding: 20px;
   border-radius: 7px;
   background-color: #fff;
 
-  .modalDeleteBtn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 20px;
-    border: none;
-    color: rgb(150, 150, 150);
-    background-color: #fff;
-  }
+  // .modalDeleteBtn {
+  //   position: absolute;
+  //   top: 15px;
+  //   right: 15px;
+  //   font-size: 20px;
+  //   border: none;
+  //   color: rgb(150, 150, 150);
+  //   background-color: #fff;
+  //   cursor: pointer;
+  //   transition: 0.3s;
+
+  //   &:hover {
+  //     color: rgb(100, 100, 100);
+  //     transition: 0.3s;
+  //   }
+  // }
+}
+
+.warningMsg {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 4.5rem;
+  left: 0;
+  font-size: 0.8rem;
+  color: rgb(223, 0, 0);
+  text-align: center;
+  display: none;
+}
+
+:global .btnWrapper {
+  width: 15rem;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+:global .cancelBtn,
+:global .submitBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 10px 40px;
+  border-radius: 3px;
+}
+
+:global .cancelBtn {
+  border: 1px solid #ddd;
+}
+
+:global .submitBtn {
+  background: #45c0ff;
+  color: #fff;
 }
 
 .small {

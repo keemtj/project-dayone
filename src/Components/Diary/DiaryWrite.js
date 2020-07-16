@@ -8,7 +8,7 @@ import { MainContext } from '../../Context/MainContext';
 const cx = classNames.bind(styles);
 
 const DiaryWrite = () => {
-  const { writePost, pushImg } = useContext(MainContext);
+  const { state, writePost, pushImg } = useContext(MainContext);
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -20,24 +20,13 @@ const DiaryWrite = () => {
         toolbar: [
           [{ font: [] }, { size: [] }],
           ['image'],
-          ['underline', 'strike'],
+          ['bold', 'italic', 'underline', 'strike'],
           [{ list: 'ordered' }, { list: 'bullet' }],
           ['blockquote', 'link'],
         ],
       },
-      formats: [
-        'font',
-        'size',
-        'image',
-        'bold',
-        'italic',
-        'underline',
-        'strike',
-        'ordered',
-        'bullet',
-        'blockquote',
-        'link',
-      ],
+      // formats: [
+      // ],
     });
 
     // Quill - text change event 감지
@@ -47,6 +36,16 @@ const DiaryWrite = () => {
         writePost(quill.root.innerHTML);
       }
     });
+
+    // console.log(quill, typeof quill);
+    // quill.dangerouslySetInnerHTML = { __html: state.currentDiary.content };
+    // quill.innerHTML = state.currentDiary.content;
+    console.log(quillElement.current.firstElementChild);
+    quillElement.current.firstElementChild.innerHTML =
+      state.currentDiary.content;
+    // quillElement.current.firstElementChild.dangerouslySetInnerHTML = {
+    //   __html: state.currentDiary.content,
+    // };
   }, []);
 
   const onBlur = () => {
@@ -61,11 +60,20 @@ const DiaryWrite = () => {
         images.push(v.src);
       });
     });
-    console.log(images);
     pushImg(images);
   };
 
-  return <div className={cx('writer')} ref={quillElement} onBlur={onBlur} />;
+  return (
+    <>
+      <div
+        className={cx('writer')}
+        ref={quillElement}
+        onBlur={onBlur}
+        // dangerouslySetInnerHTML={{ __html: state.currentDiary.content }}
+      />
+      {/* <span>ewfwef</span> */}
+    </>
+  );
 };
 
-export default DiaryWrite;
+export default React.memo(DiaryWrite);

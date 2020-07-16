@@ -1,19 +1,32 @@
-$mainColor: #67bff9;
+$mainColor: #45C0FF;
 
 .mapButton {
-  padding: 10px 10px 10px 0;
-  margin-bottom: 50px;
+  // background-color: rgb(219, 247, 255);
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+  text-align: start;
   border: none;
-  background-color: #fff;
+
+  .mapMsg {
+    font-size: 14px;
+    color: $mainColor;
+    color: rgb(145, 145, 145);
+    color: #7a7a7a;
+    // background-color: green;
+  }
+  .mapIcon {
+    // background-color: tomato;
+    margin-right: 13px;
+    color: $mainColor;
+    font-size: 17px;
+    color: $mainColor;
+    margin-top: -2px;
+  }
 }
-.mapIcon {
-  color: $mainColor;
-  font-size: 25px;
-}
-.mapMsg {
-  padding-left: 10px;
-  vertical-align: 4px;
-  font-size: 15px;
-  color: $mainColor;
-  color: rgb(145, 145, 145);
+
+.mapButton:hover {
+  .mapMsg, .mapIcon {
+    color: $mainColor;
+  }
 }

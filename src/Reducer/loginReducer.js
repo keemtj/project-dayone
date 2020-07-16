@@ -1,12 +1,15 @@
 const loginInitialState = {
-  // isLoggedIn: false,
-  // users: [
-  //   { id: 1, userId: 'dorodoro', userPw: '123', active: false },
-  //   { id: 2, userId: 'jay', userPw: '123', active: false },
-  //   { id: 3, userId: 'jimmy', userPw: '123', active: false },
-  //   { id: 4, userId: 'haeuni', userPw: '123', active: false },
-  //   { id: 5, userId: 'f', userPw: 'f', active: false },
-  // ],
+  users: [
+    // {
+    //   id: 6,
+    //   userId: 'f',
+    //   userPw: 'f',
+    //   pic: '',
+    //   msg: '',
+    //   diareis: []
+    //   isLoggedIn: false,
+    // },
+  ],
   inputs: {
     id: '',
     password: '',
@@ -31,7 +34,7 @@ const loginReducer = (state, action) => {
           // eslint-disable-next-line no-unused-expressions
           return user.userId === action.userId &&
             user.userPw === action.password
-            ? { ...user, active: !user.active }
+            ? { ...user, isLoggedIn: !user.isLoggedIn }
             : user;
         }),
         isLoggedIn: !state.isLoggedIn,
@@ -50,7 +53,7 @@ const loginReducer = (state, action) => {
       return {
         ...state,
         isLoggedIn: false,
-        users: state.users.map((user) => ({ ...user, active: false })),
+        users: state.users.map((user) => ({ ...user, isLoggedIn: false })),
         message: '',
       };
     default:

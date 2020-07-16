@@ -1,82 +1,77 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-nested-ternary */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import { MainContext } from '../Context/MainContext';
 import styles from './Style/TimeLineList.module.scss';
+import { MainContext } from '../Context/MainContext';
+import image1 from '../Util/asset/image1.jpg';
+import image2 from '../Util/asset/image2.jpg';
+import image3 from '../Util/asset/image3.jpg';
+import image4 from '../Util/asset/image4.jpg';
 
 const cx = classNames.bind(styles);
 
-const TimeLineList = ({ diary, timelineNav }) => {
-  const { id, title, content, date, imagePaths, isBookmarked } = diary;
+const TimeLineList = () => {
   const context = useContext(MainContext);
-  const { patchBookmark } = context;
+  const { state, patchBookmark } = context;
+  const { diaries } = state;
+  const images = [image1, image2, image3, image4];
 
-  const onChangeBookmark = (e) => {
-    patchBookmark(id, e.target.checked);
-    // console.log('[timeline] diary.id =', id);
-    // console.log('[timeline] e.target.checked =', e.target.checked);
+  const sortDiaries = diaries.sort((a, b) => b.id - a.id);
+
+  const onChangeBookmark = ({ target }) => {
+    const id = +target.attributes.id.nodeValue;
+    patchBookmark(id, target.checked);
   };
 
   return (
-    <li className={cx(`timeline-${timelineNav}`)}>
-      {console.log('current bookmark checked:', isBookmarked)}
-      <input
-        id={id}
-        type="checkbox"
-        checked={isBookmarked ? 'checked' : ''}
-        onChange={onChangeBookmark}
-      />
-      <label htmlFor={id}>
-        <span>
-          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarkIcon')} />
-        </span>
-      </label>
-      {/* <button
-        type="button"
-        className={cx('iconBtn')}
-        onClick={onChangeBookmark}
-      >
-        {isBookmarked ? (
-          <FontAwesomeIcon icon={faBookmark} className={cx('bookmarked')} />
-        ) : (
-          <FontAwesomeIcon icon={faBookmark} className={cx('notBookmarked')} />
-        )}
-      </button> */}
-      <Link to={`/diaryViewer/${id}`}>
-        <figure>
-          <div
-            className={cx('thumbnail')}
-            style={{
-              backgroundImage: `url(
-                ${
-                  imagePaths.length
-                    ? imagePaths[0]
-                    : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+    <ul className={cx('timelineWrapper')}>
+      {sortDiaries.map((diary) => (
+        <li key={diary.id} className={cx('timelineList')}>
+          <Link
+            to={`/diaryViewer/${diary.id}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <figure>
+              <img
+                className={cx('thumbnail')}
+                src={
+                  diary.imagePaths.length
+                    ? diary.imagePaths[0]
+                    : diary.id > 4
+                    ? images[2]
+                    : images[diary.id - 1]
                 }
-                )`,
-            }}
+                alt="https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png"
+              />
+              <figcaption>
+                <div className={cx('title')}>{diary.title}</div>
+                <div className={cx('date')}>
+                  {diary.date.split('-').join('. ')}
+                </div>
+                <p className={cx('content')}>{diary.content}</p>
+              </figcaption>
+            </figure>
+          </Link>
+          <input
+            id={diary.id}
+            type="checkbox"
+            checked={diary.isBookmarked ? 'checked' : ''}
+            onChange={onChangeBookmark}
           />
-          <figcaption>
-            <div className={cx('diaryTitle')}>
-              {isBookmarked ? 'checked' : 'unchecked'}
-              {timelineNav === 'media' ? '' : title}
-            </div>
-            <div className={cx('diaryDate')}>
-              {timelineNav === 'list' && date}
-            </div>
-            <p className={cx('diaryContent')}>
-              {timelineNav === 'card' || timelineNav === 'media'
-                ? null
-                : content}
-            </p>
-          </figcaption>
-        </figure>
-      </Link>
-    </li>
+          <label htmlFor={diary.id}>
+            <span>
+              <FontAwesomeIcon
+                icon={faBookmark}
+                className={cx('bookmarkIcon')}
+              />
+            </span>
+          </label>
+        </li>
+      ))}
+    </ul>
   );
 };
 
