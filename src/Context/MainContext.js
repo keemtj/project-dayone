@@ -25,6 +25,7 @@ const MainProvider = ({ children }) => {
     deleteDiary,
     setEditState,
     editDiary,
+    editProfile,
   ] = usePosts();
 
   const [
@@ -53,6 +54,7 @@ const MainProvider = ({ children }) => {
     deleteDiary,
     setEditState,
     editDiary,
+    editProfile,
   };
 
   const loginData = {

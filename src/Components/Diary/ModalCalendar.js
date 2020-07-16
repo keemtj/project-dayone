@@ -41,7 +41,7 @@ const ModalCalendar = () => {
   const onClickDate = (e) => {
     const target =
       e.target.nodeName !== 'BUTTON' ? e.target.parentNode : e.target;
-    const date = target.className.split(' ')[0];
+    const date = target.className.split(' ')[1];
     setDateState(date);
   };
 
