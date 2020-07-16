@@ -167,6 +167,7 @@ a:hover {
   position: fixed;
   right: calc(100vw - 92%);
   bottom: calc(100vh - 95%);
+  padding-bottom: 3px;
   background-color: rgba($color: $mainColor, $alpha: 1);
   border: none;
   border-radius: 3px;
