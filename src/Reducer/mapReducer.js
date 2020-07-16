@@ -1,9 +1,10 @@
+/* eslint-disable no-case-declarations */
 export const mapInitState = {
+  map: {},
   sublist: [],
   places: [],
   pagination: {},
-  pageList: [],
-  currentPage: 0,
+  placeMarkers: [],
   isSearchVisible: false,
   isPlacesVisible: false,
   message: '',
@@ -11,6 +12,11 @@ export const mapInitState = {
 
 export const mapReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_MAP':
+      return {
+        ...state,
+        map: action.map,
+      };
     case 'SET_SUBLIST':
       return {
         ...state,
@@ -26,15 +32,10 @@ export const mapReducer = (state, action) => {
         ...state,
         pagination: action.pagination,
       };
-    case 'SET_PAGELIST':
+    case 'SET_PLACEMARKERS':
       return {
         ...state,
-        pageList: action.pageList,
-      };
-    case 'SET_CURRENT_PAGE':
-      return {
-        ...state,
-        currentPage: action.currentPage,
+        placeMarkers: action.placeMarkers,
       };
     case 'SET_SEARCH_VISIBLE':
       return {
@@ -62,6 +63,27 @@ export const mapReducer = (state, action) => {
         ...state,
         message: action.message,
       };
+    case 'UPDATE_PLACE':
+      const {
+        places,
+        pagination,
+        placeMarkers,
+        isSearchVisible,
+        isPlacesVisible,
+        message,
+      } = action.payload;
+
+      return {
+        map: state.map,
+        sublist: state.sublist,
+        places,
+        pagination,
+        placeMarkers,
+        isSearchVisible,
+        isPlacesVisible,
+        message,
+      };
+
     default:
       return state;
   }

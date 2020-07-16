@@ -1,9 +1,9 @@
-$mainColor: #36acfa;
+$mainColor: #45c0ff;
 
-.search-form-wrapper {
+.searchFormWrapper {
   position: relative;
 
-  .search-icon-btn {
+  .searchIconBtn {
     z-index: 999;
     position: absolute;
     top: 0;
@@ -19,13 +19,13 @@ $mainColor: #36acfa;
     cursor: pointer;
   }
 
-  .search-form {
+  .searchForm {
     display: flex;
     margin-left: 2.5rem;
     width: 0px;
     transition: width ease 0.6s;
 
-    .search-input {
+    .searchInput {
       transition: width ease 0.4s;
       width: 0px;
       height: 2.5rem;
@@ -34,7 +34,7 @@ $mainColor: #36acfa;
       text-indent: 0.7rem;
     }
 
-    .search-btn {
+    .searchBtn {
       transition: width ease 0.2s;
       width: 0px;
       height: 2.5rem;
@@ -45,19 +45,19 @@ $mainColor: #36acfa;
     }
   }
 
-  .search-form.visible {
+  .searchForm.visible {
     margin-left: 2.5rem;
     transition: width 0.6s;
     border-radius: 3px;
     width: 250px;
 
-    .search-input {
+    .searchInput {
       width: 80%;
       height: 2.5rem;
       text-indent: 0.7rem;
     }
 
-    .search-btn {
+    .searchBtn {
       padding: 0;
       width: 20%;
       height: 2.5rem;
