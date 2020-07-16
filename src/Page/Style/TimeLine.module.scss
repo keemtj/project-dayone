@@ -94,7 +94,8 @@ $mainColor: #45c0ff;
   }
 
   a:active,
-  a:hover {
+  a:hover,
+  a:focus {
     color: $mainColor;
   }
 

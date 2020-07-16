@@ -25,7 +25,8 @@ const DiaryViewer = () => {
     };
   }, []);
 
-  if (!state.viewerDiary) return <p>다이어리가 존재하지 않습니다.</p>;
+  if (!state.viewerDiary)
+    return <p className={cx('errorMsg')}>다이어리가 존재하지 않습니다.</p>;
 
   const clickEdit = () => {
     setEditState();
