@@ -33,38 +33,44 @@ const TimeLineList = () => {
   );
 
   const getMoreDiaries = () => {
-    console.log(renderDiaries, start, end);
     if (diaryAmount < end) {
       end = diaryAmount;
       setHasMoreState(false);
-      console.log('no more', renderDiaries, start, end);
+      start = 10;
+      end = 20;
       return;
     }
     setRenderDiaries(renderDiaries.concat(sortDiaries.slice(start, end)));
     start += 10;
     end += 10;
   };
-  console.log(start, end);
 
   const onChangeBookmark = ({ target }) => {
     const id = +target.attributes.id.nodeValue;
     patchBookmark(id, target.checked);
   };
 
+  console.log(start, end);
+
   return (
     <ul className={cx('timelineWrapper')}>
       <InfiniteScroll
+        style={{ overflowY: 'hidden' }}
         dataLength={renderDiaries.length}
         next={getMoreDiaries}
         hasMore={hasMoreState}
-        loader={<h4>Loading...</h4>}
+        loader={
+          <h4 style={{ margin: '30px 0 40px', textAlign: 'center' }}>
+            Loading...
+          </h4>
+        }
         endMessage={
           <p
             style={{
               textAlign: 'center',
             }}
           >
-            <b style={{ display: 'block', marginTop: '97px' }}>
+            <b style={{ display: 'block', margin: '30px 0 40px' }}>
               모든 일기를 보셨습니다
             </b>
           </p>
