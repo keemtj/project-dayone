@@ -8,17 +8,24 @@ const initialState = {
     // id: 1,
     // userId: '',
     // userPw: '',
+    // pic: '',
+    // msg: '',
     // active: true,
   },
   diaries: [
     // {
-    //   id: 1,
-    //   title: '',
-    //   content: '',
-    //   date: '',
-    //   location: {},
-    //   isBookmarked: false,
-    //   imagePaths: [],
+    // id: 0,
+    // title: '',
+    // content: '',
+    // date: getToday(),
+    // location: {
+    //   lat: 0,
+    //   lng: 0,
+    //   name: '',
+    // },
+    // isBookmarked: false,
+    // tags: []
+    // imagePaths: [],
     // },
   ],
   currentDiary: {
@@ -32,9 +39,11 @@ const initialState = {
       name: '',
     },
     isBookmarked: false,
+    tags: [],
     imagePaths: [],
   },
   viewerDiary: {},
+  allTags: [],
   editState: false,
   error: {
     state: false,
@@ -133,6 +142,9 @@ const mainReducer = (state, action) => {
             ? { ...diary, isBookmarked: !diary.isBookmarked }
             : diary;
         }),
+        viewerDiary: !state.viewerDiary.id
+          ? {}
+          : { ...state.viewerDiary, isBookmarked: action.isBookmarked },
       };
     case 'LOG_OUT':
       // return initialState;
@@ -158,6 +170,26 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         userData: { ...state.userData, msg: action.msg, pic: action.pic },
+      };
+    case 'PUSH_TAG':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          tags: state.currentDiary.tags.concat(action.tag),
+          allTags: state.allTags.concat(action.tag),
+        },
+      };
+    case 'GET_ALL_TAGS': // 지울수도 있음
+      return {
+        ...state,
+        allTags: (() => {
+          const tagArr = [];
+          state.diaries.forEach((diary) => {
+            diary.tags.forEach((tag) => tagArr.push(tag));
+          });
+          return tagArr;
+        })(),
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

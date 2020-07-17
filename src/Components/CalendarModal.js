@@ -37,7 +37,7 @@ const CalendarModal = () => {
               className="year"
               type="number"
               min="1970"
-              max={now.year}
+              max={now.year + 100}
               placeholder={now.year}
               onChange={changeYearInput}
               onKeyUp={enterInputs}

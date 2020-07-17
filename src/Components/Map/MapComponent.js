@@ -158,6 +158,7 @@ const MapComponent = () => {
 
     const searchDetailAddrFromCoords = (coords, callback) => {
       // 좌표로 법정동 상세 주소 정보를 요청합니다
+      console.log('===searchDetailAddrFromCoords');
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     };
 
@@ -215,6 +216,8 @@ const MapComponent = () => {
     };
 
     const makeMarkerClickListener = (marker, lat, lng) => () => {
+      console.log('makeMarkerClickListener');
+
       if (!selectedMarker || marker !== selectedMarker) {
         !!selectedMarker && selectedMarker.setImage(normalImage);
         marker.setImage(clickImage);
@@ -224,6 +227,8 @@ const MapComponent = () => {
     };
 
     const makeMapClickListener = (mouseEvent) => {
+      console.log('makeMapClickListener');
+
       searchDetailAddrFromCoords(mouseEvent.latLng, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
           const content = result[0].road_address
@@ -238,7 +243,12 @@ const MapComponent = () => {
       });
     };
 
+    kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
+      makeMapClickListener(mouseEvent);
+    });
+
     const makeDiaryMarkers = (diaries) => {
+      console.log('makeDiaryMarkers');
       const markers = [];
       diaries.forEach((diary) => {
         const hasLocation = Object.keys(diary.location).length > 0;
@@ -256,10 +266,6 @@ const MapComponent = () => {
           'click',
           makeMarkerClickListener(marker, lat, lng),
         );
-
-        kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
-          makeMapClickListener(mouseEvent);
-        });
 
         kakao.maps.event.addListener(
           marker,

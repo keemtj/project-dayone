@@ -1,9 +1,7 @@
-/* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/MypageModal.module.scss';
 
@@ -27,6 +25,11 @@ const MypageModal = ({ pageCtx }) => {
   const onSubmit = () => {
     editProfile(inputState.msg, inputState.pic);
     closeModal();
+  };
+
+  const onEnter = (e) => {
+    if (e.keyCode !== 13) return;
+    onSubmit();
   };
 
   return (
@@ -65,10 +68,11 @@ const MypageModal = ({ pageCtx }) => {
         <span className={cx('inputName')}>상태 메시지</span>
         <input
           type="text"
-          id="msgInput"
           className={cx('msgInput')}
           onChange={changeInput}
+          onKeyUp={onEnter}
           value={inputState.msg}
+          placeholder="상태 메시지를 입력해 주세요"
         />
         <div className={cx('btnWrapper')}>
           <button

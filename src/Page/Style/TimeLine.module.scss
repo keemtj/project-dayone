@@ -46,8 +46,11 @@ $mainColor: #45c0ff;
       // border-radius: 4px;
       margin-top: 1.5rem;
       padding: 2rem;
+      padding-bottom: 1.3rem;
       width: 100%;
       height: auto;
+      max-height: 300px;
+      overflow: scroll;
 
       .icon {
         color: $mainColor;
@@ -61,8 +64,9 @@ $mainColor: #45c0ff;
 
       .tagListWrapper {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
-        margin-top: 1rem;
+        margin-top: 1.4rem;
         font-size: 1rem;
         font-weight: 500;
 
@@ -70,7 +74,8 @@ $mainColor: #45c0ff;
           font-size: 1rem;
         }
         .tag {
-          padding-left: 0.5rem;
+          margin-right: 0.7rem;
+          margin-bottom: 1rem;
 
           &:first-child {
             padding-left: 0;
@@ -103,6 +108,12 @@ $mainColor: #45c0ff;
     z-index: 10;
     border-radius: 5px;
     color: #fff;
+  }
+
+  a:active,
+  a:hover,
+  a:focus {
+    color: $mainColor;
   }
 
   a:nth-child(1) .tooltip {
@@ -150,4 +161,33 @@ a:hover {
 
 .active .icon {
   color: $mainColor;
+}
+
+.backToTop {
+  position: fixed;
+  right: calc(100vw - 92%);
+  bottom: calc(100vh - 95%);
+  padding-bottom: 3px;
+  background-color: rgba($color: $mainColor, $alpha: 1);
+  border: none;
+  border-radius: 3px;
+  width: 40px;
+  height: 35px;
+  cursor: pointer;
+  outline: none;
+  animation: fadeIn 0.3s;
+
+  .icon {
+    color: #ffffff;
+    font-size: 1.6rem;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

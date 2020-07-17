@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -8,20 +9,52 @@ import {
   faThList,
   faTags,
   faHashtag,
+  faChevronUp,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Style/TimeLine.module.scss';
 import SubRouter from '../Router/SubRouter';
 import { MainContext } from '../Context/MainContext';
+
 const cx = classNames.bind(styles);
 
-const Timeline = () => {
+const TimeLine = () => {
   const { pathname } = useLocation();
   const context = useContext(MainContext);
-  const { state } = context;
-  const { userData } = state;
+  const { state, getAllTags } = context;
+  const { userData, diaries } = state;
   const { userId, pic, msg } = userData;
   const altPic =
     'https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png';
+
+  const [scroll, setScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    !scroll && window.pageYOffset > 200 && setScroll(true);
+    scroll && window.pageYOffset <= 200 && setScroll(false);
+  };
+
+  window.addEventListener('scroll', checkScrollTop);
+
+  const backToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const tagArr = [];
+  diaries.forEach((diary) => {
+    diary.tags.forEach((tag) => {
+      if (tagArr.includes(tag)) return;
+      tagArr.push(tag);
+    });
+  });
+
+  const renderTags = () => {
+    return tagArr.map((tag, i) => (
+      <li key={i} className={cx('tag')}>
+        <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
+        {tag}
+      </li>
+    ));
+  };
 
   return (
     <main>
@@ -41,20 +74,7 @@ const Timeline = () => {
           <div className={cx('tagBox')}>
             <FontAwesomeIcon icon={faTags} className={cx('icon')} />
             <span className={cx('tagBoxTitle')}>TAG</span>
-            <ul className={cx('tagListWrapper')}>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>스터디</span>
-              </li>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>프론트엔드</span>
-              </li>
-              <li className={cx('tag')}>
-                <FontAwesomeIcon icon={faHashtag} className={cx('icon')} />
-                <span>리액트</span>
-              </li>
-            </ul>
+            <ul className={cx('tagListWrapper')}>{renderTags()}</ul>
           </div>
         </aside>
         <nav className={cx('nav')}>
@@ -72,9 +92,17 @@ const Timeline = () => {
           </NavLink>
         </nav>
         <SubRouter />
+        <button
+          type="button"
+          className={cx('backToTop')}
+          onClick={backToTop}
+          style={{ display: scroll ? 'block' : 'none' }}
+        >
+          <FontAwesomeIcon icon={faChevronUp} className={cx('icon')} />
+        </button>
       </div>
     </main>
   );
 };
 
-export default Timeline;
+export default TimeLine;

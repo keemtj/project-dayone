@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,9 +27,10 @@ const ProfileInfo = ({ pageCtx }) => {
       <div
         className={cx('profilePic')}
         style={{
-          backgroundImage: pic ? `url(${pic})` : `url(${altPic})`,
-          opacity: pic ? 1 : 0.5,
+          backgroundImage: `url(${pic || altPic})`,
+          opacity: pic ? 1 : 0.3,
         }}
+        onClick={onClickSetting}
       />
       <div className={cx('infoWrapper')}>
         <h2 className={cx('greeting')}>
@@ -40,7 +43,7 @@ const ProfileInfo = ({ pageCtx }) => {
         <h3 className={cx('profileMsg')}>{msg}</h3>
         <ul
           className={cx('statistics')}
-          style={{ margin: msg ? '2rem 0 0' : '3rem 0 0' }}
+          style={{ margin: msg ? '2rem 0 0' : '3.6rem 0 0' }}
         >
           <li>
             <span className={cx('numbers')}>{diaries.length}</span>
@@ -61,8 +64,7 @@ const ProfileInfo = ({ pageCtx }) => {
         className={cx('settingBtn')}
         onClick={onClickSetting}
         style={{
-          left: `calc(29rem + ${userId.length * 13}px)`,
-          top: msg ? `1.5rem` : '1.8rem',
+          left: `calc(29rem + ${userId.length * 12}px)`,
         }}
       >
         <FontAwesomeIcon icon={faCog} />

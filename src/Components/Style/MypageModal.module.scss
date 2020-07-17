@@ -68,11 +68,15 @@
   .msgInput {
     width: 100%;
     border: none;
-    // border-bottom: 1px solid #45c0ff;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
     outline: none;
     line-height: 1.5rem;
+
+    &::placeholder {
+      font-size: 0.7rem;
+      color: #aaa;
+    }
   }
 
   .imgInput {
