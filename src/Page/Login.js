@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useCallback } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Style/Login.module.scss';
 import { LoginContext } from '../Context/MainContext';
@@ -24,6 +24,7 @@ const Login = () => {
     fetchChange(name, value); // dispatch({ type: 'CHANGE_INPUT', name, value });
   };
 
+  console.log('render login');
   const onSubmit = (e) => {
     e.preventDefault();
     users.map(

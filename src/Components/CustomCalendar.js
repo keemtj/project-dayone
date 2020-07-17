@@ -24,6 +24,8 @@ const CustomCalendar = () => {
     getTodaySublist,
   } = calCtx;
 
+  console.log('render');
+
   const { diaries } = state;
   const { now, calendar } = calendarState;
   const { year, month, datesArray, startDay } = calendar;
