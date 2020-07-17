@@ -4,6 +4,7 @@ $mainColor: #45C0FF;
   position: relative;
   margin-top: 70px;
   margin-top: 55px;
+  // background-color: yellowgreen;
 
   .title {
     max-width: calc(100% - 105px);
@@ -41,10 +42,9 @@ $mainColor: #45C0FF;
       padding-left: 40px;
     }
   }
-
   
   & button {
-    padding: 9px 39px;
+    padding: 10px 39px;
     border: 1px solid #c7c7c7;
     color: #7a7a7a;
     
@@ -57,7 +57,11 @@ $mainColor: #45C0FF;
     font-size: 16px;
     margin-bottom: 30px;
   }
-  & button:hover, & button:focus, & .goBackBtn {
+
+  & button:not(.bookmarkBtn):hover, 
+  & button:not(.bookmarkBtn):focus, 
+  .goBackBtn {
+    transition: 0.3s;
     border: 1px solid $mainColor;
     color: #fff;
     background-color: $mainColor;
@@ -65,12 +69,32 @@ $mainColor: #45C0FF;
   }
 
   .goBackBtn {
-    padding: 9px 30px;
+    padding: 10px 30px;
     margin-left: calc(100% - 342px);
   }
   .deleteBtn {
     margin-left: 9px;
   }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  .bookmarkIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    
+    &.active {
+      color: $mainColor;
+    }
+  }
+}
+
+.errorMsg {
+  margin-top: 40px;
+  font-size: 17px;
 }
 
 

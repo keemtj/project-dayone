@@ -26,6 +26,8 @@ const MainProvider = ({ children }) => {
     setEditState,
     editDiary,
     editProfile,
+    pushTag,
+    getAllTags,
   ] = usePosts();
 
   const [
@@ -55,6 +57,8 @@ const MainProvider = ({ children }) => {
     setEditState,
     editDiary,
     editProfile,
+    pushTag,
+    getAllTags,
   };
 
   const loginData = {

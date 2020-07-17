@@ -9,7 +9,6 @@ const usePosts = () => {
     dispatch({ type: 'LOADING' });
     try {
       const diaries = await Api.getDiaries();
-      // console.log('diaries:', diaries);
       dispatch({ type: 'SUCCESS', diaries });
     } catch (e) {
       dispatch({
@@ -19,7 +18,8 @@ const usePosts = () => {
     }
   };
 
-  const submitDiaryToServer = async () => {
+  const submitDiary = async () => {
+    dispatch({ type: 'SUBMIT_DIARY' });
     try {
       await Api.postDiaries(state.currentDiary);
     } catch (e) {
@@ -49,7 +49,8 @@ const usePosts = () => {
     }
   };
 
-  const deleteDiaryFromServer = async (id) => {
+  const deleteDiary = async (id) => {
+    dispatch({ type: 'DELETE_DIARY', id });
     try {
       await Api.deleteDiary(id);
     } catch (e) {
@@ -60,7 +61,8 @@ const usePosts = () => {
     }
   };
 
-  const editDiaryToServer = async () => {
+  const editDiary = async () => {
+    dispatch({ type: 'EDIT_DIARY' });
     try {
       await Api.patchDiaries(state.currentDiary);
     } catch (e) {
@@ -86,26 +88,11 @@ const usePosts = () => {
     }
   };
 
+  // 위까지 서버 통신 관련 함수
+
   const writePost = (write) => {
     dispatch({ type: 'WRITE_DIARY', write });
   };
-
-  const submitDiary = () => {
-    dispatch({ type: 'SUBMIT_DIARY' });
-    submitDiaryToServer();
-  };
-
-  const deleteDiary = (id) => {
-    dispatch({ type: 'DELETE_DIARY', id });
-    deleteDiaryFromServer(id);
-  };
-
-  const editDiary = () => {
-    dispatch({ type: 'EDIT_DIARY' });
-    editDiaryToServer();
-  };
-
-  // 위까지 서버 통신 관련 함수
 
   const writeTitle = (write) => {
     dispatch({ type: 'WRITE_TITLE', write });
@@ -152,6 +139,14 @@ const usePosts = () => {
     // }
   };
 
+  const pushTag = (tag) => {
+    dispatch({ type: 'PUSH_TAG', tag });
+  };
+
+  const getAllTags = () => {
+    dispatch({ type: 'GET_ALL_TAGS' });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -174,6 +169,8 @@ const usePosts = () => {
     setEditState,
     editDiary,
     editProfile,
+    pushTag,
+    getAllTags,
   ];
 };
 
