@@ -19,9 +19,9 @@ const MyPage = () => {
   const { userId, pic, msg } = userData;
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
-  const yy = diaries[0].date.split('-')[0];
-  const mm = diaries[0].date.split('-')[1];
-  const dd = diaries[0].date.split('-')[2];
+  const yy = diaries[diaries.length - 1].date.split('-')[0];
+  const mm = diaries[diaries.length - 1].date.split('-')[1];
+  const dd = diaries[diaries.length - 1].date.split('-')[2];
   const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
   const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(1));
 

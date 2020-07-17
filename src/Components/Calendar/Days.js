@@ -7,7 +7,6 @@ const Days = ({ pageCtx }) => {
   const { page } = pageCtx;
   const cx = classNames.bind(page === 'diary' ? diaryStyles : calendarStyles);
 
-  console.log('days render');
   return (
     <ul className={cx('days')}>
       <li>SUN</li>

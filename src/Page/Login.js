@@ -24,7 +24,6 @@ const Login = () => {
     fetchChange(name, value); // dispatch({ type: 'CHANGE_INPUT', name, value });
   };
 
-  console.log('render login');
   const onSubmit = (e) => {
     e.preventDefault();
     users.map(

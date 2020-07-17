@@ -139,6 +139,7 @@ const diaries = [
     isBookmarked: false,
     tags: [],
     imagePaths: [
+      'https://cdn.dribbble.com/users/373152/screenshots/2056489/slice_2_1x.png',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
@@ -156,6 +157,7 @@ const diaries = [
     isBookmarked: false,
     tags: [],
     imagePaths: [
+      'https://takashimaeda.jp/wp-content/uploads/2016/02/nasulog_dayone2_banner.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
@@ -173,6 +175,7 @@ const diaries = [
     isBookmarked: false,
     tags: [],
     imagePaths: [
+      'https://images.techhive.com/images/article/2016/03/day-one-mac-icon-100649205-large.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
@@ -190,7 +193,7 @@ const diaries = [
     isBookmarked: false,
     tags: [],
     imagePaths: [
-      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
+      'https://pbs.twimg.com/profile_images/694312120272318464/iFZU5oBJ_400x400.png',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
     ],
   },
