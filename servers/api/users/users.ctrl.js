@@ -326,9 +326,10 @@ exports.diaries = (ctx) => {
 
 exports.diary = (ctx) => {
   const { id } = ctx.params;
+  const { diary } = ctx.params;
   // eslint-disable-next-line no-underscore-dangle
   const user = users.find((u) => u._id.toString() === id);
-  const diary = user.diaries.find((d) => d.id.toString() === id);
+  const userDiary = user.diaries.find((d) => d.id.toString() === diary);
   if (!diary) {
     ctx.status = 404;
     ctx.body = {
@@ -336,7 +337,7 @@ exports.diary = (ctx) => {
     };
     return;
   }
-  ctx.body = diary;
+  ctx.body = userDiary;
 };
 
 // ------------------------------------------
