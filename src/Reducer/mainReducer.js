@@ -180,7 +180,7 @@ const mainReducer = (state, action) => {
           allTags: state.allTags.concat(action.tag),
         },
       };
-    case 'GET_ALL_TAGS': // 지울수도 있음
+    case 'GET_ALL_TAGS':
       return {
         ...state,
         allTags: (() => {
