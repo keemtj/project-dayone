@@ -20,7 +20,7 @@ const cx = classNames.bind(styles);
 const TimeLine = () => {
   const { pathname } = useLocation();
   const context = useContext(MainContext);
-  const { state, getAllTags } = context;
+  const { state } = context;
   const { userData, diaries } = state;
   const { userId, pic, msg } = userData;
   const altPic =
