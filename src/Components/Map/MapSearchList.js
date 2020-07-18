@@ -8,7 +8,7 @@ import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
-const MapSearchList = ({ removePrevMarkers }) => {
+const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
   const mapContext = useContext(MapContext);
   const { mapState, setClickPosition } = mapContext;
   const {
@@ -17,6 +17,7 @@ const MapSearchList = ({ removePrevMarkers }) => {
     pagination,
     placeMarkers,
     isPlacesVisible,
+    activeId,
   } = mapState;
 
   const changePage = (page) => {
@@ -24,7 +25,10 @@ const MapSearchList = ({ removePrevMarkers }) => {
     pagination.gotoPage(page);
   };
 
-  const changeClickPosition = (name, x, y) => {
+  const changeClickPosition = (name, x, y, id) => {
+    console.log('id: ', id);
+    setActiveId(id);
+    resetMarkerImage();
     const clickPosition = {
       lat: parseFloat(y),
       lng: parseFloat(x),
@@ -56,12 +60,15 @@ const MapSearchList = ({ removePrevMarkers }) => {
                 return (
                   <li
                     key={id}
-                    className={cx('mapSearchItem')}
+                    className={cx('mapSearchItem', {
+                      active: activeId === index + 1,
+                    })}
                     onClick={() => {
                       changeClickPosition(
                         road_address_name || address_name,
                         x,
                         y,
+                        index + 1,
                       );
                     }}
                   >

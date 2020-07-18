@@ -5,50 +5,84 @@ const useMap = () => {
   const [mapState, dispatch] = useReducer(mapReducer, mapInitState);
 
   const setMap = (map) => {
-    dispatch({ type: 'SET_MAP', map });
+    const payload = { map };
+    console.log('useMap()...setMap');
+    dispatch({ type: 'SET_MAP', payload });
   };
 
-  const setSublist = (diaries, lat, lng) => {
+  const setSublist = (diaries, clickPosition) => {
+    console.log('useMap()...setSublist');
+
     const sublist = diaries.filter(
-      ({ location }) => location.lat === lat && location.lng === lng,
+      ({ location }) =>
+        location.lat === clickPosition.lat &&
+        location.lng === clickPosition.lng,
     );
-    dispatch({ type: 'SET_SUBLIST', sublist });
+    const payload = {
+      sublist,
+      clickPosition,
+    };
+    dispatch({ type: 'SET_SUBLIST', payload });
   };
 
   const setPlaces = (places) => {
-    dispatch({ type: 'SET_PLACES', places });
+    console.log('useMap()...setPlaces');
+
+    const payload = { places };
+    dispatch({ type: 'SET_PLACES', payload });
   };
 
   const setPagination = (pagination) => {
-    dispatch({ type: 'SET_PAGINATION', pagination });
+    console.log('useMap()...setPagination');
+
+    const payload = pagination;
+    dispatch({ type: 'SET_PAGINATION', payload });
   };
 
   const setSearchVisible = () => {
-    dispatch({ type: 'SET_SEARCH_VISIBLE' });
+    console.log('useMap()...setSearchVisible');
+
+    const payload = { isSearchVisible: true };
+    dispatch({ type: 'SET_SEARCH_VISIBLE', payload });
   };
 
   const setSearchHidden = () => {
-    dispatch({ type: 'SET_SEARCH_HIDDEN' });
+    console.log('useMap()...setSearchHidden');
+
+    const payload = { isSearchVisible: false, isPlacesVisible: false };
+    dispatch({ type: 'SET_SEARCH_HIDDEN', payload });
   };
 
   const setPlacesVisible = () => {
-    dispatch({ type: 'SET_PLACES_VISIBLE' });
-  };
+    console.log('useMap()...setPlacesVisible');
 
-  const setPlacesHidden = () => {
-    dispatch({ type: 'SET_PLACES_HIDDEN' });
+    const payload = { isPlacesVisible: true };
+    dispatch({ type: 'SET_PLACES_VISIBLE', payload });
   };
 
   const setMessage = (message) => {
-    dispatch({ type: 'SET_MESSAGE', message });
+    console.log('useMap()...setMessage');
+
+    const payload = { message };
+    dispatch({ type: 'SET_MESSAGE', payload });
   };
 
   const updatePlace = (payload) => {
+    console.log('useMap()...updatePlace');
+
     dispatch({ type: 'UPDATE_PLACE', payload });
   };
 
   const setClickPosition = (clickPosition) => {
-    dispatch({ type: 'SET_CLICK_POSITION', clickPosition });
+    console.log('useMap()...setClickPosition');
+
+    const payload = { clickPosition };
+    dispatch({ type: 'SET_CLICK_POSITION', payload });
+  };
+
+  const setActiveId = (activeId, clickPosition, sublist) => {
+    const payload = { clickPosition, sublist, activeId };
+    dispatch({ type: 'SET_ACTIVE_ID' });
   };
 
   return {
@@ -60,7 +94,6 @@ const useMap = () => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
     setClickPosition,

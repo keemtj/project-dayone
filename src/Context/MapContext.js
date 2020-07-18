@@ -3,6 +3,7 @@ import useMap from '../Hook/useMap';
 
 export const MapContext = React.createContext(null);
 
+console.log('asdfasdf');
 export const MapProvider = ({ children }) => {
   const {
     mapState,
@@ -13,10 +14,10 @@ export const MapProvider = ({ children }) => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
     setClickPosition,
+    activeId,
   } = useMap();
 
   const mapContextValue = {
@@ -28,10 +29,10 @@ export const MapProvider = ({ children }) => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
     setClickPosition,
+    activeId,
   };
 
   return (

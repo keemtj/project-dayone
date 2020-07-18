@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
 import { useHistory, Link } from 'react-router-dom';
@@ -15,12 +16,23 @@ const DiarySublist = () => {
 
   const calCtx = useContext(CalendarContext);
   const date = calCtx && calCtx.calendarState.selectedDate;
-  console.log('date: ', date);
   const calendarList = calCtx && calCtx.calendarState.sublist;
 
   const mapCtx = useContext(MapContext);
-  const clickPosition = mapCtx && mapCtx.mapState.clickPosition;
-  const mapList = mapCtx && mapCtx.mapState.sublist;
+  let mapClickLat = 0;
+  let mapClickLng = 0;
+  if (mapCtx) {
+    mapClickLat = mapCtx.mapState.clickPosition.lat;
+    mapClickLng = mapCtx.mapState.clickPosition.lng;
+  }
+
+  const mapSublist = mapCtx && mapCtx.mapState.sublist;
+  const mapList =
+    mapCtx && mapSublist.length
+      ? mapClickLat === mapSublist[0].lat && mapClickLng === mapSublist[0].lng
+        ? mapSublist
+        : []
+      : [];
 
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
