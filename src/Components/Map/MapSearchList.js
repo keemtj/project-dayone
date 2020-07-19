@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
   const mapContext = useContext(MapContext);
-  const { mapState, setClickPosition } = mapContext;
+  const { mapState, setClickPosition, setActiveId } = mapContext;
   const {
     places,
     message,
@@ -26,7 +26,6 @@ const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
   };
 
   const changeClickPosition = (name, x, y, id) => {
-    console.log('id: ', id);
     setActiveId(id);
     resetMarkerImage();
     const clickPosition = {
@@ -34,7 +33,6 @@ const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
       lng: parseFloat(x),
       name,
     };
-    console.log('clickPosition', clickPosition);
     setClickPosition(clickPosition);
   };
 

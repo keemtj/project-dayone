@@ -13,13 +13,8 @@ import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
-let useEffectCount = 0;
-let compCount = 0;
 const { kakao } = window;
 
-console.log('###################');
-console.log('   MapComponent');
-console.log('###################');
 const normalImageSrc =
   'https://user-images.githubusercontent.com/67693474/87041096-ad4bd880-c22c-11ea-9f6b-c97dbc74a2d9.png';
 const clickImageSrc =
@@ -87,7 +82,6 @@ const resetMarkerImage = () => {
 };
 
 const MapComponent = () => {
-  console.log('[compCount]: ', ++compCount);
   const mainContext = useContext(MainContext);
   const mapContext = useContext(MapContext);
   const { state } = mainContext;
@@ -102,7 +96,6 @@ const MapComponent = () => {
   } = mapContext;
 
   const { map, placeMarkers } = mapState;
-  console.log('mapState: ', mapState);
 
   const searchPlaces = (inputs) => {
     const ps = new kakao.maps.services.Places();
@@ -146,14 +139,13 @@ const MapComponent = () => {
   };
 
   const displayPlaceMarkers = (pMarkers) => {
-    pMarkers.forEach((pMarker) => {
-      kakao.maps.event.addListener(pMarker, 'click', (pMarker) => {
+    pMarkers.forEach((pMarker, index) => {
+      kakao.maps.event.addListener(pMarker, 'click', () => {
         selectedPlaceInfo && selectedPlaceInfo.close();
         selectedMouseMarker && selectedMouseMarker.setMap(null);
         selectedDiaryMarker && selectedDiaryMarker.setImage(normalImage);
         selectedDiaryMarker = null;
         selectedPlaceInfo = null;
-        console.log('pMarker: ', pMarker);
       });
       pMarker.setMap(map);
     });
@@ -164,7 +156,6 @@ const MapComponent = () => {
 
     if (status === kakao.maps.services.Status.OK) {
       const pMarkers = makePlaceMarkers(data);
-      console.log('pMarkers', pMarkers);
       displayPlaceMarkers(pMarkers);
       const payload = {
         places: data,
@@ -191,7 +182,6 @@ const MapComponent = () => {
   };
 
   const renderMap = () => {
-    console.log('renderMap');
     const geocoder = new kakao.maps.services.Geocoder();
     const mouseMarker = new kakao.maps.Marker();
     const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
@@ -306,16 +296,10 @@ const MapComponent = () => {
   };
 
   useEffect(() => {
-    console.log('========useEffect========');
-    useEffectCount += 1;
-    console.log(useEffectCount);
     kakao.maps.load(() => {
-      console.log('00000');
       if (Object.keys(map).length) {
-        console.log('11111');
         renderMap();
       } else {
-        console.log('22222');
         const container = document.getElementById('map');
         const options = {
           center: new kakao.maps.LatLng(0, 0),

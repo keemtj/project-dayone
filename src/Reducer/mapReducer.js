@@ -9,6 +9,13 @@ export const mapInitState = {
   isPlacesVisible: false,
   message: '',
   clickPosition: {},
+  // // clickPosition: {
+  //   lat: 123.123,
+  //   lng: 123.123,
+  //   name: '성수동',
+  //   marker: {},
+
+  // }
   activeId: 0,
 };
 

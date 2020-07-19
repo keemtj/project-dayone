@@ -6,7 +6,6 @@ const useMap = () => {
 
   const setMap = (map) => {
     const payload = { map };
-    console.log('useMap()...setMap');
     dispatch({ type: 'SET_MAP', payload });
   };
 
@@ -80,9 +79,14 @@ const useMap = () => {
     dispatch({ type: 'SET_CLICK_POSITION', payload });
   };
 
-  const setActiveId = (activeId, clickPosition, sublist) => {
-    const payload = { clickPosition, sublist, activeId };
-    dispatch({ type: 'SET_ACTIVE_ID' });
+  // searchList에 클릭된 item의 스타일을 바꿔줌
+  // activeId: 클릭된 요소를 확인하는 상태값
+  // clickPosition: 클릭된 마커나 item의 clickPosition을 저장해놓음
+  // sublist
+  const setActiveId = (activeId, clickPosition, diaries) => {
+    // const diaries
+    const payload = { activeId, clickPosition, diaries };
+    dispatch({ type: 'SET_ACTIVE_ID', payload });
   };
 
   return {
@@ -97,6 +101,7 @@ const useMap = () => {
     setMessage,
     updatePlace,
     setClickPosition,
+    setActiveId,
   };
 };
 

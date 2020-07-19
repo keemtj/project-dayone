@@ -29,11 +29,11 @@ const DiarySublist = () => {
   const mapSublist = mapCtx && mapCtx.mapState.sublist;
   const mapList =
     mapCtx && mapSublist.length
-      ? mapClickLat === mapSublist[0].lat && mapClickLng === mapSublist[0].lng
+      ? mapClickLat === mapSublist[0].location.lat &&
+        mapClickLng === mapSublist[0].location.lng
         ? mapSublist
         : []
       : [];
-
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
   const history = useHistory();
