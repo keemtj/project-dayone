@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
 import { useHistory, Link } from 'react-router-dom';
@@ -18,14 +19,37 @@ const DiarySublist = () => {
   const calendarList = calCtx && calCtx.calendarState.sublist;
 
   const mapCtx = useContext(MapContext);
-  const mapList = mapCtx && mapCtx.mapState.sublist;
+  let mapClickLat = 0;
+  let mapClickLng = 0;
+  if (mapCtx) {
+    mapClickLat = mapCtx.mapState.clickPosition.lat;
+    mapClickLng = mapCtx.mapState.clickPosition.lng;
+  }
 
+  const mapSublist = mapCtx && mapCtx.mapState.sublist;
+  const mapList =
+    mapCtx && mapSublist.length
+      ? mapClickLat === mapSublist[0].location.lat &&
+        mapClickLng === mapSublist[0].location.lng
+        ? mapSublist
+        : []
+      : [];
   const currentPage = useLocation().pathname;
   const subList = currentPage === '/calendar' ? calendarList : mapList;
   const history = useHistory();
 
   const writeDiary = () => {
-    dispatch({ type: 'CHANGE_DATE', date });
+    if (currentPage === '/calendar') {
+      dispatch({ type: 'CHANGE_DATE', date });
+    } else {
+      const today = new Date();
+      const yy = today.getFullYear();
+      const mm = today.getMonth() + 1;
+      const dd = today.getDate();
+      const todayDate = `${yy}-${mm}-${dd}`;
+      dispatch({ type: 'CHANGE_DATE', date: todayDate });
+      // dispatch({ type: 'CHANGE_LOCATION', clickPosition });
+    }
     history.push('/diary');
   };
 

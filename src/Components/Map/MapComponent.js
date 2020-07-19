@@ -14,21 +14,107 @@ import { MapContext } from '../../Context/MapContext';
 const cx = classNames.bind(styles);
 
 const { kakao } = window;
+
+const normalImageSrc =
+  'https://user-images.githubusercontent.com/67693474/87041096-ad4bd880-c22c-11ea-9f6b-c97dbc74a2d9.png';
+const clickImageSrc =
+  'https://user-images.githubusercontent.com/67693474/87041692-935ec580-c22d-11ea-9fbf-772878fffa18.png';
+const imgSrc =
+  'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
+
+let normalImageSize = null;
+let overImageSize = null;
+let clickImageSize = null;
+let normalImageOption = null;
+let overImageOption = null;
+let clickImageOption = null;
+let normalImage = null;
+let overImage = null;
+let clickImage = null;
+
+kakao.maps.load(() => {
+  normalImageSize = new kakao.maps.Size(50, 64);
+  overImageSize = new kakao.maps.Size(55, 70);
+  clickImageSize = new kakao.maps.Size(55, 70);
+  normalImageOption = {
+    offset: new kakao.maps.Point(0, 0),
+    shape: 'poly',
+    coords:
+      '26, 61, 29, 58, 31, 56, 34, 54, 37, 50, 39, 47, 43, 44, 46, 41, 47, 36, 48, 30, 49, 22, 47, 17, 45, 12, 40, 7, 35, 4, 28, 2, 22, 3, 16, 4, 10, 8, 7, 12, 4, 18, 2, 24, 2, 30, 3, 35, 5, 40, 8, 44, 11, 47, 14, 48, 17, 52, 19, 55, 22, 28',
+  };
+  overImageOption = {
+    offset: new kakao.maps.Point(0, 5),
+  };
+  clickImageOption = {
+    offset: new kakao.maps.Point(0, 5),
+    shape: 'poly',
+    coords:
+      '29, 67, 33, 64, 36, 60, 39, 55, 40, 53, 45, 51, 49, 48, 52, 42, 52, 35, 53, 29, 54, 24, 52, 18, 48, 13, 44, 9, 37, 5, 31, 4, 25, 4, 18, 5, 13, 9, 9, 14, 6, 19, 5, 24, 3, 29, 4, 35, 5, 42, 8, 47, 12, 50, 16, 53, 20, 56, 22, 59, 25, 63',
+  };
+  normalImage = new kakao.maps.MarkerImage(
+    normalImageSrc,
+    normalImageSize,
+    normalImageOption,
+  );
+  overImage = new kakao.maps.MarkerImage(
+    normalImageSrc,
+    overImageSize,
+    overImageOption,
+  );
+  clickImage = new kakao.maps.MarkerImage(
+    clickImageSrc,
+    clickImageSize,
+    clickImageOption,
+  );
+});
+
+let selectedDiaryMarker = null;
+let selectedMouseMarker = null;
+let selectedPlaceInfo = null;
+
+const resetMarkerImage = () => {
+  selectedDiaryMarker && selectedDiaryMarker.setImage(normalImage);
+  selectedDiaryMarker = null;
+  selectedMouseMarker && selectedMouseMarker.setMap(null);
+  selectedMouseMarker = null;
+  selectedPlaceInfo && selectedPlaceInfo.close();
+  selectedPlaceInfo = null;
+};
+
 const MapComponent = () => {
   const mainContext = useContext(MainContext);
   const mapContext = useContext(MapContext);
-
   const { state } = mainContext;
   const { diaries } = state;
-  const { mapState, setMap, setSublist, setMessage, updatePlace } = mapContext;
+  const {
+    mapState,
+    setMap,
+    setSublist,
+    setMessage,
+    updatePlace,
+    setClickPosition,
+  } = mapContext;
 
   const { map, placeMarkers } = mapState;
+
+  const searchPlaces = (inputs) => {
+    const ps = new kakao.maps.services.Places();
+    if (!inputs.replace(/^\s+|\s+$/g, '')) {
+      setMessage('장소를 입력해주세요');
+      return false;
+    }
+    ps.keywordSearch(inputs, placesSearchCB);
+  };
+
+  const removePrevMarkers = (pMarkers) => {
+    pMarkers.forEach((pMarker) => {
+      pMarker.setMap(null);
+    });
+  };
 
   const makePlaceMarkers = (places) => {
     const placeMarkers = [];
 
-    const imgSrc =
-      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
     const imgSize = new kakao.maps.Size(36, 37);
     const bounds = new kakao.maps.LatLngBounds();
 
@@ -53,21 +139,24 @@ const MapComponent = () => {
   };
 
   const displayPlaceMarkers = (pMarkers) => {
-    pMarkers.forEach((marker) => {
-      marker.setMap(map);
+    pMarkers.forEach((pMarker, index) => {
+      kakao.maps.event.addListener(pMarker, 'click', () => {
+        selectedPlaceInfo && selectedPlaceInfo.close();
+        selectedMouseMarker && selectedMouseMarker.setMap(null);
+        selectedDiaryMarker && selectedDiaryMarker.setImage(normalImage);
+        selectedDiaryMarker = null;
+        selectedPlaceInfo = null;
+      });
+      pMarker.setMap(map);
     });
   };
 
-  const removePrevMarkers = (pMarkers) => {
-    pMarkers.forEach((pMarker) => {
-      pMarker.setMap(null);
-    });
-  };
   const placesSearchCB = (data, status, pagination) => {
     removePrevMarkers(placeMarkers);
 
     if (status === kakao.maps.services.Status.OK) {
       const pMarkers = makePlaceMarkers(data);
+      displayPlaceMarkers(pMarkers);
       const payload = {
         places: data,
         pagination,
@@ -76,7 +165,6 @@ const MapComponent = () => {
         isPlacesVisible: true,
         message: '',
       };
-      displayPlaceMarkers(pMarkers);
       updatePlace(payload);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       const payload = {
@@ -93,13 +181,118 @@ const MapComponent = () => {
     }
   };
 
-  const searchPlaces = (inputs) => {
-    const ps = new kakao.maps.services.Places();
-    if (!inputs.replace(/^\s+|\s+$/g, '')) {
-      setMessage('장소를 입력해주세요');
-      return false;
-    }
-    ps.keywordSearch(inputs, placesSearchCB);
+  const renderMap = () => {
+    const geocoder = new kakao.maps.services.Geocoder();
+    const mouseMarker = new kakao.maps.Marker();
+    const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
+
+    const searchDetailAddrFromCoords = (coords, callback) => {
+      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    };
+
+    const makeOverListener = (marker) => () => {
+      if (!selectedDiaryMarker || selectedDiaryMarker !== marker) {
+        marker.setImage(overImage);
+      }
+    };
+
+    const makeOutListener = (marker) => () => {
+      if (!selectedDiaryMarker || selectedDiaryMarker !== marker) {
+        marker.setImage(normalImage);
+      }
+    };
+
+    const makeDiaryMarkerClickListener = (marker, lat, lng) => () => {
+      resetMarkerImage();
+      selectedDiaryMarker = marker;
+      selectedDiaryMarker.setImage(clickImage);
+      geocoder.coord2Address(lng, lat, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          const address =
+            result[0].road_address || result[0].address.adress_name;
+          const clickPosition = {
+            lat,
+            lng,
+            address,
+            marker,
+            markerType: 'diary',
+          };
+          setSublist(diaries, clickPosition);
+        }
+      });
+    };
+
+    const makeMapClickListener = (mouseEvent) => {
+      resetMarkerImage();
+      searchDetailAddrFromCoords(mouseEvent.latLng, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          const address = result[0].road_address
+            ? `${result[0].road_address.address_name}`
+            : `${result[0].address.address_name}`;
+          const clickPosition = {
+            lat: mouseEvent.latLng.Ha,
+            lng: mouseEvent.latLng.Ga,
+            address,
+            marker: mouseMarker,
+            markerType: 'mouse',
+          };
+          selectedMouseMarker = mouseMarker;
+          selectedPlaceInfo = infoWindow;
+          mouseMarker.setMap(map);
+          mouseMarker.setPosition(mouseEvent.latLng);
+          infoWindow.setContent(address);
+          infoWindow.open(map, mouseMarker);
+          setClickPosition(clickPosition);
+        }
+      });
+    };
+
+    kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
+      makeMapClickListener(mouseEvent);
+    });
+
+    const makeDiaryMarkers = (diaries) => {
+      const markers = [];
+      diaries.forEach((diary) => {
+        const hasLocation = Object.keys(diary.location).length > 0;
+        if (!hasLocation) return;
+        const { lat, lng } = diary.location;
+        const diaryMarker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(lat, lng),
+          image: normalImage,
+        });
+
+        kakao.maps.event.addListener(
+          diaryMarker,
+          'click',
+          makeDiaryMarkerClickListener(diaryMarker, lat, lng),
+        );
+
+        kakao.maps.event.addListener(
+          diaryMarker,
+          'mouseover',
+          makeOverListener(diaryMarker),
+        );
+
+        kakao.maps.event.addListener(
+          diaryMarker,
+          'mouseout',
+          makeOutListener(diaryMarker),
+        );
+
+        markers.push(diaryMarker);
+      });
+      return markers;
+    };
+
+    const clusterer = new kakao.maps.MarkerClusterer({
+      map,
+      averageCenter: true,
+      minLevel: 6,
+    });
+
+    const diaryMarkers = makeDiaryMarkers(diaries);
+    clusterer.addMarkers(diaryMarkers);
   };
 
   useEffect(() => {
@@ -141,122 +334,16 @@ const MapComponent = () => {
         setMap(mapContainer);
       }
     });
-  }, [map, mapState]);
-
-  const renderMap = () => {
-    let selectedMarker = null;
-
-    const normalImageSrc =
-      'https://user-images.githubusercontent.com/67693474/87041096-ad4bd880-c22c-11ea-9f6b-c97dbc74a2d9.png';
-    const clickImageSrc =
-      'https://user-images.githubusercontent.com/67693474/87041692-935ec580-c22d-11ea-9fbf-772878fffa18.png';
-    const normalImageSize = new kakao.maps.Size(50, 64);
-    const overImageSize = new kakao.maps.Size(55, 70);
-    const clickImageSize = new kakao.maps.Size(55, 70);
-    const normalImageOption = {
-      offset: new kakao.maps.Point(0, 0),
-      shape: 'poly',
-      coords:
-        '26, 61, 29, 58, 31, 56, 34, 54, 37, 50, 39, 47, 43, 44, 46, 41, 47, 36, 48, 30, 49, 22, 47, 17, 45, 12, 40, 7, 35, 4, 28, 2, 22, 3, 16, 4, 10, 8, 7, 12, 4, 18, 2, 24, 2, 30, 3, 35, 5, 40, 8, 44, 11, 47, 14, 48, 17, 52, 19, 55, 22, 28',
-    };
-    const overImageOption = {
-      offset: new kakao.maps.Point(0, 5),
-    };
-    const clickImageOption = {
-      offset: new kakao.maps.Point(0, 5),
-      shape: 'poly',
-      coords:
-        '29, 67, 33, 64, 36, 60, 39, 55, 40, 53, 45, 51, 49, 48, 52, 42, 52, 35, 53, 29, 54, 24, 52, 18, 48, 13, 44, 9, 37, 5, 31, 4, 25, 4, 18, 5, 13, 9, 9, 14, 6, 19, 5, 24, 3, 29, 4, 35, 5, 42, 8, 47, 12, 50, 16, 53, 20, 56, 22, 59, 25, 63',
-    };
-
-    const normalImage = new kakao.maps.MarkerImage(
-      normalImageSrc,
-      normalImageSize,
-      normalImageOption,
-    );
-    const overImage = new kakao.maps.MarkerImage(
-      normalImageSrc,
-      overImageSize,
-      overImageOption,
-    );
-    const clickImage = new kakao.maps.MarkerImage(
-      clickImageSrc,
-      clickImageSize,
-      clickImageOption,
-    );
-
-    const makeOverListener = (marker) => () => {
-      if (!selectedMarker || selectedMarker !== marker) {
-        marker.setImage(overImage);
-      }
-    };
-
-    const makeOutListener = (marker) => () => {
-      if (!selectedMarker || selectedMarker !== marker) {
-        marker.setImage(normalImage);
-      }
-    };
-
-    const makeClickListener = (marker, lat, lng) => () => {
-      if (!selectedMarker || marker !== selectedMarker) {
-        !!selectedMarker && selectedMarker.setImage(normalImage);
-        marker.setImage(clickImage);
-      }
-      selectedMarker = marker;
-      setSublist(diaries, lat, lng);
-    };
-
-    const makeDiaryMarkers = (diaries) => {
-      const markers = [];
-      diaries.forEach((diary) => {
-        const hasLocation = Object.keys(diary.location).length > 0;
-        if (!hasLocation) return;
-
-        const { lat, lng } = diary.location;
-
-        const marker = new kakao.maps.Marker({
-          position: new kakao.maps.LatLng(lat, lng),
-          image: normalImage,
-        });
-
-        kakao.maps.event.addListener(
-          marker,
-          'click',
-          makeClickListener(marker, lat, lng),
-        );
-
-        kakao.maps.event.addListener(
-          marker,
-          'mouseover',
-          makeOverListener(marker),
-        );
-
-        kakao.maps.event.addListener(
-          marker,
-          'mouseout',
-          makeOutListener(marker),
-        );
-
-        markers.push(marker);
-      });
-      return markers;
-    };
-
-    const clusterer = new kakao.maps.MarkerClusterer({
-      map,
-      averageCenter: true,
-      minLevel: 6,
-    });
-
-    const diaryMarkers = makeDiaryMarkers(diaries);
-    clusterer.addMarkers(diaryMarkers);
-  };
+  }, [map]);
 
   return (
     <div className={cx('map')} id="map">
       <div className={cx('mapSearchWrap')}>
         <MapSearchForm searchPlaces={searchPlaces} />
-        <MapSearchList removePrevMarkers={removePrevMarkers} />
+        <MapSearchList
+          removePrevMarkers={removePrevMarkers}
+          resetMarkerImage={resetMarkerImage}
+        />
       </div>
     </div>
   );

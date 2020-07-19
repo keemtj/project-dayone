@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable camelcase */
 import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
@@ -6,20 +8,32 @@ import { MapContext } from '../../Context/MapContext';
 
 const cx = classNames.bind(styles);
 
-const MapSearchList = ({ removePrevMarkers }) => {
+const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
   const mapContext = useContext(MapContext);
-  const { mapState } = mapContext;
+  const { mapState, setClickPosition, setActiveId } = mapContext;
   const {
     places,
     message,
     pagination,
     placeMarkers,
     isPlacesVisible,
+    activeId,
   } = mapState;
 
   const changePage = (page) => {
     removePrevMarkers(placeMarkers);
     pagination.gotoPage(page);
+  };
+
+  const changeClickPosition = (name, x, y, id) => {
+    setActiveId(id);
+    resetMarkerImage();
+    const clickPosition = {
+      lat: parseFloat(y),
+      lng: parseFloat(x),
+      name,
+    };
+    setClickPosition(clickPosition);
   };
 
   return (
@@ -30,11 +44,32 @@ const MapSearchList = ({ removePrevMarkers }) => {
           <ul className={cx('mapSearchList')}>
             {places.map(
               (
-                { id, place_name, road_address_name, address_name, phone },
+                {
+                  id,
+                  place_name,
+                  road_address_name,
+                  address_name,
+                  phone,
+                  x,
+                  y,
+                },
                 index,
               ) => {
                 return (
-                  <li key={id} className={cx('mapSearchItem')}>
+                  <li
+                    key={id}
+                    className={cx('mapSearchItem', {
+                      active: activeId === index + 1,
+                    })}
+                    onClick={() => {
+                      changeClickPosition(
+                        road_address_name || address_name,
+                        x,
+                        y,
+                        index + 1,
+                      );
+                    }}
+                  >
                     <span className={cx('markerBg', `marker${index + 1}`)} />
                     <div className={cx('info')}>
                       <h5 className={cx('placeName')}>{place_name}</h5>

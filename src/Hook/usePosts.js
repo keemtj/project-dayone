@@ -10,6 +10,7 @@ const usePosts = () => {
     try {
       const diaries = await Api.getDiaries();
       dispatch({ type: 'SUCCESS', diaries });
+      dispatch({ type: 'GET_ALL_TAGS' });
     } catch (e) {
       dispatch({
         type: 'ERROR',
@@ -143,9 +144,9 @@ const usePosts = () => {
     dispatch({ type: 'PUSH_TAG', tag });
   };
 
-  const getAllTags = () => {
-    dispatch({ type: 'GET_ALL_TAGS' });
-  };
+  // const getAllTags = () => {
+  //   dispatch({ type: 'GET_ALL_TAGS' });
+  // };
 
   useEffect(() => {
     fetchData();
@@ -170,7 +171,6 @@ const usePosts = () => {
     editDiary,
     editProfile,
     pushTag,
-    getAllTags,
   ];
 };
 

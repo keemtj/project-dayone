@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Style/MyPage.module.scss';
@@ -11,8 +11,8 @@ const cx = classNames.bind(styles);
 
 const MyPage = () => {
   const [modalState, setModalState] = useState(false);
-  const mainCtx = React.useContext(MainContext);
-  const loginCtx = React.useContext(LoginContext);
+  const mainCtx = useContext(MainContext);
+  const loginCtx = useContext(LoginContext);
   const { logOut } = loginCtx;
   const { dispatch, patchBookmark, editProfile } = mainCtx;
   const { diaries, userData } = mainCtx.state;
@@ -20,10 +20,12 @@ const MyPage = () => {
   const bookmarked = diaries.filter(({ isBookmarked }) => isBookmarked);
 
   const yy = diaries[diaries.length - 1].date.split('-')[0];
-  const mm = diaries[diaries.length - 1].date.split('-')[1];
+  const mm = diaries[diaries.length - 1].date.split('-')[1] - 1;
   const dd = diaries[diaries.length - 1].date.split('-')[2];
+
   const diaryTerm = Math.floor((Date.now() - Date.UTC(yy, mm, dd)) / 86400000);
-  const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(1));
+
+  const diaryPerDay = Number((diaries.length / diaryTerm).toFixed(2));
 
   const history = useHistory();
 
