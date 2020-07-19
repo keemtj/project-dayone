@@ -5,46 +5,65 @@ const useMap = () => {
   const [mapState, dispatch] = useReducer(mapReducer, mapInitState);
 
   const setMap = (map) => {
-    dispatch({ type: 'SET_MAP', map });
+    const payload = { map };
+    dispatch({ type: 'SET_MAP', payload });
   };
 
-  const setSublist = (diaries, lat, lng) => {
+  const setSublist = (diaries, clickPosition) => {
     const sublist = diaries.filter(
-      ({ location }) => location.lat === lat && location.lng === lng,
+      ({ location }) =>
+        location.lat === clickPosition.lat &&
+        location.lng === clickPosition.lng,
     );
-    dispatch({ type: 'SET_SUBLIST', sublist });
+    const payload = {
+      sublist,
+      clickPosition,
+    };
+    dispatch({ type: 'SET_SUBLIST', payload });
   };
 
   const setPlaces = (places) => {
-    dispatch({ type: 'SET_PLACES', places });
+    const payload = { places };
+    dispatch({ type: 'SET_PLACES', payload });
   };
 
   const setPagination = (pagination) => {
-    dispatch({ type: 'SET_PAGINATION', pagination });
+    const payload = pagination;
+    dispatch({ type: 'SET_PAGINATION', payload });
   };
 
   const setSearchVisible = () => {
-    dispatch({ type: 'SET_SEARCH_VISIBLE' });
+    const payload = { isSearchVisible: true };
+    dispatch({ type: 'SET_SEARCH_VISIBLE', payload });
   };
 
   const setSearchHidden = () => {
-    dispatch({ type: 'SET_SEARCH_HIDDEN' });
+    const payload = { isSearchVisible: false, isPlacesVisible: false };
+    dispatch({ type: 'SET_SEARCH_HIDDEN', payload });
   };
 
   const setPlacesVisible = () => {
-    dispatch({ type: 'SET_PLACES_VISIBLE' });
-  };
-
-  const setPlacesHidden = () => {
-    dispatch({ type: 'SET_PLACES_HIDDEN' });
+    const payload = { isPlacesVisible: true };
+    dispatch({ type: 'SET_PLACES_VISIBLE', payload });
   };
 
   const setMessage = (message) => {
-    dispatch({ type: 'SET_MESSAGE', message });
+    const payload = { message };
+    dispatch({ type: 'SET_MESSAGE', payload });
   };
 
   const updatePlace = (payload) => {
     dispatch({ type: 'UPDATE_PLACE', payload });
+  };
+
+  const setClickPosition = (clickPosition) => {
+    const payload = { clickPosition };
+    dispatch({ type: 'SET_CLICK_POSITION', payload });
+  };
+
+  const setActiveId = (activeId, clickPosition, diaries) => {
+    const payload = { activeId, clickPosition, diaries };
+    dispatch({ type: 'SET_ACTIVE_ID', payload });
   };
 
   return {
@@ -56,9 +75,10 @@ const useMap = () => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
+    setActiveId,
   };
 };
 

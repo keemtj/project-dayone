@@ -13,9 +13,10 @@ export const MapProvider = ({ children }) => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
+    setActiveId,
   } = useMap();
 
   const mapContextValue = {
@@ -27,9 +28,10 @@ export const MapProvider = ({ children }) => {
     setSearchVisible,
     setSearchHidden,
     setPlacesVisible,
-    setPlacesHidden,
     setMessage,
     updatePlace,
+    setClickPosition,
+    setActiveId,
   };
 
   return (

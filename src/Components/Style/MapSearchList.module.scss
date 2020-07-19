@@ -52,6 +52,10 @@
   }
 
   .mapSearchList {
+    .mapSearchItem.active {
+      background: #b9b9b9d2 !important;
+    }
+
     .mapSearchItem {
       cursor: pointer;
       width: 290px;

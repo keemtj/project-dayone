@@ -8,71 +8,80 @@ export const mapInitState = {
   isSearchVisible: false,
   isPlacesVisible: false,
   message: '',
+  clickPosition: {},
+  // // clickPosition: {
+  //   lat: 123.123,
+  //   lng: 123.123,
+  //   name: '성수동',
+  //   marker: {},
+
+  // }
+  activeId: 0,
 };
 
 export const mapReducer = (state, action) => {
+  const {
+    map,
+    sublist,
+    places,
+    pagination,
+    placeMarkers,
+    isSearchVisible,
+    isPlacesVisible,
+    message,
+    clickPosition,
+    activeId,
+  } = action.payload;
   switch (action.type) {
     case 'SET_MAP':
       return {
         ...state,
-        map: action.map,
+        map,
       };
     case 'SET_SUBLIST':
       return {
         ...state,
-        sublist: action.sublist,
+        sublist,
+        clickPosition,
       };
     case 'SET_PLACES':
       return {
         ...state,
-        places: action.places,
+        places,
       };
     case 'SET_PAGINATION':
       return {
         ...state,
-        pagination: action.pagination,
+        pagination,
       };
     case 'SET_PLACEMARKERS':
       return {
         ...state,
-        placeMarkers: action.placeMarkers,
+        placeMarkers,
       };
     case 'SET_SEARCH_VISIBLE':
       return {
         ...state,
-        isSearchVisible: true,
+        isSearchVisible,
       };
     case 'SET_SEARCH_HIDDEN':
       return {
         ...state,
-        isSearchVisible: false,
-        isPlacesVisible: false,
+        isSearchVisible,
+        isPlacesVisible,
       };
     case 'SET_PLACES_VISIBLE':
       return {
         ...state,
-        isPlacesVisible: true,
+        isPlacesVisible,
       };
-    case 'SET_PLACES_HIDDEN':
-      return {
-        ...state,
-        isPlacesVisible: false,
-      };
+
     case 'SET_MESSAGE':
       return {
         ...state,
-        message: action.message,
+        message,
       };
     case 'UPDATE_PLACE':
-      const {
-        places,
-        pagination,
-        placeMarkers,
-        isSearchVisible,
-        isPlacesVisible,
-        message,
-      } = action.payload;
-
       return {
         map: state.map,
         sublist: state.sublist,
@@ -82,8 +91,22 @@ export const mapReducer = (state, action) => {
         isSearchVisible,
         isPlacesVisible,
         message,
+        clickPosition: {},
+        activeId: 0,
       };
-
+    case 'SET_CLICK_POSITION':
+      return {
+        ...state,
+        clickPosition,
+        sublist: [],
+      };
+    case 'SET_ACTIVE_ID':
+      return {
+        ...state,
+        clickPosition,
+        sublist,
+        activeId,
+      };
     default:
       return state;
   }
