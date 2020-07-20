@@ -29,6 +29,7 @@ const DiaryViewer = () => {
 
   useEffect(() => {
     getDiary(id);
+    console.log(state);
     return () => {
       clearViewerDiary();
     };

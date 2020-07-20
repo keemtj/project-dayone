@@ -480,8 +480,10 @@ const diaries = [
   },
   {
     id: 31,
-    title: 'Diary Title 31',
-    content: '<p>This is diary 16</p>',
+    title:
+      'Diary Title 31 testtestestsetsteststsetestsetset aregeargaegaeragrara',
+    content:
+      '<p>This is diary 16 testtestestsetsteststsetestsetsetesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetset</p>',
     date: '2020-7-13',
     location: {
       lat: 37.62197524055062,
@@ -489,7 +491,7 @@ const diaries = [
       name: '서울 성동구 성수동 2가',
     },
     isBookmarked: false,
-    tags: ['태그를', '달자', 'test', '태그를', '달자', 'test'],
+    tags: ['태그를', 'test', '태그를', 'test'],
     imagePaths: [
       'https://images3.alphacoders.com/105/1052299.jpg',
       'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
