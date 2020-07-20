@@ -184,11 +184,19 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         allTags: (() => {
-          const tagArr = [];
-          state.diaries.forEach((diary) => {
-            diary.tags.forEach((tag) => tagArr.push(tag));
+          let arr = [];
+          state.diaries.forEach(({ tags }) => {
+            tags.forEach((tag) => {
+              if (arr.some((v) => v.name === tag)) {
+                arr = arr.map((v) =>
+                  v.name === tag ? { ...v, count: v.count + 1 } : v,
+                );
+                return;
+              }
+              arr.push({ key: arr.length + 1, name: tag, count: 1 });
+            });
           });
-          return tagArr;
+          return arr;
         })(),
       };
     default:

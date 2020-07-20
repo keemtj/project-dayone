@@ -19,7 +19,7 @@ const MainRouter = () => {
       <Route path="/calendar" component={Calendar} />
       <Route path="/diary" component={Diary} />
       <Route path="/mypage" component={MyPage} />
-      <Route path="/tags" component={Tags} />
+      <Route path="/tags/:name" component={Tags} />
       <Route path="/diaryViewer/:id" component={DiaryViewer} />
       <Route
         render={({ location }) => (
