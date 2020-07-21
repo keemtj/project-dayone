@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
@@ -80,6 +81,7 @@ const DiarySublist = () => {
                 />
                 <div className={cx('info')}>
                   <h2 className={cx('title')}>{title}</h2>
+                  <p className={cx('location')}>{location.name}</p>
                   <p className={cx('details')}>{date}</p>
                 </div>
               </Link>

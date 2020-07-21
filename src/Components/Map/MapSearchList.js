@@ -41,15 +41,7 @@ const MapSearchList = ({
 
   const changeClickPosition = (name, x, y, id) => {
     resetMarkerImage();
-    console.log('[changeClick]');
-    console.log('[name]: ', name);
-    console.log('[x]', x);
-    console.log('[y]', y);
-    console.log('[id]', id);
-
     const pMarker = placeMarkers[id - 1];
-    console.log('pMarker: ', pMarker);
-
     const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
     infoWindow.setContent(name);
     changeMarkerInfo(pMarker, infoWindow, map);
