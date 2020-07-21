@@ -13,7 +13,7 @@ const diaries = [
       name: '서울 성동구 성수동 2가',
     },
     isBookmarked: true,
-    tags: [],
+    tags: ['스터디', '프론트엔드', '프로젝트', 'DAY_ONE'],
     imagePaths: [],
   },
   {
@@ -27,7 +27,7 @@ const diaries = [
       name: '서울 성동구 성수동 2가',
     },
     isBookmarked: false,
-    tags: [],
+    tags: ['오늘일기'],
     imagePaths: [],
   },
   {
