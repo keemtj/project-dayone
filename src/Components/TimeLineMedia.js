@@ -11,6 +11,7 @@ import image1 from '../Util/asset/image1.jpg';
 import image2 from '../Util/asset/image2.jpg';
 import image3 from '../Util/asset/image3.jpg';
 import image4 from '../Util/asset/image4.jpg';
+
 const cx = classNames.bind(styles);
 
 const TimeLineMedia = () => {

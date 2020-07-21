@@ -48,10 +48,14 @@ const DiarySublist = () => {
       const dd = today.getDate();
       const todayDate = `${yy}-${mm}-${dd}`;
       dispatch({ type: 'CHANGE_DATE', date: todayDate });
-      // dispatch({ type: 'CHANGE_LOCATION', clickPosition });
+      dispatch({
+        type: 'CHANGE_LOCATION',
+        location: mapCtx.mapState.clickPosition,
+      });
     }
     history.push('/diary');
   };
+  console.log(mapCtx.mapState.clickPosition);
 
   return (
     <>
