@@ -34,13 +34,22 @@ const MapSearchList = ({
   } = mapState;
 
   const changePage = (page) => {
+    resetMarkerImage();
     removePrevPlaceMarkers(placeMarkers);
     pagination.gotoPage(page);
   };
 
   const changeClickPosition = (name, x, y, id) => {
     resetMarkerImage();
-    const pMarker = placeMarkers[id];
+    console.log('[changeClick]');
+    console.log('[name]: ', name);
+    console.log('[x]', x);
+    console.log('[y]', y);
+    console.log('[id]', id);
+
+    const pMarker = placeMarkers[id - 1];
+    console.log('pMarker: ', pMarker);
+
     const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
     infoWindow.setContent(name);
     changeMarkerInfo(pMarker, infoWindow, map);
