@@ -82,8 +82,10 @@ const resetMarkerImage = () => {
   selectedPlaceInfo = null;
 };
 
-const changeMarkerInfo = (index) => {
-  // selectedPlaceMarker.
+const changeMarkerInfo = (pMarker, infoWindow, map) => {
+  selectedPlaceMarker = pMarker;
+  selectedPlaceInfo = infoWindow;
+  selectedPlaceInfo.open(map, selectedPlaceMarker);
 };
 
 const MapComponent = () => {
@@ -355,6 +357,7 @@ const MapComponent = () => {
         <MapSearchList
           removePrevPlaceMarkers={removePrevPlaceMarkers}
           resetMarkerImage={resetMarkerImage}
+          changeMarkerInfo={changeMarkerInfo}
         />
       </div>
     </div>

@@ -9,15 +9,22 @@ import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const MapSearchList = ({ removePrevPlaceMarkers, resetMarkerImage }) => {
+const { kakao } = window;
+
+const MapSearchList = ({
+  removePrevPlaceMarkers,
+  resetMarkerImage,
+  changeMarkerInfo,
+}) => {
   const mapContext = useContext(MapContext);
   const mainContext = useContext(MainContext);
 
   const { state } = mainContext;
   const { diaries } = state;
 
-  const { mapState, setClickPosition, setActiveId } = mapContext;
+  const { mapState, setClickPosition } = mapContext;
   const {
+    map,
     places,
     message,
     pagination,
@@ -33,6 +40,10 @@ const MapSearchList = ({ removePrevPlaceMarkers, resetMarkerImage }) => {
 
   const changeClickPosition = (name, x, y, id) => {
     resetMarkerImage();
+    const pMarker = placeMarkers[id];
+    const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
+    infoWindow.setContent(name);
+    changeMarkerInfo(pMarker, infoWindow, map);
     const clickPosition = {
       lat: parseFloat(y),
       lng: parseFloat(x),
