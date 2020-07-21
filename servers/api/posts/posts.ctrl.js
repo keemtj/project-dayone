@@ -1,5 +1,3 @@
-let diaryId = 15;
-
 const diaries = [
   {
     id: 1,
@@ -343,6 +341,23 @@ const diaries = [
     ],
   },
   {
+    id: 22,
+    title: 'Diary Title 22',
+    content: '<p>This is diary 16</p>',
+    date: '2020-7-13',
+    location: {
+      lat: 37.62197524055062,
+      lng: 127.16017523675508,
+      name: '서울 성동구 성수동 2가',
+    },
+    isBookmarked: false,
+    tags: ['태그를', '달자', 'test', '태그를', '달자', 'test'],
+    imagePaths: [
+      'https://images3.alphacoders.com/105/1052299.jpg',
+      'https://previews.123rf.com/images/rawpixel/rawpixel1611/rawpixel161125151/111072573-diary-writing-concept.jpg',
+    ],
+  },
+  {
     id: 23,
     title: 'Diary Title 23',
     content: '<p>This is diary 16</p>',
@@ -499,6 +514,8 @@ const diaries = [
   },
 ];
 
+let diaryId = diaries.length;
+
 /* 전체 diary list 조회
 GET /api/posts
 */
@@ -513,6 +530,7 @@ POST /api/posts
 exports.write = (ctx) => {
   // REST API의 Requiest Body는 ctx.request.body에서 조회 가능
   const {
+    id,
     title,
     content,
     date,
@@ -523,7 +541,8 @@ exports.write = (ctx) => {
   } = ctx.request.body;
   diaryId += 1;
   const diary = {
-    id: diaryId,
+    id,
+    // id: diaryId,
     title,
     content,
     date,
