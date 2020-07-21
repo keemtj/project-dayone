@@ -19,7 +19,9 @@ const Header = () => {
   const { pathname } = useLocation();
   const lastLocation = useLastLocation();
   const pastPathname = lastLocation && lastLocation.pathname;
-  const pastActive = pathname.includes('/diaryViewer') && pastPathname;
+  const pastActive =
+    (pathname.includes('/diaryViewer') || pathname.includes('/tags')) &&
+    pastPathname;
   const match = useRouteMatch({
     path: '/diary',
   });

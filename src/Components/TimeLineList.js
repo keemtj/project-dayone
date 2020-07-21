@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as faBookmarkLine } from '@fortawesome/free-regular-svg-icons';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import sanitizeHtml from 'sanitize-html';
 import styles from './Style/TimeLineList.module.scss';
 import { MainContext } from '../Context/MainContext';
 import image1 from '../Util/asset/image1.jpg';
@@ -97,7 +98,9 @@ const TimeLineList = () => {
                   <div className={cx('date')}>
                     {diary.date.split('-').join('. ')}
                   </div>
-                  <p className={cx('content')}>{diary.content}</p>
+                  <p className={cx('content')}>
+                    {sanitizeHtml(diary.content, { allowedTags: [] })}
+                  </p>
                 </figcaption>
               </figure>
             </Link>

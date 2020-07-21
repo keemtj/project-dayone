@@ -483,7 +483,7 @@ const diaries = [
     title:
       'Diary Title 31 testtestestsetsteststsetestsetset aregeargaegaeragrara',
     content:
-      '<p>This is diary 16 testtestestsetsteststsetestsetsetesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetset</p>',
+      '<p>This is diary 16 testtestestsetsteststsetestsetsetesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetdijfdao;sijfosijfsioafjoasjfisdojfioasjfios;dfjset</p>',
     date: '2020-7-13',
     location: {
       lat: 37.62197524055062,
@@ -517,8 +517,9 @@ exports.write = (ctx) => {
     content,
     date,
     location,
-    imagePaths,
     isBookmarked,
+    tags,
+    imagePaths,
   } = ctx.request.body;
   diaryId += 1;
   const diary = {
@@ -527,8 +528,9 @@ exports.write = (ctx) => {
     content,
     date,
     location,
-    imagePaths,
     isBookmarked,
+    tags,
+    imagePaths,
   };
   diaries.push(diary);
   ctx.body = diary;
