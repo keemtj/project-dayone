@@ -226,12 +226,16 @@ const MapComponent = () => {
       selectedDiaryMarker.setImage(clickImage);
       geocoder.coord2Address(lng, lat, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
-          const name = result[0].road_address || result[0].address.adress_name;
+          const name = result[0].road_address
+            ? result[0].road_address.address_name
+            : result[0].address.address_name;
           const clickPosition = {
             lat,
             lng,
             name,
           };
+          console.log('makeDiaryMarker: ', clickPosition);
+
           setClickPosition(clickPosition, 0, diaries);
         }
       });
