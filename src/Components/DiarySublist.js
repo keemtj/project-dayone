@@ -55,7 +55,6 @@ const DiarySublist = () => {
     }
     history.push('/diary');
   };
-  console.log(mapCtx.mapState.clickPosition);
 
   return (
     <>
