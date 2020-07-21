@@ -68,22 +68,34 @@ const DiarySublist = () => {
         >
           일기를 작성해 주세요
         </li>
-        {subList.map(({ id, title, date, location, imagePaths }) => {
+        {subList.map(({ id, title, date: _date, location, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
               <Link to={`/diaryViewer/${id}`}>
-                <img
+                {/* <img
                   src={
                     imagePaths.length
                       ? imagePaths[0]
-                      : 'https://user-images.githubusercontent.com/67693474/86562086-0998c900-bf9d-11ea-8a2b-66b4994e2072.png'
+                      : 'https://pbs.twimg.com/profile_images/694312120272318464/iFZU5oBJ_400x400.png'
                   }
                   alt="thumbnail"
                   className={cx('thumbnail')}
+                /> */}
+                <div
+                  className={cx('thumbnail')}
+                  style={{
+                    backgroundImage: `url(
+                ${
+                  imagePaths.length
+                    ? imagePaths[0]
+                    : 'https://pbs.twimg.com/profile_images/694312120272318464/iFZU5oBJ_400x400.png'
+                }
+                )`,
+                  }}
                 />
                 <div className={cx('info')}>
                   <h2 className={cx('title')}>{title}</h2>
-                  <p className={cx('details')}>{date}</p>
+                  <p className={cx('details')}>{_date}</p>
                 </div>
               </Link>
             </li>
