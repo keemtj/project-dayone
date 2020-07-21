@@ -5,11 +5,17 @@ import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../Style/MapSearchList.module.scss';
 import { MapContext } from '../../Context/MapContext';
+import { MainContext } from '../../Context/MainContext';
 
 const cx = classNames.bind(styles);
 
-const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
+const MapSearchList = ({ removePrevPlaceMarkers, resetMarkerImage }) => {
   const mapContext = useContext(MapContext);
+  const mainContext = useContext(MainContext);
+
+  const { state } = mainContext;
+  const { diaries } = state;
+
   const { mapState, setClickPosition, setActiveId } = mapContext;
   const {
     places,
@@ -21,19 +27,18 @@ const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
   } = mapState;
 
   const changePage = (page) => {
-    removePrevMarkers(placeMarkers);
+    removePrevPlaceMarkers(placeMarkers);
     pagination.gotoPage(page);
   };
 
   const changeClickPosition = (name, x, y, id) => {
-    setActiveId(id);
     resetMarkerImage();
     const clickPosition = {
       lat: parseFloat(y),
       lng: parseFloat(x),
       name,
     };
-    setClickPosition(clickPosition);
+    setClickPosition(clickPosition, id, diaries);
   };
 
   return (

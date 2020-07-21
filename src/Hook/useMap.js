@@ -9,21 +9,6 @@ const useMap = () => {
     dispatch({ type: 'SET_MAP', payload });
   };
 
-  const setSublist = (diaries, clickPosition) => {
-    console.log('useMap()...setSublist');
-
-    const sublist = diaries.filter(
-      ({ location }) =>
-        location.lat === clickPosition.lat &&
-        location.lng === clickPosition.lng,
-    );
-    const payload = {
-      sublist,
-      clickPosition,
-    };
-    dispatch({ type: 'SET_SUBLIST', payload });
-  };
-
   const setPlaces = (places) => {
     console.log('useMap()...setPlaces');
 
@@ -72,19 +57,17 @@ const useMap = () => {
     dispatch({ type: 'UPDATE_PLACE', payload });
   };
 
-  const setClickPosition = (clickPosition) => {
-    console.log('useMap()...setClickPosition');
-
-    const payload = { clickPosition };
+  const setClickPosition = (clickPosition, activeId, diaries) => {
+    const sublist = diaries.filter(
+      ({ location }) =>
+        location.lat === clickPosition.lat &&
+        location.lng === clickPosition.lng,
+    );
+    const payload = { clickPosition, activeId, sublist };
     dispatch({ type: 'SET_CLICK_POSITION', payload });
   };
 
-  // searchList에 클릭된 item의 스타일을 바꿔줌
-  // activeId: 클릭된 요소를 확인하는 상태값
-  // clickPosition: 클릭된 마커나 item의 clickPosition을 저장해놓음
-  // sublist
   const setActiveId = (activeId, clickPosition, diaries) => {
-    // const diaries
     const payload = { activeId, clickPosition, diaries };
     dispatch({ type: 'SET_ACTIVE_ID', payload });
   };
@@ -92,7 +75,6 @@ const useMap = () => {
   return {
     mapState,
     setMap,
-    setSublist,
     setPlaces,
     setPagination,
     setSearchVisible,

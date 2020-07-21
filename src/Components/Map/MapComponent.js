@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
@@ -70,6 +70,7 @@ kakao.maps.load(() => {
 
 let selectedDiaryMarker = null;
 let selectedMouseMarker = null;
+let selectedPlaceMarker = null;
 let selectedPlaceInfo = null;
 
 const resetMarkerImage = () => {
@@ -81,6 +82,10 @@ const resetMarkerImage = () => {
   selectedPlaceInfo = null;
 };
 
+const changeMarkerInfo = (index) => {
+  // selectedPlaceMarker.
+};
+
 const MapComponent = () => {
   const mainContext = useContext(MainContext);
   const mapContext = useContext(MapContext);
@@ -89,7 +94,6 @@ const MapComponent = () => {
   const {
     mapState,
     setMap,
-    setSublist,
     setMessage,
     updatePlace,
     setClickPosition,
@@ -106,7 +110,7 @@ const MapComponent = () => {
     ps.keywordSearch(inputs, placesSearchCB);
   };
 
-  const removePrevMarkers = (pMarkers) => {
+  const removePrevPlaceMarkers = (pMarkers) => {
     pMarkers.forEach((pMarker) => {
       pMarker.setMap(null);
     });
@@ -138,25 +142,34 @@ const MapComponent = () => {
     return placeMarkers;
   };
 
-  const displayPlaceMarkers = (pMarkers) => {
+  const displayPlaceMarkers = (pMarkers, data) => {
     pMarkers.forEach((pMarker, index) => {
       kakao.maps.event.addListener(pMarker, 'click', () => {
-        selectedPlaceInfo && selectedPlaceInfo.close();
-        selectedMouseMarker && selectedMouseMarker.setMap(null);
-        selectedDiaryMarker && selectedDiaryMarker.setImage(normalImage);
-        selectedDiaryMarker = null;
-        selectedPlaceInfo = null;
+        const { address_name, road_address_name, x, y } = data[index];
+        const name = road_address_name || address_name;
+        const lat = y;
+        const lng = x;
+        const clickPosition = {
+          name,
+          lat,
+          lng,
+        };
+        resetMarkerImage();
+        selectedPlaceInfo = new kakao.maps.InfoWindow({ zindex: 1 });
+        selectedPlaceMarker = pMarker;
+        selectedPlaceInfo.setContent(name);
+        selectedPlaceInfo.open(map, selectedPlaceMarker);
+        setClickPosition(clickPosition, index + 1, diaries);
       });
       pMarker.setMap(map);
     });
   };
 
   const placesSearchCB = (data, status, pagination) => {
-    removePrevMarkers(placeMarkers);
+    removePrevPlaceMarkers(placeMarkers);
 
     if (status === kakao.maps.services.Status.OK) {
       const pMarkers = makePlaceMarkers(data);
-      displayPlaceMarkers(pMarkers);
       const payload = {
         places: data,
         pagination,
@@ -166,6 +179,7 @@ const MapComponent = () => {
         message: '',
       };
       updatePlace(payload);
+      displayPlaceMarkers(pMarkers, data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       const payload = {
         places: [],
@@ -182,6 +196,8 @@ const MapComponent = () => {
   };
 
   const renderMap = () => {
+    console.log('[renderMap...mapState]: ', mapState);
+
     const geocoder = new kakao.maps.services.Geocoder();
     const mouseMarker = new kakao.maps.Marker();
     const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
@@ -208,47 +224,43 @@ const MapComponent = () => {
       selectedDiaryMarker.setImage(clickImage);
       geocoder.coord2Address(lng, lat, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
-          const address =
-            result[0].road_address || result[0].address.adress_name;
+          const name = result[0].road_address || result[0].address.adress_name;
           const clickPosition = {
             lat,
             lng,
-            address,
-            marker,
-            markerType: 'diary',
+            name,
           };
-          setSublist(diaries, clickPosition);
+          setClickPosition(clickPosition, 0, diaries);
         }
       });
     };
 
-    const makeMapClickListener = (mouseEvent) => {
+    const makeMouseMarkerClickListener = (mouseEvent) => {
       resetMarkerImage();
       searchDetailAddrFromCoords(mouseEvent.latLng, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
-          const address = result[0].road_address
-            ? `${result[0].road_address.address_name}`
-            : `${result[0].address.address_name}`;
+          const name = result[0].road_address
+            ? result[0].road_address.address_name
+            : result[0].address.address_name;
           const clickPosition = {
             lat: mouseEvent.latLng.Ha,
             lng: mouseEvent.latLng.Ga,
-            address,
-            marker: mouseMarker,
-            markerType: 'mouse',
+            name,
           };
+          console.log(clickPosition);
           selectedMouseMarker = mouseMarker;
           selectedPlaceInfo = infoWindow;
           mouseMarker.setMap(map);
           mouseMarker.setPosition(mouseEvent.latLng);
-          infoWindow.setContent(address);
+          infoWindow.setContent(name);
           infoWindow.open(map, mouseMarker);
-          setClickPosition(clickPosition);
+          setClickPosition(clickPosition, 0, diaries);
         }
       });
     };
 
     kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
-      makeMapClickListener(mouseEvent);
+      makeMouseMarkerClickListener(mouseEvent);
     });
 
     const makeDiaryMarkers = (diaries) => {
@@ -341,7 +353,7 @@ const MapComponent = () => {
       <div className={cx('mapSearchWrap')}>
         <MapSearchForm searchPlaces={searchPlaces} />
         <MapSearchList
-          removePrevMarkers={removePrevMarkers}
+          removePrevPlaceMarkers={removePrevPlaceMarkers}
           resetMarkerImage={resetMarkerImage}
         />
       </div>
