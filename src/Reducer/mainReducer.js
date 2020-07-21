@@ -1,3 +1,6 @@
+import sanitizeHtml from 'sanitize-html';
+import allowedHtml from '../Util/util';
+
 const getToday = () => {
   const today = new Date();
   return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
@@ -77,7 +80,10 @@ const mainReducer = (state, action) => {
     case 'WRITE_DIARY':
       return {
         ...state,
-        currentDiary: { ...state.currentDiary, content: action.write },
+        currentDiary: {
+          ...state.currentDiary,
+          content: sanitizeHtml(action.write, allowedHtml),
+        },
       };
     case 'SUBMIT_DIARY':
       return {
