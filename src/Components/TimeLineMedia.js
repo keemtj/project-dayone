@@ -39,9 +39,7 @@ const TimeLineMedia = () => {
                 ${
                   diary.imagePaths.length
                     ? diary.imagePaths[0]
-                    : diary.id > 4
-                    ? images[2]
-                    : images[diary.id - 1]
+                    : 'https://takashimaeda.jp/wp-content/uploads/2016/02/nasulog_dayone2_banner.jpg'
                 }
                 )`,
               }}
