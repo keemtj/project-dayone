@@ -25,13 +25,13 @@ const MapSearchList = ({ removePrevMarkers, resetMarkerImage }) => {
     pagination.gotoPage(page);
   };
 
-  const changeClickPosition = (name, x, y, id) => {
+  const changeClickPosition = (address, x, y, id) => {
     setActiveId(id);
     resetMarkerImage();
     const clickPosition = {
       lat: parseFloat(y),
       lng: parseFloat(x),
-      name,
+      address,
     };
     setClickPosition(clickPosition);
   };
