@@ -100,6 +100,11 @@ export const mapReducer = (state, action) => {
         clickPosition,
         sublist: [],
       };
+    case 'CLEAR_CLICK_POSITION':
+      return {
+        ...state,
+        clickPosition: {},
+      };
     case 'SET_ACTIVE_ID':
       return {
         ...state,
