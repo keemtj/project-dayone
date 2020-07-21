@@ -500,11 +500,7 @@ const diaries = [
     content:
       '<p>This is diary 16 testtestestsetsteststsetestsetsetesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetsettesttestestsetsteststsetestsetdijfdao;sijfosijfsioafjoasjfisdojfioasjfios;dfjset</p>',
     date: '2020-7-13',
-    location: {
-      lat: 37.62197524055062,
-      lng: 127.16017523675508,
-      name: '서울 성동구 성수동 2가',
-    },
+    location: {},
     isBookmarked: false,
     tags: ['태그를', 'test', '태그를', 'test'],
     imagePaths: [
