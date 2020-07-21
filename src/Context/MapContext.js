@@ -7,7 +7,6 @@ export const MapProvider = ({ children }) => {
   const {
     mapState,
     setMap,
-    setSublist,
     setPlaces,
     setPagination,
     setSearchVisible,
@@ -22,7 +21,6 @@ export const MapProvider = ({ children }) => {
   const mapContextValue = {
     mapState,
     setMap,
-    setSublist,
     setPlaces,
     setPagination,
     setSearchVisible,

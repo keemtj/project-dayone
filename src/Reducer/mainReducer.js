@@ -160,6 +160,14 @@ const mainReducer = (state, action) => {
           date: action.date,
         },
       };
+    case 'CHANGE_LOCATION':
+      return {
+        ...state,
+        currentDiary: {
+          ...state.currentDiary,
+          location: action.location,
+        },
+      };
     case 'SET_EDIT_STATE':
       return {
         ...state,

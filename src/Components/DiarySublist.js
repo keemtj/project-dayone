@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
@@ -19,11 +20,13 @@ const DiarySublist = () => {
   const calendarList = calCtx && calCtx.calendarState.sublist;
 
   const mapCtx = useContext(MapContext);
+  const { mapState } = mapCtx;
+  const { clickPosition } = mapState;
   let mapClickLat = 0;
   let mapClickLng = 0;
   if (mapCtx) {
-    mapClickLat = mapCtx.mapState.clickPosition.lat;
-    mapClickLng = mapCtx.mapState.clickPosition.lng;
+    mapClickLat = clickPosition.lat;
+    mapClickLng = clickPosition.lng;
   }
 
   const mapSublist = mapCtx && mapCtx.mapState.sublist;
@@ -48,7 +51,7 @@ const DiarySublist = () => {
       const dd = today.getDate();
       const todayDate = `${yy}-${mm}-${dd}`;
       dispatch({ type: 'CHANGE_DATE', date: todayDate });
-      // dispatch({ type: 'CHANGE_LOCATION', clickPosition });
+      dispatch({ type: 'CHANGE_LOCATION', location: clickPosition });
     }
     history.push('/diary');
   };
@@ -80,6 +83,7 @@ const DiarySublist = () => {
                 />
                 <div className={cx('info')}>
                   <h2 className={cx('title')}>{title}</h2>
+                  <p className={cx('location')}>{location.name}</p>
                   <p className={cx('details')}>{date}</p>
                 </div>
               </Link>
