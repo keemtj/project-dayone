@@ -16,6 +16,7 @@ export const MapProvider = ({ children }) => {
     setMessage,
     updatePlace,
     setClickPosition,
+    clearClickPosition,
     setActiveId,
   } = useMap();
 
@@ -31,6 +32,7 @@ export const MapProvider = ({ children }) => {
     setMessage,
     updatePlace,
     setClickPosition,
+    clearClickPosition,
     setActiveId,
   };
 

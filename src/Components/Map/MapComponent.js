@@ -2,7 +2,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-shadow */
-/* eslint-disable no-new */
 import React, { useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../Style/MapComponent.module.scss';
