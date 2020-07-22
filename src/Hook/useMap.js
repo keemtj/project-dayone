@@ -53,6 +53,10 @@ const useMap = () => {
     dispatch({ type: 'SET_CLICK_POSITION', payload });
   };
 
+  const clearClickPosition = () => {
+    dispatch({ type: 'CLEAR_CLICK_POSITION', payload: {} });
+  };
+
   const setActiveId = (activeId, clickPosition, diaries) => {
     const payload = { activeId, clickPosition, diaries };
     dispatch({ type: 'SET_ACTIVE_ID', payload });
@@ -69,6 +73,7 @@ const useMap = () => {
     setMessage,
     updatePlace,
     setClickPosition,
+    clearClickPosition,
     setActiveId,
   };
 };
