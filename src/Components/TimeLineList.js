@@ -43,7 +43,7 @@ const TimeLineList = () => {
   const getMoreDiaries = () => {
     if (diaryAmount < end) {
       end = diaryAmount;
-      setRenderDiaries(sortDiaries);
+      setRenderDiaries(diaries);
       setHasMoreState(false);
       start = 10;
       end = 20;
