@@ -7,6 +7,7 @@ import classNames from 'classnames/bind';
 import styles from '../Style/MapComponent.module.scss';
 import MapSearchForm from './MapSearchForm';
 import MapSearchList from './MapSearchList';
+
 import { MainContext } from '../../Context/MainContext';
 import { MapContext } from '../../Context/MapContext';
 
@@ -99,7 +100,6 @@ const MapComponent = () => {
     updatePlace,
     setClickPosition,
   } = mapContext;
-
   const { map, placeMarkers } = mapState;
 
   const searchPlaces = (inputs) => {
@@ -332,7 +332,7 @@ const MapComponent = () => {
         };
 
         const handleError = () => {
-          console.warn('ERROR!');
+          console.warn('에러! 현재 위치를 찾을 수 없습니다.');
         };
         // 현재위치
         if (navigator.geolocation) {

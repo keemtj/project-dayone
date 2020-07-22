@@ -10,12 +10,13 @@ const cx = className.bind(styles);
 
 const ModalMap = () => {
   // const { state } = useContext(MainContext);
-  const { mapState, clearClickPosition } = useContext(MapContext);
+  const { mapState, setMap, clearClickPosition } = useContext(MapContext);
   const { name } = mapState.clickPosition;
 
   useEffect(() => {
     return () => {
       clearClickPosition();
+      setMap({});
     };
   }, []);
 
