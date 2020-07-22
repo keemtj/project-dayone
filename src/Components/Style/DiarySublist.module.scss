@@ -1,4 +1,4 @@
-$mainColor: #45C0FF;
+$mainColor: #45c0ff;
 $outline: 1px solid #dbdbdb;
 
 .addBtn {
@@ -91,13 +91,21 @@ $outline: 1px solid #dbdbdb;
         text-overflow: ellipsis;
         white-space: nowrap;
         line-height: 1.5rem;
-        // padding: 0 5px;
+        max-width: 185px;
       }
 
+      .location {
+        font-size: 0.8rem;
+        color: #686868;
+        margin-top: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .details {
         font-size: 0.9rem;
         color: #686868;
-        margin-top: 30px;
+        margin-top: 6px;
       }
     }
   }

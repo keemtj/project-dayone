@@ -26,7 +26,7 @@ const ModalButtons = ({ dateState, location }) => {
 
   const mapSubmit = () => {
     console.log(location);
-    if (!location.address) return;
+    if (!location.name) return;
     dispatch({ type: 'CHANGE_LOCATION', location });
     setModalState('initial');
   };

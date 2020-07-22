@@ -171,11 +171,7 @@ const mainReducer = (state, action) => {
         ...state,
         currentDiary: {
           ...state.currentDiary,
-          location: {
-            lat: action.location.lat,
-            lng: action.location.lng,
-            name: action.location.address,
-          },
+          location: action.location,
         },
       };
     case 'SET_EDIT_STATE':

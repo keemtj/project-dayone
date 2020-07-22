@@ -10,18 +10,19 @@ const cx = className.bind(styles);
 
 const ModalMap = () => {
   // const { state } = useContext(MainContext);
-  const { mapState, clearClickPosition } = useContext(MapContext);
-  const { address } = mapState.clickPosition;
+  const { mapState, setMap, clearClickPosition } = useContext(MapContext);
+  const { name } = mapState.clickPosition;
 
   useEffect(() => {
     return () => {
       clearClickPosition();
+      setMap({});
     };
   }, []);
 
   const locationMsg = () => {
-    if (!address) return '위치를 선택해 주세요';
-    return address;
+    if (!name) return '위치를 선택해 주세요';
+    return name;
   };
 
   return (
