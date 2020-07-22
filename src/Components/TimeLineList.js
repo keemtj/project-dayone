@@ -66,7 +66,7 @@ const TimeLineList = () => {
     setRenderDiaries(
       diaries.sort((a, b) => b.id - a.id).slice(0, renderDiaries.length),
     );
-  }, [diaries]);
+  }, [diaries, renderDiaries.length]);
 
   return (
     <ul className={cx('timelineWrapper')}>
