@@ -20,8 +20,7 @@ const DiarySublist = () => {
   const calendarList = calCtx && calCtx.calendarState.sublist;
 
   const mapCtx = useContext(MapContext);
-  const { mapState } = mapCtx;
-  const { clickPosition } = mapState;
+  const clickPosition = mapCtx && mapCtx.mapState.clickPosition;
   let mapClickLat = 0;
   let mapClickLng = 0;
   if (mapCtx) {
