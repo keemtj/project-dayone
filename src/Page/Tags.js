@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-array-index-key */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
+import sanitizeHtml from 'sanitize-html';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -23,7 +24,11 @@ const Tags = () => {
 
   const taggedDiaries = diaries.filter((diary) => diary.tags.includes(name));
   const [inputState, setInputState] = useState('');
-  console.log(taggedDiaries);
+  console.log('test', diaries);
+
+  useEffect(() => {
+    console.log('diaries', diaries);
+  }, []);
 
   const onChange = (e) => {
     setInputState(e.target.value);
@@ -51,10 +56,10 @@ const Tags = () => {
       <article key={v.id} className={cx('diary')}>
         <h3>{v.title}</h3>
         <Link to={`/diaryViewer/${v.id}`}>
-          <img src={v.imagePaths[0]} alt={v.title} />
+          {v.imagePaths[0] ? <img src={v.imagePaths[0]} alt={v.title} /> : ''}
         </Link>
         <time dateTime={v.date}>{v.date}</time>
-        <p>{v.content}</p>
+        <p>{sanitizeHtml(v.content, { allowedTags: [] })}</p>
         <div className={cx('tags')}>
           {v.tags.map((tag, i) => (
             <span key={i} className={cx('tag', { searchTag: tag === name })}>
