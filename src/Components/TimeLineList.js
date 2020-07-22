@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -51,7 +51,14 @@ const TimeLineList = () => {
     patchBookmark(id, target.checked);
   };
 
-  console.log(start, end);
+  // console.log(start, end);
+  // console.log(renderDiaries);
+
+  useEffect(() => {
+    setRenderDiaries(
+      diaries.sort((a, b) => b.id - a.id).slice(0, renderDiaries.length),
+    );
+  }, [diaries]);
 
   return (
     <ul className={cx('timelineWrapper')}>
@@ -77,7 +84,7 @@ const TimeLineList = () => {
           </p>
         }
       >
-        {renderDiaries.map((diary) => (
+        {renderDiaries.slice(0, 10).map((diary) => (
           <li key={diary.id} className={cx('timelineList')}>
             <Link
               to={`/diaryViewer/${diary.id}`}
