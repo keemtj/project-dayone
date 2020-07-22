@@ -156,9 +156,12 @@ const MapComponent = () => {
           lng,
         };
         resetMarkerImage();
+        const content = `<div style="padding: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <span style="line-height: 15px">${name}</span>
+          </div>`;
         selectedPlaceInfo = new kakao.maps.InfoWindow({ zindex: 1 });
         selectedPlaceMarker = pMarker;
-        selectedPlaceInfo.setContent(name);
+        selectedPlaceInfo.setContent(content);
         selectedPlaceInfo.open(map, selectedPlaceMarker);
         setClickPosition(clickPosition, index + 1, diaries);
       });
@@ -197,12 +200,9 @@ const MapComponent = () => {
   };
 
   const renderMap = () => {
-    console.log('[renderMap...mapState]: ', mapState);
-
     const geocoder = new kakao.maps.services.Geocoder();
     const mouseMarker = new kakao.maps.Marker();
     const infoWindow = new kakao.maps.InfoWindow({ zindex: 1 });
-
     const searchDetailAddrFromCoords = (coords, callback) => {
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     };
@@ -233,8 +233,6 @@ const MapComponent = () => {
             lng,
             name,
           };
-          console.log('makeDiaryMarker: ', clickPosition);
-
           setClickPosition(clickPosition, 0, diaries);
         }
       });
@@ -252,12 +250,14 @@ const MapComponent = () => {
             lng: mouseEvent.latLng.Ga,
             name,
           };
-          console.log(clickPosition);
+          const content = `<div style="padding: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <span style="line-height: 15px">${name}</span>
+          </div>`;
           selectedMouseMarker = mouseMarker;
           selectedPlaceInfo = infoWindow;
           mouseMarker.setMap(map);
           mouseMarker.setPosition(mouseEvent.latLng);
-          infoWindow.setContent(name);
+          infoWindow.setContent(content);
           infoWindow.open(map, mouseMarker);
           setClickPosition(clickPosition, 0, diaries);
         }

@@ -68,7 +68,7 @@ const DiarySublist = () => {
         >
           일기를 작성해 주세요
         </li>
-        {subList.map(({ id, title, date: _date, location, imagePaths }) => {
+        {subList.map(({ id, title, date, location, imagePaths }) => {
           return (
             <li key={id} className={cx('diary')}>
               <Link to={`/diaryViewer/${id}`}>
