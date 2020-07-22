@@ -43,6 +43,7 @@ const TimeLineList = () => {
   const getMoreDiaries = () => {
     if (diaryAmount < end) {
       end = diaryAmount;
+      setRenderDiaries(sortDiaries);
       setHasMoreState(false);
       start = 10;
       end = 20;
@@ -59,6 +60,13 @@ const TimeLineList = () => {
   };
 
   console.log(start, end);
+  console.log(renderDiaries);
+
+  useEffect(() => {
+    setRenderDiaries(
+      diaries.sort((a, b) => b.id - a.id).slice(0, renderDiaries.length),
+    );
+  }, [diaries]);
 
   return (
     <ul className={cx('timelineWrapper')}>

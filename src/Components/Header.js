@@ -26,7 +26,6 @@ const Header = () => {
     path: '/diary',
   });
 
-  console.log(lastLocation);
   return (
     <header className={cx('header')}>
       <div className={cx('container')}>
