@@ -36,6 +36,7 @@ const TimeLineList = () => {
   const getMoreDiaries = () => {
     if (diaryAmount < end) {
       end = diaryAmount;
+      setRenderDiaries(sortDiaries);
       setHasMoreState(false);
       start = 10;
       end = 20;
@@ -51,8 +52,8 @@ const TimeLineList = () => {
     patchBookmark(id, target.checked);
   };
 
-  // console.log(start, end);
-  // console.log(renderDiaries);
+  console.log(start, end);
+  console.log(renderDiaries);
 
   useEffect(() => {
     setRenderDiaries(
@@ -84,7 +85,7 @@ const TimeLineList = () => {
           </p>
         }
       >
-        {renderDiaries.slice(0, 10).map((diary) => (
+        {renderDiaries.map((diary) => (
           <li key={diary.id} className={cx('timelineList')}>
             <Link
               to={`/diaryViewer/${diary.id}`}
