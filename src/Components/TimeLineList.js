@@ -26,30 +26,30 @@ const TimeLineList = () => {
 
   const images = [image1, image2, image3, image4];
 
-  const sortDiaries = diaries.sort((a, b) => b.id - a.id);
-  const diaryAmount = sortDiaries.length;
+  // const sortDiaries = diaries.sort((a, b) => b.id - a.id);
+  const diaryAmount = diaries.length;
 
   const [hasMoreState, setHasMoreState] = useState(diaryAmount > 10);
   const [renderDiaries, setRenderDiaries] = useState(() => {
-    return diaryAmount < 10 ? sortDiaries : sortDiaries.slice(0, 10);
+    return diaryAmount < 10 ? diaries : diaries.slice(0, 10);
   });
 
   useEffect(() => {
     setRenderDiaries(
       diaries.sort((a, b) => b.id - a.id).slice(0, renderDiaries.length),
     );
-  }, [diaries]);
+  }, [diaries, renderDiaries.length]);
 
   const getMoreDiaries = () => {
     if (diaryAmount < end) {
       end = diaryAmount;
-      setRenderDiaries(sortDiaries);
+      setRenderDiaries(diaries);
       setHasMoreState(false);
       start = 10;
       end = 20;
       return;
     }
-    setRenderDiaries(renderDiaries.concat(sortDiaries.slice(start, end)));
+    setRenderDiaries(renderDiaries.concat(diaries.slice(start, end)));
     start += 10;
     end += 10;
   };
@@ -66,7 +66,7 @@ const TimeLineList = () => {
     setRenderDiaries(
       diaries.sort((a, b) => b.id - a.id).slice(0, renderDiaries.length),
     );
-  }, [diaries]);
+  }, [diaries, renderDiaries.length]);
 
   return (
     <ul className={cx('timelineWrapper')}>

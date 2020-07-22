@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-array-index-key */
 import React, { useContext, useState, useEffect } from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams, Link, NavLink } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -84,11 +84,11 @@ const Tags = () => {
   const renderTags = () => {
     return allTags.map(({ key, name: tag, count }) => (
       <li className={cx('tagMenu')} key={key}>
-        <Link to={`/tags/${tag}`}>
+        <NavLink to={`/tags/${tag}`} activeClassName={cx('active')}>
           <FontAwesomeIcon icon={faHashtag} />
           <span className={cx('tagMenuName')}>{tag}</span>
           <span className={cx('count')}>{`(${count})`}</span>
-        </Link>
+        </NavLink>
       </li>
     ));
   };
